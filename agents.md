@@ -8,6 +8,7 @@ El proyecto está construido usando las siguientes tecnologías modernas y efici
 
 - **Framework Principal:** Astro (para generación de sitios estáticos increíblemente rápidos y manejo de contenido).
 - **Framework de UI:** Svelte (utilizado para islas interactivas y componentes reactivos dentro de Astro).
+- **Animaciones:** GSAP (GreenSock Animation Platform) para experiencias de alto impacto y micro-interacciones.
 - **Lenguaje:** TypeScript (estricto) para tipado seguro en toda la aplicación (Astro y Svelte).
 - **Gestor de Paquetes y Runtime:** Bun (reemplazando a npm/yarn/node para mayor velocidad de instalación y ejecución).
 - **Contenedores y Despliegue:** Docker, Caddyfile (servidor web proxy inverso), preparado para despliegue en Dokploy.
@@ -34,7 +35,7 @@ Deben configurarse en la raíz del proyecto globalmente:
 - **Secundaria (Acentos/Firmas):** `Sloop` (cursive).
 Asegurar que las fuentes estén optimizadas y cargadas localmente si es posible para mejorar el rendimiento.
 
-## 3. Arquitectura del Proyecto (Astro + Svelte)
+## 3. Arquitectura del Proyecto (Astro + Svelte + GSAP)
 
 La estructura esperada del proyecto es:
 - `src/pages/`: Páginas generadas estáticamente (SSG). Principalmente `index.astro`, `about.astro`, `services.astro`, `contacto.astro`.
@@ -42,8 +43,15 @@ La estructura esperada del proyecto es:
 - `src/components/svelte/`: Islas interactivas creadas con Svelte. Se usarán directivas de hidratación (`client:load`, `client:visible`, `client:idle`) solo donde sea estrictamente necesario.
 - `src/layouts/`: Plantillas principales (Layout.astro), manejando el SEO, meta tags y la importación de tipografías/estilos globales.
 - `src/content/`: Uso de *Astro Content Collections* para tipado estricto de cualquier contenido manejado en Markdown.
+- `src/animations/`: Contendrá los archivos de configuración y utilidades de GSAP (`gsap-config.ts`, `scroll-trigger-utils.ts`).
 
-**Regla de Hidratación:** Por defecto enviar HTML puro (zero JS). Usar `client:*` solo para interactividad indispensable (ej. formularios de contacto interactivos, modales).
+**Regla de Hidratación:** Por defecto enviar HTML puro (zero JS). Usar `client:*` solo para interactividad indispensable (ej. formularios de contacto interactivos, modales) o animaciones de GSAP de alto impacto.
+
+### 3.1 Directrices GSAP
+- **Performance:** Priorizar el uso de `will-change` en CSS y animar propiedades optimizadas (transform, opacity).
+- **Implementación:** Usar exclusivamente dentro de islas Svelte (`client:load`, `client:idle`). Nunca en componentes estáticos.
+- **Ciclo de Vida:** Obligatorio implementar limpieza de animaciones en el `onDestroy` de Svelte para evitar fugas de memoria.
+- **Scroll:** Utilizar `ScrollTrigger` para animaciones basadas en scroll, asegurando el uso de `lazy loading` para los disparadores.
 
 ## 4. Requisitos de Contenido (Arquitectura Web)
 
