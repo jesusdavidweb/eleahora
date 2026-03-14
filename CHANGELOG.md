@@ -20,11 +20,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Nueva página `/gracias` como confirmación post-envío para medición de conversiones del formulario de contacto.
 - Nuevas utilidades de animación en `src/animations/` (`gsap-config.ts` y `scroll-trigger-utils.ts`).
 - Nuevas islas Svelte para experiencias GSAP de alto impacto en contacto y gracias (`ContactExperience.svelte` y `ThanksExperience.svelte`).
+- Nueva página de servicios para empresas: `/workshop-empresas`.
+- Activos oficiales de marca: favicon, logo principal y logo de pie de página.
+- Créditos de soporte y desarrollo en el pie de página.
+- Enlaces de reserva directa (`https://cal.eu/eleahora/sesiones`) en todos los CTAs de sesiones.
 
 ### Changed
 - Rediseñada y completada la página `/contacto` con formulario funcional, panel de proceso, CTAs de agenda/WhatsApp y estructura de conversión.
 - Extendida la plantilla `Layout.astro` para soportar `noindex` en rutas transaccionales como `/gracias`.
 - Tipado base actualizado en `src/types/index.ts` para opciones de servicios del formulario de contacto.
+- Rediseño del Header del sitio para una estética más moderna y fluida.
+- Actualización de la página "Sobre Mí" con imágenes locales de alta calidad y diseño responsivo móvil-primero.
+- Mejora de la navegación principal mediante la eliminación del enlace redundante "Manifiesto".
+- Optimizaciones en las animaciones de la sección "Servicios" para un rendimiento más fluido.
+- Reestructuración de las secciones "Ciencia & Espíritu" y "Manifiesto" en la página de inicio con activos locales.
+- Refinado el CTA del menú móvil para mejorar el compromiso del usuario.
+- Estandarización tipográfica en la página de workshops (fuente Pacaembu).
+
+### Fixed
+- Resolución de errores de enrutamiento 503 y 404 en el entorno de producción.
+- Corrección de problemas en el pipeline de despliegue relacionados con la configuración de Docker Composer.
+- Reparación de regresiones visuales en la página de Contacto (tipografía, órbitas y degradados).
 
 ### Removed
 - Eliminada carpeta errónea / plantilla innecesaria `civil-corot` que no aplicaba a la raíz del repositorio.
