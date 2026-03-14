@@ -1,4 +1,5 @@
 ---
+import { ClientRouter } from 'astro:transitions';
 import '../styles/global.css';
 import Header from '../components/astro/Header.astro';
 import Footer from '../components/astro/Footer.astro';
@@ -34,6 +35,7 @@ const {
     <meta property="og:image" content={ogImage} />
     <meta property="og:type" content="website" />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <ClientRouter />
   </head>
   <body>
     <Header />
@@ -41,3 +43,40 @@ const {
     <Footer />
   </body>
 </html>
+
+<script>
+  // Scroll to top al navegar entre páginas distintas.
+  // astro:after-swap se dispara cuando el nuevo DOM ya reemplazó al anterior
+  // pero antes de que se ejecute astro:page-load, así el scroll ocurre
+  // antes de que la transición de entrada sea visible.
+  document.addEventListener('astro:after-swap', () => {
+    // Solo scroll al top si no hay un hash en la URL (ej. /#manifiesto)
+    if (!window.location.hash) {
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    }
+  });
+
+  // Actualizar el enlace activo del navbar tras cada navegación SPA
+  function updateActiveNav() {
+    const pathname = window.location.pathname;
+    const navLinks = document.querySelectorAll('.nav-links a, .mobile-nav-links a');
+
+    navLinks.forEach((link) => {
+      const anchor = link as HTMLAnchorElement;
+      const href = anchor.getAttribute('href') ?? '';
+
+      // Eliminar clase active de todos
+      anchor.classList.remove('active');
+
+      // Asignar active según la ruta actual
+      if (href === pathname) {
+        anchor.classList.add('active');
+      } else if (pathname === '/' && href === '/') {
+        anchor.classList.add('active');
+      }
+    });
+  }
+
+  // Ejecutar en la primera carga y tras cada transición
+  document.addEventListener('astro:page-load', updateActiveNav);
+</script>

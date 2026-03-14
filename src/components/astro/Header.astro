@@ -6,7 +6,7 @@ interface Props {
 const { activeNav } = Astro.props;
 ---
 
-<header class="navbar-wrapper">
+<header class="navbar-wrapper" transition:name="site-header" transition:animate="none">
   <div class="navbar-container max-w-screen">
     <a href="/" class="logo" aria-label="Eleahora Home">
       <img src="/images/logo-1.png" alt="Eleahora" class="nav-logo" />

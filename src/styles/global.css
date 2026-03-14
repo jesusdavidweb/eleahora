@@ -126,6 +126,52 @@ img {
   display: block;
 }
 
+/* ============================================================
+   VIEW TRANSITIONS — Eleahora Premium Navigation
+   ============================================================ */
+
+/* Animación de salida: la página actual baja y se desvanece */
+@keyframes page-fade-out {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(14px) scale(0.995);
+  }
+}
+
+/* Animación de entrada: la nueva página sube desde arriba */
+@keyframes page-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-14px) scale(0.995);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Aplicar las animaciones a la transición root */
+::view-transition-old(root) {
+  animation: page-fade-out 0.38s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+::view-transition-new(root) {
+  animation: page-fade-in 0.48s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* El header persiste sin participar en la transición root */
+::view-transition-old(site-header),
+::view-transition-new(site-header) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+/* ============================================================ */
+
 /* Utilities for revealing */
 .gsap-reveal {
   opacity: 0;

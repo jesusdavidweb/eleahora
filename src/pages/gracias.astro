@@ -4,19 +4,6 @@ import ThanksExperience from '../components/svelte/ThanksExperience.svelte';
 
 const contactName = (Astro.url.searchParams.get('nombre') ?? '').trim();
 const firstName = contactName ? contactName.split(/\s+/)[0] : '';
-const selectedService = (Astro.url.searchParams.get('servicio') ?? '').trim();
-
-const serviceLabels: Record<string, string> = {
-  'acompanamiento-terapeutico': 'Acompañamiento Terapéutico (Meditación + PNL)',
-  'terapia-angelical': 'Terapia Angelical',
-  'perlas-de-eleahora': 'Perlas de Eleahora',
-  'clase-de-meditacion': 'Clase de Meditación',
-  'sesion-energetica': 'Sesión Energética (Chakras)',
-  'workshop-empresas': 'Workshop para empresas',
-  otro: 'Otro / No definido'
-};
-
-const serviceName = selectedService ? serviceLabels[selectedService] ?? selectedService : '';
 ---
 
 <Layout
@@ -29,370 +16,173 @@ const serviceName = selectedService ? serviceLabels[selectedService] ?? selected
 
   <main class="thanks-page">
     <section class="thanks-hero" aria-labelledby="gracias-title">
-      <span class="thanks-halo halo-one" aria-hidden="true"></span>
-      <span class="thanks-halo halo-two" aria-hidden="true"></span>
 
-      <div class="max-w-screen thanks-hero-wrap">
+      <!-- Ambient glow -->
+      <div class="thanks-glow" aria-hidden="true"></div>
+
+      <!-- Orbit rings -->
+      <div class="thanks-orbits" aria-hidden="true">
+        <span class="orbit orbit-a"></span>
+        <span class="orbit orbit-b"></span>
+        <span class="orbit orbit-c"></span>
+      </div>
+
+      <!-- Content — centrado horizontal y vertical -->
+      <div class="thanks-content">
         <p class="thanks-kicker thanks-hero-animate">Mensaje recibido</p>
         <h1 id="gracias-title" class="thanks-hero-animate">
-          {firstName ? `${firstName}, gracias por abrir este espacio.` : 'Gracias por escribir a Eleahora.'}
+          {firstName ? `${firstName}, gracias por escribir a Eleahora.` : 'Gracias por escribir a Eleahora.'}
         </h1>
         <p class="thanks-lead thanks-hero-animate">
-          Tu solicitud ya entró en la bandeja prioritaria. Te responderé en máximo 24 horas laborables para coordinar el siguiente paso.
+          Tu solicitud ya entró en la bandeja prioritaria. Te responderé en máximo 24&nbsp;horas laborables para coordinar el siguiente paso.
         </p>
+        <div class="thanks-actions thanks-hero-animate">
+          <a
+            href="https://cal.eu/eleahora/sesiones"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-primary thanks-magnetic"
+          >Reservar ahora</a>
+          <a
+            href="https://wa.me/34605373782"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-outline thanks-magnetic"
+          >Escribir por WhatsApp</a>
+        </div>
       </div>
-    </section>
 
-    <section class="thanks-content">
-      <div class="max-w-screen thanks-grid">
-        <article class="thanks-card" aria-live="polite">
-          <h2>Confirmación de tu solicitud</h2>
-          <p>
-            Este envío ya cuenta como conversión de contacto en tu embudo. Desde aquí puedes reservar directamente si quieres acelerar el proceso.
-          </p>
-          {
-            serviceName && (
-              <p class="service-chip">
-                Interés principal: <strong>{serviceName}</strong>
-              </p>
-            )
-          }
-
-          <div class="thanks-actions">
-            <a
-              href="https://cal.eu/eleahora/sesiones"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn-primary thanks-magnetic"
-            >
-              Reservar ahora
-            </a>
-            <a
-              href="https://wa.me/34605373782"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn-outline thanks-magnetic"
-            >
-              Escribir por WhatsApp
-            </a>
-            <a href="/" class="thanks-link">Volver al inicio</a>
-          </div>
-        </article>
-
-        <aside class="thanks-steps" aria-label="Siguientes pasos">
-          <h2 class="thanks-next-step">Siguientes pasos</h2>
-          <p class="thanks-next-step">1. Recibirás una respuesta personalizada por email o WhatsApp.</p>
-          <p class="thanks-next-step">2. Definimos formato, objetivo y ritmo de trabajo.</p>
-          <p class="thanks-next-step">3. Comenzamos tu primera sesión con una guía clara.</p>
-        </aside>
-      </div>
-    </section>
-  </main>
-</Layout>
-
-<style>
-  <main class="thanks-page">
-    <section class="thanks-hero" aria-labelledby="gracias-title">
-      <div class="thanks-glow"></div>
-      <span class="thanks-halo halo-one" aria-hidden="true"></span>
-      <span class="thanks-halo halo-two" aria-hidden="true"></span>
-
-      <div class="max-w-screen thanks-hero-wrap">
-        <p class="thanks-kicker thanks-hero-animate text-accent">Mensaje recibido</p>
-        <h1 id="gracias-title" class="thanks-hero-animate">
-          {firstName ? `${firstName}, gracias por abrir este espacio.` : 'Gracias por escribir a Eleahora.'}
-        </h1>
-        <p class="thanks-lead thanks-hero-animate">
-          Tu mensaje ha llegado con éxito. Lo recibiré con calma y presencia. Te responderé en un máximo de 24 horas para que empecemos juntas este camino.
-        </p>
-      </div>
-    </section>
-
-    <section class="thanks-content">
-      <div class="max-w-screen thanks-grid">
-        <article class="thanks-card" aria-live="polite">
-          <div class="success-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"></path>
-            </svg>
-          </div>
-          <h2>Todo listo</h2>
-          <p>
-            Mientras esperas mi respuesta, puedes echar un vistazo a mis herramientas o agendar directamente si sientes que es el momento.
-          </p>
-          {
-            serviceName && (
-              <div class="service-chip-wrap">
-                <span class="service-chip">
-                  Interés: <strong>{serviceName}</strong>
-                </span>
-              </div>
-            )
-          }
-
-          <div class="thanks-actions">
-            <a
-              href="https://cal.eu/eleahora/sesiones"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn-primary thanks-magnetic"
-            >
-              Reservar sesión
-            </a>
-            <a
-              href="https://wa.me/34605373782"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn-outline thanks-magnetic"
-            >
-              WhatsApp directo
-            </a>
-            <a href="/" class="thanks-link">Volver al inicio</a>
-          </div>
-        </article>
-
-        <aside class="thanks-steps" aria-label="Siguientes pasos">
-          <h2 class="text-accent">Siguientes pasos</h2>
-          <div class="step-item thanks-next-step">
-            <span class="step-dot"></span>
-            <p>Recibirás un email o mensaje personal de mi parte.</p>
-          </div>
-          <div class="step-item thanks-next-step">
-            <span class="step-dot"></span>
-            <p>Conectaremos para entender tu situación actual.</p>
-          </div>
-          <div class="step-item thanks-next-step">
-            <span class="step-dot"></span>
-            <p>Iniciaremos tu proceso de transformación consciente.</p>
-          </div>
-        </aside>
-      </div>
     </section>
   </main>
 </Layout>
 
 <style>
   .thanks-page {
-    padding-top: 6rem;
-    overflow: clip;
     background-color: var(--color-background);
   }
 
+  /* ── Full-screen hero centrada ── */
   .thanks-hero {
     position: relative;
-    padding: 8rem 0 6rem;
-    isolation: isolate;
-  }
-
-  .thanks-glow {
-    position: absolute;
-    inset: 10% 20% auto;
-    height: 350px;
-    border-radius: 999px;
-    background: radial-gradient(circle, rgba(140, 7, 3, 0.1), rgba(86, 100, 67, 0.12), transparent 70%);
-    filter: blur(50px);
-    z-index: -1;
-    pointer-events: none;
-  }
-
-  .thanks-halo {
-    position: absolute;
-    width: min(45vw, 600px);
-    height: min(45vw, 600px);
-    border-radius: 999px;
-    border: 1px solid rgba(59, 38, 57, 0.08);
-    pointer-events: none;
-    z-index: -1;
-  }
-
-  .halo-one {
-    top: -15%;
-    right: -10%;
-  }
-
-  .halo-two {
-    top: 30%;
-    left: -15%;
-    border-color: rgba(109, 68, 146, 0.1);
-  }
-
-  .thanks-hero-wrap {
-    position: relative;
-    z-index: 1;
-    max-width: 840px;
-  }
-
-  .thanks-kicker {
-    font-size: clamp(2rem, 3.5vw, 3.2rem);
-    margin-bottom: 1.2rem;
-  }
-
-  h1 {
-    font-size: clamp(2.5rem, 5.5vw, 5rem);
-    line-height: 0.95;
-    letter-spacing: -0.02em;
-    margin-bottom: 2rem;
-    font-weight: 500;
-  }
-
-  .thanks-lead {
-    max-width: 50ch;
-    font-size: clamp(1.1rem, 2vw, 1.3rem);
-    line-height: 1.7;
-    margin: 0;
-    opacity: 0.9;
-  }
-
-  .thanks-content {
-    padding: 2rem 0 8rem;
-  }
-
-  .thanks-grid {
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 4rem;
-    align-items: start;
-  }
-
-  .thanks-card {
-    padding: 4rem;
-    border-radius: 40px;
-    background: #fff;
-    box-shadow: 0 40px 100px -20px rgba(59, 38, 57, 0.1);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .success-icon {
-    width: 3.5rem;
-    height: 3.5rem;
-    background: var(--color-sage);
-    color: #fff;
-    border-radius: 50%;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 2rem;
+    isolation: isolate;
+    overflow: hidden;
+    background:
+      radial-gradient(ellipse at 20% 20%, rgba(109, 68, 146, 0.13) 0%, transparent 55%),
+      radial-gradient(ellipse at 80% 30%, rgba(140, 7, 3, 0.09) 0%, transparent 50%),
+      var(--color-background);
   }
 
-  .success-icon svg {
-    width: 1.8rem;
-    height: 1.8rem;
+  /* ── Glow central difuminado ── */
+  .thanks-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70vw;
+    max-width: 900px;
+    height: 60vh;
+    border-radius: 999px;
+    background: radial-gradient(
+      ellipse,
+      rgba(187, 137, 107, 0.13) 0%,
+      rgba(109, 68, 146, 0.09) 40%,
+      transparent 70%
+    );
+    filter: blur(72px);
+    z-index: -1;
+    pointer-events: none;
   }
 
-  .thanks-card h2 {
-    font-size: 2.8rem;
+  /* ── Órbitas ── */
+  .thanks-orbits {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .orbit {
+    position: absolute;
+    border-radius: 999px;
+    border: 1px solid rgba(59, 38, 57, 0.08);
+  }
+
+  .orbit-a {
+    width: min(80vw, 800px);
+    height: min(80vw, 800px);
+    top: 50%;
+    left: 50%;
+    transform: translate(-20%, -60%);
+  }
+
+  .orbit-b {
+    width: min(60vw, 560px);
+    height: min(60vw, 560px);
+    top: 50%;
+    left: 50%;
+    transform: translate(-80%, -40%);
+    border-color: rgba(86, 100, 67, 0.1);
+  }
+
+  .orbit-c {
+    width: min(38vw, 320px);
+    height: min(38vw, 320px);
+    top: 50%;
+    left: 50%;
+    transform: translate(-40%, 10%);
+    border-color: rgba(140, 7, 3, 0.07);
+  }
+
+  /* ── Contenido ── */
+  .thanks-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    max-width: 720px;
+    padding: 0 1.5rem;
+  }
+
+  .thanks-kicker {
+    display: block;
+    font-family: var(--font-accent);
+    color: var(--color-accent-red);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1;
+    margin-bottom: 1.25rem;
+  }
+
+  h1 {
+    font-size: clamp(2.4rem, 5.5vw, 4.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    font-weight: 500;
     margin-bottom: 1.5rem;
   }
 
-  .thanks-card p {
-    font-size: 1.1rem;
-    line-height: 1.7;
-    margin-bottom: 2.5rem;
+  .thanks-lead {
+    font-size: clamp(1.05rem, 2vw, 1.25rem);
+    line-height: 1.75;
+    max-width: 46ch;
+    margin: 0 auto 2.75rem;
     opacity: 0.8;
-  }
-
-  .service-chip-wrap {
-    margin-bottom: 2.5rem;
-  }
-
-  .service-chip {
-    padding: 0.75rem 1.25rem;
-    border-radius: 100px;
-    background: #f8f6f0;
-    border: 1px solid rgba(59, 38, 57, 0.1);
-    font-size: 0.9rem;
-    color: var(--color-primary-dark);
   }
 
   .thanks-actions {
     display: flex;
     flex-wrap: wrap;
-    gap: 1.25rem;
-    align-items: center;
+    justify-content: center;
+    gap: 1rem;
   }
 
-  .thanks-link {
-    font-family: var(--font-primary);
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    font-weight: 600;
-    border-bottom: 1px solid currentColor;
-    padding-bottom: 2px;
-    margin-left: 1rem;
-  }
-
-  .thanks-link:hover {
-    color: var(--color-accent-red);
-  }
-
-  .thanks-steps {
-    padding: 3.5rem;
-    border-radius: 32px;
-    background: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.82);
-    box-shadow: 0 30px 60px -12px rgba(59, 38, 57, 0.08);
-  }
-
-  .thanks-steps h2 {
-    font-size: 2.2rem;
-    margin-bottom: 2.5rem;
-  }
-
-  .step-item {
-    display: flex;
-    gap: 1.5rem;
-    margin-bottom: 2rem;
-  }
-
-  .step-dot {
-    flex-shrink: 0;
-    width: 0.75rem;
-    height: 0.75rem;
-    border-radius: 50%;
-    background: var(--color-accent-red);
-    margin-top: 0.6rem;
-  }
-
-  .thanks-steps p {
-    margin: 0;
-    font-size: 1.05rem;
-    line-height: 1.6;
-    opacity: 0.9;
-  }
-
-  @media (max-width: 1200px) {
-    .thanks-grid {
-      grid-template-columns: 1fr;
-      gap: 3rem;
-    }
-
-    .thanks-steps {
-      order: 2;
-    }
-  }
-
-  @media (max-width: 768px) {
-    .thanks-hero {
-      padding-top: 6rem;
-    }
-
-    .thanks-card, .thanks-steps {
-      padding: 2.5rem;
-    }
-
+  /* ── Mobile ── */
+  @media (max-width: 600px) {
     .thanks-actions .btn-primary,
     .thanks-actions .btn-outline {
       width: 100%;
-    }
-
-    .thanks-link {
-      margin-left: 0;
-      margin-top: 1rem;
-      width: 100%;
-      text-align: center;
     }
   }
 </style>
