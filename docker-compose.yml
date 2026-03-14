@@ -6,6 +6,11 @@ services:
     restart: always
     networks:
       - dokploy-network
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:80/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
 
 networks:
   dokploy-network:
