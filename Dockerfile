@@ -1,6 +1,7 @@
 FROM oven/bun:latest AS builder
 WORKDIR /app
 COPY package.json bun.lock tsconfig.json astro.config.mjs ./
+COPY public ./public
 COPY src ./src
 # Install dependencies
 RUN bun install
