@@ -14,7 +14,6 @@ const { activeNav } = Astro.props;
 
     <nav class="nav-links" aria-label="Main navigation">
       <a href="/about" class:list={[{ active: activeNav === 'about' }]}>Sobre Mí</a>
-      <a href="/#manifiesto" class:list={[{ active: activeNav === 'manifiesto' }]}>Manifiesto</a>
       <a href="/sesiones" class:list={[{ active: activeNav === 'sesiones' }]}>Sesiones</a>
       <a href="/workshop-empresas" class:list={[{ active: activeNav === 'workshop' }]}>Workshop</a>
       <a href="/contacto" class:list={[{ active: activeNav === 'contacto' }]}>Contacto</a>
@@ -33,7 +32,6 @@ const { activeNav } = Astro.props;
     <div class="mobile-menu-content">
       <nav class="mobile-nav-links">
         <a href="/about" class:list={[{ active: activeNav === 'about' }]}>Sobre Mí</a>
-        <a href="/#manifiesto">Manifiesto</a>
         <a href="/sesiones" class:list={[{ active: activeNav === 'sesiones' }]}>Sesiones</a>
         <a href="/workshop-empresas" class:list={[{ active: activeNav === 'workshop' }]}>Workshop</a>
         <a href="/contacto" class:list={[{ active: activeNav === 'contacto' }]}>Contacto</a>
