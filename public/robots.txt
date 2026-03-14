@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Disallow: /gracias
+Disallow: /gracias/
+
+Sitemap: https://eleahora.com/sitemap-index.xml

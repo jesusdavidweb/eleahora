@@ -1,0 +1,195 @@
+---
+import Layout from '../layouts/Layout.astro';
+import NotFoundExperience from '../components/svelte/NotFoundExperience.svelte';
+---
+
+<Layout
+  title="Página no encontrada | Eleahora"
+  description="La página que buscas no existe o ha sido movida. Vuelve al inicio de Eleahora y continúa tu camino."
+  ogTitle="404 — Página no encontrada | Eleahora"
+  noindex={true}
+>
+  <NotFoundExperience client:load />
+
+  <main class="notfound-page">
+    <section class="notfound-hero" aria-labelledby="notfound-title">
+
+      <!-- Ambient glow -->
+      <div class="notfound-glow" aria-hidden="true"></div>
+
+      <!-- Orbit rings -->
+      <div class="notfound-orbits" aria-hidden="true">
+        <span class="orbit orbit-a"></span>
+        <span class="orbit orbit-b"></span>
+        <span class="orbit orbit-c"></span>
+      </div>
+
+      <!-- Content -->
+      <div class="notfound-content">
+        <p class="notfound-number notfound-animate" aria-hidden="true">404</p>
+        <p class="notfound-kicker notfound-animate">Página no encontrada</p>
+        <h1 id="notfound-title" class="notfound-animate">
+          Este camino no lleva a ningún lado.
+        </h1>
+        <p class="notfound-lead notfound-animate">
+          La página que buscas no existe o ha sido movida. Respira, no pasa nada&nbsp;— vuelve al inicio y retoma tu camino.
+        </p>
+        <div class="notfound-actions notfound-animate">
+          <a
+            href="/"
+            class="btn-primary notfound-magnetic"
+          >Volver al inicio</a>
+          <a
+            href="/sesiones"
+            class="btn-outline notfound-magnetic"
+          >Ver sesiones</a>
+        </div>
+      </div>
+
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .notfound-page {
+    background-color: var(--color-background);
+  }
+
+  /* ── Full-screen hero centrada ── */
+  .notfound-hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    isolation: isolate;
+    overflow: hidden;
+    background:
+      radial-gradient(ellipse at 20% 20%, rgba(140, 7, 3, 0.1) 0%, transparent 55%),
+      radial-gradient(ellipse at 80% 30%, rgba(109, 68, 146, 0.09) 0%, transparent 50%),
+      var(--color-background);
+  }
+
+  /* ── Glow central difuminado ── */
+  .notfound-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70vw;
+    max-width: 900px;
+    height: 60vh;
+    border-radius: 999px;
+    background: radial-gradient(
+      ellipse,
+      rgba(140, 7, 3, 0.1) 0%,
+      rgba(109, 68, 146, 0.08) 40%,
+      transparent 70%
+    );
+    filter: blur(72px);
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  /* ── Órbitas ── */
+  .notfound-orbits {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .orbit {
+    position: absolute;
+    border-radius: 999px;
+    border: 1px solid rgba(59, 38, 57, 0.08);
+  }
+
+  .orbit-a {
+    width: min(80vw, 800px);
+    height: min(80vw, 800px);
+    top: 50%;
+    left: 50%;
+    transform: translate(-20%, -60%);
+  }
+
+  .orbit-b {
+    width: min(60vw, 560px);
+    height: min(60vw, 560px);
+    top: 50%;
+    left: 50%;
+    transform: translate(-80%, -40%);
+    border-color: rgba(140, 7, 3, 0.08);
+  }
+
+  .orbit-c {
+    width: min(38vw, 320px);
+    height: min(38vw, 320px);
+    top: 50%;
+    left: 50%;
+    transform: translate(-40%, 10%);
+    border-color: rgba(86, 100, 67, 0.07);
+  }
+
+  /* ── Contenido ── */
+  .notfound-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    max-width: 720px;
+    padding: 0 1.5rem;
+  }
+
+  .notfound-number {
+    display: block;
+    font-family: var(--font-primary);
+    font-size: clamp(6rem, 20vw, 14rem);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(59, 38, 57, 0.15);
+    margin-bottom: 0.25rem;
+    will-change: transform;
+  }
+
+  .notfound-kicker {
+    display: block;
+    font-family: var(--font-accent);
+    color: var(--color-accent-red);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1;
+    margin-bottom: 1.25rem;
+  }
+
+  h1 {
+    font-size: clamp(2.4rem, 5.5vw, 4.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+  }
+
+  .notfound-lead {
+    font-size: clamp(1.05rem, 2vw, 1.25rem);
+    line-height: 1.75;
+    max-width: 46ch;
+    margin: 0 auto 2.75rem;
+    opacity: 0.8;
+  }
+
+  .notfound-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 600px) {
+    .notfound-actions .btn-primary,
+    .notfound-actions .btn-outline {
+      width: 100%;
+    }
+  }
+</style>
