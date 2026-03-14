@@ -4,8 +4,6 @@ services:
       context: .
       dockerfile: Dockerfile
     restart: always
-    ports:
-      - "80:80"
     networks:
       - dokploy-network
 
