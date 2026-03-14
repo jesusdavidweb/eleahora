@@ -1,0 +1,325 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  title="Sobre Mí | Eleahora"
+  description="Conoce la historia personal y profesional detrás de Eleahora: Terapia Transpersonal, Meditación y Mindfulness."
+  ogTitle="Sobre Mí | Eleahora"
+>
+  <main class="inner-page">
+    <section class="page-hero" aria-labelledby="about-title">
+      <img
+        src="/images/home-eleahora-001.webp"
+        alt="Sobre Mí - Eleahora"
+        class="page-hero-bg"
+      />
+      <div class="page-hero-overlay"></div>
+      <div class="max-w-screen page-hero-content">
+        <span class="text-accent page-kicker">Sobre Mí</span>
+        <h1 id="about-title">Soy quien soy y eso es suficiente.</h1>
+      </div>
+    </section>
+
+    <section class="about-story section-soft" aria-labelledby="historia-title">
+      <div class="max-w-screen story-grid">
+        <article>
+          <p class="section-label">Mi recorrido</p>
+          <h2 id="historia-title" class="section-title">
+            De lo corporativo al camino interior.
+          </h2>
+          <img
+            src="/images/about-eleahora-001.webp"
+            alt="Eleonora - Sobre Mí"
+            class="about-image image-mobile"
+          />
+          <div class="section-body">
+            <p>
+              Nací en Venezuela, en una familia italiana, y desde muy joven mi vida estuvo marcada por el movimiento: países, idiomas y culturas.
+            </p>
+            <p>
+              Durante años seguí un camino estructurado: estudié idiomas y comercio internacional en París y trabajé en entornos corporativos. Pero dentro de mí había una pregunta más profunda.
+            </p>
+            <p>
+              Al mudarme a Madrid comenzó un viaje hacia adentro. Mientras me formaba, también me transformaba: redescubrí la escucha profunda, la presencia y la capacidad de sostener procesos internos.
+            </p>
+          </div>
+        </article>
+        <aside class="image-column" aria-label="Imagen vertical de historia personal">
+          <img
+            src="/images/about-eleahora-001.webp"
+            alt="Eleonora - Sobre Mí"
+            class="about-image"
+          />
+        </aside>
+      </div>
+    </section>
+
+    <section class="about-path" aria-labelledby="camino-title">
+      <div class="max-w-screen path-grid">
+        <aside class="image-stack" aria-label="Galería vertical sobre el proceso">
+          <img
+            src="/images/about-eleahora-002.webp"
+            alt="Proceso de presencia - Eleahora"
+            class="about-image"
+          />
+        </aside>
+        <article>
+          <p class="section-label">Así nace Eleahora</p>
+          <h2 id="camino-title" class="section-title">
+            Espiritualidad aterrizada para vivir con más presencia.
+          </h2>
+          <img
+            src="/images/about-eleahora-002.webp"
+            alt="Proceso de presencia - Eleahora"
+            class="about-image image-mobile"
+          />
+          <div class="section-body">
+            <p>
+              La meditación se volvió mi herramienta más práctica: un lugar para volver a mí, regular emociones y conectar con algo más grande.
+            </p>
+            <p>
+              Con el tiempo, integré Programación Neurolingüística transpersonal, trabajo energético y conexión espiritual, siempre de forma concreta y aplicada a la vida cotidiana.
+            </p>
+            <p>
+              Hoy acompaño a personas que sienten que algo dentro de ellas quiere moverse, ordenarse o respirar más profundo. Porque estar presentes ya no es un lujo, es una necesidad.
+            </p>
+          </div>
+          <ul class="service-list" aria-label="Formatos de acompañamiento">
+            <li>Sesiones individuales de terapia y consciencia.</li>
+            <li>Experiencias de meditación y espacios conscientes.</li>
+            <li>Workshops y programas para empresas.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="about-cta section-soft" aria-labelledby="cta-title">
+      <div class="max-w-screen cta-wrap">
+        <p class="text-accent cta-kicker">Volver al presente</p>
+        <h2 id="cta-title">
+          Si sientes que es momento de escucharte con más profundidad, te acompaño.
+        </h2>
+        <div class="cta-actions">
+          <a href="/sesiones" class="btn-primary">Ver sesiones</a>
+          <a href="/contacto" class="btn-outline">Escribir ahora</a>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .inner-page {
+    padding-top: 6rem;
+  }
+
+  .page-hero {
+    position: relative;
+    min-height: 60vh;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+  }
+
+  .page-hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .page-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(59, 38, 57, 0.85) 0%,
+      rgba(59, 38, 57, 0.45) 45%,
+      rgba(59, 38, 57, 0.15) 100%
+    );
+  }
+
+  .page-hero-content {
+    position: relative;
+    z-index: 1;
+    padding-bottom: 4rem;
+  }
+
+  .page-kicker {
+    display: block;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    margin-bottom: 0.75rem;
+    color: var(--color-earth);
+  }
+
+  h1 {
+    color: var(--color-background);
+    font-size: clamp(2.2rem, 5vw, 4.5rem);
+    margin: 0;
+    max-width: 18ch;
+  }
+
+  .section-soft {
+    background: linear-gradient(
+      to bottom,
+      rgba(187, 137, 107, 0.1) 0%,
+      rgba(253, 251, 236, 0.65) 55%,
+      rgba(253, 251, 236, 1) 100%
+    );
+  }
+
+  .about-story,
+  .about-path,
+  .about-cta {
+    padding: 6rem 0;
+  }
+
+  .story-grid,
+  .path-grid {
+    display: grid;
+    gap: clamp(2rem, 4vw, 4rem);
+    align-items: start;
+  }
+
+  .story-grid {
+    grid-template-columns: minmax(0, 1.1fr) minmax(220px, 0.6fr);
+  }
+
+  .path-grid {
+    grid-template-columns: minmax(220px, 0.6fr) minmax(0, 1.1fr);
+  }
+
+  .section-label {
+    margin-bottom: 0.8rem;
+    font-family: var(--font-accent);
+    color: var(--color-accent-red);
+    font-size: clamp(1.5rem, 2.5vw, 2.1rem);
+    line-height: 1;
+  }
+
+  .section-title {
+    margin: 0 0 1.2rem;
+    font-size: clamp(2rem, 4.2vw, 3.6rem);
+    letter-spacing: -0.015em;
+    color: var(--color-primary-dark);
+  }
+
+  .section-body p {
+    margin-bottom: 1.15rem;
+    font-size: 1.06rem;
+    line-height: 1.85;
+    color: var(--color-primary-dark);
+    opacity: 0.9;
+  }
+
+  .image-column,
+  .image-stack {
+    width: min(100%, 360px);
+    justify-self: end;
+  }
+
+  .image-stack {
+    display: grid;
+    gap: 1.2rem;
+    justify-self: start;
+  }
+
+  .about-image {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 16px 42px rgba(59, 38, 57, 0.08);
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .about-image:hover {
+    transform: translateY(-5px);
+  }
+
+
+  .service-list {
+    margin: 1.4rem 0 0;
+    padding-left: 1.25rem;
+    display: grid;
+    gap: 0.6rem;
+  }
+
+  .service-list li {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--color-primary-dark);
+  }
+
+  .cta-wrap {
+    text-align: center;
+    max-width: 920px;
+  }
+
+  .cta-kicker {
+    margin-bottom: 0.9rem;
+    font-size: clamp(1.6rem, 2.5vw, 2.1rem);
+  }
+
+  .cta-wrap h2 {
+    margin: 0 auto;
+    max-width: 20ch;
+    font-size: clamp(2rem, 4vw, 3.3rem);
+    color: var(--color-primary-dark);
+  }
+
+  .cta-actions {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .image-mobile {
+    display: none;
+  }
+
+  @media (max-width: 992px) {
+    .story-grid,
+    .path-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .image-mobile {
+      display: block;
+      width: 100%;
+      margin: 1.5rem 0;
+    }
+
+    .image-column,
+    .image-stack {
+      display: none;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .inner-page {
+      padding-top: 5.25rem;
+    }
+
+    .page-hero {
+      min-height: 50vh;
+    }
+
+    .page-hero-content {
+      padding-bottom: 3rem;
+    }
+
+    .about-story,
+    .about-path,
+    .about-cta {
+      padding: 4.5rem 0;
+    }
+  }
+</style>

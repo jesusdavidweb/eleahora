@@ -1,0 +1,148 @@
+---
+// Footer.astro
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="eleahora-footer">
+  <div class="footer-container max-w-screen">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="/images/logo-white.png" alt="Eleahora" class="footer-logo" />
+        <p class="brand-slogan text-accent">Soy la voz que te recuerda que estás aquí.</p>
+        <p class="brand-sub">Deja que el amor te regule. Confía en el proceso.</p>
+      </div>
+      
+      <div class="footer-links">
+        <h3 class="footer-title">Explora</h3>
+        <nav aria-label="Footer Navigation">
+          <ul>
+            <li><a href="/">Inicio</a></li>
+            <li><a href="/about">Sobre Mí</a></li>
+            <li><a href="/#manifiesto">Manifiesto</a></li>
+            <li><a href="/sesiones">Servicios</a></li>
+            <li><a href="/workshop-empresas">Workshop Empresas</a></li>
+            <li><a href="/#mindfulness">Mindfulness</a></li>
+            <li><a href="/contacto">Contacto</a></li>
+          </ul>
+        </nav>
+      </div>
+      
+      <div class="footer-contact">
+        <h3 class="footer-title">Conecta</h3>
+        <ul>
+          <li><a href="https://cal.eu/eleahora/sesiones" target="_blank" rel="noopener noreferrer">Agenda una Sesión</a></li>
+          <li><a href="https://www.instagram.com/eleahora/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+          <li><a href="https://www.linkedin.com/in/maria-eleonora-corallo-16266165/" target="_blank" rel="noopener noreferrer">Linkedin</a></li>
+          <li><a href="https://insighttimer.com/eleahora" target="_blank" rel="noopener noreferrer">Meditaciones Guiadas</a></li>
+          <li><a href="https://wa.me/+34605373782" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; {currentYear} Eleahora. Todos los derechos reservados.</p>
+      <p class="credits">
+        Hecho con amor ❤️ por <a href="http://amorchihouse.com/" target="_blank" rel="noopener noreferrer">Amorchi House</a> y <a href="https://jesusdavid.net/" target="_blank" rel="noopener noreferrer">@jesusdavidweb</a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .eleahora-footer {
+    background-color: var(--color-primary-dark);
+    color: var(--color-background);
+    padding: 6rem 0 2rem;
+    margin-top: 4rem;
+  }
+  
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem;
+    margin-bottom: 4rem;
+  }
+  
+  @media (min-width: 768px) {
+    .footer-grid {
+      grid-template-columns: 2fr 1fr 1fr;
+    }
+  }
+  
+  .footer-logo {
+    height: 40px !important;
+    width: auto !important;
+    margin-bottom: 1.5rem;
+  }
+  
+  .brand-slogan {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--color-earth); /* To contrast nicely against dark background */
+  }
+  
+  .brand-sub {
+    font-size: 1rem;
+    color: var(--color-background);
+    opacity: 0.8;
+  }
+  
+  .footer-title {
+    color: var(--color-earth);
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    font-family: var(--font-primary);
+  }
+  
+  .footer-links ul,
+  .footer-contact ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-links li,
+  .footer-contact li {
+    margin-bottom: 0.75rem;
+  }
+  
+  .footer-links a,
+  .footer-contact a {
+    color: var(--color-background);
+    opacity: 0.8;
+    transition: var(--transition-smooth);
+    font-family: system-ui, sans-serif;
+  }
+  
+  .footer-links a:hover,
+  .footer-contact a:hover {
+    opacity: 1;
+    color: var(--color-earth);
+  }
+  
+  .footer-bottom {
+    border-top: 1px solid rgba(253, 251, 236, 0.2); /* Semi-transparent color-background */
+    padding-top: 2rem;
+    text-align: center;
+  }
+  
+  .footer-bottom p {
+    color: var(--color-background);
+    opacity: 0.6;
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-bottom p:last-child {
+    margin-bottom: 0;
+  }
+
+  .credits a {
+    color: var(--color-earth);
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .credits a:hover {
+    opacity: 0.8;
+  }
+</style>

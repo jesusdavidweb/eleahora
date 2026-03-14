@@ -1,0 +1,1103 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const experienceItems = [
+  {
+    title: "Recuerda que estás aquí",
+    description: "Invitación a detenernos y observar."
+  },
+  {
+    title: "¿Cómo estar más presentes?",
+    description: "Prácticas conscientes que integran los sentidos."
+  },
+  {
+    title: "Meditación como neuroregulación",
+    description: "Ciencia, dopamina y cortisol."
+  },
+  {
+    title: "Meditación en todas sus formas",
+    description: "Accesible y efectiva."
+  },
+  {
+    title: "Niño Interior",
+    description: "Dinámicas lúdicas para recuperar la creatividad."
+  },
+  {
+    title: "¿Y ahora qué?",
+    description: "Acciones concretas para el día a día."
+  }
+];
+
+const workshopFacts = [
+  { label: "Formato", value: "Team building", detail: "aprox. 12 personas" },
+  { label: "Duración", value: "3 horas", detail: "sesión intensiva" },
+  { label: "Modalidad", value: "Presencial", detail: "en tu empresa" }
+];
+
+const companyBenefits = [
+  { text: "Herramientas prácticas de regulación del estrés.", color: "earth" },
+  { text: "Mejor sinergia grupal, empatía y conexión.", color: "sage" },
+  { text: "Mayor claridad en la toma de decisiones.", color: "purple" },
+  { text: "Potenciación del rendimiento y bienestar colectivo.", color: "red" }
+];
+
+const testimonials = [
+  {
+    quote: "El profesionalismo y la calma de María marcan una verdadera diferencia. Practicar meditación después de su taller me ha ayudado muchísimo a ser más productiva...",
+    author: "María Aristeguieta",
+    role: "Talent Processes Senior Specialist at Avature, Spain"
+  },
+  {
+    quote: "¡Ojalá todos pudieran asistir a este workshop! Fue increíblemente valioso experimentar el mindfulness. ¡Tu workshop es oro puro!",
+    author: "Vanessa Fernández",
+    role: "Senior Product Manager at Giftify, Belgium"
+  },
+  {
+    quote: "Gracias, Maria, por enseñarme que la pausa también es parte del proceso. Tu workshop es un regalo para el mundo.",
+    author: "Stella Camacho",
+    role: "Founder & Chief Creative Officer at Amorchi House"
+  }
+];
+---
+
+<Layout
+  title="Workshop para Empresas | Pienso, luego medito | Eleahora"
+  description="Workshop para empresas de Eleahora para transformar el estrés en presencia consciente con mindfulness, meditación y herramientas prácticas de regulación."
+  ogTitle="Workshop para Empresas | Pienso, luego medito | Eleahora"
+  ogImage="/images/home-eleahora-002.webp"
+>
+  <main class="workshop-page">
+
+    <!-- ─── HERO ─────────────────────────────────────────── -->
+    <section class="workshop-hero" aria-labelledby="workshop-title">
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="hero-orbits" aria-hidden="true">
+        <span class="orbit orbit-a"></span>
+        <span class="orbit orbit-b"></span>
+        <span class="orbit orbit-c"></span>
+      </div>
+
+      <div class="max-w-screen hero-inner">
+        <div class="hero-top">
+          <span class="hero-tag">Experiencia para Empresas</span>
+        </div>
+
+        <h1 id="workshop-title">
+          <em class="hero-em">"Pienso,</em>
+          <span class="hero-line2">luego medito"</span>
+        </h1>
+
+        <p class="hero-subtitle">Transformando el estrés en presencia consciente.</p>
+
+        <div class="hero-cta-row">
+          <a href="/contacto" class="btn-primary">Solicitar propuesta</a>
+          <a href="#experiencia" class="btn-outline">Ver experiencia</a>
+        </div>
+
+        <ul class="hero-facts" aria-label="Datos del workshop">
+          {workshopFacts.map((fact) => (
+            <li class="fact-chip">
+              <span class="fact-label">{fact.label}</span>
+              <strong class="fact-value">{fact.value}</strong>
+              <span class="fact-detail">{fact.detail}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- ─── SOBRE LA GUÍA ─────────────────────────────────── -->
+    <section class="section-guide" aria-labelledby="guide-title">
+      <div class="max-w-screen guide-grid">
+        <div class="guide-text">
+          <span class="eyebrow">Sobre la Guía</span>
+          <h2 id="guide-title">Maria Eleonora Corallo</h2>
+          <p>
+            Terapeuta transpersonal, guía de meditación y fundadora de Eleahora. Combina
+            su carrera en idiomas (La Sorbonne) y su formación en PNL transpersonal,
+            Mindfulness y conexión energética para llevar herramientas prácticas al entorno
+            corporativo.
+          </p>
+        </div>
+        <figure class="guide-quote-block" aria-label="Slogan">
+          <blockquote class="guide-slogan">
+            <span class="slogan-accent">Soy La Voz</span>
+            <span class="slogan-main">QUE TE RECUERDA<br/>QUE ESTÁS AQUÍ.</span>
+          </blockquote>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ─── EL WORKSHOP ───────────────────────────────────── -->
+    <section class="section-about" aria-labelledby="about-title">
+      <div class="max-w-screen about-grid">
+        <header class="about-header">
+          <span class="eyebrow">El Workshop</span>
+          <h2 id="about-title">Creado para transformar cómo los equipos perciben y manejan el estrés.</h2>
+        </header>
+        <div class="about-body">
+          <p class="about-intro">
+            "Pienso, luego medito" combina ciencia, introspección y técnicas prácticas
+            para reconectar con nuestra esencia.
+          </p>
+          <div class="about-facts-row" aria-label="Detalles del workshop">
+            {workshopFacts.map((fact) => (
+              <div class="about-fact">
+                <span>{fact.label}</span>
+                <strong>{fact.value}</strong>
+                <em>{fact.detail}</em>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── EXPERIENCIA ───────────────────────────────────── -->
+    <section class="section-experience" id="experiencia" aria-labelledby="exp-title">
+      <div class="max-w-screen">
+        <header class="section-header">
+          <span class="eyebrow">¿Qué incluye la experiencia?</span>
+          <h2 id="exp-title">Un recorrido práctico, consciente y aplicable.</h2>
+        </header>
+
+        <ol class="experience-list">
+          {experienceItems.map((item, index) => (
+            <li class="exp-item">
+              <span class="exp-num">{String(index + 1).padStart(2, "0")}</span>
+              <div class="exp-content">
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </div>
+              <div class="exp-line" aria-hidden="true"></div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <!-- ─── BENEFICIOS ────────────────────────────────────── -->
+    <section class="section-benefits" aria-labelledby="benefits-title">
+      <div class="max-w-screen benefits-inner">
+        <header class="benefits-header">
+          <span class="eyebrow">¿Qué te llevas como empresa?</span>
+          <h2 id="benefits-title">Lo que cambia después de la experiencia.</h2>
+        </header>
+
+        <ul class="benefits-cards" aria-label="Beneficios para la empresa">
+          {companyBenefits.map((benefit) => (
+            <li class={`benefit-card benefit-card--${benefit.color}`}>
+              <span class="benefit-dot" aria-hidden="true"></span>
+              <p>{benefit.text}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- ─── TESTIMONIOS ───────────────────────────────────── -->
+    <section class="section-testimonials" aria-labelledby="test-title">
+      <div class="max-w-screen">
+        <header class="section-header">
+          <span class="eyebrow">Testimonios</span>
+          <h2 id="test-title">Lo que ocurre cuando la pausa también es parte del proceso.</h2>
+        </header>
+
+        <div class="testimonials-grid">
+          {testimonials.map((t, i) => (
+            <blockquote class={`testimonial ${i === 0 ? 'testimonial--featured' : ''}`}>
+              <div class="testimonial-quote-mark" aria-hidden="true">"</div>
+              <p class="testimonial-text">{t.quote}</p>
+              <footer class="testimonial-footer">
+                <strong class="testimonial-author">{t.author}</strong>
+                <span class="testimonial-role">{t.role}</span>
+              </footer>
+            </blockquote>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── CTA ───────────────────────────────────────────── -->
+    <section class="section-cta section-soft" aria-labelledby="cta-title">
+      <div class="max-w-screen cta-inner">
+        <p class="text-accent cta-kicker">Siguiente paso</p>
+        <h2 id="cta-title">¿Quieres llevar esta experiencia a tu organización?</h2>
+        <p class="cta-body">
+          Cada sesión se adapta al momento de tu equipo. Escríbenos y lo diseñamos juntos.
+        </p>
+        <div class="cta-actions">
+          <a href="/contacto" class="btn-primary">Agendar llamada de descubrimiento</a>
+        </div>
+        <ul class="cta-contact" aria-label="Datos de contacto">
+          <li><a href="mailto:info@eleahora.com">info@eleahora.com</a></li>
+          <li aria-hidden="true">·</li>
+          <li><a href="tel:+34605373782">+34 605 37 37 82</a></li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+</Layout>
+
+<style>
+  /* ═══════════════════════════════════════════
+     PAGE BASE
+  ═══════════════════════════════════════════ */
+  .workshop-page {
+    padding-top: 6rem;
+    overflow-x: hidden;
+  }
+
+  /* ═══════════════════════════════════════════
+     HERO
+  ═══════════════════════════════════════════ */
+  .workshop-hero {
+    position: relative;
+    padding: 8rem 0 6rem;
+    isolation: isolate;
+    background:
+      radial-gradient(ellipse 80% 60% at 60% -10%, rgba(109, 68, 146, 0.18) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 50% at -5% 80%, rgba(187, 137, 107, 0.14) 0%, transparent 55%),
+      var(--color-background);
+  }
+
+  .hero-glow {
+    position: absolute;
+    top: -80px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 900px;
+    height: 500px;
+    border-radius: 999px;
+    background: radial-gradient(
+      ellipse at center,
+      rgba(109, 68, 146, 0.12) 0%,
+      rgba(187, 137, 107, 0.08) 40%,
+      transparent 70%
+    );
+    filter: blur(60px);
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .hero-orbits {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+  }
+
+  .orbit {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(59, 38, 57, 0.07);
+  }
+
+  .orbit-a {
+    width: 900px;
+    height: 900px;
+    top: -320px;
+    right: -200px;
+    border-color: rgba(109, 68, 146, 0.1);
+  }
+
+  .orbit-b {
+    width: 600px;
+    height: 600px;
+    bottom: -250px;
+    left: -150px;
+    border-color: rgba(187, 137, 107, 0.12);
+  }
+
+  .orbit-c {
+    width: 320px;
+    height: 320px;
+    top: 40px;
+    left: 38%;
+    border-color: rgba(140, 7, 3, 0.1);
+  }
+
+  .hero-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+  }
+
+  .hero-top {
+    margin-bottom: 2rem;
+  }
+
+  .hero-tag {
+    display: inline-block;
+    padding: 0.4rem 1.1rem;
+    border-radius: 999px;
+    border: 1px solid rgba(59, 38, 57, 0.18);
+    background: rgba(255, 255, 255, 0.55);
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(59, 38, 57, 0.75);
+    font-family: var(--font-base);
+    backdrop-filter: blur(8px);
+  }
+
+  .workshop-hero h1 {
+    margin: 0 0 1.5rem;
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+  }
+
+  .hero-em {
+    display: block;
+    font-family: var(--font-accent);
+    font-style: normal;
+    color: var(--color-accent-red);
+    font-size: clamp(3.5rem, 9vw, 8.5rem);
+    line-height: 0.95;
+  }
+
+  .hero-line2 {
+    display: block;
+    font-family: var(--font-primary);
+    font-size: clamp(3rem, 8vw, 7.5rem);
+    color: var(--color-primary-dark);
+    line-height: 1;
+  }
+
+  .hero-subtitle {
+    font-size: clamp(1.15rem, 2.2vw, 1.5rem);
+    line-height: 1.65;
+    color: rgba(59, 38, 57, 0.78);
+    max-width: 40ch;
+    margin-bottom: 2.5rem;
+    opacity: 1;
+  }
+
+  .hero-cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 3.5rem;
+  }
+
+  .hero-facts {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .fact-chip {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    padding: 1.1rem 1.5rem;
+    border-radius: 20px;
+    border: 1px solid rgba(59, 38, 57, 0.1);
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(14px);
+    box-shadow:
+      0 8px 24px rgba(59, 38, 57, 0.05),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    min-width: 160px;
+  }
+
+  .fact-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(59, 38, 57, 0.5);
+    font-family: var(--font-base);
+  }
+
+  .fact-value {
+    font-family: var(--font-primary);
+    font-size: 1.25rem;
+    color: var(--color-primary-dark);
+    line-height: 1.15;
+  }
+
+  .fact-detail {
+    font-size: 0.8rem;
+    color: rgba(59, 38, 57, 0.55);
+    font-style: italic;
+    margin: 0;
+  }
+
+  /* ═══════════════════════════════════════════
+     SHARED UTILITIES
+  ═══════════════════════════════════════════ */
+  .eyebrow {
+    display: block;
+    font-size: 0.73rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-accent-red);
+    font-family: var(--font-base);
+    margin-bottom: 0.9rem;
+    font-weight: 500;
+  }
+
+  .section-header {
+    margin-bottom: 3rem;
+    max-width: 780px;
+  }
+
+  .section-header h2 {
+    font-size: clamp(2.2rem, 4.5vw, 4rem);
+    line-height: 1.02;
+    margin-bottom: 0;
+    letter-spacing: -0.025em;
+  }
+
+  /* ═══════════════════════════════════════════
+     GUÍA
+  ═══════════════════════════════════════════ */
+  .section-guide {
+    padding: 5rem 0;
+    background: var(--color-primary-dark);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .section-guide::before {
+    content: "";
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(187, 137, 107, 0.18), transparent 65%);
+    pointer-events: none;
+  }
+
+  .guide-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .guide-text .eyebrow {
+    color: var(--color-earth);
+    opacity: 0.8;
+  }
+
+  .guide-text h2 {
+    font-size: clamp(2.2rem, 4vw, 3.8rem);
+    color: var(--color-background);
+    margin-bottom: 1.2rem;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+  }
+
+  .guide-text p {
+    color: rgba(253, 251, 236, 0.72);
+    font-size: 1.05rem;
+    line-height: 1.85;
+    max-width: 52ch;
+    margin: 0;
+    opacity: 1;
+  }
+
+  .guide-quote-block {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .guide-slogan {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 2.5rem 2rem;
+    border-left: 3px solid var(--color-earth);
+  }
+
+  .slogan-accent {
+    font-family: var(--font-accent);
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    color: var(--color-earth);
+    line-height: 1;
+  }
+
+  .slogan-main {
+    font-family: var(--font-primary);
+    font-size: clamp(1rem, 2.2vw, 1.5rem);
+    color: rgba(253, 251, 236, 0.65);
+    line-height: 1.5;
+    letter-spacing: 0.06em;
+  }
+
+  /* ═══════════════════════════════════════════
+     ABOUT WORKSHOP
+  ═══════════════════════════════════════════ */
+  .section-about {
+    padding: 5rem 0;
+    background:
+      radial-gradient(ellipse 70% 50% at 95% 50%, rgba(109, 68, 146, 0.06), transparent 55%),
+      var(--color-background);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .about-header h2 {
+    font-size: clamp(2rem, 4vw, 3.6rem);
+    line-height: 1.04;
+    letter-spacing: -0.02em;
+    margin-bottom: 0;
+  }
+
+  .about-intro {
+    font-size: 1.15rem;
+    line-height: 1.85;
+    margin-bottom: 2.5rem;
+    color: rgba(59, 38, 57, 0.85);
+    opacity: 1;
+  }
+
+  .about-facts-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border: 1px solid rgba(59, 38, 57, 0.1);
+    border-radius: 20px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.65);
+    box-shadow: 0 12px 30px rgba(59, 38, 57, 0.06);
+  }
+
+  .about-fact {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 1.4rem 1.2rem;
+    border-right: 1px solid rgba(59, 38, 57, 0.1);
+  }
+
+  .about-fact:last-child {
+    border-right: none;
+  }
+
+  .about-fact span {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: rgba(59, 38, 57, 0.5);
+  }
+
+  .about-fact strong {
+    font-family: var(--font-primary);
+    font-size: 1.3rem;
+    color: var(--color-primary-dark);
+    line-height: 1.1;
+  }
+
+  .about-fact em {
+    font-size: 0.78rem;
+    font-style: italic;
+    color: rgba(59, 38, 57, 0.5);
+  }
+
+  /* ═══════════════════════════════════════════
+     EXPERIENCIA
+  ═══════════════════════════════════════════ */
+  .section-experience {
+    padding: 5rem 0;
+    background:
+      radial-gradient(ellipse 60% 60% at 5% 40%, rgba(187, 137, 107, 0.1), transparent 55%),
+      linear-gradient(180deg, rgba(253, 251, 236, 0.5), var(--color-background));
+  }
+
+  .experience-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 1px solid rgba(59, 38, 57, 0.1);
+    border-radius: 28px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow:
+      0 24px 60px rgba(59, 38, 57, 0.07),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  }
+
+  .exp-item {
+    position: relative;
+    display: flex;
+    gap: 1.4rem;
+    padding: 2rem 2.2rem;
+    border-right: 1px solid rgba(59, 38, 57, 0.08);
+    border-bottom: 1px solid rgba(59, 38, 57, 0.08);
+    background: rgba(255, 255, 255, 0.55);
+    transition: background 0.3s ease;
+  }
+
+  .exp-item:nth-child(even) {
+    border-right: none;
+  }
+
+  .exp-item:nth-last-child(-n+2) {
+    border-bottom: none;
+  }
+
+  .exp-item:hover {
+    background: rgba(255, 255, 255, 0.88);
+  }
+
+  .exp-num {
+    flex-shrink: 0;
+    width: 2.8rem;
+    height: 2.8rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--color-primary-dark);
+    color: var(--color-background);
+    font-family: var(--font-primary);
+    font-size: 0.8rem;
+    letter-spacing: 0.06em;
+    margin-top: 0.15rem;
+    flex-shrink: 0;
+  }
+
+  .exp-content h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.4rem;
+    line-height: 1.2;
+    color: var(--color-primary-dark);
+  }
+
+  .exp-content p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: rgba(59, 38, 57, 0.72);
+    opacity: 1;
+  }
+
+  .exp-line {
+    display: none;
+  }
+
+  /* ═══════════════════════════════════════════
+     BENEFICIOS
+  ═══════════════════════════════════════════ */
+  .section-benefits {
+    padding: 5rem 0;
+    background: var(--color-primary-dark);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .section-benefits::after {
+    content: "";
+    position: absolute;
+    bottom: -120px;
+    left: -80px;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(109, 68, 146, 0.2), transparent 65%);
+    pointer-events: none;
+  }
+
+  .benefits-inner {
+    position: relative;
+    z-index: 1;
+  }
+
+  .benefits-header .eyebrow {
+    color: var(--color-earth);
+    opacity: 0.75;
+  }
+
+  .benefits-header h2 {
+    font-size: clamp(2.2rem, 4.5vw, 4rem);
+    color: var(--color-background);
+    margin-bottom: 3rem;
+    letter-spacing: -0.025em;
+    line-height: 1.02;
+    max-width: 22ch;
+  }
+
+  .benefits-cards {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 28px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .benefit-card {
+    position: relative;
+    padding: 2.2rem 2.5rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1.2rem;
+    background: rgba(255, 255, 255, 0.04);
+    border-right: 1px solid rgba(255, 255, 255, 0.06);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    transition: background 0.35s ease;
+  }
+
+  .benefit-card:nth-child(even) {
+    border-right: none;
+  }
+
+  .benefit-card:nth-last-child(-n+2) {
+    border-bottom: none;
+  }
+
+  .benefit-card:hover {
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .benefit-dot {
+    flex-shrink: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-top: 0.6rem;
+  }
+
+  .benefit-card--earth .benefit-dot { background: var(--color-earth); }
+  .benefit-card--sage .benefit-dot  { background: var(--color-sage); }
+  .benefit-card--purple .benefit-dot { background: var(--color-accent-purple); }
+  .benefit-card--red .benefit-dot   { background: var(--color-accent-red); }
+
+  .benefit-card p {
+    margin: 0;
+    font-size: 1.12rem;
+    line-height: 1.7;
+    color: rgba(253, 251, 236, 0.82);
+    opacity: 1;
+  }
+
+  /* ═══════════════════════════════════════════
+     TESTIMONIOS
+  ═══════════════════════════════════════════ */
+  .section-testimonials {
+    padding: 5rem 0;
+    background:
+      radial-gradient(ellipse 70% 60% at 95% 20%, rgba(140, 7, 3, 0.07), transparent 55%),
+      var(--color-background);
+  }
+
+  .section-testimonials .section-header h2 {
+    color: var(--color-primary-dark);
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 1.2rem;
+    align-items: start;
+  }
+
+  .testimonial {
+    margin: 0;
+    padding: 2rem 2.2rem;
+    border-radius: 24px;
+    border: 1px solid rgba(59, 38, 57, 0.1);
+    background: rgba(255, 255, 255, 0.7);
+    box-shadow:
+      0 16px 40px rgba(59, 38, 57, 0.06),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+  }
+
+  .testimonial:hover {
+    transform: translateY(-4px);
+    box-shadow:
+      0 28px 60px rgba(59, 38, 57, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  }
+
+  .testimonial--featured {
+    background:
+      radial-gradient(ellipse 100% 80% at 50% -10%, rgba(109, 68, 146, 0.1), transparent 50%),
+      rgba(255, 255, 255, 0.85);
+    border-color: rgba(109, 68, 146, 0.2);
+  }
+
+  .testimonial-quote-mark {
+    font-family: var(--font-accent);
+    font-size: 5rem;
+    color: var(--color-accent-purple);
+    opacity: 0.25;
+    line-height: 0.8;
+    user-select: none;
+  }
+
+  .testimonial--featured .testimonial-quote-mark {
+    opacity: 0.35;
+  }
+
+  .testimonial-text {
+    margin: 0;
+    font-size: 1.02rem;
+    line-height: 1.82;
+    color: rgba(59, 38, 57, 0.88);
+    opacity: 1;
+    flex: 1;
+  }
+
+  .testimonial--featured .testimonial-text {
+    font-size: 1.1rem;
+  }
+
+  .testimonial-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid rgba(59, 38, 57, 0.1);
+  }
+
+  .testimonial-author {
+    font-family: var(--font-primary);
+    font-size: 1rem;
+    color: var(--color-primary-dark);
+  }
+
+  .testimonial-role {
+    font-size: 0.82rem;
+    color: rgba(59, 38, 57, 0.58);
+    line-height: 1.5;
+  }
+
+  .section-soft {
+    background: linear-gradient(
+      to bottom,
+      rgba(187, 137, 107, 0.1) 0%,
+      rgba(253, 251, 236, 0.65) 55%,
+      rgba(253, 251, 236, 1) 100%
+    );
+  }
+
+  /* ═══════════════════════════════════════════
+     CTA
+  ═══════════════════════════════════════════ */
+  .section-cta {
+    position: relative;
+    padding: 7rem 0 8rem;
+    isolation: isolate;
+    text-align: center;
+  }
+
+  .cta-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 920px;
+    margin-inline: auto;
+  }
+
+  .cta-kicker {
+    margin-bottom: 0.9rem;
+    font-size: clamp(1.6rem, 2.5vw, 2.1rem);
+  }
+
+  .cta-inner h2 {
+    margin: 0 auto;
+    max-width: 20ch;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    color: var(--color-primary-dark);
+    line-height: 1.1;
+  }
+
+  .cta-body {
+    font-size: 1.1rem;
+    line-height: 1.75;
+    color: rgba(59, 38, 57, 0.72);
+    max-width: 42ch;
+    margin: 0 auto 2.5rem;
+    opacity: 1;
+  }
+
+  .cta-actions {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+
+  .cta-contact {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    font-size: 0.96rem;
+  }
+
+  .cta-contact a {
+    color: rgba(59, 38, 57, 0.65);
+    text-decoration: underline;
+    text-decoration-color: rgba(59, 38, 57, 0.2);
+    text-underline-offset: 0.25rem;
+    transition: color 0.25s ease;
+  }
+
+  .cta-contact a:hover {
+    color: var(--color-accent-red);
+    text-decoration-color: var(--color-accent-red);
+  }
+
+  .cta-contact li[aria-hidden] {
+    color: rgba(59, 38, 57, 0.25);
+  }
+
+  /* ═══════════════════════════════════════════
+     RESPONSIVE
+  ═══════════════════════════════════════════ */
+  @media (max-width: 1100px) {
+    .guide-grid,
+    .about-grid {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    .testimonials-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .testimonial--featured {
+      grid-column: span 2;
+    }
+  }
+
+  @media (max-width: 820px) {
+    .workshop-hero {
+      padding: 7rem 0 5rem;
+    }
+
+    .workshop-page {
+      padding-top: 5.2rem;
+    }
+
+    .experience-list {
+      grid-template-columns: 1fr;
+      border-radius: 22px;
+    }
+
+    .exp-item {
+      border-right: none;
+    }
+
+    .exp-item:nth-last-child(-n+2) {
+      border-bottom: 1px solid rgba(59, 38, 57, 0.08);
+    }
+
+    .exp-item:last-child {
+      border-bottom: none;
+    }
+
+    .benefits-cards {
+      grid-template-columns: 1fr;
+      border-radius: 22px;
+    }
+
+    .benefit-card {
+      border-right: none;
+    }
+
+    .benefit-card:nth-last-child(-n+2) {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .benefit-card:last-child {
+      border-bottom: none;
+    }
+
+    .about-facts-row {
+      grid-template-columns: 1fr;
+    }
+
+    .about-fact {
+      border-right: none;
+      border-bottom: 1px solid rgba(59, 38, 57, 0.1);
+    }
+
+    .about-fact:last-child {
+      border-bottom: none;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hero-em {
+      font-size: clamp(3rem, 14vw, 5rem);
+    }
+
+    .hero-line2 {
+      font-size: clamp(2.6rem, 12vw, 4.5rem);
+    }
+
+    .hero-cta-row {
+      flex-direction: column;
+    }
+
+    .hero-cta-row :global(a) {
+      width: 100%;
+      text-align: center;
+      justify-content: center;
+    }
+
+    .hero-facts {
+      flex-direction: column;
+    }
+
+    .fact-chip {
+      width: 100%;
+    }
+
+    .guide-slogan {
+      border-left: none;
+      border-top: 3px solid var(--color-earth);
+      padding: 1.5rem 0;
+    }
+
+    .testimonials-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .testimonial--featured {
+      grid-column: span 1;
+    }
+
+    .section-cta {
+      padding: 5rem 0 6rem;
+    }
+
+    .cta-inner h2 {
+      font-size: clamp(2rem, 9vw, 3rem);
+    }
+  }
+</style>

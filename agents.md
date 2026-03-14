@@ -31,8 +31,9 @@ Deben configurarse en la raíz del proyecto globalmente:
 ```
 
 ### 2.2 Tipografía
-- **Primaria (Títulos/Cimientos):** `Pacaembu` (serif).
+- **Primaria (Títulos/Cimientos):** `Pacaembu` (sans-serif).
 - **Secundaria (Acentos/Firmas):** `Sloop` (cursive).
+- **Base (Párrafos/Menús):** `Inter Tight` (sans-serif).
 Asegurar que las fuentes estén optimizadas y cargadas localmente si es posible para mejorar el rendimiento.
 
 ## 3. Arquitectura del Proyecto (Astro + Svelte + GSAP)

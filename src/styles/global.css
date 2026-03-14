@@ -1,0 +1,192 @@
+@font-face {
+  font-family: 'Inter Tight';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/InterTight-VariableFont_wght.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Inter Tight';
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/InterTight-Italic-VariableFont_wght.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Pacaembu';
+  src: url('/fonts/Pacaembu-Regular-Trial.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pacaembu';
+  src: url('/fonts/Pacaembu-Bold-Trial.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pacaembu';
+  src: url('/fonts/Pacaembu-Light-Trial.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pacaembu';
+  src: url('/fonts/Pacaembu-Medium-Trial.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pacaembu';
+  src: url('/fonts/Pacaembu-Black-Trial.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Sloop';
+  src: url('/fonts/Sloop-ScriptThree.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --color-background: #fdfbec;
+  --color-primary-dark: #3b2639;
+  --color-accent-red: #8c0703;
+  --color-accent-purple: #6d4492;
+  --color-earth: #bb896b;
+  --color-sage: #566443;
+  
+  --font-primary: 'Pacaembu', 'Helvetica Neue', sans-serif;
+  --font-accent: 'Sloop', cursive;
+  --font-base: 'Inter Tight', system-ui, -apple-system, sans-serif;
+  
+  --transition-smooth: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-primary-dark);
+  font-family: var(--font-base);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-primary);
+  font-weight: normal;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+
+p {
+  font-family: var(--font-base);
+  color: var(--color-primary-dark);
+  font-size: 1.125rem;
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+  opacity: 0.85;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: var(--transition-smooth);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Utilities for revealing */
+.gsap-reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  will-change: opacity, transform;
+}
+
+.max-w-screen {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 5%;
+}
+
+.text-accent {
+  font-family: var(--font-accent);
+  color: var(--color-accent-red);
+}
+
+/* Premium Buttons */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-primary-dark);
+  color: var(--color-background);
+  padding: 1rem 2.5rem;
+  font-family: var(--font-base);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.875rem;
+  border: 1px solid var(--color-primary-dark);
+  border-radius: 50px;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  transition: var(--transition-smooth);
+}
+
+.btn-primary:hover {
+  background-color: transparent;
+  color: var(--color-primary-dark);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  color: var(--color-primary-dark);
+  padding: 1rem 2.5rem;
+  font-family: var(--font-base);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.875rem;
+  border: 1px solid var(--color-primary-dark);
+  border-radius: 50px;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.btn-outline:hover {
+  background-color: var(--color-primary-dark);
+  color: var(--color-background);
+}

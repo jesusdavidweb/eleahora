@@ -1,0 +1,588 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ScrollAnimations from "../components/svelte/ScrollAnimations.svelte";
+import "../styles/global.css";
+---
+
+<Layout title="Eleahora | Terapia Transpersonal y Meditación">
+  <ScrollAnimations client:idle />
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-overlay"></div>
+    <img
+      src="/images/hero-eleahora-001_tiny.webp"
+      alt="Eleahora: Terapia Transpersonal y Meditación"
+      class="hero-bg gsap-parallax"
+    />
+
+    <div class="max-w-screen hero-content">
+      <div class="hero-text-container">
+        <h2 class="gsap-reveal text-accent hero-accent">Bienvenido</h2>
+        <h1 class="gsap-hero-reveal hero-title">
+          Soy la voz que te recuerda que estás aquí.
+        </h1>
+
+        <div class="gsap-hero-reveal hero-text-wrapper">
+          <p class="hero-subtitle">
+            En el presente.<br />Meditación y Terapia Transpersonal.<br
+            />Mindfulness. Espiritualidad aterrizada.
+          </p>
+          <div class="hero-actions">
+            <a href="/sesiones" class="btn-primary">Estoy aquí para ti</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Manifiesto -->
+  <section id="manifiesto" class="manifiesto-section">
+    <div class="max-w-screen manifiesto-grid">
+      <div class="manifiesto-text">
+        <span class="gsap-reveal text-accent section-label">Manifiesto</span>
+        <h2 class="gsap-reveal section-title">El milagro de lo cotidiano.</h2>
+        <div class="gsap-reveal section-body">
+          <p>
+            Durante años creí que la estructura y lo sutil eran opuestas. Vivía
+            entre el deber ser y el anhelo de algo más grande. Hasta que entendí
+            que el verdadero milagro ocurre cuando los pies están bien plantados
+            en la tierra y el corazón abierto al cielo.
+          </p>
+          <p>
+            En Eleahora la espiritualidad es aterrizada, no es un escape, es una
+            herramienta. Usamos la mente (PNL y Meditación) para traducir el
+            alma (Ángeles). Porque tu proceso no necesita ser perfecto, solo
+            necesita ser tuyo.
+          </p>
+          <blockquote class="gsap-reveal manifiesto-quote">
+            "Soy estructura y soy caos. Soy servicio y soy soberanía. Deja que
+            el amor te regule. Confía en el proceso."
+          </blockquote>
+        </div>
+      </div>
+      <div class="manifiesto-image-wrapper gsap-reveal">
+        <img
+          src="/images/home-eleahora-001.webp"
+          alt="Manifiesto Eleahora"
+          class="manifiesto-img"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Servicios -->
+  <section class="services-section">
+    <div class="max-w-screen">
+      <div class="services-header gsap-reveal">
+        <h2 class="section-title text-light">Estoy aquí para ti</h2>
+        <a href="/sesiones" class="btn-outline light-btn"
+          >Ver todos los servicios</a
+        >
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card-wrapper gsap-reveal">
+          <a href="/sesiones" class="service-card">
+            <div class="service-content">
+              <h3>Sesiones Eleahora</h3>
+              <p>
+                Acompañamiento terapéutico con Meditación + PNL, Terapia
+                Angelical, Perlas de Eleahora, Clases de Meditación y Sesión Energética.
+              </p>
+            </div>
+            <div class="service-arrow">→</div>
+          </a>
+        </div>
+
+        <div class="service-card-wrapper gsap-reveal" data-gsap-delay="0.15">
+          <a
+            href="/sesiones"
+            class="service-card"
+          >
+            <div class="service-content">
+              <h3>Workshop "Pienso, luego medito"</h3>
+              <p>
+                Experiencia team building para grupos y empresas con herramientas
+                prácticas para volver al presente.
+              </p>
+            </div>
+            <div class="service-arrow">→</div>
+          </a>
+        </div>
+
+        <div class="service-card-wrapper gsap-reveal" data-gsap-delay="0.3">
+          <a
+            href="https://insighttimer.com/eleahora"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="service-card"
+          >
+            <div class="service-content">
+              <h3>Meditaciones Guiadas</h3>
+              <p>
+                Escuchar en Insight Timer
+              </p>
+            </div>
+            <div class="service-arrow">↗</div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- Mindfulness SEO -->
+  <section id="mindfulness" class="mindfulness-section">
+    <div class="max-w-screen">
+      <div class="mindfulness-header">
+        <span class="gsap-reveal text-accent section-label"
+          >Ciencia & Espíritu</span
+        >
+        <h2 class="gsap-reveal section-title">Mindfulness como medicina.</h2>
+      </div>
+
+      <div class="mindfulness-grid">
+        <div class="mindfulness-image-wrapper gsap-reveal">
+          <img
+            src="/images/home-eleahora-002.webp"
+            alt="Mindfulness y Yoga"
+            class="mindfulness-img"
+          />
+        </div>
+
+        <div class="mindfulness-text">
+          <div class="gsap-reveal section-body">
+            <p class="mindfulness-lead">
+              La <strong class="text-primary-dark">meditación</strong> es una herramienta
+              de neuroregulación. El <strong class="text-primary-dark"
+                >mindfulness</strong
+              > es una práctica que entrena la mente para volver al momento presente.
+            </p>
+            <p class="mindfulness-desc">
+              A través de la respiración, la atención plena y la consciencia
+              corporal, el sistema nervioso aprende a salir del estado de alerta
+              constante y a regresar a un estado de regulación y equilibrio. Hoy
+              sabemos que la meditación no solo transforma nuestra experiencia
+              interna: también produce cambios medibles en el cerebro y en el
+              sistema nervioso.
+            </p>
+
+            <div class="mindfulness-benefits-card">
+              <h3 class="benefits-title">Beneficios de practicar mindfulness regularmente:</h3>
+              <ul class="mindfulness-benefits">
+                <li>Reducir el estrés y la ansiedad.</li>
+                <li>Mejorar la claridad mental y la concentración.</li>
+                <li>Regular emociones intensas.</li>
+                <li>Dormir mejor.</li>
+                <li>Aumentar la creatividad y la toma de decisiones.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mindfulness-footer gsap-reveal">
+        <p class="mindfulness-conclusion">
+          "En un mundo que nos empuja constantemente hacia el ruido y la
+          velocidad, la meditación se convierte en una forma de volver a uno
+          mismo."
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* Hero Section */
+  .hero-section {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background-color: var(--color-background);
+  }
+
+  .hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    object-position: 70% 30%;
+    z-index: 0;
+    opacity: 1; /* Imagen pura, radiante y a full opacidad */
+  }
+
+  .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Degradado super sutil para permitir el texto, dejando despejada el 50% derecho */
+    background: linear-gradient(
+      to right,
+      rgba(253, 251, 236, 0.85) 0%,
+      rgba(253, 251, 236, 0.4) 30%,
+      transparent 60%
+    );
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  @media (max-width: 768px) {
+    .hero-overlay {
+      background: linear-gradient(
+        to bottom,
+        rgba(253, 251, 236, 0.9) 0%,
+        rgba(253, 251, 236, 0.7) 50%,
+        transparent 100%
+      );
+    }
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    padding-top: 8rem; /* Separar más del header */
+    padding-bottom: 4rem;
+  }
+
+  .hero-text-container {
+    max-width: 800px;
+    padding: 2rem 0;
+  }
+
+  .hero-accent {
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    margin-bottom: 0.5rem;
+    display: block;
+    color: var(--color-accent-red);
+    line-height: 1;
+  }
+
+  .hero-title {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: var(--color-primary-dark);
+    margin-bottom: 1.5rem;
+    text-shadow: 0px 4px 20px rgba(253, 251, 236, 0.6);
+  }
+
+  .hero-text-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .hero-text-wrapper {
+      flex-direction: column; /* Apilar para no cortar el texto */
+      align-items: flex-start;
+    }
+  }
+
+  .hero-subtitle {
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    line-height: 1.6;
+    max-width: 500px;
+    margin-bottom: 0;
+    font-weight: 500;
+    color: rgba(59, 38, 57, 0.9); /* Contraste fuerte en el subtítulo */
+  }
+
+  /* General typography layout */
+  .section-label {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-size: clamp(2.5rem, 4vw, 4rem);
+    line-height: 1.1;
+    margin-bottom: 2.5rem;
+  }
+
+  .section-body p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+  }
+
+  /* Manifiesto */
+  .manifiesto-section {
+    padding: 8rem 0;
+    background-color: var(--color-background);
+  }
+
+  .manifiesto-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  @media (min-width: 1024px) {
+    .manifiesto-grid {
+      grid-template-columns: 1.2fr 1fr;
+      gap: 6rem;
+    }
+  }
+
+  .manifiesto-quote {
+    font-family: var(--font-primary);
+    font-size: 1.75rem;
+    color: var(--color-accent-purple);
+    font-style: italic;
+    border-left: 3px solid var(--color-accent-purple);
+    padding-left: 2rem;
+    margin-top: 3rem;
+    line-height: 1.4;
+  }
+
+  .manifiesto-image-wrapper {
+    border-radius: 20px 20px 20px 20px; /* organically shaped or just rounded */
+    overflow: hidden;
+    position: relative;
+    aspect-ratio: 4/5;
+  }
+
+  .manifiesto-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Servicios Dark Section */
+  .services-section {
+    padding: 8rem 0;
+    background-color: var(--color-primary-dark);
+    color: var(--color-background);
+  }
+
+  .text-light {
+    color: var(--color-background);
+  }
+
+  .light-btn {
+    border-color: rgba(253, 251, 236, 0.3);
+    color: var(--color-background);
+  }
+
+  .light-btn:hover {
+    background-color: var(--color-background);
+    color: var(--color-primary-dark);
+  }
+
+  .services-header {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 5rem;
+  }
+
+  @media (min-width: 768px) {
+    .services-header {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .services-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .service-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 3rem 2rem;
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(253, 251, 236, 0.1);
+    border-radius: 12px;
+    height: 100%;
+    min-height: 350px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    will-change: transform, background-color;
+  }
+
+  .service-card:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    transform: translateY(-5px);
+  }
+
+  .service-content h3 {
+    font-size: 1.75rem;
+    color: var(--color-background);
+    margin-bottom: 1.5rem;
+  }
+
+  .service-content p {
+    color: rgba(253, 251, 236, 0.7);
+    font-size: 1.05rem;
+  }
+
+  .service-arrow {
+    font-size: 2rem;
+    color: var(--color-earth);
+    margin-top: 2rem;
+    align-self: flex-end;
+    transition: transform 0.3s ease;
+  }
+
+  .service-card:hover .service-arrow {
+    transform: translateX(5px);
+  }
+
+  /* Mindfulness SEO */
+  .mindfulness-section {
+    padding: 8rem 0;
+    background-color: var(--color-background);
+  }
+
+  .mindfulness-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 4rem;
+  }
+
+  .mindfulness-header .section-label {
+    margin-bottom: 0.5rem;
+  }
+
+  .mindfulness-header .section-title {
+    margin-bottom: 0;
+  }
+
+  .mindfulness-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  @media (min-width: 1024px) {
+    .mindfulness-grid {
+      grid-template-columns: 1fr 1.2fr;
+      gap: 6rem;
+    }
+  }
+
+  .mindfulness-image-wrapper {
+    order: 2;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    aspect-ratio: 3/4;
+  }
+
+  @media (min-width: 1024px) {
+    .mindfulness-image-wrapper {
+      order: 1;
+    }
+    .mindfulness-text {
+      order: 2;
+    }
+  }
+
+  .mindfulness-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  .text-primary-dark {
+    color: var(--color-primary-dark);
+    font-weight: 600;
+  }
+
+  .mindfulness-lead {
+    font-size: 1.4rem !important;
+    line-height: 1.6 !important;
+    margin-bottom: 1.5rem;
+    color: var(--color-primary-dark);
+  }
+
+  .mindfulness-desc {
+    font-size: 1.1rem !important;
+    line-height: 1.8 !important;
+    opacity: 0.85;
+    margin-bottom: 2rem;
+  }
+
+  .mindfulness-benefits-card {
+    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(187, 137, 107, 0.2);
+    border-radius: 16px;
+    padding: 2rem;
+    margin: 2rem 0;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.02);
+  }
+
+  .benefits-title {
+    font-family: var(--font-primary, system-ui);
+    font-size: 1.2rem;
+    color: var(--color-accent-purple);
+    margin-bottom: 1.25rem;
+    letter-spacing: 0.5px;
+  }
+
+  .mindfulness-benefits {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 1rem;
+  }
+
+  .mindfulness-benefits li {
+    font-family: system-ui, sans-serif;
+    font-size: 1.05rem;
+    color: var(--color-primary-dark);
+    padding-left: 2rem;
+    position: relative;
+    opacity: 0.9;
+    line-height: 1.5;
+  }
+
+  .mindfulness-benefits li::before {
+    content: "✦";
+    color: var(--color-earth);
+    font-size: 1.2rem;
+    position: absolute;
+    left: 0;
+    top: -2px;
+  }
+  .mindfulness-footer {
+    max-width: 900px;
+    margin: 5rem auto 0;
+    text-align: center;
+  }
+
+  .mindfulness-conclusion {
+    font-family: var(--font-primary, sans-serif) !important;
+    font-size: clamp(1.5rem, 2.5vw, 2rem) !important;
+    color: var(--color-accent-red) !important;
+    opacity: 1 !important;
+    line-height: 1.4 !important;
+    margin: 0;
+  }
+
+
+</style>

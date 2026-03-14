@@ -32,8 +32,9 @@ Códigos HEX extraídos para la configuración de variables CSS/Tailwind:
 * 🟩 **Verde Oliva/Salvia:** `#566443` (Equilibrio, naturaleza y bienestar)
 
 ## 4. Tipografías
-* **Tipografía Principal (Títulos/Estructura):** `Pacaembu` (Familia tipográfica). De corte clásico, editorial y elegante; actúa como los cimientos de la marca.
+* **Tipografía Principal (Títulos/Estructura):** `Pacaembu` (Familia tipográfica). De corte elegante, geométrico y vintage; actúa como los cimientos de la marca.
 * **Tipografía Secundaria/Acentos:** `Sloop` (Familia tipográfica). Ideal para detalles decorativos, firmas o palabras clave que necesiten fluidez y elegancia.
+* **Tipografía Base (Párrafos/Menús):** `Inter Tight` (Familia tipográfica). Limpia y altamente legible para textos largos y elementos de interfaz.
 
 ## 5. Arquitectura de Servicios Web
 La estructura de servicios principales que deben reflejarse en la navegación/oferta de la web:
@@ -53,6 +54,6 @@ La estructura de servicios principales que deben reflejarse en la navegación/of
   --color-earth: #bb896b;
   --color-sage: #566443;
   
-  --font-primary: 'Pacaembu', serif;
+  --font-primary: 'Pacaembu', sans-serif;
   --font-accent: 'Sloop', cursive;
 }

@@ -18,8 +18,9 @@ Use these exactly across the project globally:
 - `--color-sage`: `#566443` (Verde Oliva/Salvia)
 
 ## Typography
-- **Primary (Titles/Structure):** `Pacaembu` (serif). Elegant, classic, editorial.
+- **Primary (Titles/Structure):** `Pacaembu` (sans-serif). Elegant, geometric, vintage.
 - **Secondary (Accents/Signatures):** `Sloop` (cursive). Fluid, decorative.
+- **Base (Paragraphs/UI):** `Inter Tight` (sans-serif). Clean, highly readable.
 
 ## Tone of Voice & Content
 - Magnetic, warm, honest, and practical.
