@@ -4,4 +4,4 @@ Allow: /
 Disallow: /gracias
 Disallow: /gracias/
 
-Sitemap: https://eleahora.com/sitemap-index.xml
+Sitemap: https://eleahora.jesusdavid.net/sitemap-index.xml

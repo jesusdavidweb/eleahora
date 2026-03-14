@@ -19,6 +19,9 @@
     # Ensure /404 or /404/ always serves the 404 page correctly
     rewrite /404 /404.html
     rewrite /404/ /404.html
+
+    # Sitemap redirects
+    rewrite /sitemap.xml /sitemap-index.xml
     header {
         Strict-Transport-Security max-age=31536000;
         X-Content-Type-Options nosniff
