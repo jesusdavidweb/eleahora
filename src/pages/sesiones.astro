@@ -3,19 +3,24 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout
-  title="Sesiones y Servicios | Terapia Transpersonal y Meditación | Eleahora"
-  description="Descubre los servicios de Eleahora: Acompañamiento Terapéutico con PNL, Terapia Angelical, Perlas de Eleahora, Clase de Meditación y Sesión Energética. Presencial en Madrid y online."
-  ogTitle="Sesiones y Servicios — Eleahora"
+  title="Sesiones | Terapia Transpersonal y Meditación | Eleahora"
+  description="Descubre las sesiones de Eleahora: Acompañamiento Terapéutico con PNL, Terapia Angelical, Perlas de Eleahora, Clase de Meditación y Sesión Energética. Presencial en Madrid y online."
+  ogTitle="Sesiones — Eleahora"
   ogImage="/images/OG-images-eleahora-01.jpg"
 >
   <main class="services-page">
     <section class="services-hero">
-      <div class="max-w-screen hero-wrap">
-        <span class="text-accent section-label">Sesiones y Servicios</span>
-        <h1>¿Con cuál te gustaría empezar?</h1>
-        <p>
-          Permítete leer cada una con calma y déjate sentir.
-        </p>
+      <div class="max-w-screen hero-container">
+        <div class="hero-media">
+          <img src="/images/home-mindfulness-01-tiny.webp" alt="" loading="eager" decoding="async" />
+        </div>
+        <div class="hero-content">
+          <span class="text-accent section-label">Sesiones</span>
+          <h1>¿Con cuál te gustaría empezar?</h1>
+          <p>
+            Permítete leer cada una con calma y déjate sentir.
+          </p>
+        </div>
       </div>
     </section>
 
@@ -35,12 +40,14 @@ import Layout from "../layouts/Layout.astro";
           <ul>
             <li>
               <strong>¿En qué consiste?</strong> Combinamos conversación terapéutica,
-              meditación guiada y técnicas de PNL para reorganizar tu diálogo
-              interno y sanar patrones.
+              meditación guiada y técnicas de PNL para revisar tu diálogo interno y
+              permitir que nuevas perspectivas emerjan en ti. Cada sesión es única.
+              No hay fórmulas rígidas, sino una escucha atenta y un acompañamiento
+              presente, respetuoso y humano.
             </li>
             <li><strong>Sesiones:</strong> 4 (acompañamiento mensual)</li>
             <li><strong>Duración:</strong> 1h cada sesión</li>
-            <li><strong>Modalidad:</strong> Videollamada (Google Meet)</li>
+            <li><strong>Modalidad:</strong> Videollamada</li>
             <li><strong>Intercambio mensual:</strong> 180€</li>
           </ul>
           <div class="service-meta">
@@ -57,9 +64,10 @@ import Layout from "../layouts/Layout.astro";
           </div>
           <h2>Terapia Angelical</h2>
           <p>
-            Comunicación con los ángeles y seres de luz que te acompañan. Primero
-            realizamos una meditación de sanación para elevar tu vibración, luego
-            canalizamos preguntas a través de oráculos especiales.
+            Sesión de conexión con tus ángeles y seres de luz. Iniciamos con una
+            meditación de sanación para elevar tu vibración. Luego canalizamos sus
+            mensajes a través de oráculos angelicales, donde podrás hacer entre 6 y
+            8 preguntas para recibir guía y claridad.
           </p>
           <ul>
             <li><strong>Sesiones:</strong> 1</li>
@@ -81,9 +89,17 @@ import Layout from "../layouts/Layout.astro";
           </div>
           <h2>Perlas de Eleahora</h2>
           <p>
-            Sesión íntima, canalizada y reveladora. Uniendo coaching, espiritualidad
-            y escritura consciente para explorar temas actuales, niñ@ interior y
-            visión de futuro.
+            Sesión íntima, canalizada y reveladora. A través de una metodología
+            única que combina preguntas poderosas, oráculos y dinámicas de escritura
+            consciente, iremos explorando los temas que hoy tienes "sobre la mesa".
+          </p>
+          <p>
+            Es un espacio que une coaching y espiritualidad. Trabajamos con la voz
+            de tu niñ@ interior, tu sabiduría y tu visión hacia lo que quieres.
+          </p>
+          <p>
+            Ideal para vaciar la mente, poner orden en lo interno y salir con más
+            dirección.
           </p>
           <ul>
             <li><strong>Sesiones:</strong> 1</li>
@@ -105,14 +121,22 @@ import Layout from "../layouts/Layout.astro";
           </div>
           <h2>Clase de Meditación</h2>
           <p>
-            Clase teórico-práctica para comprender cómo funciona tu sistema
-            nervioso y cómo regularlo para volver al presente. Aprenderás
-            herramientas concretas de neurorregulación.
+            Clase teórico-práctica para comprender cómo funciona tu sistema nervioso
+            y cómo regularlo puede ayudarte a volver al presente.
+          </p>
+          <p>
+            Aprenderás herramientas concretas de neurorregulación que podrás aplicar
+            en tu día a día, y terminaremos con una meditación guiada que te
+            permitirá experimentar la diferencia entre cómo llegaste y cómo te vas.
+          </p>
+          <p>
+            Mi intención con esta sesión es que te lleves la práctica y lo aprendido
+            a tu cotidianidad.
           </p>
           <ul>
             <li><strong>Sesiones:</strong> 1</li>
             <li><strong>Duración:</strong> 1h - 1h30 máx</li>
-            <li><strong>Modalidad:</strong> Videollamada (Google Meet)</li>
+            <li><strong>Modalidad:</strong> Videollamada</li>
             <li><strong>Intercambio:</strong> 40€</li>
           </ul>
           <div class="service-meta">
@@ -129,8 +153,13 @@ import Layout from "../layouts/Layout.astro";
           </div>
           <h2>Sesión Energética (Chakras)</h2>
           <p>
-            Un "reset energético". Limpiamos, alineamos y activamos tus 7 centros
-            energéticos para fluir hacia la elevación y reducir bloqueos.
+            Revisaremos cómo se encuentran tus 7 centros energéticos, identificando
+            cuáles necesitan más atención y nos centraremos en limpiarlos, alinearlos
+            y activarlos. Me gusta definir esta sesión como un "reset energético".
+          </p>
+          <p>
+            Es una de las herramientas más bonitas de autocuidado: un espacio para
+            armonizar y revitalizar tu energía.
           </p>
           <ul>
             <li><strong>Sesiones:</strong> 1</li>
@@ -146,6 +175,13 @@ import Layout from "../layouts/Layout.astro";
         </article>
       </div>
     </section>
+
+    <section class="services-final-cta" aria-label="Ayuda para elegir sesión">
+      <div class="max-w-screen final-cta-wrap">
+        <p>Si aún no lo tienes claro, escríbeme aquí</p>
+        <a href="/contacto" class="btn-primary">Contactar para más información</a>
+      </div>
+    </section>
   </main>
 </Layout>
 
@@ -155,7 +191,7 @@ import Layout from "../layouts/Layout.astro";
   }
 
   .services-hero {
-    padding: 7rem 0 3rem;
+    padding: 7rem 0 4rem;
     background: linear-gradient(
       180deg,
       rgba(109, 68, 146, 0.12) 0%,
@@ -163,14 +199,43 @@ import Layout from "../layouts/Layout.astro";
     );
   }
 
-  .hero-wrap {
-    max-width: 900px;
+  .hero-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .hero-media {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hero-media img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(59, 38, 57, 0.15);
+  }
+
+  .hero-content {
+    max-width: 500px;
   }
 
   .section-label {
     display: block;
     font-size: clamp(1.5rem, 3vw, 2.5rem);
     margin-bottom: 0.75rem;
+    font-family: var(--font-primary);
+    text-transform: lowercase;
+  }
+
+  .section-label::first-letter {
+    font-family: var(--font-accent);
+    text-transform: uppercase;
   }
 
   h1 {
@@ -185,6 +250,34 @@ import Layout from "../layouts/Layout.astro";
 
   .services-list {
     padding: 2.5rem 0 6rem;
+  }
+
+  .services-final-cta {
+    padding: 0 0 6rem;
+  }
+
+  .final-cta-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem 1.5rem;
+    border: 1px solid rgba(109, 68, 146, 0.24);
+    border-radius: 22px;
+    background:
+      radial-gradient(circle at 10% 10%, rgba(109, 68, 146, 0.08), transparent 45%),
+      radial-gradient(circle at 90% 90%, rgba(140, 7, 3, 0.08), transparent 42%),
+      rgba(255, 255, 255, 0.7);
+    box-shadow:
+      0 12px 26px rgba(59, 38, 57, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.85);
+  }
+
+  .final-cta-wrap p {
+    margin: 0;
+    font-size: 1.2rem;
+    text-align: center;
+    color: rgba(59, 38, 57, 0.9);
   }
 
   .list-wrap {
@@ -333,7 +426,16 @@ import Layout from "../layouts/Layout.astro";
     }
 
     .services-hero {
-      padding-top: 5rem;
+      padding: 5rem 0 3rem;
+    }
+
+    .hero-container {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .hero-media img {
+      max-width: 300px;
     }
 
     .services-list {
@@ -353,6 +455,11 @@ import Layout from "../layouts/Layout.astro";
     .service-cta {
       width: 100%;
       text-align: center;
+    }
+
+    .final-cta-wrap {
+      padding: 1.5rem 1rem;
+      border-radius: 18px;
     }
   }
 </style>

@@ -155,11 +155,17 @@ import NotFoundExperience from '../components/svelte/NotFoundExperience.svelte';
 
   .notfound-kicker {
     display: block;
-    font-family: var(--font-accent);
+    font-family: var(--font-primary);
     color: var(--color-accent-red);
     font-size: clamp(2rem, 5vw, 3.5rem);
     line-height: 1;
     margin-bottom: 1.25rem;
+    text-transform: lowercase;
+  }
+
+  .notfound-kicker::first-letter {
+    font-family: var(--font-accent);
+    text-transform: uppercase;
   }
 
   h1 {

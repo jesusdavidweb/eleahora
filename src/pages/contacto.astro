@@ -36,21 +36,9 @@ const serviceOptions: ContactServiceOption[] = [
         <h1 id="contacto-title" class="contact-hero-animate">
           Este puede ser el primer paso para volver a ti.
         </h1>
-        <p class="hero-lead contact-hero-animate">
-          Cuéntame qué estás viviendo y juntas elegimos la mejor forma de acompañarte.
-          Si ya lo tienes claro, agenda directamente una llamada de descubrimiento.
-        </p>
 
         <div class="hero-cta-row contact-hero-animate">
           <a href="#formulario-contacto" class="btn-primary magnetic-cta">Escribir ahora</a>
-          <a
-            href="https://cal.eu/eleahora/sesiones"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="btn-outline magnetic-cta"
-          >
-            Agendar en calendario
-          </a>
         </div>
       </div>
     </section>
@@ -86,7 +74,7 @@ const serviceOptions: ContactServiceOption[] = [
 
           <div class="quick-links">
             <a href="https://wa.me/34605373782" target="_blank" rel="noopener noreferrer">
-              WhatsApp directo
+              Escríbeme, estoy aquí para ti.
             </a>
             <a href="mailto:hola@eleahora.com">hola@eleahora.com</a>
           </div>
@@ -94,9 +82,6 @@ const serviceOptions: ContactServiceOption[] = [
 
         <article id="formulario-contacto" class="contact-form-card contact-reveal">
           <h2>Formulario de contacto</h2>
-          <p>
-            Al enviarlo te llevaré a una página de confirmación (<strong>/gracias</strong>) para medir conversiones y continuar tu proceso.
-          </p>
 
           <form action="/gracias" method="GET" class="contact-form" aria-label="Formulario de contacto Eleahora">
             <input type="hidden" name="origen" value="contacto-web" />
@@ -110,7 +95,7 @@ const serviceOptions: ContactServiceOption[] = [
             <label for="telefono">WhatsApp (opcional)</label>
             <input id="telefono" name="telefono" type="tel" autocomplete="tel" placeholder="+34 ..." />
 
-            <label for="servicio">¿Qué te interesa ahora?</label>
+            <label for="servicio">¿Qué te trajo hasta aquí?</label>
             <select id="servicio" name="servicio" required>
               <option value="">Selecciona una opción</option>
               {serviceOptions.map((option) => (
@@ -151,11 +136,27 @@ const serviceOptions: ContactServiceOption[] = [
     position: relative;
     padding: 10rem 0 8rem;
     isolation: isolate;
-    overflow: hidden; /* Prevent orbits from causing overflow */
-    background: 
-      radial-gradient(circle at 15% 15%, rgba(109, 68, 146, 0.12) 0%, transparent 50%),
-      radial-gradient(circle at 85% 25%, rgba(140, 7, 3, 0.08) 0%, transparent 45%),
-      linear-gradient(180deg, var(--color-background) 0%, rgba(253, 251, 236, 0.95) 100%);
+    overflow: hidden;
+    background-color: #000;
+    background-image: url('/images/contacto-hero-eleahora-02-edit-tiny.webp');
+    background-size: cover;
+    background-position: right center;
+    background-repeat: no-repeat;
+  }
+
+  .contact-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.8) 0%,
+      rgba(0, 0, 0, 0.65) 20%,
+      rgba(0, 0, 0, 0.45) 35%,
+      transparent 60%
+    );
+    z-index: 1;
+    pointer-events: none;
   }
 
   .contact-glow {
@@ -216,14 +217,21 @@ const serviceOptions: ContactServiceOption[] = [
     position: relative;
     max-width: 900px;
     padding: 0 1.5rem;
+    z-index: 2;
   }
 
   .hero-kicker {
     margin-bottom: 1.5rem;
-    font-family: var(--font-accent);
-    color: var(--color-accent-red);
+    font-family: var(--font-primary);
+    color: var(--color-background);
     font-size: clamp(2rem, 8vw, 4.5rem);
     line-height: 1;
+    text-transform: lowercase;
+  }
+
+  .hero-kicker::first-letter {
+    font-family: var(--font-accent);
+    text-transform: uppercase;
   }
 
   h1 {
@@ -232,6 +240,8 @@ const serviceOptions: ContactServiceOption[] = [
     line-height: 1;
     letter-spacing: -0.02em;
     font-weight: 500;
+    color: var(--color-background);
+    text-shadow: 0px 4px 20px rgba(0, 0, 0, 0.6);
   }
 
   .hero-lead {
@@ -246,6 +256,17 @@ const serviceOptions: ContactServiceOption[] = [
     display: flex;
     flex-wrap: wrap;
     gap: 1.25rem;
+  }
+
+  .hero-cta-row .btn-primary {
+    background-color: transparent;
+    color: var(--color-background);
+    border-color: rgba(253, 251, 236, 0.35);
+  }
+
+  .hero-cta-row .btn-primary:hover {
+    background-color: var(--color-background);
+    color: var(--color-primary-dark);
   }
 
   .contact-main {

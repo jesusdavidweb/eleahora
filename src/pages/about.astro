@@ -10,11 +10,14 @@ import Layout from "../layouts/Layout.astro";
 >
   <main class="inner-page">
     <section class="page-hero" aria-labelledby="about-title">
-      <img
-        src="/images/home-eleahora-001.webp"
-        alt="Fondo de la sección Sobre Mí de Eleahora — presencia y conexión interior"
-        class="page-hero-bg"
-      />
+      <picture>
+        <source media="(max-width: 768px)" srcset="/images/about-eleahora-001.webp" />
+        <img
+          src="/images/home-eleahora-001.webp"
+          alt="Fondo de la sección Sobre Mí de Eleahora — presencia y conexión interior"
+          class="page-hero-bg"
+        />
+      </picture>
       <div class="page-hero-overlay"></div>
       <div class="max-w-screen page-hero-content">
         <span class="text-accent page-kicker">Sobre Mí</span>
@@ -27,28 +30,46 @@ import Layout from "../layouts/Layout.astro";
         <article>
           <p class="section-label">Mi recorrido</p>
           <h2 id="historia-title" class="section-title">
-            De lo corporativo al camino interior.
+            Tengo un sueño: llevar la meditación a personas que aún no saben que la necesitan.
           </h2>
           <img
-            src="/images/about-eleahora-001.webp"
+            src="/images/about-mi-recorrido-01.webp"
             alt="Maria Eleonora Corallo, terapeuta transpersonal y fundadora de Eleahora"
             class="about-image image-mobile"
           />
           <div class="section-body">
             <p>
-              Nací en Venezuela, en una familia italiana, y desde muy joven mi vida estuvo marcada por el movimiento: países, idiomas y culturas.
+              Soy quien soy y eso es suficiente.
             </p>
             <p>
-              Durante años seguí un camino estructurado: estudié idiomas y comercio internacional en París y trabajé en entornos corporativos. Pero dentro de mí había una pregunta más profunda.
+              Tengo un sueño: llevar la meditación a personas que aún no saben que la necesitan.
             </p>
             <p>
-              Al mudarme a Madrid comenzó un viaje hacia adentro. Mientras me formaba, también me transformaba: redescubrí la escucha profunda, la presencia y la capacidad de sostener procesos internos.
+              Nací en Venezuela, en una familia italiana, y desde muy joven mi vida ha estado marcada por el movimiento: distintos países, idiomas y culturas. Durante años seguí un camino más estructurado: estudié idiomas y comercio internacional en París y trabajé en entornos corporativos.
+            </p>
+            <p>
+              Pero algo dentro de mí siempre quería ir más allá.
+            </p>
+            <p>
+              Hace unos años tomé una decisión que cambió mi rumbo: mudarme a Madrid y empezar un viaje mucho más profundo. Mientras estudiaba y me formaba, también me estaba transformando.
+            </p>
+            <p>
+              En ese camino encontré —o recordé— algo que siempre había estado en mí: la capacidad de acompañar procesos internos, de escuchar con profundidad y de abrir espacios de consciencia.
+            </p>
+            <p>
+              La meditación se convirtió en mi herramienta más práctica y poderosa.
+            </p>
+            <p>
+              Un lugar donde volver a mí misma, entender mi mente, regular mis emociones y conectar con Dios.
+            </p>
+            <p>
+              Con el tiempo, diferentes herramientas fueron sumándose a este camino: la Programación Neurolingüística transpersonal, el trabajo energético y la conexión espiritual. No como conceptos abstractos, sino como herramientas muy prácticas para vivir con más presencia, claridad y coherencia.
             </p>
           </div>
         </article>
         <aside class="image-column" aria-label="Imagen vertical de historia personal">
           <img
-            src="/images/about-eleahora-001.webp"
+            src="/images/about-mi-recorrido-01.webp"
             alt="Maria Eleonora Corallo, terapeuta transpersonal y fundadora de Eleahora"
             class="about-image"
           />
@@ -66,9 +87,9 @@ import Layout from "../layouts/Layout.astro";
           />
         </aside>
         <article>
-          <p class="section-label">Así nace Eleahora</p>
+          <p class="section-label">Así nació Eleahora</p>
           <h2 id="camino-title" class="section-title">
-            Espiritualidad aterrizada para vivir con más presencia.
+            Un espacio de espiritualidad aterrizada para vivir con más presencia.
           </h2>
           <img
             src="/images/about-eleahora-002.webp"
@@ -77,34 +98,35 @@ import Layout from "../layouts/Layout.astro";
           />
           <div class="section-body">
             <p>
-              La meditación se volvió mi herramienta más práctica: un lugar para volver a mí, regular emociones y conectar con algo más grande.
+              Hoy acompaño a personas que sienten que algo dentro de ellas quiere moverse, ordenarse o simplemente respirar un poco más profundo.
             </p>
             <p>
-              Con el tiempo, integré Programación Neurolingüística transpersonal, trabajo energético y conexión espiritual, siempre de forma concreta y aplicada a la vida cotidiana.
-            </p>
-            <p>
-              Hoy acompaño a personas que sienten que algo dentro de ellas quiere moverse, ordenarse o respirar más profundo. Porque estar presentes ya no es un lujo, es una necesidad.
+              Trabajo a través de:
             </p>
           </div>
           <ul class="service-list" aria-label="Formatos de acompañamiento">
-            <li>Sesiones individuales de terapia y consciencia.</li>
+            <li>Sesiones individuales de terapia.</li>
             <li>Experiencias de meditación y espacios conscientes.</li>
             <li>Workshops y programas para empresas.</li>
           </ul>
+          <div class="section-body">
+            <p>
+              Porque creo profundamente que estamos viviendo un momento de cambio colectivo donde la consciencia, la presencia y la conexión interior ya no son un lujo, sino una necesidad.
+            </p>
+            <p>
+              Te acompaño a volver a conectar con el presente.
+            </p>
+            <p>
+              Bienvenidos y muchas gracias 🙂
+            </p>
+          </div>  
         </article>
       </div>
     </section>
 
     <section class="about-cta section-soft" aria-labelledby="cta-title">
       <div class="max-w-screen cta-wrap">
-        <p class="text-accent cta-kicker">Volver al presente</p>
-        <h2 id="cta-title">
-          Si sientes que es momento de escucharte con más profundidad, te acompaño.
-        </h2>
-        <div class="cta-actions">
-          <a href="/sesiones" class="btn-primary">Ver sesiones</a>
-          <a href="/contacto" class="btn-outline">Escribir ahora</a>
-        </div>
+        <h2 id="cta-title">Te acompaño a volver a conectar con el presente. Bienvenidos</h2>
       </div>
     </section>
   </main>
@@ -195,10 +217,16 @@ import Layout from "../layouts/Layout.astro";
 
   .section-label {
     margin-bottom: 0.8rem;
-    font-family: var(--font-accent);
+    font-family: var(--font-primary);
     color: var(--color-accent-red);
     font-size: clamp(1.5rem, 2.5vw, 2.1rem);
     line-height: 1;
+    text-transform: lowercase;
+  }
+
+  .section-label::first-letter {
+    font-family: var(--font-accent);
+    text-transform: uppercase;
   }
 
   .section-title {
@@ -261,24 +289,11 @@ import Layout from "../layouts/Layout.astro";
     max-width: 920px;
   }
 
-  .cta-kicker {
-    margin-bottom: 0.9rem;
-    font-size: clamp(1.6rem, 2.5vw, 2.1rem);
-  }
-
   .cta-wrap h2 {
     margin: 0 auto;
     max-width: 20ch;
     font-size: clamp(2rem, 4vw, 3.3rem);
     color: var(--color-primary-dark);
-  }
-
-  .cta-actions {
-    margin-top: 2rem;
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    flex-wrap: wrap;
   }
 
   .image-mobile {

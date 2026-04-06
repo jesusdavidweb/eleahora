@@ -9,7 +9,6 @@ const currentYear = new Date().getFullYear();
       <div class="footer-brand">
         <img src="/images/logo-white.png" alt="Eleahora" class="footer-logo" />
         <p class="brand-slogan text-accent">Soy la voz que te recuerda que estás aquí.</p>
-        <p class="brand-sub">Deja que el amor te regule. Confía en el proceso.</p>
       </div>
       
       <div class="footer-links">
@@ -79,6 +78,13 @@ const currentYear = new Date().getFullYear();
     font-size: 1.5rem;
     margin-bottom: 1rem;
     color: var(--color-earth); /* To contrast nicely against dark background */
+    font-family: var(--font-primary);
+    text-transform: lowercase;
+  }
+
+  .brand-slogan::first-letter {
+    font-family: var(--font-accent);
+    text-transform: uppercase;
   }
   
   .brand-sub {

@@ -3,28 +3,28 @@ import Layout from "../layouts/Layout.astro";
 
 const experienceItems = [
   {
-    title: "Recuerda que estás aquí",
-    description: "Invitación a detenernos y observar."
+    title: "Bien",
+    description: ""
   },
   {
     title: "¿Cómo estar más presentes?",
-    description: "Prácticas conscientes que integran los sentidos."
+    description: "Prácticas conscientes que integran los sentidos y los elementos."
   },
   {
-    title: "Meditación como neuroregulación",
-    description: "Ciencia, dopamina y cortisol."
+    title: "Meditación como método de neuroregulación",
+    description: "Sistema nervioso, dopamina y cortisol."
   },
   {
     title: "Meditación en todas sus formas",
-    description: "Accesible y efectiva."
+    description: "Con el cuerpo, la mente y el alma."
   },
   {
     title: "Niño Interior",
-    description: "Dinámicas lúdicas para recuperar la creatividad."
+    description: "Dinámicas lúdicas que despiertan la creatividad y la alegría."
   },
   {
     title: "¿Y ahora qué?",
-    description: "Acciones concretas para el día a día."
+    description: "Acciones concretas para aplicar en el día a día."
   }
 ];
 
@@ -35,27 +35,30 @@ const workshopFacts = [
 ];
 
 const companyBenefits = [
-  { text: "Herramientas prácticas de regulación del estrés.", color: "earth" },
+  { text: "Herramientas prácticas para regular altos niveles de estrés.", color: "earth" },
   { text: "Mejor sinergia grupal, empatía y conexión.", color: "sage" },
   { text: "Mayor claridad en la toma de decisiones.", color: "purple" },
-  { text: "Potenciación del rendimiento y bienestar colectivo.", color: "red" }
+  { text: "Información valiosa para cultivar la mente y potenciar el rendimiento.", color: "red" }
 ];
 
 const testimonials = [
   {
-    quote: "El profesionalismo y la calma de María marcan una verdadera diferencia. Practicar meditación después de su taller me ha ayudado muchísimo a ser más productiva...",
+    quote: "El profesionalismo y la calma de María marcan una verdadera diferencia. Practicar meditación después de su taller me ha ayudado muchísimo a ser más productiva y a ordenar mis prioridades con mayor claridad. También noto una mejor gestión del estrés en momentos de presión.",
     author: "María Aristeguieta",
-    role: "Talent Processes Senior Specialist at Avature, Spain"
+    role: "Talent Processes Senior Specialist at Avature, Spain",
+    color: "vinotinto"
   },
   {
-    quote: "¡Ojalá todos pudieran asistir a este workshop! Fue increíblemente valioso experimentar el mindfulness. ¡Tu workshop es oro puro!",
+    quote: "¡Ojalá todos pudieran asistir a este workshop! Fue increíblemente valioso experimentar el mindfulness y llevarnos herramientas concretas para aplicar en el trabajo. Salimos con más presencia, mejor escucha y una energía de equipo mucho más conectada. ¡Tu workshop es oro puro!",
     author: "Vanessa Fernández",
-    role: "Senior Product Manager at Giftify, Belgium"
+    role: "Senior Product Manager at Giftify, Belgium",
+    color: "verde"
   },
   {
-    quote: "Gracias, Maria, por enseñarme que la pausa también es parte del proceso. Tu workshop es un regalo para el mundo.",
+    quote: "Gracias, Maria, por enseñarme que la pausa también es parte del proceso. Tu workshop me recordó que regularnos no es frenar, sino crear espacio para decidir mejor y colaborar con más empatía. Es una experiencia que realmente transforma la forma de vivir el día a día laboral.",
     author: "Stella Camacho",
-    role: "Founder & Chief Creative Officer at Amorchi House"
+    role: "Founder & Chief Creative Officer at Amorchi House",
+    color: "morado"
   }
 ];
 ---
@@ -77,32 +80,59 @@ const testimonials = [
         <span class="orbit orbit-c"></span>
       </div>
 
-      <div class="max-w-screen hero-inner">
-        <div class="hero-top">
-          <span class="hero-tag">Experiencia para Empresas</span>
+      <div class="max-w-screen hero-grid">
+        <figure class="hero-media" aria-hidden="true">
+          <div class="hero-media-grid">
+            <div class="hero-image-card hero-image-card-primary">
+              <img
+                src="/images/Workshop Pienso Luego Medito-15-tiny.webp"
+                alt="Participantes en dinámica de mindfulness corporativo"
+                width="720"
+                height="960"
+                decoding="async"
+                fetchpriority="high"
+              />
+            </div>
+            <div class="hero-image-card hero-image-card-secondary">
+              <img
+                src="/images/Workshop Pienso Luego Medito-92-tiny.webp"
+                alt="Sesión de meditación guiada para equipos"
+                width="720"
+                height="960"
+                loading="eager"
+                decoding="async"
+              />
+            </div>
+          </div>
+        </figure>
+
+        <div class="hero-content">
+          <div class="hero-top">
+            <span class="hero-tag">Experiencia para Empresas</span>
+          </div>
+
+          <h1 id="workshop-title">
+            <em class="hero-em">"Pienso,</em>
+            <span class="hero-line2">luego medito"</span>
+          </h1>
+
+          <p class="hero-subtitle">Transformando el estrés en presencia.</p>
+
+          <div class="hero-cta-row">
+            <a href="/contacto" class="btn-primary">Solicitar propuesta</a>
+            <a href="#experiencia" class="btn-outline">Ver experiencia</a>
+          </div>
+
+          <ul class="hero-facts" aria-label="Datos del workshop">
+            {workshopFacts.map((fact) => (
+              <li class="fact-chip">
+                <span class="fact-label">{fact.label}</span>
+                <strong class="fact-value">{fact.value}</strong>
+                <span class="fact-detail">{fact.detail}</span>
+              </li>
+            ))}
+          </ul>
         </div>
-
-        <h1 id="workshop-title">
-          <em class="hero-em">"Pienso,</em>
-          <span class="hero-line2">luego medito"</span>
-        </h1>
-
-        <p class="hero-subtitle">Transformando el estrés en presencia consciente.</p>
-
-        <div class="hero-cta-row">
-          <a href="/contacto" class="btn-primary">Solicitar propuesta</a>
-          <a href="#experiencia" class="btn-outline">Ver experiencia</a>
-        </div>
-
-        <ul class="hero-facts" aria-label="Datos del workshop">
-          {workshopFacts.map((fact) => (
-            <li class="fact-chip">
-              <span class="fact-label">{fact.label}</span>
-              <strong class="fact-value">{fact.value}</strong>
-              <span class="fact-detail">{fact.detail}</span>
-            </li>
-          ))}
-        </ul>
       </div>
     </section>
 
@@ -114,8 +144,8 @@ const testimonials = [
           <h2 id="guide-title">Maria Eleonora Corallo</h2>
           <p>
             Terapeuta transpersonal, guía de meditación y fundadora de Eleahora. Combina
-            su carrera en idiomas (La Sorbonne) y su formación en PNL transpersonal,
-            Mindfulness y conexión energética para llevar herramientas prácticas al entorno
+            su carrera de idiomas (La Sorbonne) y su formación en PNL transpersonal,
+            Mindfulness y conexión energética para llevar herramientas prácticas de neuroregulación al entorno
             corporativo.
           </p>
         </div>
@@ -138,7 +168,10 @@ const testimonials = [
         <div class="about-body">
           <p class="about-intro">
             "Pienso, luego medito" combina ciencia, introspección y técnicas prácticas
-            para reconectar con nuestra esencia.
+            para reconectar con nuestra esencia, regular nuestras emociones y vivir con mayor presencia.
+            El workshop guía a los asistentes a través de dinámicas envolventes que integran los cinco sentidos y los elementos de la naturaleza para cultivar la atención plena. Además, aborda cómo nivelar el cortisol y la dopamina, dos hormonas clave en la productividad y el bienestar, ofreciendo herramientas como ejercicios de respiración, meditación y prácticas creativas.
+            Con un enfoque en la regulación del sistema nervioso, este espacio fomenta claridad mental, mejor toma de decisiones y una conexión más profunda entre los individuos y sus equipos.
+            Ideal para empresas que buscan empoderar a sus colaboradores con recursos para enfrentar los desafíos modernos, este workshop es más que una pausa: Es una invitación para transformar la manera en que vivimos y trabajamos, con una práctica tan esencial como la de volver al presente.
           </p>
           <div class="about-facts-row" aria-label="Detalles del workshop">
             {workshopFacts.map((fact) => (
@@ -199,13 +232,13 @@ const testimonials = [
     <section class="section-testimonials" aria-labelledby="test-title">
       <div class="max-w-screen">
         <header class="section-header">
-          <span class="eyebrow">Testimonios</span>
+          <span class="eyebrow">Quienes han vivido la experiencia</span>
           <h2 id="test-title">Lo que ocurre cuando la pausa también es parte del proceso.</h2>
         </header>
 
         <div class="testimonials-grid">
           {testimonials.map((t, i) => (
-            <blockquote class={`testimonial ${i === 0 ? 'testimonial--featured' : ''}`}>
+            <blockquote class={`testimonial ${i === 0 ? 'testimonial--featured' : ''} testimonial--${t.color}`}>
               <div class="testimonial-quote-mark" aria-hidden="true">"</div>
               <p class="testimonial-text">{t.quote}</p>
               <footer class="testimonial-footer">
@@ -218,6 +251,16 @@ const testimonials = [
       </div>
     </section>
 
+    <!-- ─── CITA DE CIERRE ───────────────────────────────────── -->
+    <section class="section-quote" aria-labelledby="quote-title">
+      <div class="max-w-screen quote-inner">
+        <blockquote class="closing-quote">
+          "El verdadero reto de la condición humana no es estar presente, sino darnos cuenta de que no estamos presentes."
+          <cite>— Meggan Watterson</cite>
+        </blockquote>
+      </div>
+    </section>
+
     <!-- ─── CTA ───────────────────────────────────────────── -->
     <section class="section-cta section-soft" aria-labelledby="cta-title">
       <div class="max-w-screen cta-inner">
@@ -227,12 +270,10 @@ const testimonials = [
           Cada sesión se adapta al momento de tu equipo. Escríbenos y lo diseñamos juntos.
         </p>
         <div class="cta-actions">
-          <a href="/contacto" class="btn-primary">Agendar llamada de descubrimiento</a>
+          <a href="https://wa.me/34605373782" class="btn-primary">Agendar llamada de descubrimiento</a>
         </div>
         <ul class="cta-contact" aria-label="Datos de contacto">
           <li><a href="mailto:info@eleahora.com">info@eleahora.com</a></li>
-          <li aria-hidden="true">·</li>
-          <li><a href="tel:+34605373782">+34 605 37 37 82</a></li>
         </ul>
       </div>
     </section>
@@ -256,6 +297,7 @@ const testimonials = [
     position: relative;
     padding: 8rem 0 6rem;
     isolation: isolate;
+    overflow: hidden;
     background:
       radial-gradient(ellipse 80% 60% at 60% -10%, rgba(109, 68, 146, 0.18) 0%, transparent 60%),
       radial-gradient(ellipse 60% 50% at -5% 80%, rgba(187, 137, 107, 0.14) 0%, transparent 55%),
@@ -279,6 +321,7 @@ const testimonials = [
     filter: blur(60px);
     pointer-events: none;
     z-index: -1;
+    animation: heroGlowFloat 10s ease-in-out infinite;
   }
 
   .hero-orbits {
@@ -301,6 +344,7 @@ const testimonials = [
     top: -320px;
     right: -200px;
     border-color: rgba(109, 68, 146, 0.1);
+    animation: orbitDriftA 16s ease-in-out infinite;
   }
 
   .orbit-b {
@@ -309,6 +353,7 @@ const testimonials = [
     bottom: -250px;
     left: -150px;
     border-color: rgba(187, 137, 107, 0.12);
+    animation: orbitDriftB 14s ease-in-out infinite;
   }
 
   .orbit-c {
@@ -317,13 +362,155 @@ const testimonials = [
     top: 40px;
     left: 38%;
     border-color: rgba(140, 7, 3, 0.1);
+    animation: orbitDriftC 12s ease-in-out infinite;
   }
 
-  .hero-inner {
+  .hero-grid {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    grid-template-areas: "content media";
+    gap: 2.5rem;
+    align-items: center;
+  }
+
+  .hero-content {
+    grid-area: content;
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 0;
+    padding: 2.4rem 2.1rem;
+    border-radius: 26px;
+    z-index: 1;
+  }
+
+  .hero-content::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background:
+      linear-gradient(110deg, rgba(253, 251, 236, 0.86) 0%, rgba(253, 251, 236, 0.72) 48%, rgba(253, 251, 236, 0.52) 100%),
+      radial-gradient(ellipse 120% 95% at 20% 15%, rgba(253, 251, 236, 0.5) 0%, transparent 66%);
+    box-shadow:
+      0 20px 50px rgba(59, 38, 57, 0.11),
+      inset 0 1px 0 rgba(255, 255, 255, 0.78);
+    backdrop-filter: blur(3px);
+  }
+
+  .hero-media {
+    grid-area: media;
+    margin: 0;
+  }
+
+  .hero-media-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    position: relative;
+  }
+
+  .hero-image-card {
+    --card-rotate: 0deg;
+    --card-offset-y: 0px;
+    border-radius: 22px;
+    overflow: hidden;
+    border: 1px solid rgba(59, 38, 57, 0.12);
+    box-shadow:
+      0 20px 46px rgba(59, 38, 57, 0.14),
+      inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.48);
+    transform-origin: center;
+    transform: translateY(var(--card-offset-y)) rotate(var(--card-rotate)) scale(1);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    opacity: 0;
+    animation: heroImageEnter 0.8s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+    will-change: transform, opacity;
+  }
+
+  .hero-image-card:hover {
+    transform: translateY(var(--card-offset-y)) rotate(var(--card-rotate)) scale(1.04);
+    box-shadow:
+      0 28px 60px rgba(59, 38, 57, 0.18),
+      inset 0 1px 0 rgba(255, 255, 255, 0.62);
+  }
+
+  .hero-image-card img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: 16 / 10;
+  }
+
+  .hero-image-card-primary {
+    --card-rotate: -1.2deg;
+    animation-delay: 70ms;
+  }
+
+  .hero-image-card-secondary {
+    max-width: 82%;
+    justify-self: end;
+    --card-offset-y: -12%;
+    --card-rotate: 2deg;
+    animation-delay: 150ms;
+  }
+
+  @keyframes heroImageEnter {
+    0% {
+      opacity: 0;
+      transform: translateY(calc(var(--card-offset-y) + 22px)) rotate(calc(var(--card-rotate) - 1deg)) scale(0.9);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(var(--card-offset-y)) rotate(var(--card-rotate)) scale(1);
+    }
+  }
+
+  @keyframes heroGlowFloat {
+    0%,
+    100% {
+      transform: translateX(-50%) translateY(0);
+      opacity: 0.95;
+    }
+    50% {
+      transform: translateX(-50%) translateY(14px);
+      opacity: 0.75;
+    }
+  }
+
+  @keyframes orbitDriftA {
+    0%,
+    100% {
+      transform: translate3d(0, 0, 0);
+    }
+    50% {
+      transform: translate3d(-16px, 10px, 0);
+    }
+  }
+
+  @keyframes orbitDriftB {
+    0%,
+    100% {
+      transform: translate3d(0, 0, 0);
+    }
+    50% {
+      transform: translate3d(14px, -12px, 0);
+    }
+  }
+
+  @keyframes orbitDriftC {
+    0%,
+    100% {
+      transform: translate3d(0, 0, 0);
+    }
+    50% {
+      transform: translate3d(-10px, 8px, 0);
+    }
   }
 
   .hero-top {
@@ -345,34 +532,34 @@ const testimonials = [
   }
 
   .workshop-hero h1 {
-    margin: 0 0 1.5rem;
-    line-height: 0.9;
-    letter-spacing: -0.04em;
+    margin: 0 0 1.15rem;
+    line-height: 0.96;
+    letter-spacing: -0.028em;
   }
 
   .hero-em {
     display: block;
-    font-family: var(--font-accent);
+    font-family: var(--font-primary);
     font-style: normal;
     color: var(--color-accent-red);
-    font-size: clamp(3.5rem, 9vw, 8.5rem);
+    font-size: clamp(2.2rem, 5.6vw, 4.8rem);
     line-height: 0.95;
   }
 
   .hero-line2 {
     display: block;
     font-family: var(--font-primary);
-    font-size: clamp(3rem, 8vw, 7.5rem);
+    font-size: clamp(2.2rem, 5.4vw, 4.8rem);
     color: var(--color-primary-dark);
     line-height: 1;
   }
 
   .hero-subtitle {
-    font-size: clamp(1.15rem, 2.2vw, 1.5rem);
-    line-height: 1.65;
+    font-size: clamp(1.02rem, 1.5vw, 1.28rem);
+    line-height: 1.55;
     color: rgba(59, 38, 57, 0.78);
-    max-width: 40ch;
-    margin-bottom: 2.5rem;
+    max-width: 34ch;
+    margin-bottom: 2.1rem;
     opacity: 1;
   }
 
@@ -522,10 +709,16 @@ const testimonials = [
   }
 
   .slogan-accent {
-    font-family: var(--font-accent);
+    font-family: var(--font-primary);
     font-size: clamp(2.5rem, 5vw, 4.5rem);
     color: var(--color-earth);
     line-height: 1;
+    text-transform: lowercase;
+  }
+
+  .slogan-accent::first-letter {
+    font-family: var(--font-accent);
+    text-transform: uppercase;
   }
 
   .slogan-main {
@@ -846,6 +1039,10 @@ const testimonials = [
     border-color: rgba(109, 68, 146, 0.2);
   }
 
+  .testimonial--vinotinto { border-color: var(--color-accent-red); }
+  .testimonial--verde { border-color: var(--color-sage); }
+  .testimonial--morado { border-color: var(--color-accent-purple); }
+
   .testimonial-quote-mark {
     font-family: var(--font-accent);
     font-size: 5rem;
@@ -892,13 +1089,45 @@ const testimonials = [
     line-height: 1.5;
   }
 
+  /* ═══════════════════════════════════════════
+     CITA DE CIERRE
+  ═══════════════════════════════════════════ */
+  .section-quote {
+    padding: 5rem 0;
+    background: var(--color-background);
+    text-align: center;
+  }
+
+  .closing-quote {
+    font-family: var(--font-primary);
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    line-height: 1.4;
+    color: var(--color-primary-dark);
+    max-width: 60ch;
+    margin: 0 auto;
+    position: relative;
+    text-transform: lowercase;
+  }
+
+  .closing-quote::first-letter {
+    font-family: var(--font-accent);
+    text-transform: uppercase;
+  }
+
+  .closing-quote cite {
+    display: block;
+    margin-top: 1.5rem;
+    font-family: var(--font-base);
+    font-size: 1rem;
+    color: rgba(59, 38, 57, 0.6);
+    font-style: normal;
+  }
+
   .section-soft {
-    background: linear-gradient(
-      to bottom,
-      rgba(187, 137, 107, 0.1) 0%,
-      rgba(253, 251, 236, 0.65) 55%,
-      rgba(253, 251, 236, 1) 100%
-    );
+    background:
+      radial-gradient(ellipse 95% 70% at 15% 20%, rgba(187, 137, 107, 0.26) 0%, transparent 60%),
+      radial-gradient(ellipse 75% 85% at 85% 35%, rgba(109, 68, 146, 0.18) 0%, transparent 62%),
+      linear-gradient(165deg, rgba(253, 251, 236, 0.95) 0%, rgba(253, 251, 236, 0.9) 48%, rgba(253, 251, 236, 1) 100%);
   }
 
   /* ═══════════════════════════════════════════
@@ -906,9 +1135,40 @@ const testimonials = [
   ═══════════════════════════════════════════ */
   .section-cta {
     position: relative;
-    padding: 7rem 0 8rem;
+    padding: 7rem 0 4.25rem;
     isolation: isolate;
     text-align: center;
+    overflow: hidden;
+  }
+
+  :global(.eleahora-footer) {
+    margin-top: 0 !important;
+  }
+
+  .section-cta::before {
+    content: "";
+    position: absolute;
+    top: -130px;
+    left: -120px;
+    width: 420px;
+    height: 420px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(140, 7, 3, 0.15), transparent 68%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .section-cta::after {
+    content: "";
+    position: absolute;
+    right: -140px;
+    bottom: -170px;
+    width: 520px;
+    height: 520px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(86, 100, 67, 0.14), transparent 67%);
+    pointer-events: none;
+    z-index: 0;
   }
 
   .cta-inner {
@@ -916,6 +1176,14 @@ const testimonials = [
     z-index: 1;
     max-width: 920px;
     margin-inline: auto;
+    padding: 2.8rem 2.2rem;
+    border-radius: 28px;
+    background: rgba(255, 255, 255, 0.58);
+    border: 1px solid rgba(59, 38, 57, 0.09);
+    box-shadow:
+      0 24px 58px rgba(59, 38, 57, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.82);
+    backdrop-filter: blur(8px);
   }
 
   .cta-kicker {
@@ -999,6 +1267,59 @@ const testimonials = [
       padding: 7rem 0 5rem;
     }
 
+    .hero-grid {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "media"
+        "content";
+      gap: 1.4rem;
+      justify-items: center;
+    }
+
+    .hero-media {
+      width: min(100%, 540px);
+      margin-inline: auto;
+    }
+
+    .hero-media-grid {
+      grid-template-columns: 1fr;
+      gap: 0;
+      justify-items: center;
+    }
+
+    .hero-image-card-primary {
+      max-width: 100%;
+      justify-self: center;
+      --card-offset-y: 0px;
+      --card-rotate: -0.9deg;
+      z-index: 1;
+    }
+
+    .hero-image-card-secondary {
+      max-width: 74%;
+      justify-self: end;
+      margin-top: -22%;
+      --card-offset-y: 0px;
+      --card-rotate: 1.6deg;
+      z-index: 2;
+    }
+
+    .hero-content {
+      width: min(100%, 620px);
+      margin-inline: auto;
+      align-items: center;
+      text-align: center;
+    }
+
+    .hero-subtitle {
+      margin-inline: auto;
+    }
+
+    .hero-cta-row,
+    .hero-facts {
+      justify-content: center;
+    }
+
     .workshop-page {
       padding-top: 5.2rem;
     }
@@ -1052,16 +1373,38 @@ const testimonials = [
   }
 
   @media (max-width: 640px) {
+    .hero-content {
+      padding: 1.65rem 1.35rem;
+      border-radius: 20px;
+    }
+
+    .hero-media-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-image-card-primary {
+      max-width: 100%;
+      --card-rotate: -0.8deg;
+    }
+
+    .hero-image-card-secondary {
+      max-width: 80%;
+      margin-top: -24%;
+      --card-rotate: 1.2deg;
+    }
+
     .hero-em {
-      font-size: clamp(3rem, 14vw, 5rem);
+      font-size: clamp(2rem, 9.2vw, 3.2rem);
     }
 
     .hero-line2 {
-      font-size: clamp(2.6rem, 12vw, 4.5rem);
+      font-size: clamp(1.95rem, 8.9vw, 3.1rem);
     }
 
     .hero-cta-row {
       flex-direction: column;
+      width: min(100%, 320px);
+      margin-inline: auto;
     }
 
     .hero-cta-row :global(a) {
@@ -1072,10 +1415,12 @@ const testimonials = [
 
     .hero-facts {
       flex-direction: column;
+      width: 100%;
+      align-items: center;
     }
 
     .fact-chip {
-      width: 100%;
+      width: min(100%, 280px);
     }
 
     .guide-slogan {
@@ -1093,11 +1438,32 @@ const testimonials = [
     }
 
     .section-cta {
-      padding: 5rem 0 6rem;
+      padding: 5rem 0 3.25rem;
+    }
+
+    .cta-inner {
+      padding: 2rem 1.3rem;
+      border-radius: 22px;
     }
 
     .cta-inner h2 {
       font-size: clamp(2rem, 9vw, 3rem);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-glow,
+    .orbit-a,
+    .orbit-b,
+    .orbit-c {
+      animation: none;
+    }
+
+    .hero-image-card {
+      animation: none;
+      transition: none;
+      opacity: 1;
+      transform: translateY(var(--card-offset-y)) rotate(var(--card-rotate)) scale(1);
     }
   }
 </style>

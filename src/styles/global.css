@@ -186,8 +186,14 @@ img {
 }
 
 .text-accent {
-  font-family: var(--font-accent);
+  font-family: var(--font-primary);
   color: var(--color-accent-red);
+  text-transform: lowercase;
+}
+
+.text-accent::first-letter {
+  font-family: var(--font-accent);
+  text-transform: uppercase;
 }
 
 /* Premium Buttons */
