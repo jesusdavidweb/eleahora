@@ -69,6 +69,9 @@
   --color-accent-purple: #6d4492;
   --color-earth: #bb896b;
   --color-sage: #566443;
+
+  /* Dynamic theme color — cycled randomly on each navigation/reload */
+  --color-theme-dynamic: #3b2639;
   
   --font-primary: 'Pacaembu', 'Helvetica Neue', sans-serif;
   --font-accent: 'Sloop', cursive;

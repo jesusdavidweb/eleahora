@@ -64,6 +64,15 @@ const ogImageAbsolute = ogImage.startsWith('http') ? ogImage : `${SITE_URL}${ogI
     <meta name="twitter:image:alt" content={ogTitle} />
 
     <ClientRouter />
+
+    <!-- Dynamic theme color: set synchronously to prevent FOUC on hard reload -->
+    <script is:inline>
+      (function () {
+        var THEME_COLORS = ['#8c0703', '#3b2639', '#566443'];
+        var color = THEME_COLORS[Math.floor(Math.random() * THEME_COLORS.length)];
+        document.documentElement.style.setProperty('--color-theme-dynamic', color);
+      })();
+    </script>
   </head>
   <body>
     <Header />
@@ -107,4 +116,12 @@ const ogImageAbsolute = ogImage.startsWith('http') ? ogImage : `${SITE_URL}${ogI
 
   // Ejecutar en la primera carga y tras cada transición
   document.addEventListener('astro:page-load', updateActiveNav);
+
+  // Cambiar color dinámico en cada navegación SPA
+  const THEME_COLORS = ['#8c0703', '#3b2639', '#566443'];
+  function applyRandomThemeColor() {
+    const color = THEME_COLORS[Math.floor(Math.random() * THEME_COLORS.length)];
+    document.documentElement.style.setProperty('--color-theme-dynamic', color);
+  }
+  document.addEventListener('astro:page-load', applyRandomThemeColor);
 </script>
