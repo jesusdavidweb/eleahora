@@ -265,17 +265,7 @@ import "../styles/global.css";
     z-index: 1;
     pointer-events: none;
   }
-
-  @media (max-width: 768px) {
-    .hero-overlay {
-      background: linear-gradient(
-        to bottom,
-        rgba(253, 251, 236, 0.9) 0%,
-        rgba(253, 251, 236, 0.7) 50%,
-        transparent 100%
-      );
-    }
-  }
+  /* Removed mobile white gradient override to preserve dark overlay on all viewports */
 
   .hero-content {
     position: relative;
@@ -396,9 +386,9 @@ import "../styles/global.css";
   .manifiesto-quote {
     font-family: var(--font-primary);
     font-size: 1.75rem;
-    color: var(--color-accent-purple);
+    color: var(--color-accent-red);
     font-style: italic;
-    border-left: 3px solid var(--color-accent-purple);
+    border-left: 3px solid var(--color-accent-red);
     padding-left: 2rem;
     margin-top: 3rem;
     line-height: 1.4;
@@ -420,7 +410,7 @@ import "../styles/global.css";
   /* Servicios Dark Section */
   .services-section {
     padding: 8rem 0;
-    background-color: var(--color-primary-dark);
+    background-color: var(--color-accent-red);
     color: var(--color-background);
   }
 
@@ -671,7 +661,7 @@ import "../styles/global.css";
 
   .testimonial-author {
     font-weight: 700;
-    color: var(--color-accent-purple);
+    color: var(--color-accent-red);
     font-size: 0.95rem;
   }
   .mindfulness-footer {

@@ -334,8 +334,23 @@ import Layout from "../layouts/Layout.astro";
 
     .about-story,
     .about-path,
-    .about-cta {
+      .about-cta {
       padding: 4.5rem 0;
     }
   }
+  
+    /* About CTA specific colors (override section-soft gradient) */
+    .about-cta {
+      background: var(--color-accent-red);
+      padding: 6rem 0;
+      margin-bottom: 0;
+    }
+
+    .about-cta .cta-wrap h2 {
+      color: var(--color-earth);
+    }
+
+    :global(.eleahora-footer) {
+      margin-top: 0 !important;
+    }
 </style>
