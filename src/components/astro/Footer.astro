@@ -1,5 +1,6 @@
 ---
 // Footer.astro
+import MeditationModal from '../svelte/MeditationModal.svelte';
 const currentYear = new Date().getFullYear();
 ---
 
@@ -9,15 +10,14 @@ const currentYear = new Date().getFullYear();
       <div class="footer-brand">
         <img src="/images/logo-white.png" alt="Eleahora" class="footer-logo" />
         <p class="brand-slogan text-accent">Soy la voz que te recuerda que estás aquí.</p>
-        <a
+        <button
           class="footer-meditation-cta"
-          href="https://insighttimer.com/eleahora/guided-meditations/meditacion-para-los-sentidos-que-me-funciona-mejor"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Escuchar meditación gratuita en Insight Timer (se abre en una pestaña nueva)"
+          type="button"
+          data-meditation-modal-trigger
+          aria-label="Abrir meditación gratuita de Insight Timer en un pop-up"
         >
           Escuchar meditación gratuita
-        </a>
+        </button>
       </div>
       
       <div class="footer-links">
@@ -147,6 +147,8 @@ const currentYear = new Date().getFullYear();
   </div>
 </footer>
 
+<MeditationModal client:idle />
+
 <style>
   .eleahora-footer {
     background-color: var(--color-theme-dynamic);
@@ -188,6 +190,8 @@ const currentYear = new Date().getFullYear();
   }
 
   .footer-meditation-cta {
+    appearance: none;
+    cursor: pointer;
     display: inline-flex;
     align-items: center;
     justify-content: center;

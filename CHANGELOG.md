@@ -24,6 +24,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Activos oficiales de marca: favicon, logo principal y logo de pie de página.
 - Créditos de soporte y desarrollo en el pie de página.
 - Enlaces de reserva directa (`https://cal.eu/eleahora/sesiones`) en todos los CTAs de sesiones.
+ - Añadido modal interactivo `MeditationModal.svelte` (isla Svelte, `client:idle`) para reproducir meditaciones de Insight Timer con animación GSAP y carga diferida del iframe.
+ - Añadida carga diferida del iframe de Insight Timer para optimizar la carga inicial (se inserta solo al abrir el modal).
 
 ### Changed
 - Rediseñada y completada la página `/contacto` con formulario funcional, panel de proceso, CTAs de agenda/WhatsApp y estructura de conversión.
@@ -36,11 +38,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Reestructuración de las secciones "Ciencia & Espíritu" y "Manifiesto" en la página de inicio con activos locales.
 - Refinado el CTA del menú móvil para mejorar el compromiso del usuario.
 - Estandarización tipográfica en la página de workshops (fuente Pacaembu).
+ - El CTA "Escuchar meditación gratuita" en el pie de página ahora abre un modal embebido en lugar de redirigir a Insight Timer; se cambió a botón semántico y se mejoró la accesibilidad del flujo.
 
 ### Fixed
 - Resolución de errores de enrutamiento 503 y 404 en el entorno de producción.
 - Corrección de problemas en el pipeline de despliegue relacionados con la configuración de Docker Composer.
 - Reparación de regresiones visuales en la página de Contacto (tipografía, órbitas y degradados).
+ - Corregido guard de SSR en `MeditationModal.svelte` para evitar acceso a `document` durante el prerender y prevenir errores en la generación estática.
 
 ### Removed
 - Eliminada carpeta errónea / plantilla innecesaria `civil-corot` que no aplicaba a la raíz del repositorio.
