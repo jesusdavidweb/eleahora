@@ -10,7 +10,7 @@ const serviceOptions: ContactServiceOption[] = [
   { value: 'clase-de-meditacion', label: 'Clase de Meditación' },
   { value: 'sesion-energetica', label: 'Sesión Energética (Chakras)' },
   { value: 'workshop-empresas', label: 'Workshop para empresas' },
-  { value: 'otro', label: 'Otro / No estoy segura aún' }
+  { value: 'otro', label: 'Otro / Aún no lo tengo claro' }
 ];
 ---
 
@@ -76,7 +76,7 @@ const serviceOptions: ContactServiceOption[] = [
             <a href="https://wa.me/34605373782" target="_blank" rel="noopener noreferrer">
               Escríbeme, estoy aquí para ti.
             </a>
-            <a href="mailto:hola@eleahora.com">hola@eleahora.com</a>
+            <a href="mailto:info@eleahora.com">info@eleahora.com</a>
           </div>
         </aside>
 
@@ -90,7 +90,7 @@ const serviceOptions: ContactServiceOption[] = [
             <input id="nombre" name="nombre" type="text" autocomplete="name" placeholder="Tu nombre" required />
 
             <label for="email">Email</label>
-            <input id="email" name="email" type="email" autocomplete="email" placeholder="tu@email.com" required />
+            <input id="email" name="email" type="email" autocomplete="email" placeholder="info@eleahora.com" required />
 
             <label for="telefono">WhatsApp (opcional)</label>
             <input id="telefono" name="telefono" type="tel" autocomplete="tel" placeholder="+34 ..." />
@@ -232,6 +232,7 @@ const serviceOptions: ContactServiceOption[] = [
   .hero-kicker::first-letter {
     font-family: var(--font-accent);
     text-transform: uppercase;
+    font-size: 1.5em;
   }
 
   h1 {

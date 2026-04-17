@@ -3,8 +3,8 @@ import Layout from "../layouts/Layout.astro";
 
 const experienceItems = [
   {
-    title: "Bien",
-    description: ""
+    title: "Bienvenida y aterrizaje consciente",
+    description: "Apertura del espacio, intención compartida y práctica breve para llegar al aquí y ahora como equipo."
   },
   {
     title: "¿Cómo estar más presentes?",
@@ -266,9 +266,6 @@ const testimonials = [
       <div class="max-w-screen cta-inner">
         <p class="text-accent cta-kicker">Siguiente paso</p>
         <h2 id="cta-title">¿Quieres llevar esta experiencia a tu organización?</h2>
-        <p class="cta-body">
-          Cada sesión se adapta al momento de tu equipo. Escríbenos y lo diseñamos juntos.
-        </p>
         <div class="cta-actions">
           <a href="https://wa.me/34605373782" class="btn-primary">Agendar llamada de descubrimiento</a>
         </div>
@@ -720,6 +717,7 @@ const testimonials = [
   .slogan-accent::first-letter {
     font-family: var(--font-accent);
     text-transform: uppercase;
+    font-size: 1.5em;
   }
 
   .slogan-main {
@@ -1113,6 +1111,7 @@ const testimonials = [
   .closing-quote::first-letter {
     font-family: var(--font-accent);
     text-transform: uppercase;
+    font-size: 1.5em;
   }
 
   .closing-quote cite {
@@ -1213,6 +1212,11 @@ const testimonials = [
     display: flex;
     justify-content: center;
     margin-bottom: 2rem;
+  }
+
+  /* Añadido: margen superior para el botón principal de CTA */
+  .cta-actions .btn-primary {
+    margin-top: 5%;
   }
 
   .cta-contact {

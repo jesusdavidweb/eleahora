@@ -13,7 +13,7 @@ import Layout from "../layouts/Layout.astro";
       <picture>
         <source media="(max-width: 768px)" srcset="/images/about-eleahora-001.webp" />
         <img
-          src="/images/home-eleahora-001.webp"
+          src="/images/about-desktop-2.webp"
           alt="Fondo de la sección Sobre Mí de Eleahora — presencia y conexión interior"
           class="page-hero-bg"
         />
@@ -38,12 +38,6 @@ import Layout from "../layouts/Layout.astro";
             class="about-image image-mobile"
           />
           <div class="section-body">
-            <p>
-              Soy quien soy y eso es suficiente.
-            </p>
-            <p>
-              Tengo un sueño: llevar la meditación a personas que aún no saben que la necesitan.
-            </p>
             <p>
               Nací en Venezuela, en una familia italiana, y desde muy joven mi vida ha estado marcada por el movimiento: distintos países, idiomas y culturas. Durante años seguí un camino más estructurado: estudié idiomas y comercio internacional en París y trabajé en entornos corporativos.
             </p>
@@ -122,6 +116,14 @@ import Layout from "../layouts/Layout.astro";
     <section class="about-cta section-soft" aria-labelledby="cta-title">
       <div class="max-w-screen cta-wrap">
         <h2 id="cta-title">Te acompaño a volver a conectar con el presente. Bienvenidos</h2>
+        <a
+          href="/sesiones"
+          class="footer-meditation-cta"
+          role="button"
+          aria-label="Ir a sesiones"
+          >
+          Estoy aquí para tí
+        </a>
       </div>
     </section>
   </main>
@@ -222,6 +224,7 @@ import Layout from "../layouts/Layout.astro";
   .section-label::first-letter {
     font-family: var(--font-accent);
     text-transform: uppercase;
+    font-size: 1.5em;
   }
 
   .section-title {
@@ -343,6 +346,11 @@ import Layout from "../layouts/Layout.astro";
 
     .about-cta .cta-wrap h2 {
       color: var(--color-earth);
+    }
+
+    /* Ensure CTA button in About page matches footer spacing */
+    .about-cta .footer-meditation-cta {
+      margin-top: 20px;
     }
 
     :global(.eleahora-footer) {

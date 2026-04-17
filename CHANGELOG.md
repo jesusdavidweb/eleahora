@@ -27,6 +27,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
  - Añadido modal interactivo `MeditationModal.svelte` (isla Svelte, `client:idle`) para reproducir meditaciones de Insight Timer con animación GSAP y carga diferida del iframe.
  - Añadida carga diferida del iframe de Insight Timer para optimizar la carga inicial (se inserta solo al abrir el modal).
 
+### Added
+- Añadidas nuevas imágenes de alta resolución en `public/images/` (`about-desktop-1.webp`, `about-desktop-2.webp`, `sesion_maria_corallo_neima_pidal_161-tiny.webp`).
+
 ### Changed
 - Rediseñada y completada la página `/contacto` con formulario funcional, panel de proceso, CTAs de agenda/WhatsApp y estructura de conversión.
 - Extendida la plantilla `Layout.astro` para soportar `noindex` en rutas transaccionales como `/gracias`.
@@ -39,6 +42,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Refinado el CTA del menú móvil para mejorar el compromiso del usuario.
 - Estandarización tipográfica en la página de workshops (fuente Pacaembu).
  - El CTA "Escuchar meditación gratuita" en el pie de página ahora abre un modal embebido en lugar de redirigir a Insight Timer; se cambió a botón semántico y se mejoró la accesibilidad del flujo.
+
+### Changed
+- Actualizado `public/llms.txt` con entradas y metadatos recientes.
+- Modificaciones en `src/components/astro/Footer.astro` (ajustes en créditos, enlaces y orden de elementos).
+- Ajustes en `src/components/astro/Header.astro` para mejorar navegación móvil y el CTA principal.
+- Actualizada la página `src/pages/404.astro` para mejorar la experiencia de error y accesibilidad.
+- Actualizaciones de contenido y assets en `src/pages/about.astro`.
+- Mejoras en validación y accesibilidad del formulario en `src/pages/contacto.astro`.
+- Ajustes de copia y tracking en `src/pages/gracias.astro` para métricas de conversión.
+- Cambios estructurales en `src/pages/index.astro` (hero, manifiesto y carga de assets locales).
+- Actualizaciones en `src/pages/sesiones.astro` (detalles de servicios y CTA de reserva).
+- Correcciones y refinamientos en `src/pages/workshop-empresas.astro` (copy y layout de beneficios).
+- Actualizaciones en `src/styles/global.css` (variables CSS, responsive y mejoras de rendimiento).
 
 ### Fixed
 - Resolución de errores de enrutamiento 503 y 404 en el entorno de producción.

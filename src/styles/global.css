@@ -197,6 +197,7 @@ img {
 .text-accent::first-letter {
   font-family: var(--font-accent);
   text-transform: uppercase;
+  font-size: 1.5em;
 }
 
 /* Premium Buttons */
@@ -244,4 +245,37 @@ img {
 .btn-outline:hover {
   background-color: var(--color-primary-dark);
   color: var(--color-background);
+}
+
+/* Shared footer CTA button — used in Footer and page CTAs */
+.footer-meditation-cta {
+  appearance: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.5rem;
+  padding: 0.6rem 1.1rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background-color: var(--color-background);
+  color: var(--color-primary-dark);
+  font-family: var(--font-base);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: var(--transition-smooth);
+}
+
+.footer-meditation-cta:hover {
+  background-color: var(--color-earth);
+  color: var(--color-primary-dark);
+  border-color: var(--color-background);
+}
+
+.footer-meditation-cta:focus-visible {
+  outline: 2px solid var(--color-background);
+  outline-offset: 3px;
+  background-color: var(--color-earth);
+  color: var(--color-primary-dark);
 }
