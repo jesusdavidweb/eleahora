@@ -18,6 +18,8 @@ const manifestoLabel = home?.manifestoLabel ?? 'Manifiesto';
 const manifestoTitle = home?.manifestoTitle ?? 'Deja que el amor te regule.';
 const manifestoQuote = home?.manifestoQuote ?? '"Soy estructura y soy caos. Soy servicio y soy soberanía. Deja que el amor te regule. Confía en el proceso."';
 const manifestoImage = home?.manifestoImage ?? '/images/home-manifiesto-eleahora-01-tiny.webp';
+// manifestoBodyHtml viene del helper resolveDocument en keystatic.ts
+const manifestoBodyHtml = (home as any)?.manifestoBodyHtml ?? '';
 
 const mindLabel      = home?.mindfulnessLabel         ?? 'Ciencia & Espíritu';
 const mindTitle      = home?.mindfulnessTitle         ?? 'Mindfulness como camino.';
@@ -71,12 +73,8 @@ const insightTimerUrl = site?.insightTimerUrl ?? 'https://insighttimer.com/eleah
         <span class="gsap-reveal text-accent section-label">{manifestoLabel}</span>
         <h2 class="gsap-reveal section-title">{manifestoTitle}</h2>
         <div class="gsap-reveal section-body">
-          {home?.manifestoBody ? (
-            (home.manifestoBody as any[]).map((block: any) => (
-              block.type === 'paragraph' && (
-                <p>{block.children?.map((c: any) => c.text).join('')}</p>
-              )
-            ))
+          {manifestoBodyHtml ? (
+            <Fragment set:html={manifestoBodyHtml} />
           ) : (
             <>
               <p>Durante años creí que la estructura y lo sutil eran opuestas. Vivía entre el deber ser y el anhelo de algo más grande. Hasta que entendí que el verdadero milagro ocurre cuando los pies están bien plantados en la tierra y el corazón abierto al cielo.</p>

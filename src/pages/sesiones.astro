@@ -12,7 +12,6 @@ const heroSubtitle = page?.heroSubtitle ?? 'Permítete leer cada una con calma y
 const heroImage   = page?.heroImage   ?? '/images/home-mindfulness-01-tiny.webp';
 const ctaTitle    = page?.ctaTitle    ?? 'Si aún no lo tienes claro, escríbeme aquí';
 const calLink     = site?.calLink     ?? 'https://cal.eu/eleahora/sesiones';
-const whatsapp    = site?.phoneWhatsapp ?? '+34605373782';
 
 // Sesiones hardcoded como fallback completo si no hay entradas en Keystatic
 const fallbackSesiones = [
@@ -109,29 +108,29 @@ const sesionesOrdenadas = sesiones.length > 0
     <section class="services-list">
       <div class="max-w-screen list-wrap">
         {sesionesOrdenadas ? (
-          sesionesOrdenadas.map((s, i) => (
-            <article class={`service-item${s.entry.featured ? ' service-item-featured' : ''}`}>
-              <div class="service-top">
-                <span class="service-number">{String(i + 1).padStart(2, '0')}</span>
-                {s.entry.tagline && <span class="service-pill">{s.entry.tagline}</span>}
-              </div>
-              <h2>{s.entry.title.name}</h2>
-              {s.entry.image && <img src={s.entry.image} alt={s.entry.title.name} class="service-img" />}
-              {s.entry.description && (
-                (s.entry.description as any[]).map((block: any) => (
-                  block.type === 'paragraph' && (
-                    <p>{block.children?.map((c: any) => c.text).join('')}</p>
-                  )
-                ))
-              )}
-              <ul>
-                {s.entry.duration && <li><strong>Duración:</strong> {s.entry.duration}</li>}
-                {s.entry.modality && <li><strong>Modalidad:</strong> {s.entry.modality === 'ambas' ? 'Videollamada y Presencial' : s.entry.modality === 'online' ? 'Videollamada' : 'Presencial en Madrid'}</li>}
-                {s.entry.price && <li><strong>Intercambio:</strong> {s.entry.price}</li>}
-              </ul>
-              <a href={s.entry.bookingUrl ?? calLink} class="btn-primary service-cta" target="_blank" rel="noopener noreferrer">Agendar sesión</a>
-            </article>
-          ))
+          sesionesOrdenadas.map((s, i) => {
+            // description puede ser función async (campo document de Keystatic) o string
+            const descText = typeof s.entry.description === 'string'
+              ? s.entry.description
+              : (s.entry as any).descriptionHtml ?? '';
+            return (
+              <article class={`service-item${s.entry.featured ? ' service-item-featured' : ''}`}>
+                <div class="service-top">
+                  <span class="service-number">{String(i + 1).padStart(2, '0')}</span>
+                  {s.entry.tagline && <span class="service-pill">{s.entry.tagline}</span>}
+                </div>
+                <h2>{s.entry.title.name}</h2>
+                {s.entry.image && <img src={s.entry.image} alt={s.entry.title.name} class="service-img" />}
+                {descText && <div class="service-desc"><Fragment set:html={descText} /></div>}
+                <ul>
+                  {s.entry.duration && <li><strong>Duración:</strong> {s.entry.duration}</li>}
+                  {s.entry.modality && <li><strong>Modalidad:</strong> {s.entry.modality === 'ambas' ? 'Videollamada y Presencial' : s.entry.modality === 'online' ? 'Videollamada' : 'Presencial en Madrid'}</li>}
+                  {s.entry.price && <li><strong>Intercambio:</strong> {s.entry.price}</li>}
+                </ul>
+                <a href={s.entry.bookingUrl ?? calLink} class="btn-primary service-cta" target="_blank" rel="noopener noreferrer">Agendar sesión</a>
+              </article>
+            );
+          })
         ) : (
           fallbackSesiones.map((s) => (
             <article class={`service-item${s.featured ? ' service-item-featured' : ''}`}>
@@ -188,7 +187,7 @@ const sesionesOrdenadas = sesiones.length > 0
   .service-number { font-family: var(--font-display, 'Pacaembu', sans-serif); font-size: 1.15rem; letter-spacing: 0.08em; color: var(--color-primary-dark); opacity: 0.56; }
   .service-pill { display: inline-flex; align-items: center; font-size: 0.82rem; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(59,38,57,0.82); background: linear-gradient(120deg, rgba(59,38,57,0.12), rgba(109,68,146,0.12)); border: 1px solid rgba(109,68,146,0.22); padding: 0.4rem 0.78rem; border-radius: 999px; box-shadow: 0 4px 12px rgba(59,38,57,0.08); }
   .service-item h2 { font-size: clamp(1.45rem, 2.7vw, 2.2rem); line-height: 1.2; margin-bottom: 0.85rem; }
-  .service-item p, .service-item li { font-size: 1.04rem; line-height: 1.72; }
+  .service-item p, .service-item li, .service-desc p { font-size: 1.04rem; line-height: 1.72; }
   .service-item ul { margin: 1.05rem 0 1.4rem; padding-left: 1.15rem; color: rgba(59,38,57,0.92); }
   .service-item li { margin-bottom: 0.46rem; }
   .service-meta { display: flex; flex-wrap: wrap; gap: 0.55rem; margin: 0.35rem 0 1.2rem; }
