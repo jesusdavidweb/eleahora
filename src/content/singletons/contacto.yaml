@@ -1,0 +1,13 @@
+heroTitle: 'Hablemos.'
+heroSubtitle: 'Estoy aquí para escucharte y acompañarte en el primer paso.'
+processTitle: '¿Cómo funciona?'
+processSteps:
+  - step: '01'
+    title: 'Escríbeme'
+    description: 'Cuéntame dónde estás y qué necesitas. Sin compromiso.'
+  - step: '02'
+    title: 'Hablamos'
+    description: 'Te respondo en menos de 24h para coordinar el primer contacto.'
+  - step: '03'
+    title: 'Comenzamos'
+    description: 'Juntas decidimos el tipo de sesión que mejor se adapta a tu momento.'
