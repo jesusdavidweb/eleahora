@@ -8,8 +8,8 @@ import keystatic from '@keystatic/astro';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://eleahora.com',
-  // Keystatic requiere modo 'hybrid' para las rutas de admin
-  output: 'hybrid',
+  // En Astro 6, 'hybrid' fue eliminado. 'static' es el equivalente.
+  output: 'static',
   build: {
     format: 'directory',
   },
