@@ -1,18 +1,26 @@
 FROM oven/bun:latest AS builder
 WORKDIR /app
-COPY package.json bun.lock tsconfig.json astro.config.mjs ./
+
+# Copiar archivos de configuración y dependencias
+COPY package.json bun.lock tsconfig.json astro.config.mjs keystatic.config.tsx ./
+
+# Copiar assets y código fuente
 COPY public ./public
 COPY src ./src
-# Install dependencies
+
+# Instalar dependencias
 RUN bun install
-# Build the project
+
+# Compilar
 RUN bun run build
 
 FROM caddy:alpine
 WORKDIR /usr/src/app
-# Copy the built output
+
+# Copiar el output compilado
 COPY --from=builder /app/dist ./dist
-# Copy the Caddyfile
+
+# Copiar Caddyfile
 COPY Caddyfile /etc/caddy/Caddyfile
 
 EXPOSE 80
