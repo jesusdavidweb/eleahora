@@ -1,12 +1,23 @@
 ---
 // Footer.astro
 import MeditationModal from '../svelte/MeditationModal.svelte';
+import { getSiteConfig } from '../../lib/keystatic';
+
 const currentYear = new Date().getFullYear();
+const site = await getSiteConfig();
+
+// Fallbacks por si el YAML de siteConfig no existe todavía
+const whatsappNumber = site?.phoneWhatsapp ?? '+34605373782';
+const calLink        = site?.calLink       ?? 'https://cal.eu/eleahora/sesiones';
+const instagramUrl   = site?.instagramUrl  ?? 'https://www.instagram.com/eleahora/';
+const insightUrl     = site?.insightTimerUrl ?? 'https://insighttimer.com/eleahora';
 ---
 
 <footer class="eleahora-footer">
   <div class="footer-container max-w-screen">
     <div class="footer-grid">
+
+      <!-- Columna 1: Marca -->
       <div class="footer-brand">
         <img src="/images/logo-white.png" alt="Eleahora" class="footer-logo" />
         <p class="brand-slogan text-accent">Soy la voz que te recuerda que estás aquí.</p>
@@ -19,7 +30,8 @@ const currentYear = new Date().getFullYear();
           Escuchar meditación gratuita
         </button>
       </div>
-      
+
+      <!-- Columna 2: Explora -->
       <div class="footer-links">
         <h3 class="footer-title">Explora</h3>
         <nav aria-label="Footer Navigation">
@@ -34,47 +46,35 @@ const currentYear = new Date().getFullYear();
           </ul>
         </nav>
       </div>
-      
+
+      <!-- Columna 3: Conecta -->
       <div class="footer-contact">
         <h3 class="footer-title">Conecta</h3>
         <ul>
           <li>
             <a
               class="social-link social-link--cal"
-              href="https://scheduler.zoom.us/maria-eleonora-051exv/sesi-n-eleahora"
+              href={calLink}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Agenda una sesion en Cal.com"
+              aria-label="Agenda una sesion"
             >
               <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                <path
-                  d="M3 9H21M7 3V5M17 3V5M11.9976 12.7119C11.2978 11.9328 10.1309 11.7232 9.25414 12.4367C8.37738 13.1501 8.25394 14.343 8.94247 15.1868C9.33119 15.6632 10.2548 16.4983 10.9854 17.1353C11.3319 17.4374 11.5051 17.5885 11.7147 17.6503C11.8934 17.703 12.1018 17.703 12.2805 17.6503C12.4901 17.5885 12.6633 17.4374 13.0098 17.1353C13.7404 16.4983 14.664 15.6632 15.0527 15.1868C15.7413 14.343 15.6329 13.1426 14.7411 12.4367C13.8492 11.7307 12.6974 11.9328 11.9976 12.7119ZM6.2 21H17.8C18.9201 21 19.4802 21 19.908 20.782C20.2843 20.5903 20.5903 20.2843 20.782 19.908C21 19.4802 21 18.9201 21 17.8V8.2C21 7.07989 21 6.51984 20.782 6.09202C20.5903 5.71569 20.2843 5.40973 19.908 5.21799C19.4802 5 18.9201 5 17.8 5H6.2C5.0799 5 4.51984 5 4.09202 5.21799C3.71569 5.40973 3.40973 5.71569 3.21799 6.09202C3 6.51984 3 7.07989 3 8.2V17.8C3 18.9201 3 19.4802 3.21799 19.908C3.40973 20.2843 3.71569 20.5903 4.09202 20.782C4.51984 21 5.07989 21 6.2 21Z"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.7"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
+                <path d="M3 9H21M7 3V5M17 3V5M11.9976 12.7119C11.2978 11.9328 10.1309 11.7232 9.25414 12.4367C8.37738 13.1501 8.25394 14.343 8.94247 15.1868C9.33119 15.6632 10.2548 16.4983 10.9854 17.1353C11.3319 17.4374 11.5051 17.5885 11.7147 17.6503C11.8934 17.703 12.1018 17.703 12.2805 17.6503C12.4901 17.5885 12.6633 17.4374 13.0098 17.1353C13.7404 16.4983 14.664 15.6632 15.0527 15.1868C15.7413 14.343 15.6329 13.1426 14.7411 12.4367C13.8492 11.7307 12.6974 11.9328 11.9976 12.7119ZM6.2 21H17.8C18.9201 21 19.4802 21 19.908 20.782C20.2843 20.5903 20.5903 20.2843 20.782 19.908C21 19.4802 21 18.9201 21 17.8V8.2C21 7.07989 21 6.51984 20.782 6.09202C20.5903 5.71569 20.2843 5.40973 19.908 5.21799C19.4802 5 18.9201 5 17.8 5H6.2C5.0799 5 4.51984 5 4.09202 5.21799C3.71569 5.40973 3.40973 5.71569 3.21799 6.09202C3 6.51984 3 7.07989 3 8.2V17.8C3 18.9201 3 19.4802 3.21799 19.908C3.40973 20.2843 3.71569 20.5903 4.09202 20.782C4.51984 21 5.07989 21 6.2 21Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
-              <span>Agenda una Sesion</span>
+              <span>Agenda una Sesión</span>
             </a>
           </li>
           <li>
             <a
               class="social-link social-link--instagram"
-              href="https://www.instagram.com/eleahora/"
+              href={instagramUrl}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram de Eleahora"
             >
               <svg class="social-icon" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
-                <g fill="currentColor" fill-rule="evenodd">
-                  <g transform="translate(-340 -7439)">
-                    <g transform="translate(56 160)">
-                      <path d="M289.869652 7279.12273C288.241769 7279.19618 286.830805 7279.5942 285.691486 7280.72871C284.548187 7281.86918 284.155147 7283.28558 284.081514 7284.89653C284.035742 7285.90201 283.768077 7293.49818 284.544207 7295.49028C285.067597 7296.83422 286.098457 7297.86749 287.454694 7298.39256C288.087538 7298.63872 288.809936 7298.80547 289.869652 7298.85411C298.730467 7299.25511 302.015089 7299.03674 303.400182 7295.49028C303.645956 7294.859 303.815113 7294.1374 303.86188 7293.08031C304.26686 7284.19677 303.796207 7282.27117 302.251908 7280.72871C301.027016 7279.50685 299.5862 7278.67508 289.869652 7279.12273M289.951245 7297.06748C288.981083 7297.0238 288.454707 7296.86201 288.103459 7296.72603C287.219865 7296.3826 286.556174 7295.72155 286.214876 7294.84312C285.623823 7293.32944 285.819846 7286.14023 285.872583 7284.97693C285.924325 7283.83745 286.155174 7282.79624 286.959165 7281.99226C287.954203 7280.99968 289.239792 7280.51332 297.993144 7280.90837C299.135448 7280.95998 300.179243 7281.19026 300.985224 7281.99226C301.980262 7282.98483 302.473801 7284.28014 302.071806 7292.99991C302.028024 7293.96767 301.865833 7294.49274 301.729513 7294.84312C300.829003 7297.15085 298.757333 7297.47145 289.951245 7297.06748M298.089663 7283.68956C298.089663 7284.34665 298.623998 7284.88065 299.283709 7284.88065C299.943419 7284.88065 300.47875 7284.34665 300.47875 7283.68956C300.47875 7283.03248 299.943419 7282.49847 299.283709 7282.49847C298.623998 7282.49847 298.089663 7283.03248 298.089663 7283.68956M288.862673 7288.98792C288.862673 7291.80286 291.150266 7294.08479 293.972194 7294.08479C296.794123 7294.08479 299.081716 7291.80286 299.081716 7288.98792C299.081716 7286.17298 296.794123 7283.89205 293.972194 7283.89205C291.150266 7283.89205 288.862673 7286.17298 288.862673 7288.98792M290.655732 7288.98792C290.655732 7287.16159 292.140329 7285.67967 293.972194 7285.67967C295.80406 7285.67967 297.288657 7287.16159 297.288657 7288.98792C297.288657 7290.81525 295.80406 7292.29716 293.972194 7292.29716C292.140329 7292.29716 290.655732 7290.81525 290.655732 7288.98792" />
-                    </g>
-                  </g>
-                </g>
+                <g fill="currentColor" fill-rule="evenodd"><g transform="translate(-340 -7439)"><g transform="translate(56 160)"><path d="M289.869652 7279.12273C288.241769 7279.19618 286.830805 7279.5942 285.691486 7280.72871C284.548187 7281.86918 284.155147 7283.28558 284.081514 7284.89653C284.035742 7285.90201 283.768077 7293.49818 284.544207 7295.49028C285.067597 7296.83422 286.098457 7297.86749 287.454694 7298.39256C288.087538 7298.63872 288.809936 7298.80547 289.869652 7298.85411C298.730467 7299.25511 302.015089 7299.03674 303.400182 7295.49028C303.645956 7294.859 303.815113 7294.1374 303.86188 7293.08031C304.26686 7284.19677 303.796207 7282.27117 302.251908 7280.72871C301.027016 7279.50685 299.5862 7278.67508 289.869652 7279.12273M289.951245 7297.06748C288.981083 7297.0238 288.454707 7296.86201 288.103459 7296.72603C287.219865 7296.3826 286.556174 7295.72155 286.214876 7294.84312C285.623823 7293.32944 285.819846 7286.14023 285.872583 7284.97693C285.924325 7283.83745 286.155174 7282.79624 286.959165 7281.99226C287.954203 7280.99968 289.239792 7280.51332 297.993144 7280.90837C299.135448 7280.95998 300.179243 7281.19026 300.985224 7281.99226C301.980262 7282.98483 302.473801 7284.28014 302.071806 7292.99991C302.028024 7293.96767 301.865833 7294.49274 301.729513 7294.84312C300.829003 7297.15085 298.757333 7297.47145 289.951245 7297.06748M298.089663 7283.68956C298.089663 7284.34665 298.623998 7284.88065 299.283709 7284.88065C299.943419 7284.88065 300.47875 7284.34665 300.47875 7283.68956C300.47875 7283.03248 299.943419 7282.49847 299.283709 7282.49847C298.623998 7282.49847 298.089663 7283.03248 298.089663 7283.68956M288.862673 7288.98792C288.862673 7291.80286 291.150266 7294.08479 293.972194 7294.08479C296.794123 7294.08479 299.081716 7291.80286 299.081716 7288.98792C299.081716 7286.17298 296.794123 7283.89205 293.972194 7283.89205C291.150266 7283.89205 288.862673 7286.17298 288.862673 7288.98792M290.655732 7288.98792C290.655732 7287.16159 292.140329 7285.67967 293.972194 7285.67967C295.80406 7285.67967 297.288657 7287.16159 297.288657 7288.98792C297.288657 7290.81525 295.80406 7292.29716 293.972194 7292.29716C292.140329 7292.29716 290.655732 7290.81525 290.655732 7288.98792" /></g></g></g>
               </svg>
               <span>Instagram</span>
             </a>
@@ -88,13 +88,7 @@ const currentYear = new Date().getFullYear();
               aria-label="LinkedIn de Eleahora"
             >
               <svg class="social-icon" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
-                <g fill="currentColor" fill-rule="evenodd">
-                  <g transform="translate(-180 -7479)">
-                    <g transform="translate(56 160)">
-                      <path d="M144 7339H140V7332.001C140 7330.081 139.153 7329.01 137.634 7329.01C135.981 7329.01 135 7330.126 135 7332.001V7339H131V7326H135V7327.462C135 7327.462 136.255 7325.26 139.083 7325.26C141.912 7325.26 144 7326.986 144 7330.558V7339ZM126.442 7323.921C125.093 7323.921 124 7322.819 124 7321.46C124 7320.102 125.093 7319 126.442 7319C127.79 7319 128.883 7320.102 128.883 7321.46C128.884 7322.819 127.79 7323.921 126.442 7323.921ZM124 7339H129V7326H124V7339Z" />
-                    </g>
-                  </g>
-                </g>
+                <g fill="currentColor" fill-rule="evenodd"><g transform="translate(-180 -7479)"><g transform="translate(56 160)"><path d="M144 7339H140V7332.001C140 7330.081 139.153 7329.01 137.634 7329.01C135.981 7329.01 135 7330.126 135 7332.001V7339H131V7326H135V7327.462C135 7327.462 136.255 7325.26 139.083 7325.26C141.912 7325.26 144 7326.986 144 7330.558V7339ZM126.442 7323.921C125.093 7323.921 124 7322.819 124 7321.46C124 7320.102 125.093 7319 126.442 7319C127.79 7319 128.883 7320.102 128.883 7321.46C128.884 7322.819 127.79 7323.921 126.442 7323.921ZM124 7339H129V7326H124V7339Z" /></g></g></g>
               </svg>
               <span>LinkedIn</span>
             </a>
@@ -102,7 +96,7 @@ const currentYear = new Date().getFullYear();
           <li>
             <a
               class="social-link social-link--insight"
-              href="https://insighttimer.com/eleahora"
+              href={insightUrl}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Insight Timer de Eleahora"
@@ -118,26 +112,34 @@ const currentYear = new Date().getFullYear();
           <li>
             <a
               class="social-link social-link--whatsapp"
-              href="https://wa.me/+34605373782"
+              href={`https://wa.me/${whatsappNumber.replace(/[^0-9+]/g, '')}`}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="WhatsApp de Eleahora"
             >
               <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
-                  d="M3.50002 12C3.50002 7.30558 7.3056 3.5 12 3.5C16.6944 3.5 20.5 7.30558 20.5 12C20.5 16.6944 16.6944 20.5 12 20.5C10.3278 20.5 8.77127 20.0182 7.45798 19.1861C7.21357 19.0313 6.91408 18.9899 6.63684 19.0726L3.75769 19.9319L4.84173 17.3953C4.96986 17.0955 4.94379 16.7521 4.77187 16.4751C3.9657 15.176 3.50002 13.6439 3.50002 12ZM12 1.5C6.20103 1.5 1.50002 6.20101 1.50002 12C1.50002 13.8381 1.97316 15.5683 2.80465 17.0727L1.08047 21.107C0.928048 21.4637 0.99561 21.8763 1.25382 22.1657C1.51203 22.4552 1.91432 22.5692 2.28599 22.4582L6.78541 21.1155C8.32245 21.9965 10.1037 22.5 12 22.5C17.799 22.5 22.5 17.799 22.5 12C22.5 6.20101 17.799 1.5 12 1.5ZM14.2925 14.1824L12.9783 15.1081C12.3628 14.7575 11.6823 14.2681 10.9997 13.5855C10.2901 12.8759 9.76402 12.1433 9.37612 11.4713L10.2113 10.7624C10.5697 10.4582 10.6678 9.94533 10.447 9.53028L9.38284 7.53028C9.23954 7.26097 8.98116 7.0718 8.68115 7.01654C8.38113 6.96129 8.07231 7.046 7.84247 7.24659L7.52696 7.52195C6.76823 8.18414 6.3195 9.2723 6.69141 10.3741C7.07698 11.5163 7.89983 13.314 9.58552 14.9997C11.3991 16.8133 13.2413 17.5275 14.3186 17.8049C15.1866 18.0283 16.008 17.7288 16.5868 17.2572L17.1783 16.7752C17.4313 16.5691 17.5678 16.2524 17.544 15.9269C17.5201 15.6014 17.3389 15.308 17.0585 15.1409L15.3802 14.1409C15.0412 13.939 14.6152 13.9552 14.2925 14.1824Z"
-                  fill="currentColor"
-                />
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M3.50002 12C3.50002 7.30558 7.3056 3.5 12 3.5C16.6944 3.5 20.5 7.30558 20.5 12C20.5 16.6944 16.6944 20.5 12 20.5C10.3278 20.5 8.77127 20.0182 7.45798 19.1861C7.21357 19.0313 6.91408 18.9899 6.63684 19.0726L3.75769 19.9319L4.84173 17.3953C4.96986 17.0955 4.94379 16.7521 4.77187 16.4751C3.9657 15.176 3.50002 13.6439 3.50002 12ZM12 1.5C6.20103 1.5 1.50002 6.20101 1.50002 12C1.50002 13.8381 1.97316 15.5683 2.80465 17.0727L1.08047 21.107C0.928048 21.4637 0.99561 21.8763 1.25382 22.1657C1.51203 22.4552 1.91432 22.5692 2.28599 22.4582L6.78541 21.1155C8.32245 21.9965 10.1037 22.5 12 22.5C17.799 22.5 22.5 17.799 22.5 12C22.5 6.20101 17.799 1.5 12 1.5ZM14.2925 14.1824L12.9783 15.1081C12.3628 14.7575 11.6823 14.2681 10.9997 13.5855C10.2901 12.8759 9.76402 12.1433 9.37612 11.4713L10.2113 10.7624C10.5697 10.4582 10.6678 9.94533 10.447 9.53028L9.38284 7.53028C9.23954 7.26097 8.98116 7.0718 8.68115 7.01654C8.38113 6.96129 8.07231 7.046 7.84247 7.24659L7.52696 7.52195C6.76823 8.18414 6.3195 9.2723 6.69141 10.3741C7.07698 11.5163 7.89983 13.314 9.58552 14.9997C11.3991 16.8133 13.2413 17.5275 14.3186 17.8049C15.1866 18.0283 16.008 17.7288 16.5868 17.2572L17.1783 16.7752C17.4313 16.5691 17.5678 16.2524 17.544 15.9269C17.5201 15.6014 17.3389 15.308 17.0585 15.1409L15.3802 14.1409C15.0412 13.939 14.6152 13.9552 14.2925 14.1824Z" fill="currentColor" />
               </svg>
               <span>WhatsApp</span>
             </a>
           </li>
         </ul>
       </div>
+
+      <!-- Columna 4: Legal -->
+      <div class="footer-legal-col">
+        <h3 class="footer-title">Legal</h3>
+        <nav aria-label="Legal Navigation">
+          <ul>
+            <li><a href="/legal/aviso-legal">Aviso Legal</a></li>
+            <li><a href="/legal/politica-de-privacidad">Privacidad</a></li>
+            <li><a href="/legal/politica-de-cookies">Cookies</a></li>
+          </ul>
+        </nav>
+      </div>
+
     </div>
-    
+
     <div class="footer-bottom">
       <p>&copy; {currentYear} Eleahora. Todos los derechos reservados.</p>
       <p class="credits">
@@ -156,30 +158,30 @@ const currentYear = new Date().getFullYear();
     padding: 6rem 0 2rem;
     margin-top: 4rem;
   }
-  
+
   .footer-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: 4rem;
     margin-bottom: 4rem;
   }
-  
+
   @media (min-width: 768px) {
     .footer-grid {
-      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
     }
   }
-  
+
   .footer-logo {
     height: 40px !important;
     width: auto !important;
     margin-bottom: 1.5rem;
   }
-  
+
   .brand-slogan {
     font-size: 1.5rem;
     margin-bottom: 1rem;
-    color: var(--color-earth); /* To contrast nicely against dark background */
+    color: var(--color-earth);
     font-family: var(--font-primary);
     text-transform: lowercase;
   }
@@ -221,37 +223,35 @@ const currentYear = new Date().getFullYear();
     background-color: var(--color-earth);
     color: var(--color-primary-dark);
   }
-  
-  .brand-sub {
-    font-size: 1rem;
-    color: var(--color-background);
-    opacity: 0.8;
-  }
-  
+
   .footer-title {
     color: var(--color-earth);
     font-size: 1.25rem;
     margin-bottom: 1.5rem;
     font-family: var(--font-primary);
   }
-  
+
   .footer-links ul,
-  .footer-contact ul {
+  .footer-contact ul,
+  .footer-legal-col ul {
     list-style: none;
     padding: 0;
   }
-  
+
   .footer-links li,
-  .footer-contact li {
+  .footer-contact li,
+  .footer-legal-col li {
     margin-bottom: 0.75rem;
   }
-  
+
   .footer-links a,
-  .footer-contact a {
+  .footer-contact a,
+  .footer-legal-col a {
     color: var(--color-background);
     opacity: 0.8;
     transition: var(--transition-smooth);
     font-family: system-ui, sans-serif;
+    text-decoration: none;
   }
 
   .footer-contact .social-link {
@@ -268,26 +268,26 @@ const currentYear = new Date().getFullYear();
     fill: currentColor;
   }
 
-
-  
   .footer-links a:hover,
-  .footer-contact a:hover {
+  .footer-contact a:hover,
+  .footer-legal-col a:hover {
     opacity: 1;
     color: var(--color-earth);
   }
 
-  .footer-contact a:focus-visible {
+  .footer-contact a:focus-visible,
+  .footer-legal-col a:focus-visible {
     outline: 2px solid var(--color-earth);
     outline-offset: 3px;
     border-radius: 2px;
   }
-  
+
   .footer-bottom {
-    border-top: 1px solid rgba(253, 251, 236, 0.2); /* Semi-transparent color-background */
+    border-top: 1px solid rgba(253, 251, 236, 0.2);
     padding-top: 2rem;
     text-align: center;
   }
-  
+
   .footer-bottom p {
     color: var(--color-background);
     opacity: 0.6;
