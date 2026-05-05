@@ -307,5 +307,27 @@ export default config({
       },
     }),
 
+    legalPages: collection({
+      label: '📜 Páginas Legales',
+      path: 'src/content/legal/*',
+      slugField: 'title',
+      schema: {
+        title: fields.slug({ name: { label: 'Título de la página' } }),
+        metaDescription: fields.text({
+          label: 'Meta description (SEO)',
+          multiline: true,
+        }),
+        lastUpdated: fields.date({
+          label: 'Última actualización',
+          defaultValue: { kind: 'today' },
+        }),
+        content: fields.document({
+          label: 'Contenido',
+          formatting: true,
+          links: true,
+        }),
+      },
+    }),
+
   },
 });

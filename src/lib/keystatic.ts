@@ -1,40 +1,141 @@
 /**
- * Helpers para leer contenido de Keystatic desde páginas Astro.
- * Usa createReader de @keystatic/core/reader para acceso a ficheros locales.
+ * src/lib/keystatic.ts
+ * Helpers para leer datos de Keystatic en build-time (Astro SSG/SSR).
+ * Todos los helpers son async y devuelven null/[] si el archivo no existe todavía.
  */
-import { createReader } from '@keystatic/core/reader';
-import keystaticConfig from '../../keystatic.config';
 
-export const reader = createReader(process.cwd(), keystaticConfig);
+import { createReader } from '@keystatic/core/reader';
+import config from '../../keystatic.config';
+
+// Reader singleton reutilizable
+const reader = createReader(process.cwd(), config);
+
+// ─────────────────────────────────────────────
+// SINGLETONS
+// ─────────────────────────────────────────────
 
 export async function getSiteConfig() {
-  return await reader.singletons.siteConfig.read();
+  try {
+    return await reader.singletons.siteConfig.read();
+  } catch {
+    return null;
+  }
 }
 
 export async function getHomePage() {
-  return await reader.singletons.homePage.read();
+  try {
+    return await reader.singletons.homePage.read();
+  } catch {
+    return null;
+  }
 }
 
 export async function getAboutPage() {
-  return await reader.singletons.aboutPage.read();
+  try {
+    return await reader.singletons.aboutPage.read();
+  } catch {
+    return null;
+  }
 }
 
 export async function getSessionesPage() {
-  return await reader.singletons.sessionesPage.read();
+  try {
+    return await reader.singletons.sessionesPage.read();
+  } catch {
+    return null;
+  }
 }
 
 export async function getWorkshopPage() {
-  return await reader.singletons.workshopPage.read();
+  try {
+    return await reader.singletons.workshopPage.read();
+  } catch {
+    return null;
+  }
 }
 
 export async function getContactoPage() {
-  return await reader.singletons.contactoPage.read();
+  try {
+    return await reader.singletons.contactoPage.read();
+  } catch {
+    return null;
+  }
 }
 
+// ─────────────────────────────────────────────
+// COLLECTIONS
+// ─────────────────────────────────────────────
+
+/** Devuelve todas las sesiones ordenadas por campo `order` */
 export async function getAllSesiones() {
-  return await reader.collections.sesiones.all();
+  try {
+    const slugs = await reader.collections.sesiones.list();
+    const entries = await Promise.all(
+      slugs.map(async (slug) => {
+        const entry = await reader.collections.sesiones.read(slug);
+        return entry ? { slug, entry } : null;
+      })
+    );
+    return entries
+      .filter((e): e is { slug: string; entry: NonNullable<typeof entries[0]>['entry'] } => e !== null)
+      .sort((a, b) => (a.entry.order ?? 0) - (b.entry.order ?? 0));
+  } catch {
+    return [];
+  }
 }
 
-export async function getAllTestimonios() {
-  return await reader.collections.testimonios.all();
+/** Devuelve una sesión por slug */
+export async function getSesion(slug: string) {
+  try {
+    return await reader.collections.sesiones.read(slug);
+  } catch {
+    return null;
+  }
+}
+
+/** Devuelve todos los testimonios ordenados por `order`, filtrados por `featured` si se indica */
+export async function getAllTestimonios(onlyFeatured = false) {
+  try {
+    const slugs = await reader.collections.testimonios.list();
+    const entries = await Promise.all(
+      slugs.map(async (slug) => {
+        const entry = await reader.collections.testimonios.read(slug);
+        return entry ? { slug, entry } : null;
+      })
+    );
+    return entries
+      .filter((e): e is { slug: string; entry: NonNullable<typeof entries[0]>['entry'] } => {
+        if (!e) return false;
+        if (onlyFeatured) return e.entry.featured === true;
+        return true;
+      })
+      .sort((a, b) => (a.entry.order ?? 0) - (b.entry.order ?? 0));
+  } catch {
+    return [];
+  }
+}
+
+/** Devuelve todas las páginas legales publicadas */
+export async function getAllLegalPages() {
+  try {
+    const slugs = await reader.collections.legalPages.list();
+    const entries = await Promise.all(
+      slugs.map(async (slug) => {
+        const entry = await reader.collections.legalPages.read(slug);
+        return entry ? { slug, entry } : null;
+      })
+    );
+    return entries.filter((e): e is { slug: string; entry: NonNullable<typeof entries[0]>['entry'] } => e !== null);
+  } catch {
+    return [];
+  }
+}
+
+/** Devuelve una página legal por slug */
+export async function getLegalPage(slug: string) {
+  try {
+    return await reader.collections.legalPages.read(slug);
+  } catch {
+    return null;
+  }
 }
