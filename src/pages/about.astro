@@ -10,6 +10,7 @@ const heroSubtitle   = about?.heroSubtitle   ?? 'Terapeuta Transpersonal · Guí
 const profileImage   = about?.profileImage   ?? '/images/about-eleahora-001.webp';
 const ctaTitle       = about?.ctaTitle       ?? 'Te acompaño a volver a conectar con el presente. Bienvenidos';
 const ctaButtonText  = about?.ctaButtonText  ?? 'Estoy aquí para tí';
+const bioBodyHtml    = about?.bioBodyHtml ?? '';
 ---
 
 <Layout
@@ -49,12 +50,8 @@ const ctaButtonText  = about?.ctaButtonText  ?? 'Estoy aquí para tí';
           />
           <div class="section-body">
             {about?.bioIntro && <p>{about.bioIntro}</p>}
-            {about?.bioBody ? (
-              (about.bioBody as any[]).map((block: any) => (
-                block.type === 'paragraph' && (
-                  <p>{block.children?.map((c: any) => c.text).join('')}</p>
-                )
-              ))
+            {bioBodyHtml ? (
+              <Fragment set:html={bioBodyHtml} />
             ) : (
               <>
                 <p>Nací en Venezuela, en una familia italiana, y desde muy joven mi vida ha estado marcada por el movimiento: distintos países, idiomas y culturas. Durante años seguí un camino más estructurado: estudié idiomas y comercio internacional en París y trabajé en entornos corporativos.</p>
