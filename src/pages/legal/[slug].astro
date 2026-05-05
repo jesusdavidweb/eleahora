@@ -1,0 +1,171 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getAllLegalPages, getLegalPage } from '../../lib/keystatic';
+import { DocumentRenderer } from '@keystatic/core/renderer';
+
+export async function getStaticPaths() {
+  const pages = await getAllLegalPages();
+
+  // Si no hay páginas en Keystatic aún, generamos las rutas fallback
+  if (pages.length === 0) {
+    return [
+      { params: { slug: 'politica-de-privacidad' } },
+      { params: { slug: 'politica-de-cookies' } },
+      { params: { slug: 'aviso-legal' } },
+    ];
+  }
+
+  return pages.map((p) => ({ params: { slug: p.slug } }));
+}
+
+const { slug } = Astro.params;
+const page = await getLegalPage(slug);
+
+// Mapas de fallback por slug para cuando no hay contenido en Keystatic
+const fallbackMeta: Record<string, { title: string; description: string; updated: string }> = {
+  'politica-de-privacidad': {
+    title: 'Política de Privacidad',
+    description: 'Política de privacidad de Eleahora. Conoce cómo recopilamos, usamos y protegemos tus datos personales.',
+    updated: '1 de enero de 2025',
+  },
+  'politica-de-cookies': {
+    title: 'Política de Cookies',
+    description: 'Política de cookies de Eleahora. Información sobre el uso de cookies en este sitio web.',
+    updated: '1 de enero de 2025',
+  },
+  'aviso-legal': {
+    title: 'Aviso Legal',
+    description: 'Aviso legal de Eleahora. Información legal sobre el titular del sitio web y condiciones de uso.',
+    updated: '1 de enero de 2025',
+  },
+};
+
+const meta = fallbackMeta[slug] ?? { title: 'Información Legal', description: '', updated: '' };
+const pageTitle = page?.title?.name ?? meta.title;
+const pageDesc  = page?.metaDescription ?? meta.description;
+const lastUpdated = page?.lastUpdated ?? meta.updated;
+---
+
+<Layout
+  title={`${pageTitle} | Eleahora`}
+  description={pageDesc}
+  ogTitle={`${pageTitle} — Eleahora`}
+  noindex={true}
+>
+  <main class="legal-page">
+    <div class="legal-hero">
+      <div class="max-w-screen">
+        <nav class="legal-breadcrumb" aria-label="Breadcrumb">
+          <a href="/">Inicio</a>
+          <span aria-hidden="true">›</span>
+          <span>{pageTitle}</span>
+        </nav>
+        <h1>{pageTitle}</h1>
+        {lastUpdated && (
+          <p class="legal-updated">Última actualización: {lastUpdated}</p>
+        )}
+      </div>
+    </div>
+
+    <article class="legal-content max-w-screen">
+      {page?.content ? (
+        <DocumentRenderer document={page.content} />
+      ) : (
+        <div class="legal-fallback">
+          {slug === 'politica-de-privacidad' && (
+            <>
+              <h2>1. Responsable del tratamiento</h2>
+              <p>Titular: Maria Eleonora Corallo<br />Actividad: Terapia Transpersonal y Meditación<br />Email: <a href="mailto:info@eleahora.com">info@eleahora.com</a></p>
+
+              <h2>2. Datos que recopilamos</h2>
+              <p>A través del formulario de contacto recopilamos nombre, email, teléfono (opcional) y el contenido del mensaje. Estos datos se usan exclusivamente para responder tu solicitud y ofrecerte información sobre los servicios de Eleahora.</p>
+
+              <h2>3. Base legal del tratamiento</h2>
+              <p>El tratamiento de tus datos se basa en el consentimiento otorgado al enviar el formulario (art. 6.1.a RGPD).</p>
+
+              <h2>4. Conservación de datos</h2>
+              <p>Conservamos tus datos durante el tiempo necesario para gestionar tu solicitud y, en su caso, el tiempo legalmente requerido.</p>
+
+              <h2>5. Tus derechos</h2>
+              <p>Puedes ejercer tus derechos de acceso, rectificación, supresión, limitación, portabilidad y oposición escribiendo a <a href="mailto:info@eleahora.com">info@eleahora.com</a>. También puedes presentar una reclamación ante la Agencia Española de Protección de Datos (aepd.es).</p>
+
+              <h2>6. Cookies</h2>
+              <p>Este sitio web usa cookies propias y de terceros. Consulta nuestra <a href="/legal/politica-de-cookies">Política de Cookies</a> para más información.</p>
+            </>
+          )}
+          {slug === 'politica-de-cookies' && (
+            <>
+              <h2>1. ¿Qué son las cookies?</h2>
+              <p>Las cookies son pequeños archivos que se almacenan en tu dispositivo cuando visitas un sitio web. Permiten recordar tus preferencias y mejorar tu experiencia de navegación.</p>
+
+              <h2>2. Cookies que utilizamos</h2>
+              <table class="cookies-table">
+                <thead>
+                  <tr><th>Cookie</th><th>Tipo</th><th>Finalidad</th><th>Duración</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>_ga, _ga_*</td><td>Analítica</td><td>Google Analytics — medir audiencias anónimamente</td><td>2 años</td></tr>
+                  <tr><td>cookieconsent</td><td>Funcional</td><td>Guardar tu preferencia de cookies</td><td>1 año</td></tr>
+                </tbody>
+              </table>
+
+              <h2>3. Cómo gestionar las cookies</h2>
+              <p>Puedes rechazar o eliminar las cookies desde la configuración de tu navegador. Ten en cuenta que deshabilitar ciertas cookies puede afectar la funcionalidad del sitio.</p>
+
+              <h2>4. Actualizaciones</h2>
+              <p>Esta política puede actualizarse. Te recomendamos revisarla periódicamente.</p>
+            </>
+          )}
+          {slug === 'aviso-legal' && (
+            <>
+              <h2>1. Datos del titular</h2>
+              <p>Titular: Maria Eleonora Corallo<br />Actividad: Terapeuta Transpersonal y Guía de Meditación<br />Domicilio a efectos de notificaciones: Madrid, España<br />Email: <a href="mailto:info@eleahora.com">info@eleahora.com</a><br />Web: https://eleahora.com</p>
+
+              <h2>2. Objeto y ámbito de aplicación</h2>
+              <p>El presente aviso legal regula el acceso y uso del sitio web eleahora.com. El acceso y/o uso de este sitio web implica la aceptación plena y sin reservas de las presentes condiciones.</p>
+
+              <h2>3. Propiedad intelectual</h2>
+              <p>Todos los contenidos del sitio web (textos, imágenes, diseño, logotipos) son propiedad de Maria Eleonora Corallo o de terceros que han autorizado su uso. Queda prohibida su reproducción, distribución o modificación sin autorización expresa.</p>
+
+              <h2>4. Responsabilidad</h2>
+              <p>El titular no se responsabiliza de los daños derivados del uso incorrecto del sitio web ni de la información contenida en el mismo. Los contenidos tienen carácter meramente informativo y no sustituyen a ningún tratamiento médico o psicológico.</p>
+
+              <h2>5. Ley aplicable</h2>
+              <p>Este aviso legal se rige por la legislación española. Para cualquier controversia serán competentes los juzgados y tribunales de Madrid.</p>
+            </>
+          )}
+        </div>
+      )}
+
+      <div class="legal-nav">
+        <a href="/legal/politica-de-privacidad" class={slug === 'politica-de-privacidad' ? 'active' : ''}>Privacidad</a>
+        <a href="/legal/politica-de-cookies" class={slug === 'politica-de-cookies' ? 'active' : ''}>Cookies</a>
+        <a href="/legal/aviso-legal" class={slug === 'aviso-legal' ? 'active' : ''}>Aviso Legal</a>
+      </div>
+    </article>
+  </main>
+</Layout>
+
+<style>
+  .legal-page { padding-top: 6rem; min-height: 80vh; background-color: var(--color-background); }
+  .legal-hero { padding: 5rem 0 3rem; background: linear-gradient(180deg, rgba(59,38,57,0.06) 0%, transparent 100%); }
+  .legal-breadcrumb { display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: var(--color-primary-dark); opacity: 0.6; margin-bottom: 1.5rem; }
+  .legal-breadcrumb a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+  .legal-breadcrumb a:hover { opacity: 1; color: var(--color-accent-red); }
+  .legal-hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); color: var(--color-primary-dark); margin: 0 0 0.75rem; }
+  .legal-updated { font-size: 0.9rem; color: var(--color-primary-dark); opacity: 0.5; margin: 0; }
+  .legal-content { padding: 3rem 0 6rem; display: grid; grid-template-columns: 1fr 200px; gap: 5rem; align-items: start; }
+  @media (max-width: 900px) { .legal-content { grid-template-columns: 1fr; gap: 3rem; } }
+  .legal-fallback h2 { font-size: 1.4rem; color: var(--color-primary-dark); margin: 2.5rem 0 0.75rem; padding-top: 2rem; border-top: 1px solid rgba(59,38,57,0.08); }
+  .legal-fallback h2:first-child { margin-top: 0; padding-top: 0; border-top: none; }
+  .legal-fallback p { font-size: 1rem; line-height: 1.8; color: var(--color-primary-dark); opacity: 0.85; margin-bottom: 1rem; }
+  .legal-fallback a { color: var(--color-accent-red); text-decoration: underline; text-underline-offset: 3px; }
+  .cookies-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; margin: 1rem 0; }
+  .cookies-table th { background: rgba(59,38,57,0.06); padding: 0.75rem 1rem; text-align: left; font-weight: 600; color: var(--color-primary-dark); border-bottom: 2px solid rgba(59,38,57,0.1); }
+  .cookies-table td { padding: 0.7rem 1rem; border-bottom: 1px solid rgba(59,38,57,0.06); color: var(--color-primary-dark); opacity: 0.85; vertical-align: top; }
+  .legal-nav { position: sticky; top: 7rem; display: flex; flex-direction: column; gap: 0.75rem; }
+  @media (max-width: 900px) { .legal-nav { position: static; flex-direction: row; flex-wrap: wrap; } }
+  .legal-nav a { font-size: 0.9rem; color: var(--color-primary-dark); opacity: 0.6; text-decoration: none; padding: 0.5rem 0; border-left: 2px solid transparent; padding-left: 0.75rem; transition: all 0.2s ease; }
+  .legal-nav a:hover, .legal-nav a.active { opacity: 1; color: var(--color-accent-red); border-left-color: var(--color-accent-red); }
+  @media (max-width: 900px) { .legal-nav a { border-left: none; border-bottom: 2px solid transparent; padding: 0.4rem 0.75rem; padding-left: 0; } .legal-nav a:hover, .legal-nav a.active { border-bottom-color: var(--color-accent-red); } }
+</style>

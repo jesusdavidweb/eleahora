@@ -1,0 +1,20 @@
+heroTitle: 'Hablemos.'
+heroSubtitle: >-
+  Estoy aquí para escucharte y acompañarte en el primer paso.
+processTitle: '¿Cómo funciona?'
+processSteps:
+  - step: '01'
+    title: 'Escríbeme'
+    description: >-
+      Rellena el formulario con tu nombre, email y lo que te trae
+      por aquí. No hay respuestas incorrectas.
+  - step: '02'
+    title: 'Hablamos'
+    description: >-
+      En 24–48h te respondo para conocernos y ver cómo puedo
+      acompañarte mejor.
+  - step: '03'
+    title: 'Empezamos'
+    description: >-
+      Si sentimos que hay conexión, acordamos la primera sesión
+      y comenzamos el proceso.

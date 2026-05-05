@@ -1,0 +1,61 @@
+title: Aviso Legal
+metaDescription: >-
+  Aviso legal de Eleahora. Información sobre el titular del sitio web,
+  propiedad intelectual y condiciones de uso.
+lastUpdated: '2025-01-01'
+content:
+  - type: heading
+    level: 2
+    children:
+      - text: 1. Datos del titular
+  - type: paragraph
+    children:
+      - text: 'Titular: Maria Eleonora Corallo'
+  - type: paragraph
+    children:
+      - text: 'Actividad: Terapeuta Transpersonal y Guía de Meditación'
+  - type: paragraph
+    children:
+      - text: 'Email: info@eleahora.com'
+  - type: paragraph
+    children:
+      - text: 'Web: https://eleahora.com'
+  - type: heading
+    level: 2
+    children:
+      - text: 2. Objeto y ámbito de aplicación
+  - type: paragraph
+    children:
+      - text: >-
+          El presente aviso legal regula el acceso y uso del sitio web
+          eleahora.com. El acceso implica la aceptación plena de las presentes
+          condiciones.
+  - type: heading
+    level: 2
+    children:
+      - text: 3. Propiedad intelectual
+  - type: paragraph
+    children:
+      - text: >-
+          Todos los contenidos del sitio web (textos, imágenes, diseño,
+          logotipos) son propiedad de Maria Eleonora Corallo o de terceros que
+          han autorizado su uso. Queda prohibida su reproducción sin
+          autorización expresa.
+  - type: heading
+    level: 2
+    children:
+      - text: 4. Responsabilidad
+  - type: paragraph
+    children:
+      - text: >-
+          Los contenidos tienen carácter meramente informativo y no sustituyen
+          a ningún tratamiento médico o psicológico.
+  - type: heading
+    level: 2
+    children:
+      - text: 5. Ley aplicable
+  - type: paragraph
+    children:
+      - text: >-
+          Este aviso legal se rige por la legislación española. Para cualquier
+          controversia serán competentes los juzgados y tribunales de Madrid.

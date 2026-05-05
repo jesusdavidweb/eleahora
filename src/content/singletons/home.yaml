@@ -1,0 +1,45 @@
+heroTitle: 'Soy la voz que te recuerda que estás aquí.'
+heroSubtitle: "En el presente.\nMeditación y Terapia Transpersonal.\nMindfulness. Espiritualidad aterrizada."
+heroCtaText: 'Estoy aquí para ti'
+heroImage: '/images/home-hero-eleahora-01-tiny.webp'
+manifestoLabel: 'Manifiesto'
+manifestoTitle: 'Deja que el amor te regule.'
+manifestoBody:
+  - type: paragraph
+    children:
+      - text: >-
+          Durante años creí que la estructura y lo sutil eran opuestas. Vivía
+          entre el deber ser y el anhelo de algo más grande. Hasta que entendí
+          que el verdadero milagro ocurre cuando los pies están bien plantados
+          en la tierra y el corazón abierto al cielo.
+  - type: paragraph
+    children:
+      - text: >-
+          En Eleahora la espiritualidad es aterrizada, no es un escape, es una
+          herramienta. Usamos la mente (PNL y Meditación) para traducir el alma
+          (Ángeles). Porque tu proceso no necesita ser perfecto, solo necesita
+          ser tuyo.
+manifestoQuote: >-
+  "Soy estructura y soy caos. Soy servicio y soy soberanía. Deja que el amor
+  te regule. Confía en el proceso."
+manifestoImage: '/images/home-manifiesto-eleahora-01-tiny.webp'
+mindfulnessLabel: 'Ciencia & Espíritu'
+mindfulnessTitle: 'Mindfulness como camino.'
+mindfulnessLead: >-
+  La meditación es una herramienta de neuroregulación. El mindfulness es una
+  práctica que entrena la mente para volver al momento presente.
+mindfulnessBody: >-
+  A través de la respiración, la atención plena y la consciencia corporal, el
+  sistema nervioso aprende a salir del estado de alerta constante y a encontrar
+  un nuevo equilibrio entre el hacer y el ser.
+mindfulnessBenefitsTitle: 'Beneficios de practicar mindfulness regularmente:'
+mindfulnessBenefits:
+  - 'Reducir el estrés y la ansiedad.'
+  - 'Mejorar la claridad mental y la concentración.'
+  - 'Regular emociones intensas.'
+  - 'Dormir mejor.'
+  - 'Aumentar la creatividad y la toma de decisiones.'
+mindfulnessConclusion: >-
+  "En un mundo que nos empuja constantemente hacia el ruido y la velocidad, la
+  meditación se convierte en una forma de volver a uno mismo."
+mindfulnessImage: '/images/sesion_maria_corallo_neima_pidal_161-tiny.webp'
