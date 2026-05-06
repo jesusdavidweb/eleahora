@@ -16,6 +16,17 @@ export default defineConfig({
   build: {
     format: 'directory',
   },
+  // Exponer variables de Keystatic como process.env (runtime)
+  // para que Dokploy pueda inyectarlas sin necesidad de build args.
+  // Sin esto, Vite reemplaza import.meta.env.KEYSTATIC_* por undefined.
+  vite: {
+    define: {
+      'import.meta.env.KEYSTATIC_GITHUB_CLIENT_ID': 'process.env.KEYSTATIC_GITHUB_CLIENT_ID',
+      'import.meta.env.KEYSTATIC_GITHUB_CLIENT_SECRET': 'process.env.KEYSTATIC_GITHUB_CLIENT_SECRET',
+      'import.meta.env.KEYSTATIC_SECRET': 'process.env.KEYSTATIC_SECRET',
+      'import.meta.env.GITHUB_TOKEN': 'process.env.GITHUB_TOKEN',
+    },
+  },
   integrations: [
     react(),
     svelte(),
