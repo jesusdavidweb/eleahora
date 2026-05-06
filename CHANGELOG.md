@@ -8,6 +8,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Integración de Keystatic Admin UI en `/keystatic` como CMS headless con storage GitHub.
+- Middleware de autenticación Basic Auth para proteger el panel de administración (`src/middleware.ts`).
+- Script `start.sh` para ejecutar Astro SSR y Caddy como reverse proxy en producción.
+- Archivo `.env.example` con documentación de variables de entorno requeridas (`KEYSTATIC_USER`, `KEYSTATIC_PASSWORD`, `GITHUB_TOKEN`, `KEYSTATIC_GITHUB_CLIENT_ID`, `KEYSTATIC_GITHUB_CLIENT_SECRET`).
+
+### Changed
+- Migrado `astro.config.mjs` a `output: static` con adapter Node y modo standalone para habilitar SSR en rutas de Keystatic.
+- Dockerfile actualizado a multi-etapa con `node:22-alpine` + Caddy para servir Astro SSR con reverse proxy.
+- Caddyfile convertido de servidor de archivos estáticos a proxy inverso hacia Astro (puerto 4321).
+- Renombrado `keystatic.config.tsx` a `keystatic.config.ts` para compatibilidad con `@keystatic/astro`.
+- Dependencias actualizadas: añadidos `@keystatic/astro`, `@astrojs/react`, `@astrojs/node`.
+
+### Fixed
 - Plantilla inicial base generada.
 - Archivo de directrices arquitectónicas para el rebranding `agents.md`.
 - Habilitación de framework `Astro`, con `Svelte` para islas y animaciones de `GSAP`.
