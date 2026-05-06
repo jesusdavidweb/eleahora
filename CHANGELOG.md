@@ -21,6 +21,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Dependencias actualizadas: añadidos `@keystatic/astro`, `@astrojs/react`, `@astrojs/node`.
 
 ### Fixed
+- Dockerfile: copiadas `node_modules`, `package.json` y `keystatic.config.ts` al stage de runtime para resolver `ERR_MODULE_NOT_FOUND` en el servidor Astro SSR.
+- start.sh: añadida verificación de salud del proceso Astro (`kill -0`) y `set -e` para evitar que Caddy quede huérfano cuando Node falla.
+
+### Fixed
 - Plantilla inicial base generada.
 - Archivo de directrices arquitectónicas para el rebranding `agents.md`.
 - Habilitación de framework `Astro`, con `Svelte` para islas y animaciones de `GSAP`.

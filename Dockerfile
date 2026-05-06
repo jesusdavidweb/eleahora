@@ -17,11 +17,14 @@ RUN bun run build
 FROM node:22-alpine AS runtime
 WORKDIR /usr/src/app
 
-# Instalar Caddy
-RUN apk add --no-cache caddy
+# Instalar Caddy y wget (para healthcheck)
+RUN apk add --no-cache caddy wget
 
-# Copiar el output compilado
+# Copiar output compilado y dependencias necesarias
 COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/package.json ./package.json
+COPY --from=builder /app/keystatic.config.ts ./keystatic.config.ts
 
 # Copiar Caddyfile
 COPY Caddyfile /etc/caddy/Caddyfile
