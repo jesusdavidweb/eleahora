@@ -5,20 +5,32 @@ import { defineMiddleware } from 'astro:middleware';
  * Usa Basic Auth con credenciales desde variables de entorno
  */
 
-const AUTH_USER = process.env.KEYSTATIC_USER;
-const AUTH_PASS = process.env.KEYSTATIC_PASSWORD;
-
 export const onRequest = defineMiddleware(async (context, next) => {
   // Solo proteger rutas de Keystatic
   if (!context.url.pathname.startsWith('/keystatic')) {
     return next();
   }
 
-  // Si no hay credenciales configuradas, denegar acceso
+  // Leer variables en tiempo de ejecución (no al cargar el módulo)
+  const AUTH_USER = process.env.KEYSTATIC_USER;
+  const AUTH_PASS = process.env.KEYSTATIC_PASSWORD;
+
+  // Si no hay credenciales configuradas, denegar acceso con mensaje útil
   if (!AUTH_USER || !AUTH_PASS) {
-    return new Response('Keystatic auth not configured', {
-      status: 500,
-    });
+    const missing = [];
+    if (!AUTH_USER) missing.push('KEYSTATIC_USER');
+    if (!AUTH_PASS) missing.push('KEYSTATIC_PASSWORD');
+
+    return new Response(
+      `Keystatic auth not configured. Missing environment variables: ${missing.join(', ')}. ` +
+      `Please set them in Dokploy (Applications → Environment Variables) and redeploy.`,
+      {
+        status: 500,
+        headers: {
+          'Content-Type': 'text/plain',
+        },
+      }
+    );
   }
 
   const basicAuth = context.request.headers.get('authorization');
