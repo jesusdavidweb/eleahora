@@ -9,7 +9,10 @@ export const onRequest = defineMiddleware(async (context, next) => {
   // ============================================
   // Proxy trust: reescribir URL cuando el sitio
   // está detrás de un reverse proxy (Caddy/Dokploy)
-  // para que context.url use el dominio público.
+  // para que context.request.url use el dominio público.
+  //
+  // Keystatic lee req.url directamente (no context.url),
+  // por eso reemplazamos el objeto Request completo.
   // ============================================
   const forwardedProto = context.request.headers.get('x-forwarded-proto');
   const forwardedHost = context.request.headers.get('x-forwarded-host');
@@ -19,8 +22,20 @@ export const onRequest = defineMiddleware(async (context, next) => {
     newUrl.protocol = forwardedProto + ':';
     newUrl.host = forwardedHost;
 
+    // Reemplazar context.url
     Object.defineProperty(context, 'url', {
       value: newUrl,
+      writable: false,
+      enumerable: true,
+      configurable: true,
+    });
+
+    // Reemplazar context.request con un Request que tenga la URL pública,
+    // preservando el resto de propiedades (headers, method, body).
+    const newRequest = new Request(newUrl.toString(), context.request);
+
+    Object.defineProperty(context, 'request', {
+      value: newRequest,
       writable: false,
       enumerable: true,
       configurable: true,
