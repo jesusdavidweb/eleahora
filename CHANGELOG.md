@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- Actualizado `keystatic.config.ts`: migrado repo de `eleahora-demo` a `eleahora` tras el cambio de ubicación del repositorio en GitHub.
+
 ### Added
 - Integración de Keystatic Admin UI en `/keystatic` como CMS headless con storage GitHub.
 - Middleware de autenticación Basic Auth para proteger el panel de administración (`src/middleware.ts`).
