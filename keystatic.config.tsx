@@ -158,7 +158,7 @@ export default config({
           fields.text({ label: 'Beneficio' }),
           {
             label: 'Lista de Beneficios',
-            itemLabel: (props) => props.fields.value.value || 'Beneficio',
+            itemLabel: (props) => props.value || 'Beneficio',
           }
         ),
         mindfulnessConclusion: fields.text({
@@ -223,7 +223,7 @@ export default config({
             title: fields.text({ label: 'Título del beneficio' }),
             description: fields.text({ label: 'Descripción', multiline: true }),
           }),
-          { label: 'Lista de beneficios', itemLabel: (props) => props.fields.title.value || 'Beneficio' }
+          { label: 'Lista de beneficios', itemLabel: () => 'Beneficio' }
         ),
         formatsTitle: fields.text({ label: 'Formatos — Título', defaultValue: 'Formatos disponibles' }),
         formats: fields.array(
@@ -232,7 +232,7 @@ export default config({
             duration: fields.text({ label: 'Duración' }),
             description: fields.text({ label: 'Descripción', multiline: true }),
           }),
-          { label: 'Formatos del Workshop', itemLabel: (props) => props.fields.name.value || 'Formato' }
+          { label: 'Formatos del Workshop', itemLabel: () => 'Formato' }
         ),
         ctaTitle: fields.text({ label: 'CTA — Título', defaultValue: '¿Hablamos para tu empresa?' }),
         ctaBody: fields.text({ label: 'CTA — Texto', multiline: true }),
@@ -253,7 +253,7 @@ export default config({
             title: fields.text({ label: 'Título del paso' }),
             description: fields.text({ label: 'Descripción', multiline: true }),
           }),
-          { label: 'Pasos del proceso', itemLabel: (props) => props.fields.title.value || 'Paso' }
+          { label: 'Pasos del proceso', itemLabel: () => 'Paso' }
         ),
       },
     }),

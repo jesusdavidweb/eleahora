@@ -173,7 +173,7 @@ const insightTimerUrl = site?.insightTimerUrl ?? 'https://insighttimer.com/eleah
           testimonios.map((t, i) => (
             <article class={`testimonial-card gsap-reveal testimonial-${i % 3 === 0 ? 'sage' : i % 3 === 1 ? 'red' : 'purple'}`}>
               <p class="testimonial-text">{t.entry.quote}</p>
-              <p class="testimonial-author">— {t.entry.name.name}</p>
+              <p class="testimonial-author">— {t.entry.name}</p>
             </article>
           ))
         ) : (

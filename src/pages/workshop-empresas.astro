@@ -1,3 +1,4 @@
+---
 import Layout from '../layouts/Layout.astro';
 import { getWorkshopPage, getSiteConfig } from '../lib/keystatic';
 
@@ -71,7 +72,7 @@ const waLink   = `https://wa.me/${whatsapp.replace(/\D/g, '')}`;
       <div class="max-w-screen">
         <h2 class="section-title">{benefitsTitle}</h2>
         <div class="benefits-grid">
-          {benefits.map((b) => (
+          {benefits.map((b: { title: string; description: string }) => (
             <div class="benefit-card">
               <h3>{b.title}</h3>
               <p>{b.description}</p>
@@ -86,7 +87,7 @@ const waLink   = `https://wa.me/${whatsapp.replace(/\D/g, '')}`;
       <div class="max-w-screen">
         <h2 class="section-title">{formatsTitle}</h2>
         <div class="formats-grid">
-          {formats.map((f) => (
+          {formats.map((f: { name: string; duration: string; description: string }) => (
             <div class="format-card">
               <span class="format-duration">{f.duration}</span>
               <h3>{f.name}</h3>

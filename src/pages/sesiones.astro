@@ -119,8 +119,8 @@ const sesionesOrdenadas = sesiones.length > 0
                   <span class="service-number">{String(i + 1).padStart(2, '0')}</span>
                   {s.entry.tagline && <span class="service-pill">{s.entry.tagline}</span>}
                 </div>
-                <h2>{s.entry.title.name}</h2>
-                {s.entry.image && <img src={s.entry.image} alt={s.entry.title.name} class="service-img" />}
+                <h2>{s.entry.title}</h2>
+                {s.entry.image && <img src={s.entry.image} alt={s.entry.title} class="service-img" />}
                 {descText && <div class="service-desc"><Fragment set:html={descText} /></div>}
                 <ul>
                   {s.entry.duration && <li><strong>Duración:</strong> {s.entry.duration}</li>}

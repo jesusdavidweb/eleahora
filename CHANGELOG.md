@@ -58,6 +58,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - Resolución de errores de enrutamiento 503 y 404 en el entorno de producción.
+- Corregida estructura de frontmatter en `workshop-empresas.astro` (falta delimitador `---`).
+- Corregido acceso a campos slug en Keystatic (API cambiada en 0.5.x: `.name` eliminado).
+- Corregido API de `itemLabel` en `keystatic.config.tsx` para arrays y objetos.
+- Corregidos tipos TypeScript implícitos en callbacks de map (parámetros `b`, `f`, `s`, `t`, `i`, `p`).
+- Reinstalación de dependencias (`bun.lock` actualizado).
 - Corrección de problemas en el pipeline de despliegue relacionados con la configuración de Docker Composer.
 - Reparación de regresiones visuales en la página de Contacto (tipografía, órbitas y degradados).
  - Corregido guard de SSR en `MeditationModal.svelte` para evitar acceso a `document` durante el prerender y prevenir errores en la generación estática.

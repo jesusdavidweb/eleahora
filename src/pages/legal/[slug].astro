@@ -38,7 +38,7 @@ const fallbackMeta: Record<string, { title: string; description: string; updated
 };
 
 const meta = fallbackMeta[slug] ?? { title: 'Información Legal', description: '', updated: '' };
-const pageTitle   = page?.title?.name ?? meta.title;
+const pageTitle   = page?.title ?? meta.title;
 const pageDesc    = page?.metaDescription ?? meta.description;
 const lastUpdated = page?.lastUpdated ?? meta.updated;
 const contentHtml = (page as any)?.contentHtml ?? '';

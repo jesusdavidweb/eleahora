@@ -25,7 +25,7 @@ const serviceOptions: ContactServiceOption[] = sesionesData.length > 0
   ? [
       ...sesionesData
         .sort((a, b) => (a.entry.order ?? 0) - (b.entry.order ?? 0))
-        .map((s) => ({ value: s.slug, label: s.entry.title.name })),
+        .map((s) => ({ value: s.slug, label: s.entry.title })),
       { value: 'workshop-empresas', label: 'Workshop para empresas' },
       { value: 'otro', label: 'Otro / Aún no lo tengo claro' },
     ]
