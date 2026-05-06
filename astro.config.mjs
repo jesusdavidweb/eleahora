@@ -6,26 +6,18 @@ import sitemap from '@astrojs/sitemap';
 import keystatic from '@keystatic/astro';
 
 // https://astro.build/config
-// Nota: Keystatic UI admin expuesto en /keystatic con autenticación Basic Auth.
+// Nota: output 'hybrid' es requerido para Keystatic con storage kind 'github'.
+// Los endpoints OAuth (/api/keystatic/*) necesitan SSR; las páginas normales
+// se generan como estático. Con 'static' el callback OAuth no funciona y
+// Keystatic devuelve "Authorization failed".
 export default defineConfig({
   site: 'https://eleahora.com',
-  output: 'static',
+  output: 'hybrid',
   adapter: node({
     mode: 'standalone',
   }),
   build: {
     format: 'directory',
-  },
-  // Exponer variables de Keystatic como process.env (runtime)
-  // para que Dokploy pueda inyectarlas sin necesidad de build args.
-  // Sin esto, Vite reemplaza import.meta.env.KEYSTATIC_* por undefined.
-  vite: {
-    define: {
-      'import.meta.env.KEYSTATIC_GITHUB_CLIENT_ID': 'process.env.KEYSTATIC_GITHUB_CLIENT_ID',
-      'import.meta.env.KEYSTATIC_GITHUB_CLIENT_SECRET': 'process.env.KEYSTATIC_GITHUB_CLIENT_SECRET',
-      'import.meta.env.KEYSTATIC_SECRET': 'process.env.KEYSTATIC_SECRET',
-      'import.meta.env.GITHUB_TOKEN': 'process.env.GITHUB_TOKEN',
-    },
   },
   integrations: [
     react(),
