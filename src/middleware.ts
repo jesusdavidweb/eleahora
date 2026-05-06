@@ -6,6 +6,27 @@ import { defineMiddleware } from 'astro:middleware';
  */
 
 export const onRequest = defineMiddleware(async (context, next) => {
+  // ============================================
+  // Proxy trust: reescribir URL cuando el sitio
+  // está detrás de un reverse proxy (Caddy/Dokploy)
+  // para que context.url use el dominio público.
+  // ============================================
+  const forwardedProto = context.request.headers.get('x-forwarded-proto');
+  const forwardedHost = context.request.headers.get('x-forwarded-host');
+
+  if (forwardedProto && forwardedHost) {
+    const newUrl = new URL(context.url);
+    newUrl.protocol = forwardedProto + ':';
+    newUrl.host = forwardedHost;
+
+    Object.defineProperty(context, 'url', {
+      value: newUrl,
+      writable: false,
+      enumerable: true,
+      configurable: true,
+    });
+  }
+
   // Solo proteger rutas de Keystatic
   if (!context.url.pathname.startsWith('/keystatic')) {
     return next();

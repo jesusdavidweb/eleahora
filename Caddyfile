@@ -2,7 +2,13 @@
     encode gzip zstd
 
     # Reverse proxy al servidor Astro SSR (puerto 4321)
-    reverse_proxy localhost:4321
+    reverse_proxy localhost:4321 {
+        header_up Host {host}
+        header_up X-Forwarded-Host {host}
+        header_up X-Forwarded-Proto https
+        header_up X-Forwarded-For {remote}
+        header_up X-Real-IP {remote}
+    }
 
     # Headers de seguridad
     header {
