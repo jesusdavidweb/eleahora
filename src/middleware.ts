@@ -15,12 +15,15 @@ export const onRequest = defineMiddleware(async (context, next) => {
   // por eso reemplazamos el objeto Request completo.
   // ============================================
   const forwardedProto = context.request.headers.get('x-forwarded-proto');
-  const forwardedHost = context.request.headers.get('x-forwarded-host');
+  const rawHost = context.request.headers.get('host');
 
-  if (forwardedProto && forwardedHost) {
-    const newUrl = new URL(context.url);
-    newUrl.protocol = forwardedProto + ':';
-    newUrl.host = forwardedHost;
+  if (forwardedProto && rawHost) {
+    // Limpiar el puerto del host (por si Caddy/Traefik lo incluyen)
+    const cleanHost = rawHost.replace(/:\d+$/, '');
+    const newUrl = new URL(
+      context.url.pathname + context.url.search,
+      `${forwardedProto}://${cleanHost}`,
+    );
 
     // Reemplazar context.url
     Object.defineProperty(context, 'url', {
