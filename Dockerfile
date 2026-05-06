@@ -20,6 +20,15 @@ WORKDIR /usr/src/app
 # Instalar Caddy y wget (para healthcheck)
 RUN apk add --no-cache caddy wget
 
+# Declarar variables de entorno esperadas (Dokploy las inyecta en runtime)
+ENV NODE_ENV=production
+ENV KEYSTATIC_USER=""
+ENV KEYSTATIC_PASSWORD=""
+ENV KEYSTATIC_GITHUB_CLIENT_ID=""
+ENV KEYSTATIC_GITHUB_CLIENT_SECRET=""
+ENV GITHUB_TOKEN=""
+ENV KEYSTATIC_SECRET=""
+
 # Copiar output compilado y dependencias necesarias
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/node_modules ./node_modules

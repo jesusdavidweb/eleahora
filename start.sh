@@ -3,6 +3,17 @@ set -e
 
 # Script de inicio para ejecutar Astro SSR y Caddy como reverse proxy
 
+# Debug: imprimir variables de entorno relevantes
+echo "=== Environment Variables Debug ==="
+echo "KEYSTATIC_USER: ${KEYSTATIC_USER:-<not set>}"
+echo "KEYSTATIC_PASSWORD: ${KEYSTATIC_PASSWORD:+<set>}"
+echo "KEYSTATIC_GITHUB_CLIENT_ID: ${KEYSTATIC_GITHUB_CLIENT_ID:+<set>}"
+echo "KEYSTATIC_GITHUB_CLIENT_SECRET: ${KEYSTATIC_GITHUB_CLIENT_SECRET:+<set>}"
+echo "GITHUB_TOKEN: ${GITHUB_TOKEN:+<set>}"
+echo "KEYSTATIC_SECRET: ${KEYSTATIC_SECRET:+<set>}"
+echo "NODE_ENV: ${NODE_ENV:-<not set>}"
+echo "===================================="
+
 # Iniciar Astro SSR en background
 node /usr/src/app/dist/server/entry.mjs &
 ASTRO_PID=$!
