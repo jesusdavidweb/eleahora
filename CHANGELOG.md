@@ -22,6 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - Corregida URL de callback OAuth de Keystatic que se generaba como `localhost` en producción. Se añadieron headers `X-Forwarded-*` en el `reverse_proxy` de Caddy y se reescribió `context.request` (el objeto `Request` completo) en el middleware de Astro para forzar `https://eleahora.com` como dominio público en todas las rutas de API.
+- Dockerfile: movidas las variables `KEYSTATIC_GITHUB_CLIENT_ID`, `KEYSTATIC_GITHUB_CLIENT_SECRET`, `KEYSTATIC_SECRET` y `GITHUB_TOKEN` al stage builder con `ARG` + `ENV` para que `import.meta.env.*` de Vite las incruste correctamente durante `bun run build`.
 - Dockerfile: copiadas `node_modules`, `package.json` y `keystatic.config.ts` al stage de runtime para resolver `ERR_MODULE_NOT_FOUND` en el servidor Astro SSR.
 - start.sh: añadida verificación de salud del proceso Astro (`kill -0`) y `set -e` para evitar que Caddy quede huérfano cuando Node falla.
 

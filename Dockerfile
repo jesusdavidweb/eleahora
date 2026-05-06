@@ -1,6 +1,19 @@
 FROM oven/bun:latest AS builder
 WORKDIR /app
 
+# Build-time secrets necesarios para que Vite los incruste
+# en import.meta.env.* durante bun run build.
+# Dokploy debe pasar estos como Build Args o env vars del builder.
+ARG KEYSTATIC_GITHUB_CLIENT_ID
+ARG KEYSTATIC_GITHUB_CLIENT_SECRET
+ARG KEYSTATIC_SECRET
+ARG GITHUB_TOKEN
+
+ENV KEYSTATIC_GITHUB_CLIENT_ID=$KEYSTATIC_GITHUB_CLIENT_ID
+ENV KEYSTATIC_GITHUB_CLIENT_SECRET=$KEYSTATIC_GITHUB_CLIENT_SECRET
+ENV KEYSTATIC_SECRET=$KEYSTATIC_SECRET
+ENV GITHUB_TOKEN=$GITHUB_TOKEN
+
 # Copiar archivos de configuración y dependencias
 COPY package.json bun.lock tsconfig.json astro.config.mjs keystatic.config.ts ./
 
@@ -20,7 +33,7 @@ WORKDIR /usr/src/app
 # Instalar Caddy y wget (para healthcheck)
 RUN apk add --no-cache caddy wget
 
-# Declarar variables de entorno esperadas (Dokploy las inyecta en runtime)
+# Variables de entorno para runtime (auth, etc.)
 ENV NODE_ENV=production
 ENV KEYSTATIC_USER=""
 ENV KEYSTATIC_PASSWORD=""
