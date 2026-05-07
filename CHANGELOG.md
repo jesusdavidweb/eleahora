@@ -10,6 +10,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Migrado Keystatic de GitHub auto-alojado a Keystatic Cloud (`storage.kind: "cloud"`, project `eleahora/eleahora`).
 - Simplificada configuración de Astro a `output: static` (default), eliminado adapter `@astrojs/node` ya innecesario sin OAuth de GitHub.
+- Eliminada integración `@keystatic/astro` de `astro.config.mjs` — el admin UI se gestiona en cloud.keystatic.com.
+- Dockerfile simplificado a multi-stage puro: `oven/bun` para build + `caddy:alpine` sirviendo archivos estáticos.
+- Caddyfile convertido de reverse proxy a servidor de archivos estáticos con `file_server`.
+- `docker-compose.yml` limpio: eliminadas todas las variables de entorno de Keystatic/GitHub.
+- `.env.example` actualizado: ya no se requieren variables de entorno para el build ni runtime.
+
+### Removed
+- `src/middleware.ts` — protección Basic Auth para `/keystatic` ya no necesaria.
+- `start.sh` — script de inicio para Astro SSR + Caddy, reemplazado por `caddy run` directo.
+- Dependencia `@astrojs/node` — no requerida en build estático.
+- Dependencia `@keystatic/astro` — admin UI migrado a Keystatic Cloud.
+- Variables de entorno obsoletas: `KEYSTATIC_USER`, `KEYSTATIC_PASSWORD`, `KEYSTATIC_GITHUB_CLIENT_ID`, `KEYSTATIC_GITHUB_CLIENT_SECRET`, `GITHUB_TOKEN`, `KEYSTATIC_SECRET`.
 
 ### Added
 - Integración de Keystatic Admin UI en `/keystatic` como CMS headless con storage GitHub.

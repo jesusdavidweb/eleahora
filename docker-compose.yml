@@ -6,14 +6,6 @@ services:
     restart: always
     networks:
       - dokploy-network
-    environment:
-      - NODE_ENV=production
-      - KEYSTATIC_USER=${KEYSTATIC_USER}
-      - KEYSTATIC_PASSWORD=${KEYSTATIC_PASSWORD}
-      - KEYSTATIC_GITHUB_CLIENT_ID=${KEYSTATIC_GITHUB_CLIENT_ID}
-      - KEYSTATIC_GITHUB_CLIENT_SECRET=${KEYSTATIC_GITHUB_CLIENT_SECRET}
-      - GITHUB_TOKEN=${GITHUB_TOKEN}
-      - KEYSTATIC_SECRET=${KEYSTATIC_SECRET}
     healthcheck:
       test: ["CMD", "wget", "-qO-", "http://localhost:80/"]
       interval: 30s
