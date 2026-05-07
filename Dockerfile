@@ -12,17 +12,33 @@ RUN bun install
 RUN bun run build
 
 # ============================================================
-# Stage 2: Runtime — Caddy sirviendo archivos estáticos
+# Stage 2: Runtime — Node.js servidor SSR
 # ============================================================
-FROM caddy:alpine AS runtime
-
+FROM node:22-alpine AS node-server
 WORKDIR /usr/src/app
 
-# Copiar contenido estático generado
+COPY --from=builder /app/package.json .
+COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/keystatic.config.ts .
 
-# Copiar configuración de Caddy
+EXPOSE 4321
+CMD ["node", "dist/server/entry.mjs"]
+
+# ============================================================
+# Stage 3: Reverse Proxy — Caddy con TLS y servidores headers
+# ============================================================
+FROM caddy:alpine
+WORKDIR /usr/src/app
+
+COPY --from=node-server /usr/src/app/dist ./dist
+COPY --from=node-server /usr/src/app/node_modules ./node_modules
+COPY --from=node-server /usr/src/app/package.json .
+COPY --from=node-server /usr/src/app/keystatic.config.ts .
 COPY Caddyfile /etc/caddy/Caddyfile
+
+COPY start.sh /usr/src/app/start.sh
+RUN chmod +x /usr/src/app/start.sh
 
 EXPOSE 80
 
