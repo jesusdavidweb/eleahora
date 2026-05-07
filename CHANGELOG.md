@@ -8,7 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Changed
-- Actualizado `keystatic.config.ts`: migrado repo de `eleahora-demo` a `eleahora` tras el cambio de ubicación del repositorio en GitHub.
+- Migrado Keystatic de GitHub auto-alojado a Keystatic Cloud (`storage.kind: "cloud"`, project `eleahora/eleahora`).
+- Simplificada configuración de Astro a `output: static` (default), eliminado adapter `@astrojs/node` ya innecesario sin OAuth de GitHub.
 
 ### Added
 - Integración de Keystatic Admin UI en `/keystatic` como CMS headless con storage GitHub.
