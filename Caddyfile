@@ -1,19 +1,13 @@
 :80 {
-    root * /usr/src/app/dist
+    reverse_proxy localhost:4321
     encode gzip zstd
-    file_server {
-        precompressed gzip zstd
-    }
-    try_files {path} {path}/ /index.html
 
-    # Headers de seguridad
     header {
         Strict-Transport-Security max-age=31536000;
         X-Content-Type-Options nosniff
         X-Frame-Options DENY
     }
 
-    # Cache assets estáticos
     @assets path /assets/*
     header @assets Cache-Control "public, max-age=31536000, immutable"
 }

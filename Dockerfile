@@ -29,6 +29,8 @@ CMD ["node", "dist/server/entry.mjs"]
 # Stage 3: Reverse Proxy — Caddy con TLS y servidores headers
 # ============================================================
 FROM caddy:alpine
+RUN apk add --no-cache nodejs npm wget
+
 WORKDIR /usr/src/app
 
 COPY --from=node-server /usr/src/app/dist ./dist
@@ -42,7 +44,7 @@ RUN chmod +x /usr/src/app/start.sh
 
 EXPOSE 80
 
-HEALTHCHECK --interval=30s --timeout=5s --start-period=5s --retries=3 \
+HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
   CMD wget --no-verbose --tries=1 --spider http://localhost/ || exit 1
 
-CMD ["caddy", "run", "--config", "/etc/caddy/Caddyfile", "--adapter", "caddyfile"]
+CMD ["sh", "/usr/src/app/start.sh"]
