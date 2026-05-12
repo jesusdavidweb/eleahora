@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Documentación completa de la integración de Keystatic Cloud como referencia para reimplementación futura (`docs/keystatic-implementation.md`).
 - Plantilla inicial base generada.
 - Archivo de directrices arquitectónicas para el rebranding `agents.md`.
 - Habilitación de framework `Astro`, con `Svelte` para islas y animaciones de `GSAP`.
