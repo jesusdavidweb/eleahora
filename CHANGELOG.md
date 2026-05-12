@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.1] - 2026-05-12
+
+### Fixed
+- **start.sh**: Reescrito con loop `while` nativo (compatible BusyBox/ash), logging con prefijo `[start.sh]`, `trap` para cleanup de procesos, y verificación del entry point antes de ejecutar Node.
+- **keystatic.ts**: Reader inicializado de forma lazy con `import()` dinámico. Si Keystatic Cloud no está disponible, el reader retorna `null` y las páginas usan fallbacks sin crashear el servidor.
+- Corregido error `require is not defined` en contexto ESM durante prerender de páginas legales.
+- Añadido type annotation explícito en `contacto.astro` para resolver error TS7006.
+
 ## [0.2.0] - 2026-05-12
 
 ### Added

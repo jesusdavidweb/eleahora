@@ -1,7 +1,34 @@
-import { createReader } from '@keystatic/core/reader';
-import config from '../../keystatic.config';
+// Lazy async reader: only initialize when first accessed
+// This prevents crashes if Keystatic Cloud is unavailable at startup
+let _reader: any = null;
+let _readerFailed = false;
+let _initPromise: Promise<any> | null = null;
 
-const reader = createReader(process.cwd(), config);
+async function initReader() {
+  if (_readerFailed) return null;
+  if (_reader) return _reader;
+  if (_initPromise) return _initPromise;
+
+  _initPromise = (async () => {
+    try {
+      const { createReader } = await import('@keystatic/core/reader');
+      const configModule = await import('../../keystatic.config');
+      const cfg = configModule.default ?? configModule;
+      _reader = createReader(process.cwd(), cfg);
+      return _reader;
+    } catch (err) {
+      console.error('[keystatic] Failed to create reader:', err);
+      _readerFailed = true;
+      return null;
+    }
+  })();
+
+  return _initPromise;
+}
+
+async function getReader() {
+  return initReader();
+}
 
 // ─────────────────────────────────────────────────────
 // Rich Text: ProseMirror nodes → HTML
@@ -60,7 +87,9 @@ async function resolveDocument(
 
 export async function getSiteConfig() {
   try {
-    return await reader.singletons.siteConfig.read();
+    const r = await getReader();
+    if (!r) return null;
+    return await r.singletons.siteConfig.read();
   } catch {
     return null;
   }
@@ -68,7 +97,9 @@ export async function getSiteConfig() {
 
 export async function getHomePage() {
   try {
-    const data = await reader.singletons.homePage.read();
+    const r = await getReader();
+    if (!r) return null;
+    const data = await r.singletons.homePage.read();
     if (!data) return null;
     return {
       ...data,
@@ -81,7 +112,9 @@ export async function getHomePage() {
 
 export async function getAboutPage() {
   try {
-    const data = await reader.singletons.aboutPage.read();
+    const r = await getReader();
+    if (!r) return null;
+    const data = await r.singletons.aboutPage.read();
     if (!data) return null;
     return {
       ...data,
@@ -94,7 +127,9 @@ export async function getAboutPage() {
 
 export async function getSessionesPage() {
   try {
-    return await reader.singletons.sessionesPage.read();
+    const r = await getReader();
+    if (!r) return null;
+    return await r.singletons.sessionesPage.read();
   } catch {
     return null;
   }
@@ -102,7 +137,9 @@ export async function getSessionesPage() {
 
 export async function getWorkshopPage() {
   try {
-    return await reader.singletons.workshopPage.read();
+    const r = await getReader();
+    if (!r) return null;
+    return await r.singletons.workshopPage.read();
   } catch {
     return null;
   }
@@ -110,7 +147,9 @@ export async function getWorkshopPage() {
 
 export async function getContactoPage() {
   try {
-    return await reader.singletons.contactoPage.read();
+    const r = await getReader();
+    if (!r) return null;
+    return await r.singletons.contactoPage.read();
   } catch {
     return null;
   }
@@ -122,10 +161,12 @@ export async function getContactoPage() {
 
 export async function getAllSesiones() {
   try {
-    const slugs = await reader.collections.sesiones.list();
+    const r = await getReader();
+    if (!r) return [];
+    const slugs = await r.collections.sesiones.list();
     const entries = await Promise.all(
-      slugs.map(async (slug) => {
-        const entry = await reader.collections.sesiones.read(slug);
+      slugs.map(async (slug: string) => {
+        const entry = await r.collections.sesiones.read(slug);
         if (!entry) return null;
         return {
           slug,
@@ -146,7 +187,9 @@ export async function getAllSesiones() {
 
 export async function getSesion(slug: string) {
   try {
-    const entry = await reader.collections.sesiones.read(slug);
+    const r = await getReader();
+    if (!r) return null;
+    const entry = await r.collections.sesiones.read(slug);
     if (!entry) return null;
     return {
       ...entry,
@@ -159,10 +202,12 @@ export async function getSesion(slug: string) {
 
 export async function getAllTestimonios(onlyFeatured = false) {
   try {
-    const slugs = await reader.collections.testimonios.list();
+    const r = await getReader();
+    if (!r) return [];
+    const slugs = await r.collections.testimonios.list();
     const entries = await Promise.all(
-      slugs.map(async (slug) => {
-        const entry = await reader.collections.testimonios.read(slug);
+      slugs.map(async (slug: string) => {
+        const entry = await r.collections.testimonios.read(slug);
         if (!entry) return null;
         return { slug, entry };
       }),
@@ -178,10 +223,12 @@ export async function getAllTestimonios(onlyFeatured = false) {
 
 export async function getAllLegalPages() {
   try {
-    const slugs = await reader.collections.legalPages.list();
+    const r = await getReader();
+    if (!r) return [];
+    const slugs = await r.collections.legalPages.list();
     const entries = await Promise.all(
-      slugs.map(async (slug) => {
-        const entry = await reader.collections.legalPages.read(slug);
+      slugs.map(async (slug: string) => {
+        const entry = await r.collections.legalPages.read(slug);
         if (!entry) return null;
         return {
           slug,
@@ -200,7 +247,9 @@ export async function getAllLegalPages() {
 
 export async function getLegalPage(slug: string) {
   try {
-    const entry = await reader.collections.legalPages.read(slug);
+    const r = await getReader();
+    if (!r) return null;
+    const entry = await r.collections.legalPages.read(slug);
     if (!entry) return null;
     return {
       ...entry,

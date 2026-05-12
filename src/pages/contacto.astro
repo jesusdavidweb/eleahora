@@ -70,7 +70,7 @@ const serviceOptions: ContactServiceOption[] = sesiones.length > 0
           <p class="panel-eyebrow">Qué pasa después</p>
           <h2>{processTitle}</h2>
           <ol class="process-list">
-            {processSteps.map((step) => (
+            {processSteps.map((step: { step: string; title: string; description: string }) => (
               <li class="process-step">
                 <span>{step.step}</span>
                 <div>
