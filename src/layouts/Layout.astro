@@ -3,10 +3,9 @@ import { ClientRouter } from 'astro:transitions';
 import '../styles/global.css';
 import Header from '../components/astro/Header.astro';
 import Footer from '../components/astro/Footer.astro';
-import { getSiteConfig } from '../lib/keystatic';
 
 interface Props {
-  title?: string;
+  title: string;
   description?: string;
   ogTitle?: string;
   ogImage?: string;
@@ -17,14 +16,11 @@ interface Props {
 
 const SITE_URL = 'https://eleahora.com';
 
-// Leer config global desde Keystatic
-const siteConfig = await getSiteConfig();
-
 const {
-  title = siteConfig?.siteTitle ?? 'Eleahora | Terapia Transpersonal y Meditación en Madrid',
-  description = siteConfig?.siteDescription ?? 'Terapia Transpersonal, Meditación y Mindfulness con Maria Eleonora Corallo.',
+  title,
+  description = 'Terapia Transpersonal y Meditación con Eleahora. Acompañamiento terapéutico con PNL, Mindfulness y conexión espiritual para volver al presente.',
   ogTitle = title,
-  ogImage = siteConfig?.ogImage ?? '/images/OG-images-eleahora-01.jpg',
+  ogImage = '/images/OG-images-eleahora-01.jpg',
   ogType = 'website',
   noindex = false,
   canonicalUrl = Astro.url.pathname,
@@ -32,16 +28,6 @@ const {
 
 const canonicalHref = `${SITE_URL}${canonicalUrl}`;
 const ogImageAbsolute = ogImage.startsWith('http') ? ogImage : `${SITE_URL}${ogImage}`;
-
-// Colores CSS dinámicos desde Keystatic (con fallback a los valores del brand)
-const colors = {
-  background:    siteConfig?.colorBackground    ?? '#fdfbec',
-  primaryDark:   siteConfig?.colorPrimaryDark   ?? '#3b2639',
-  accentRed:     siteConfig?.colorAccentRed     ?? '#8c0703',
-  accentPurple:  siteConfig?.colorAccentPurple  ?? '#6d4492',
-  earth:         siteConfig?.colorEarth         ?? '#bb896b',
-  sage:          siteConfig?.colorSage          ?? '#566443',
-};
 ---
 
 <!doctype html>
@@ -79,29 +65,11 @@ const colors = {
 
     <ClientRouter />
 
-    <!-- Colores de marca desde Keystatic — sobreescriben las variables CSS del global.css -->
-    <style define:vars={{
-      'color-background':   colors.background,
-      'color-primary-dark': colors.primaryDark,
-      'color-accent-red':   colors.accentRed,
-      'color-accent-purple':colors.accentPurple,
-      'color-earth':        colors.earth,
-      'color-sage':         colors.sage,
-    }}>
-      :root {
-        --color-background:    var(--color-background);
-        --color-primary-dark:  var(--color-primary-dark);
-        --color-accent-red:    var(--color-accent-red);
-        --color-accent-purple: var(--color-accent-purple);
-        --color-earth:         var(--color-earth);
-        --color-sage:          var(--color-sage);
-      }
-    </style>
-
     <!-- Dynamic theme color: set synchronously to prevent FOUC on hard reload -->
-    <script is:inline define:vars={{ themeColors: [colors.accentRed, colors.primaryDark, colors.sage] }}>
+    <script is:inline>
       (function () {
-        var color = themeColors[Math.floor(Math.random() * themeColors.length)];
+        var THEME_COLORS = ['#8c0703', '#3b2639', '#566443'];
+        var color = THEME_COLORS[Math.floor(Math.random() * THEME_COLORS.length)];
         document.documentElement.style.setProperty('--color-theme-dynamic', color);
       })();
     </script>
@@ -114,26 +82,42 @@ const colors = {
 </html>
 
 <script>
+  // Scroll to top al navegar entre páginas distintas.
+  // astro:after-swap se dispara cuando el nuevo DOM ya reemplazó al anterior
+  // pero antes de que se ejecute astro:page-load, así el scroll ocurre
+  // antes de que la transición de entrada sea visible.
   document.addEventListener('astro:after-swap', () => {
+    // Solo scroll al top si no hay un hash en la URL (ej. /#manifiesto)
     if (!window.location.hash) {
       window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     }
   });
 
+  // Actualizar el enlace activo del navbar tras cada navegación SPA
   function updateActiveNav() {
     const pathname = window.location.pathname;
     const navLinks = document.querySelectorAll('.nav-links a, .mobile-nav-links a');
+
     navLinks.forEach((link) => {
       const anchor = link as HTMLAnchorElement;
       const href = anchor.getAttribute('href') ?? '';
+
+      // Eliminar clase active de todos
       anchor.classList.remove('active');
-      if (href === pathname) anchor.classList.add('active');
-      else if (pathname === '/' && href === '/') anchor.classList.add('active');
+
+      // Asignar active según la ruta actual
+      if (href === pathname) {
+        anchor.classList.add('active');
+      } else if (pathname === '/' && href === '/') {
+        anchor.classList.add('active');
+      }
     });
   }
 
+  // Ejecutar en la primera carga y tras cada transición
   document.addEventListener('astro:page-load', updateActiveNav);
 
+  // Cambiar color dinámico en cada navegación SPA
   const THEME_COLORS = ['#8c0703', '#3b2639', '#566443'];
   function applyRandomThemeColor() {
     const color = THEME_COLORS[Math.floor(Math.random() * THEME_COLORS.length)];

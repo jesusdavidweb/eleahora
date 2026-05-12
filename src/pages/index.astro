@@ -2,35 +2,6 @@
 import Layout from "../layouts/Layout.astro";
 import ScrollAnimations from "../components/svelte/ScrollAnimations.svelte";
 import "../styles/global.css";
-import { getHomePage, getSiteConfig, getAllTestimonios } from "../lib/keystatic";
-
-const home = await getHomePage();
-const site = await getSiteConfig();
-const testimonios = await getAllTestimonios();
-
-// Fallbacks por si no hay datos en Keystatic todavía
-const heroTitle      = home?.heroTitle      ?? 'Soy la voz que te recuerda que estás aquí.';
-const heroSubtitle   = home?.heroSubtitle   ?? 'En el presente.\nMeditación y Terapia Transpersonal.\nMindfulness. Espiritualidad aterrizada.';
-const heroCtaText    = home?.heroCtaText    ?? 'Estoy aquí para ti';
-const heroImage      = home?.heroImage      ?? '/images/home-hero-eleahora-01-tiny.webp';
-
-const manifestoLabel = home?.manifestoLabel ?? 'Manifiesto';
-const manifestoTitle = home?.manifestoTitle ?? 'Deja que el amor te regule.';
-const manifestoQuote = home?.manifestoQuote ?? '"Soy estructura y soy caos. Soy servicio y soy soberanía. Deja que el amor te regule. Confía en el proceso."';
-const manifestoImage = home?.manifestoImage ?? '/images/home-manifiesto-eleahora-01-tiny.webp';
-// manifestoBodyHtml viene del helper resolveDocument en keystatic.ts
-const manifestoBodyHtml = (home as any)?.manifestoBodyHtml ?? '';
-
-const mindLabel      = home?.mindfulnessLabel         ?? 'Ciencia & Espíritu';
-const mindTitle      = home?.mindfulnessTitle         ?? 'Mindfulness como camino.';
-const mindLead       = home?.mindfulnessLead          ?? '';
-const mindBody       = home?.mindfulnessBody          ?? '';
-const mindBenTitle   = home?.mindfulnessBenefitsTitle ?? 'Beneficios de practicar mindfulness regularmente:';
-const mindBenefits   = home?.mindfulnessBenefits      ?? ['Reducir el estrés y la ansiedad.', 'Mejorar la claridad mental y la concentración.', 'Regular emociones intensas.', 'Dormir mejor.', 'Aumentar la creatividad y la toma de decisiones.'];
-const mindConclusion = home?.mindfulnessConclusion    ?? '';
-const mindImage      = home?.mindfulnessImage         ?? '/images/sesion_maria_corallo_neima_pidal_161-tiny.webp';
-
-const insightTimerUrl = site?.insightTimerUrl ?? 'https://insighttimer.com/eleahora';
 ---
 
 <Layout
@@ -44,49 +15,60 @@ const insightTimerUrl = site?.insightTimerUrl ?? 'https://insighttimer.com/eleah
   <section class="hero-section">
     <div class="hero-overlay"></div>
     <img
-      src={heroImage}
+      src="/images/home-hero-eleahora-01-tiny.webp"
       alt="Maria Eleonora Corallo, terapeuta transpersonal y guía de meditación de Eleahora"
       class="hero-bg gsap-parallax"
     />
+
     <div class="max-w-screen hero-content">
       <div class="hero-text-container">
         <h2 class="gsap-reveal text-accent hero-accent">Bienvenido</h2>
-        <h1 class="gsap-hero-reveal hero-title">{heroTitle}</h1>
+        <h1 class="gsap-hero-reveal hero-title">
+          Soy la voz que te recuerda que estás aquí.
+        </h1>
+
         <div class="gsap-hero-reveal hero-text-wrapper">
           <p class="hero-subtitle">
-            {heroSubtitle.split('\n').map((line: string, i: number) => (
-              <>{line}{i < heroSubtitle.split('\n').length - 1 && <br />}</>
-            ))}
+            En el presente.<br />Meditación y Terapia Transpersonal.<br
+            />Mindfulness. Espiritualidad aterrizada.
           </p>
           <div class="hero-actions">
-            <a href="/sesiones" class="btn-primary">{heroCtaText}</a>
+            <a href="/sesiones" class="btn-primary">Estoy aquí para ti</a>
           </div>
         </div>
       </div>
     </div>
   </section>
 
+
   <!-- Manifiesto -->
   <section id="manifiesto" class="manifiesto-section">
     <div class="max-w-screen manifiesto-grid">
       <div class="manifiesto-text">
-        <span class="gsap-reveal text-accent section-label">{manifestoLabel}</span>
-        <h2 class="gsap-reveal section-title">{manifestoTitle}</h2>
+        <span class="gsap-reveal text-accent section-label">Manifiesto</span>
+        <h2 class="gsap-reveal section-title">Deja que el amor te regule.</h2>
         <div class="gsap-reveal section-body">
-          {manifestoBodyHtml ? (
-            <Fragment set:html={manifestoBodyHtml} />
-          ) : (
-            <>
-              <p>Durante años creí que la estructura y lo sutil eran opuestas. Vivía entre el deber ser y el anhelo de algo más grande. Hasta que entendí que el verdadero milagro ocurre cuando los pies están bien plantados en la tierra y el corazón abierto al cielo.</p>
-              <p>En Eleahora la espiritualidad es aterrizada, no es un escape, es una herramienta. Usamos la mente (PNL y Meditación) para traducir el alma (Ángeles). Porque tu proceso no necesita ser perfecto, solo necesita ser tuyo.</p>
-            </>
-          )}
-          <blockquote class="gsap-reveal manifiesto-quote">{manifestoQuote}</blockquote>
+          <p>
+            Durante años creí que la estructura y lo sutil eran opuestas. Vivía
+            entre el deber ser y el anhelo de algo más grande. Hasta que entendí
+            que el verdadero milagro ocurre cuando los pies están bien plantados
+            en la tierra y el corazón abierto al cielo.
+          </p>
+          <p>
+            En Eleahora la espiritualidad es aterrizada, no es un escape, es una
+            herramienta. Usamos la mente (PNL y Meditación) para traducir el
+            alma (Ángeles). Porque tu proceso no necesita ser perfecto, solo
+            necesita ser tuyo.
+          </p>
+          <blockquote class="gsap-reveal manifiesto-quote">
+            "Soy estructura y soy caos. Soy servicio y soy soberanía. Deja que
+            el amor te regule. Confía en el proceso."
+          </blockquote>
         </div>
       </div>
       <div class="manifiesto-image-wrapper gsap-reveal">
         <img
-          src={manifestoImage}
+          src="/images/home-manifiesto-eleahora-01-tiny.webp"
           alt="Sesión de meditación y terapia transpersonal de Eleahora — Manifiesto"
           class="manifiesto-img"
         />
@@ -100,30 +82,48 @@ const insightTimerUrl = site?.insightTimerUrl ?? 'https://insighttimer.com/eleah
       <div class="services-header gsap-reveal">
         <h2 class="section-title text-light">Estoy aquí para ti</h2>
       </div>
+
       <div class="services-grid">
         <div class="service-card-wrapper gsap-reveal">
           <a href="/sesiones" class="service-card">
             <div class="service-content">
               <h3>Sesiones Eleahora</h3>
-              <p>Acompañamiento terapéutico con Meditación + PNL, Terapia Angelical, Perlas de Eleahora, Clases de Meditación y Sesión Energética.</p>
+              <p>
+                Acompañamiento terapéutico con Meditación + PNL, Terapia
+                Angelical, Perlas de Eleahora, Clases de Meditación y Sesión Energética.
+              </p>
             </div>
             <div class="service-arrow">→</div>
           </a>
         </div>
+
         <div class="service-card-wrapper gsap-reveal" data-gsap-delay="0.15">
-          <a href="/workshop-empresas" class="service-card">
+          <a
+            href="/sesiones"
+            class="service-card"
+          >
             <div class="service-content">
               <h3>Workshop "Pienso, luego medito"</h3>
-              <p>Experiencia team building para grupos y empresas con herramientas prácticas para volver al presente <b>que ayudan a regular niveles de estrés y a potenciar el rendimiento.</b></p>
+              <p>
+                Experiencia team building para grupos y empresas con herramientas prácticas para volver al presente <b>que ayudan a regular niveles de estrés y a potenciar el rendimiento.</b>
+              </p>
             </div>
             <div class="service-arrow">→</div>
           </a>
         </div>
+
         <div class="service-card-wrapper gsap-reveal" data-gsap-delay="0.3">
-          <a href={insightTimerUrl} target="_blank" rel="noopener noreferrer" class="service-card">
+          <a
+            href="https://insighttimer.com/eleahora"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="service-card"
+          >
             <div class="service-content">
               <h3>Meditaciones Guiadas</h3>
-              <p>Escuchar en Insight Timer</p>
+              <p>
+                Escuchar en Insight Timer
+              </p>
             </div>
             <div class="service-arrow">↗</div>
           </a>
@@ -132,32 +132,66 @@ const insightTimerUrl = site?.insightTimerUrl ?? 'https://insighttimer.com/eleah
     </div>
   </section>
 
+
+
   <!-- Mindfulness SEO -->
   <section id="mindfulness" class="mindfulness-section">
     <div class="max-w-screen">
       <div class="mindfulness-header">
-        <span class="gsap-reveal text-accent section-label">{mindLabel}</span>
-        <h2 class="gsap-reveal section-title">{mindTitle}</h2>
+        <span class="gsap-reveal text-accent section-label"
+          >Ciencia & Espíritu</span
+        >
+        <h2 class="gsap-reveal section-title">Mindfulness como camino.</h2>
       </div>
+
       <div class="mindfulness-grid">
         <div class="mindfulness-image-wrapper gsap-reveal">
-          <img src={mindImage} alt="Práctica de mindfulness y meditación consciente con Eleahora" class="mindfulness-img" />
+          <img
+              src="/images/sesion_maria_corallo_neima_pidal_161-tiny.webp"
+            alt="Práctica de mindfulness y meditación consciente con Eleahora"
+            class="mindfulness-img"
+          />
         </div>
+
+    
+
         <div class="mindfulness-text">
           <div class="gsap-reveal section-body">
-            <p class="mindfulness-lead" set:html={mindLead} />
-            <p class="mindfulness-desc">{mindBody}</p>
+            <p class="mindfulness-lead">
+              La <strong class="text-primary-dark">meditación</strong> es una herramienta
+              de neuroregulación. El <strong class="text-primary-dark"
+                >mindfulness</strong
+              > es una práctica que entrena la mente para volver al momento presente.
+            </p>
+            <p class="mindfulness-desc">
+              A través de la respiración, la atención plena y la consciencia
+              corporal, el sistema nervioso aprende a salir del estado de alerta
+              constante y a regresar a un estado de regulación y equilibrio. Hoy
+              sabemos que la meditación no solo transforma nuestra experiencia
+              interna: también produce cambios medibles en el cerebro y en el
+              sistema nervioso.
+            </p>
+
             <div class="mindfulness-benefits-card">
-              <h3 class="benefits-title">{mindBenTitle}</h3>
+              <h3 class="benefits-title">Beneficios de practicar mindfulness regularmente:</h3>
               <ul class="mindfulness-benefits">
-                {mindBenefits.map((b: string) => <li>{b}</li>)}
+                <li>Reducir el estrés y la ansiedad.</li>
+                <li>Mejorar la claridad mental y la concentración.</li>
+                <li>Regular emociones intensas.</li>
+                <li>Dormir mejor.</li>
+                <li>Aumentar la creatividad y la toma de decisiones.</li>
               </ul>
             </div>
           </div>
         </div>
       </div>
+
       <div class="mindfulness-footer gsap-reveal">
-        <p class="mindfulness-conclusion">{mindConclusion}</p>
+        <p class="mindfulness-conclusion">
+          "En un mundo que nos empuja constantemente hacia el ruido y la
+          velocidad, la meditación se convierte en una forma de volver a uno
+          mismo."
+        </p>
       </div>
     </div>
   </section>
@@ -168,36 +202,29 @@ const insightTimerUrl = site?.insightTimerUrl ?? 'https://insighttimer.com/eleah
       <div class="section-header gsap-reveal">
         <h2 class="section-title">Testimonios</h2>
       </div>
+
       <div class="testimonials-grid">
-        {testimonios.length > 0 ? (
-          testimonios.map((t, i) => (
-            <article class={`testimonial-card gsap-reveal testimonial-${i % 3 === 0 ? 'sage' : i % 3 === 1 ? 'red' : 'purple'}`}>
-              <p class="testimonial-text">{t.entry.quote}</p>
-              <p class="testimonial-author">— {t.entry.name}</p>
-            </article>
-          ))
-        ) : (
-          <>
-            <article class="testimonial-card testimonial-sage gsap-reveal">
-              <p class="testimonial-text">Maria ha sido un pilar fundamental en mi crecimiento personal este último año. En nuestras sesiones, he encontrado una escucha activa y consejos que me han ayudado a identificar los pasos necesarios para superar los desafíos que enfrentaba.</p>
-              <p class="testimonial-author">— Flora Bautian.</p>
-            </article>
-            <article class="testimonial-card testimonial-red gsap-reveal">
-              <p class="testimonial-text">En este mundo que habitamos está muy de moda la desconexión: digital, de las ciudades… y nos olvidamos de lo más importante: la conexión con nosotros mismos. Y eso es lo que haces con Maria.</p>
-              <p class="testimonial-author">— Marta Leciñena</p>
-            </article>
-            <article class="testimonial-card testimonial-purple gsap-reveal">
-              <p class="testimonial-text">Mi experiencia con Maria Eleonora ha sido un viaje profundamente transformador en mi camino espiritual. Llegué buscando sostén en un momento de despertar interior, y encontré un espacio seguro, amoroso y lleno de luz.</p>
-              <p class="testimonial-author">— Andrea Trocel</p>
-            </article>
-          </>
-        )}
+        <article class="testimonial-card testimonial-sage gsap-reveal">
+          <p class="testimonial-text">Maria ha sido un pilar fundamental en mi crecimiento personal este último año. En nuestras sesiones, he encontrado una escucha activa y consejos que me han ayudado a identificar los pasos necesarios para superar los desafíos que enfrentaba. Nunca había practicado la meditación antes de conocerla, y gracias a nuestras sesiones, he hallado una paz y serenidad profundas, así como la fuerza necesaria para seguir adelante. Lo que hace a Maria excepcional es la combinación de su voz, su profunda sabiduría científica y espiritual, y una sensibilidad humana extraordinaria.</p>
+          <p class="testimonial-author">— Flora Bautian.</p>
+        </article>
+
+        <article class="testimonial-card testimonial-red gsap-reveal">
+          <p class="testimonial-text">En este mundo que habitamos está muy de moda la desconexión: digital, de las ciudades… y nos olvidamos de lo más importante: la conexión con nosotros mismos. Y eso es lo que haces con Maria. Una de las personas más especiales que conozco. Y como tal te recibe y te hace sentir. Un ratito con Maria es “el spa para el alma” que todos necesitamos. Tengas un objetivo que quieras trabajar o simplemente un ratito para ti, Maria es, sin duda, “la persona”.</p>
+          <p class="testimonial-author">— Marta Leciñena</p>
+        </article>
+
+        <article class="testimonial-card testimonial-purple gsap-reveal">
+          <p class="testimonial-text">Mi experiencia con Maria Eleonora ha sido un viaje profundamente transformador en mi camino espiritual. Llegué buscando sostén en un momento de despertar interior, y encontré un espacio seguro, amoroso y lleno de luz donde pude abrirme, explorar y recordar partes de mí que estaban esperando ser escuchadas. Las meditaciones guiadas son un capítulo aparte: sublimes, profundas y llenas de una ternura que sostiene. Maria Eleonora tiene la capacidad de llevarnos a lo más profundo de nuestro ser, invitándonos a explorar lo sagrado desde la calma, la presencia y una guía que se siente verdaderamente luminosa.</p>
+          <p class="testimonial-author">— Andrea Trocel</p>
+        </article>
       </div>
     </div>
   </section>
 </Layout>
 
 <style>
+  /* Hero Section */
   .hero-section {
     position: relative;
     min-height: 100vh;
@@ -206,110 +233,474 @@ const insightTimerUrl = site?.insightTimerUrl ?? 'https://insighttimer.com/eleah
     overflow: hidden;
     background-color: var(--color-background);
   }
+
   .hero-bg {
     position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100vh;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
     object-fit: cover;
     object-position: 70% 30%;
     z-index: 0;
+    opacity: 1; /* Imagen pura, radiante y a full opacidad */
   }
+
   .hero-overlay {
     position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: linear-gradient(to right, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.45) 30%, transparent 60%);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Oscurecer ligeramente el lado izquierdo para texto claro sobre fondo oscuro */
+    background: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.65) 0%,
+      rgba(0, 0, 0, 0.45) 30%,
+      transparent 60%
+    );
     z-index: 1;
     pointer-events: none;
   }
+  /* Removed mobile white gradient override to preserve dark overlay on all viewports */
+
   .hero-content {
-    position: relative; z-index: 2; width: 100%;
-    padding-top: 8rem; padding-bottom: 4rem;
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    padding-top: 8rem; /* Separar más del header */
+    padding-bottom: 4rem;
   }
-  .hero-text-container { max-width: 800px; padding: 2rem 0; }
+
+  .hero-text-container {
+    max-width: 800px;
+    padding: 2rem 0;
+  }
+
   .hero-accent {
-    font-size: clamp(1.5rem, 3vw, 2.2rem); margin-bottom: 0.5rem;
-    display: block; color: var(--color-background); line-height: 1;
-    font-family: var(--font-primary); text-transform: lowercase;
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    margin-bottom: 0.5rem;
+    display: block;
+    color: var(--color-background);
+    line-height: 1;
+    font-family: var(--font-primary);
+    text-transform: lowercase;
   }
-  .hero-accent::first-letter { font-family: var(--font-accent); text-transform: uppercase; font-size: 1.5em; }
+
+  .hero-accent::first-letter {
+    font-family: var(--font-accent);
+    text-transform: uppercase;
+    font-size: 1.5em;
+  }
+
   .hero-title {
-    font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1.05;
-    letter-spacing: -0.01em; color: var(--color-background);
-    margin-bottom: 1.5rem; text-shadow: 0px 4px 20px rgba(0,0,0,0.6);
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: var(--color-background);
+    margin-bottom: 1.5rem;
+    text-shadow: 0px 4px 20px rgba(0, 0, 0, 0.6);
   }
-  .hero-text-wrapper { display: flex; flex-direction: column; gap: 2rem; }
+
+  .hero-text-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .hero-text-wrapper {
+      flex-direction: column; /* Apilar para no cortar el texto */
+      align-items: flex-start;
+    }
+  }
+
   .hero-subtitle {
-    font-size: clamp(1.1rem, 2vw, 1.4rem); line-height: 1.6;
-    max-width: 500px; margin-bottom: 0; font-weight: 500; color: var(--color-background);
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    line-height: 1.6;
+    max-width: 500px;
+    margin-bottom: 0;
+    font-weight: 500;
+    color: var(--color-background); /* Texto claro para fondo oscuro */
   }
+
+  /* Hero-specific button styles for dark hero background */
   .hero-section .btn-primary {
-    background-color: transparent; color: var(--color-background);
-    border-color: rgba(253,251,236,0.35);
+    background-color: transparent;
+    color: var(--color-background);
+    border-color: rgba(253, 251, 236, 0.35);
   }
-  .hero-section .btn-primary:hover { background-color: var(--color-background); color: var(--color-primary-dark); }
+
+  .hero-section .btn-primary:hover {
+    background-color: var(--color-background);
+    color: var(--color-primary-dark);
+  }
+
+  /* General typography layout */
   .section-label {
-    font-size: 2.5rem; display: block; margin-bottom: 1rem;
-    font-family: var(--font-primary); text-transform: lowercase;
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 1rem;
+    font-family: var(--font-primary);
+    text-transform: lowercase;
   }
-  .section-label::first-letter { font-family: var(--font-accent); text-transform: uppercase; font-size: 1.5em; }
-  .section-title { font-size: clamp(2.5rem, 4vw, 4rem); line-height: 1.1; margin-bottom: 2.5rem; }
-  .section-body p { font-size: 1.2rem; line-height: 1.8; }
-  .manifiesto-section { padding: 8rem 0; background-color: var(--color-background); }
-  .manifiesto-grid { display: grid; grid-template-columns: 1fr; gap: 4rem; align-items: center; }
-  @media (min-width: 1024px) { .manifiesto-grid { grid-template-columns: 1.2fr 1fr; gap: 6rem; } }
+
+  .section-label::first-letter {
+    font-family: var(--font-accent);
+    text-transform: uppercase;
+    font-size: 1.5em;
+  }
+
+  .section-title {
+    font-size: clamp(2.5rem, 4vw, 4rem);
+    line-height: 1.1;
+    margin-bottom: 2.5rem;
+  }
+
+  .section-body p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+  }
+
+  /* Manifiesto */
+  .manifiesto-section {
+    padding: 8rem 0;
+    background-color: var(--color-background);
+  }
+
+  .manifiesto-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  @media (min-width: 1024px) {
+    .manifiesto-grid {
+      grid-template-columns: 1.2fr 1fr;
+      gap: 6rem;
+    }
+  }
+
   .manifiesto-quote {
-    font-family: var(--font-primary); font-size: 1.75rem; color: var(--color-accent-red);
-    font-style: italic; border-left: 3px solid var(--color-accent-red);
-    padding-left: 2rem; margin-top: 3rem; line-height: 1.4;
+    font-family: var(--font-primary);
+    font-size: 1.75rem;
+    color: var(--color-accent-red);
+    font-style: italic;
+    border-left: 3px solid var(--color-accent-red);
+    padding-left: 2rem;
+    margin-top: 3rem;
+    line-height: 1.4;
   }
-  .manifiesto-image-wrapper { border-radius: 20px; overflow: hidden; position: relative; aspect-ratio: 4/5; }
-  .manifiesto-img { width: 100%; height: 100%; object-fit: cover; }
-  .services-section { padding: 8rem 0; background-color: var(--color-accent-red); color: var(--color-background); }
-  .text-light { color: var(--color-background); }
-  .services-header { display: flex; flex-direction: column; gap: 2rem; margin-bottom: 5rem; }
-  @media (min-width: 768px) { .services-header { flex-direction: row; justify-content: space-between; align-items: flex-end; } }
-  .services-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
-  @media (min-width: 768px) { .services-grid { grid-template-columns: repeat(3, 1fr); } }
+
+  .manifiesto-image-wrapper {
+    border-radius: 20px 20px 20px 20px; /* organically shaped or just rounded */
+    overflow: hidden;
+    position: relative;
+    aspect-ratio: 4/5;
+  }
+
+  .manifiesto-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Servicios Dark Section */
+  .services-section {
+    padding: 8rem 0;
+    background-color: var(--color-accent-red);
+    color: var(--color-background);
+  }
+
+  .text-light {
+    color: var(--color-background);
+  }
+
+  .light-btn {
+    border-color: rgba(253, 251, 236, 0.3);
+    color: var(--color-background);
+  }
+
+  .light-btn:hover {
+    background-color: var(--color-background);
+    color: var(--color-primary-dark);
+  }
+
+  .services-header {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 5rem;
+  }
+
+  @media (min-width: 768px) {
+    .services-header {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .services-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
   .service-card {
-    display: flex; flex-direction: column; justify-content: space-between;
-    padding: 3rem 2rem; background-color: rgba(255,255,255,0.03);
-    border: 1px solid rgba(253,251,236,0.1); border-radius: 12px;
-    height: 100%; min-height: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 3rem 2rem;
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(253, 251, 236, 0.1);
+    border-radius: 12px;
+    height: 100%;
+    min-height: 350px;
     transition: background-color 0.3s ease, transform 0.3s ease;
+    will-change: transform, background-color;
   }
-  .service-card:hover { background-color: rgba(255,255,255,0.08); transform: translateY(-5px); }
-  .service-content h3 { font-size: 1.75rem; color: var(--color-background); margin-bottom: 1.5rem; }
-  .service-content p { color: rgba(253,251,236,0.7); font-size: 1.05rem; }
-  .service-arrow { font-size: 2rem; color: var(--color-earth); margin-top: 2rem; align-self: flex-end; transition: transform 0.3s ease; }
-  .service-card:hover .service-arrow { transform: translateX(5px); }
-  .mindfulness-section { padding: 8rem 0; background-color: var(--color-background); }
-  .mindfulness-header { text-align: center; max-width: 800px; margin: 0 auto 4rem; }
-  .mindfulness-grid { display: grid; grid-template-columns: 1fr; gap: 4rem; align-items: center; }
-  @media (min-width: 1024px) { .mindfulness-grid { grid-template-columns: 1fr 1.2fr; gap: 6rem; } }
-  .mindfulness-image-wrapper { order: 2; border-radius: 20px; overflow: hidden; position: relative; aspect-ratio: 3/4; }
-  @media (min-width: 1024px) { .mindfulness-image-wrapper { order: 1; } .mindfulness-text { order: 2; } }
-  .mindfulness-img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
-  .text-primary-dark { color: var(--color-primary-dark); font-weight: 600; }
-  .mindfulness-lead { font-size: 1.4rem !important; line-height: 1.6 !important; margin-bottom: 1.5rem; color: var(--color-primary-dark); }
-  .mindfulness-desc { font-size: 1.1rem !important; line-height: 1.8 !important; opacity: 0.85; margin-bottom: 2rem; }
-  .mindfulness-benefits-card { background: rgba(255,255,255,0.4); border: 1px solid rgba(187,137,107,0.2); border-radius: 16px; padding: 2rem; margin: 2rem 0; }
-  .benefits-title { font-family: var(--font-primary, system-ui); font-size: 1.2rem; color: var(--color-accent-purple); margin-bottom: 1.25rem; }
-  .mindfulness-benefits { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; }
-  .mindfulness-benefits li { font-size: 1.05rem; color: var(--color-primary-dark); padding-left: 2rem; position: relative; opacity: 0.9; line-height: 1.5; }
-  .mindfulness-benefits li::before { content: ""; position: absolute; left: 0; top: 2px; width: 20px; height: 20px; background-image: url('/images/favicon.png'); background-size: contain; background-repeat: no-repeat; }
-  .testimonials-section { padding: 6rem 0; background-color: var(--color-background); }
-  .testimonials-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
-  @media (min-width: 768px) { .testimonials-grid { grid-template-columns: repeat(3, 1fr); } }
-  .testimonial-card { background: rgba(59,38,57,0.03); border: 1px solid rgba(59,38,57,0.06); padding: 2rem; border-radius: 12px; min-height: 220px; display: flex; flex-direction: column; justify-content: space-between; }
-  .testimonial-text { color: var(--color-primary-dark); font-size: 0.98rem; line-height: 1.6; margin-bottom: 1rem; opacity: 0.95; }
-  .testimonial-author { font-weight: 700; color: var(--color-accent-red); font-size: 0.95rem; }
-  .testimonial-sage { border-left: 3px solid var(--color-sage); background: rgba(86,100,67,0.04); }
-  .testimonial-sage .testimonial-author { color: var(--color-sage); }
-  .testimonial-red { border-left: 3px solid var(--color-accent-red); background: rgba(140,7,3,0.04); }
-  .testimonial-red .testimonial-author { color: var(--color-accent-red); }
-  .testimonial-purple { border-left: 3px solid var(--color-accent-purple); background: rgba(109,68,146,0.04); }
-  .testimonial-purple .testimonial-author { color: var(--color-accent-purple); }
-  .mindfulness-footer { max-width: 900px; margin: 5rem auto 0; text-align: center; }
-  .mindfulness-conclusion { font-family: var(--font-primary, sans-serif) !important; font-size: clamp(1.5rem, 2.5vw, 2rem) !important; color: var(--color-accent-red) !important; opacity: 1 !important; line-height: 1.4 !important; margin: 0; }
+
+  .service-card:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    transform: translateY(-5px);
+  }
+
+  .service-content h3 {
+    font-size: 1.75rem;
+    color: var(--color-background);
+    margin-bottom: 1.5rem;
+  }
+
+  .service-content p {
+    color: rgba(253, 251, 236, 0.7);
+    font-size: 1.05rem;
+  }
+
+  .service-arrow {
+    font-size: 2rem;
+    color: var(--color-earth);
+    margin-top: 2rem;
+    align-self: flex-end;
+    transition: transform 0.3s ease;
+  }
+
+  .service-card:hover .service-arrow {
+    transform: translateX(5px);
+  }
+
+  /* Mindfulness SEO */
+  .mindfulness-section {
+    padding: 8rem 0;
+    background-color: var(--color-background);
+  }
+
+  .mindfulness-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 4rem;
+  }
+
+  .mindfulness-header .section-label {
+    margin-bottom: 0.5rem;
+  }
+
+  .mindfulness-header .section-title {
+    margin-bottom: 0;
+  }
+
+  .mindfulness-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  @media (min-width: 1024px) {
+    .mindfulness-grid {
+      grid-template-columns: 1fr 1.2fr;
+      gap: 6rem;
+    }
+  }
+
+  .mindfulness-image-wrapper {
+    order: 2;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    aspect-ratio: 3/4;
+  }
+
+  @media (min-width: 1024px) {
+    .mindfulness-image-wrapper {
+      order: 1;
+    }
+    .mindfulness-text {
+      order: 2;
+    }
+  }
+
+  .mindfulness-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  .text-primary-dark {
+    color: var(--color-primary-dark);
+    font-weight: 600;
+  }
+
+  .mindfulness-lead {
+    font-size: 1.4rem !important;
+    line-height: 1.6 !important;
+    margin-bottom: 1.5rem;
+    color: var(--color-primary-dark);
+  }
+
+  .mindfulness-desc {
+    font-size: 1.1rem !important;
+    line-height: 1.8 !important;
+    opacity: 0.85;
+    margin-bottom: 2rem;
+  }
+
+  .mindfulness-benefits-card {
+    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(187, 137, 107, 0.2);
+    border-radius: 16px;
+    padding: 2rem;
+    margin: 2rem 0;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.02);
+  }
+
+  .benefits-title {
+    font-family: var(--font-primary, system-ui);
+    font-size: 1.2rem;
+    color: var(--color-accent-purple);
+    margin-bottom: 1.25rem;
+    letter-spacing: 0.5px;
+  }
+
+  .mindfulness-benefits {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 1rem;
+  }
+
+  .mindfulness-benefits li {
+    font-family: system-ui, sans-serif;
+    font-size: 1.05rem;
+    color: var(--color-primary-dark);
+    padding-left: 2rem;
+    position: relative;
+    opacity: 0.9;
+    line-height: 1.5;
+  }
+
+  .mindfulness-benefits li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 2px;
+    width: 20px;
+    height: 20px;
+    background-image: url('/images/favicon.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  /* Testimonials styles */
+  .testimonials-section {
+    padding: 6rem 0;
+    background-color: var(--color-background);
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .testimonials-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .testimonial-card {
+    background: rgba(59, 38, 57, 0.03);
+    border: 1px solid rgba(59, 38, 57, 0.06);
+    padding: 2rem;
+    border-radius: 12px;
+    min-height: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .testimonial-text {
+    color: var(--color-primary-dark);
+    font-size: 0.98rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    opacity: 0.95;
+  }
+
+  .testimonial-author {
+    font-weight: 700;
+    color: var(--color-accent-red);
+    font-size: 0.95rem;
+  }
+
+    .testimonial-sage {
+      border-left: 3px solid #566443;
+      background: rgba(86, 100, 67, 0.04);
+    }
+    .testimonial-sage .testimonial-author {
+      color: #566443;
+    }
+
+    .testimonial-red {
+      border-left: 3px solid #8c0703;
+      background: rgba(140, 7, 3, 0.04);
+    }
+    .testimonial-red .testimonial-author {
+      color: #8c0703;
+    }
+
+    .testimonial-purple {
+      border-left: 3px solid #6d4492;
+      background: rgba(109, 68, 146, 0.04);
+    }
+    .testimonial-purple .testimonial-author {
+      color: #6d4492;
+    }
+  .mindfulness-footer {
+    max-width: 900px;
+    margin: 5rem auto 0;
+    text-align: center;
+  }
+
+  .mindfulness-conclusion {
+    font-family: var(--font-primary, sans-serif) !important;
+    font-size: clamp(1.5rem, 2.5vw, 2rem) !important;
+    color: var(--color-accent-red) !important;
+    opacity: 1 !important;
+    line-height: 1.4 !important;
+    margin: 0;
+  }
+
+
 </style>

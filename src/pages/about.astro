@@ -1,38 +1,27 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { getAboutPage } from "../lib/keystatic";
-
-const about = await getAboutPage();
-
-const heroLabel      = about?.heroLabel      ?? 'Sobre mí';
-const heroTitle      = about?.heroTitle      ?? 'Soy quien soy y eso es suficiente.';
-const heroSubtitle   = about?.heroSubtitle   ?? 'Terapeuta Transpersonal · Guía de Meditación · PNL';
-const profileImage   = about?.profileImage   ?? '/images/about-eleahora-001.webp';
-const ctaTitle       = about?.ctaTitle       ?? 'Te acompaño a volver a conectar con el presente. Bienvenidos';
-const ctaButtonText  = about?.ctaButtonText  ?? 'Estoy aquí para tí';
-const bioBodyHtml    = about?.bioBodyHtml ?? '';
 ---
 
 <Layout
   title="Sobre Mí — Maria Eleonora Corallo | Eleahora"
   description="Conoce la historia de Maria Eleonora Corallo, fundadora de Eleahora: de lo corporativo en París al acompañamiento terapéutico con Meditación, PNL Transpersonal y conexión espiritual en Madrid."
   ogTitle="Sobre Mí — Maria Eleonora Corallo | Eleahora"
-  ogImage={profileImage}
+  ogImage="/images/about-eleahora-001.webp"
 >
   <main class="inner-page">
     <section class="page-hero" aria-labelledby="about-title">
       <picture>
-        <source media="(max-width: 768px)" srcset={profileImage} />
+        <source media="(max-width: 768px)" srcset="/images/about-eleahora-001.webp" />
         <img
-          src={about?.galleryImage1 ?? '/images/about-desktop-2.webp'}
+          src="/images/about-desktop-2.webp"
           alt="Fondo de la sección Sobre Mí de Eleahora — presencia y conexión interior"
           class="page-hero-bg"
         />
       </picture>
       <div class="page-hero-overlay"></div>
       <div class="max-w-screen page-hero-content">
-        <span class="text-accent page-kicker">{heroLabel}</span>
-        <h1 id="about-title">{heroTitle}</h1>
+        <span class="text-accent page-kicker">Sobre Mí</span>
+        <h1 id="about-title">Soy quien soy y eso es suficiente.</h1>
       </div>
     </section>
 
@@ -44,30 +33,37 @@ const bioBodyHtml    = about?.bioBodyHtml ?? '';
             Tengo un sueño: llevar la meditación a personas que aún no saben que la necesitan.
           </h2>
           <img
-            src={profileImage}
+            src="/images/about-mi-recorrido-01.webp"
             alt="Maria Eleonora Corallo, terapeuta transpersonal y fundadora de Eleahora"
             class="about-image image-mobile"
           />
           <div class="section-body">
-            {about?.bioIntro && <p>{about.bioIntro}</p>}
-            {bioBodyHtml ? (
-              <Fragment set:html={bioBodyHtml} />
-            ) : (
-              <>
-                <p>Nací en Venezuela, en una familia italiana, y desde muy joven mi vida ha estado marcada por el movimiento: distintos países, idiomas y culturas. Durante años seguí un camino más estructurado: estudié idiomas y comercio internacional en París y trabajé en entornos corporativos.</p>
-                <p>Pero algo dentro de mí siempre quería ir más allá.</p>
-                <p>Hace unos años tomé una decisión que cambió mi rumbo: mudarme a Madrid y empezar un viaje mucho más profundo. Mientras estudiaba y me formaba, también me estaba transformando.</p>
-                <p>En ese camino encontré —o recordé— algo que siempre había estado en mí: la capacidad de acompañar procesos internos, de escuchar con profundidad y de abrir espacios de consciencia.</p>
-                <p>La meditación se convirtió en mi herramienta más práctica y poderosa.</p>
-                <p>Un lugar donde volver a mí misma, entender mi mente, regular mis emociones y conectar con Dios.</p>
-                <p>Con el tiempo, diferentes herramientas fueron sumándose a este camino: la Programación Neurolingüística transpersonal, el trabajo energético y la conexión espiritual. No como conceptos abstractos, sino como herramientas muy prácticas para vivir con más presencia, claridad y coherencia.</p>
-              </>
-            )}
+            <p>
+              Nací en Venezuela, en una familia italiana, y desde muy joven mi vida ha estado marcada por el movimiento: distintos países, idiomas y culturas. Durante años seguí un camino más estructurado: estudié idiomas y comercio internacional en París y trabajé en entornos corporativos.
+            </p>
+            <p>
+              Pero algo dentro de mí siempre quería ir más allá.
+            </p>
+            <p>
+              Hace unos años tomé una decisión que cambió mi rumbo: mudarme a Madrid y empezar un viaje mucho más profundo. Mientras estudiaba y me formaba, también me estaba transformando.
+            </p>
+            <p>
+              En ese camino encontré —o recordé— algo que siempre había estado en mí: la capacidad de acompañar procesos internos, de escuchar con profundidad y de abrir espacios de consciencia.
+            </p>
+            <p>
+              La meditación se convirtió en mi herramienta más práctica y poderosa.
+            </p>
+            <p>
+              Un lugar donde volver a mí misma, entender mi mente, regular mis emociones y conectar con Dios.
+            </p>
+            <p>
+              Con el tiempo, diferentes herramientas fueron sumándose a este camino: la Programación Neurolingüística transpersonal, el trabajo energético y la conexión espiritual. No como conceptos abstractos, sino como herramientas muy prácticas para vivir con más presencia, claridad y coherencia.
+            </p>
           </div>
         </article>
         <aside class="image-column" aria-label="Imagen vertical de historia personal">
           <img
-            src={profileImage}
+            src="/images/about-mi-recorrido-01.webp"
             alt="Maria Eleonora Corallo, terapeuta transpersonal y fundadora de Eleahora"
             class="about-image"
           />
@@ -79,7 +75,7 @@ const bioBodyHtml    = about?.bioBodyHtml ?? '';
       <div class="max-w-screen path-grid">
         <aside class="image-stack" aria-label="Galería vertical sobre el proceso">
           <img
-            src={about?.galleryImage2 ?? '/images/about-eleahora-002.webp'}
+            src="/images/about-eleahora-002.webp"
             alt="Proceso de presencia y espiritualidad aterrizada — así nace Eleahora"
             class="about-image"
           />
@@ -90,19 +86,17 @@ const bioBodyHtml    = about?.bioBodyHtml ?? '';
             Un espacio de espiritualidad aterrizada para vivir con más presencia.
           </h2>
           <img
-            src={about?.galleryImage2 ?? '/images/about-eleahora-002.webp'}
+            src="/images/about-eleahora-002.webp"
             alt="Proceso de presencia y espiritualidad aterrizada — así nace Eleahora"
             class="about-image image-mobile"
           />
           <div class="section-body">
-            {about?.manifestoText ? (
-              <p>{about.manifestoText}</p>
-            ) : (
-              <>
-                <p>Hoy acompaño a personas que sienten que algo dentro de ellas quiere moverse, ordenarse o simplemente respirar un poco más profundo.</p>
-                <p>Trabajo a través de:</p>
-              </>
-            )}
+            <p>
+              Hoy acompaño a personas que sienten que algo dentro de ellas quiere moverse, ordenarse o simplemente respirar un poco más profundo.
+            </p>
+            <p>
+              Trabajo a través de:
+            </p>
           </div>
           <ul class="service-list" aria-label="Formatos de acompañamiento">
             <li>Sesiones individuales de terapia.</li>
@@ -110,17 +104,25 @@ const bioBodyHtml    = about?.bioBodyHtml ?? '';
             <li>Workshops y programas para empresas.</li>
           </ul>
           <div class="section-body">
-            <p>Porque creo profundamente que estamos viviendo un momento de cambio colectivo donde la consciencia, la presencia y la conexión interior ya no son un lujo, sino una necesidad.</p>
-          </div>
+            <p>
+              Porque creo profundamente que estamos viviendo un momento de cambio colectivo donde la consciencia, la presencia y la conexión interior ya no son un lujo, sino una necesidad.
+            </p>
+
+          </div>  
         </article>
       </div>
     </section>
 
     <section class="about-cta section-soft" aria-labelledby="cta-title">
       <div class="max-w-screen cta-wrap">
-        <h2 id="cta-title">{ctaTitle}</h2>
-        <a href="/sesiones" class="footer-meditation-cta" role="button" aria-label="Ir a sesiones">
-          {ctaButtonText}
+        <h2 id="cta-title">Te acompaño a volver a conectar con el presente. Bienvenidos</h2>
+        <a
+          href="/sesiones"
+          class="footer-meditation-cta"
+          role="button"
+          aria-label="Ir a sesiones"
+          >
+          Estoy aquí para tí
         </a>
       </div>
     </section>
@@ -128,44 +130,230 @@ const bioBodyHtml    = about?.bioBodyHtml ?? '';
 </Layout>
 
 <style>
-  .inner-page { padding-top: 6rem; }
-  .page-hero { position: relative; min-height: 60vh; display: flex; align-items: flex-end; overflow: hidden; }
-  .page-hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
-  .page-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(59,38,57,0.85) 0%, rgba(59,38,57,0.45) 45%, rgba(59,38,57,0.15) 100%); }
-  .page-hero-content { position: relative; z-index: 1; padding-bottom: 4rem; }
-  .page-kicker { display: block; font-size: clamp(1.6rem, 3vw, 2.4rem); margin-bottom: 0.75rem; color: var(--color-earth); }
-  h1 { color: var(--color-background); font-size: clamp(2.2rem, 5vw, 4.5rem); margin: 0; max-width: 18ch; }
-  .section-soft { background: linear-gradient(to bottom, rgba(187,137,107,0.1) 0%, rgba(253,251,236,0.65) 55%, rgba(253,251,236,1) 100%); }
-  .about-story, .about-path, .about-cta { padding: 6rem 0; }
-  .story-grid, .path-grid { display: grid; gap: clamp(2rem, 4vw, 4rem); align-items: start; }
-  .story-grid { grid-template-columns: minmax(0, 1.1fr) minmax(220px, 0.6fr); }
-  .path-grid { grid-template-columns: minmax(220px, 0.6fr) minmax(0, 1.1fr); }
-  .section-label { margin-bottom: 0.8rem; font-family: var(--font-primary); color: var(--color-accent-red); font-size: clamp(1.5rem, 2.5vw, 2.1rem); line-height: 1; text-transform: lowercase; }
-  .section-label::first-letter { font-family: var(--font-accent); text-transform: uppercase; font-size: 1.5em; }
-  .section-title { margin: 0 0 1.2rem; font-size: clamp(2rem, 4.2vw, 3.6rem); letter-spacing: -0.015em; color: var(--color-primary-dark); }
-  .section-body p { margin-bottom: 1.15rem; font-size: 1.06rem; line-height: 1.85; color: var(--color-primary-dark); opacity: 0.9; }
-  .image-column, .image-stack { width: min(100%, 360px); justify-self: end; }
-  .image-stack { display: grid; gap: 1.2rem; justify-self: start; }
-  .about-image { width: 100%; aspect-ratio: 3/4; object-fit: cover; border-radius: 20px; box-shadow: 0 16px 42px rgba(59,38,57,0.08); display: block; transition: transform 0.4s ease; }
-  .about-image:hover { transform: translateY(-5px); }
-  .service-list { margin: 1.4rem 0 0; padding-left: 1.25rem; display: grid; gap: 0.6rem; }
-  .service-list li { font-size: 1rem; line-height: 1.7; color: var(--color-primary-dark); }
-  .cta-wrap { text-align: center; max-width: 920px; }
-  .cta-wrap h2 { margin: 0 auto; max-width: 20ch; font-size: clamp(2rem, 4vw, 3.3rem); color: var(--color-primary-dark); }
-  .image-mobile { display: none; }
+  .inner-page {
+    padding-top: 6rem;
+  }
+
+  .page-hero {
+    position: relative;
+    min-height: 60vh;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+  }
+
+  .page-hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .page-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(59, 38, 57, 0.85) 0%,
+      rgba(59, 38, 57, 0.45) 45%,
+      rgba(59, 38, 57, 0.15) 100%
+    );
+  }
+
+  .page-hero-content {
+    position: relative;
+    z-index: 1;
+    padding-bottom: 4rem;
+  }
+
+  .page-kicker {
+    display: block;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    margin-bottom: 0.75rem;
+    color: var(--color-earth);
+  }
+
+  h1 {
+    color: var(--color-background);
+    font-size: clamp(2.2rem, 5vw, 4.5rem);
+    margin: 0;
+    max-width: 18ch;
+  }
+
+  .section-soft {
+    background: linear-gradient(
+      to bottom,
+      rgba(187, 137, 107, 0.1) 0%,
+      rgba(253, 251, 236, 0.65) 55%,
+      rgba(253, 251, 236, 1) 100%
+    );
+  }
+
+  .about-story,
+  .about-path,
+  .about-cta {
+    padding: 6rem 0;
+  }
+
+  .story-grid,
+  .path-grid {
+    display: grid;
+    gap: clamp(2rem, 4vw, 4rem);
+    align-items: start;
+  }
+
+  .story-grid {
+    grid-template-columns: minmax(0, 1.1fr) minmax(220px, 0.6fr);
+  }
+
+  .path-grid {
+    grid-template-columns: minmax(220px, 0.6fr) minmax(0, 1.1fr);
+  }
+
+  .section-label {
+    margin-bottom: 0.8rem;
+    font-family: var(--font-primary);
+    color: var(--color-accent-red);
+    font-size: clamp(1.5rem, 2.5vw, 2.1rem);
+    line-height: 1;
+    text-transform: lowercase;
+  }
+
+  .section-label::first-letter {
+    font-family: var(--font-accent);
+    text-transform: uppercase;
+    font-size: 1.5em;
+  }
+
+  .section-title {
+    margin: 0 0 1.2rem;
+    font-size: clamp(2rem, 4.2vw, 3.6rem);
+    letter-spacing: -0.015em;
+    color: var(--color-primary-dark);
+  }
+
+  .section-body p {
+    margin-bottom: 1.15rem;
+    font-size: 1.06rem;
+    line-height: 1.85;
+    color: var(--color-primary-dark);
+    opacity: 0.9;
+  }
+
+  .image-column,
+  .image-stack {
+    width: min(100%, 360px);
+    justify-self: end;
+  }
+
+  .image-stack {
+    display: grid;
+    gap: 1.2rem;
+    justify-self: start;
+  }
+
+  .about-image {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 16px 42px rgba(59, 38, 57, 0.08);
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .about-image:hover {
+    transform: translateY(-5px);
+  }
+
+
+  .service-list {
+    margin: 1.4rem 0 0;
+    padding-left: 1.25rem;
+    display: grid;
+    gap: 0.6rem;
+  }
+
+  .service-list li {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--color-primary-dark);
+  }
+
+  .cta-wrap {
+    text-align: center;
+    max-width: 920px;
+  }
+
+  .cta-wrap h2 {
+    margin: 0 auto;
+    max-width: 20ch;
+    font-size: clamp(2rem, 4vw, 3.3rem);
+    color: var(--color-primary-dark);
+  }
+
+  .image-mobile {
+    display: none;
+  }
+
   @media (max-width: 992px) {
-    .story-grid, .path-grid { grid-template-columns: 1fr; gap: 2rem; }
-    .image-mobile { display: block; width: 100%; margin: 1.5rem 0; }
-    .image-column, .image-stack { display: none; }
+    .story-grid,
+    .path-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .image-mobile {
+      display: block;
+      width: 100%;
+      margin: 1.5rem 0;
+    }
+
+    .image-column,
+    .image-stack {
+      display: none;
+    }
   }
+
   @media (max-width: 768px) {
-    .inner-page { padding-top: 5.25rem; }
-    .page-hero { min-height: 50vh; }
-    .page-hero-content { padding-bottom: 3rem; }
-    .about-story, .about-path, .about-cta { padding: 4.5rem 0; }
+    .inner-page {
+      padding-top: 5.25rem;
+    }
+
+    .page-hero {
+      min-height: 50vh;
+    }
+
+    .page-hero-content {
+      padding-bottom: 3rem;
+    }
+
+    .about-story,
+    .about-path,
+      .about-cta {
+      padding: 4.5rem 0;
+    }
   }
-  .about-cta { background: var(--color-accent-red); padding: 6rem 0; margin-bottom: 0; }
-  .about-cta .cta-wrap h2 { color: var(--color-earth); }
-  .about-cta .footer-meditation-cta { margin-top: 20px; }
-  :global(.eleahora-footer) { margin-top: 0 !important; }
+  
+    /* About CTA specific colors (override section-soft gradient) */
+    .about-cta {
+      background: var(--color-accent-red);
+      padding: 6rem 0;
+      margin-bottom: 0;
+    }
+
+    .about-cta .cta-wrap h2 {
+      color: var(--color-earth);
+    }
+
+    /* Ensure CTA button in About page matches footer spacing */
+    .about-cta .footer-meditation-cta {
+      margin-top: 20px;
+    }
+
+    :global(.eleahora-footer) {
+      margin-top: 0 !important;
+    }
 </style>

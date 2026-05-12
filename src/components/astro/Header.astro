@@ -1,15 +1,9 @@
 ---
-import { getSiteConfig } from '../../lib/keystatic';
-
 interface Props {
   activeNav?: string;
 }
 
 const { activeNav } = Astro.props;
-const site = await getSiteConfig();
-
-// Fallbacks por si no existe el YAML todavía
-const calLink = site?.calLink ?? 'https://cal.eu/eleahora/sesiones';
 ---
 
 <header class="navbar-wrapper" transition:name="site-header" transition:animate="none">
@@ -26,7 +20,7 @@ const calLink = site?.calLink ?? 'https://cal.eu/eleahora/sesiones';
     </nav>
 
     <div class="nav-actions">
-      <a href={calLink} target="_blank" rel="noopener noreferrer" class="btn-modern-nav">Agendar</a>
+      <a href="https://scheduler.zoom.us/maria-eleonora-051exv/sesi-n-eleahora" class="btn-modern-nav">Agendar</a>
       <button class="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false">
         <span class="hamburger"></span>
       </button>
@@ -44,7 +38,7 @@ const calLink = site?.calLink ?? 'https://cal.eu/eleahora/sesiones';
       </nav>
       
       <div class="mobile-nav-footer">
-        <a href={calLink} target="_blank" rel="noopener noreferrer" class="btn-premium-mobile">
+        <a href="https://scheduler.zoom.us/maria-eleonora-051exv/sesi-n-eleahora" class="btn-premium-mobile">
           <span>Agendar Sesión</span>
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -63,10 +57,12 @@ const calLink = site?.calLink ?? 'https://cal.eu/eleahora/sesiones';
 
     if (!toggle || !overlay) return;
 
+    // Limpiar estado residual del menú entre navegaciones
     toggle.setAttribute('aria-expanded', 'false');
     overlay.classList.remove('is-open');
     document.body.classList.remove('menu-open');
 
+    // Clonar el toggle para eliminar listeners anteriores acumulados
     const newToggle = toggle.cloneNode(true) as HTMLButtonElement;
     toggle.parentNode?.replaceChild(newToggle, toggle);
 
@@ -74,20 +70,22 @@ const calLink = site?.calLink ?? 'https://cal.eu/eleahora/sesiones';
       const expanded = newToggle.getAttribute('aria-expanded') === 'true';
       newToggle.setAttribute('aria-expanded', (!expanded).toString());
       overlay.classList.toggle('is-open');
-      document.body.classList.toggle('menu-open');
+      document.body.classList.toggle('menu-open'); // document.body leído en tiempo de ejecución
     });
 
+    // Cerrar menú al hacer click en un enlace
     overlay.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
         newToggle.setAttribute('aria-expanded', 'false');
         overlay.classList.remove('is-open');
-        document.body.classList.remove('menu-open');
+        document.body.classList.remove('menu-open'); // document.body leído en tiempo de ejecución
       });
     });
   }
 
   function initScrollEffect() {
     const header = document.querySelector('.navbar-wrapper');
+    // Aplicar estado inicial correcto sin esperar primer scroll
     header?.classList.toggle('is-scrolled', window.scrollY > 50);
 
     window.addEventListener('scroll', () => {
@@ -95,6 +93,7 @@ const calLink = site?.calLink ?? 'https://cal.eu/eleahora/sesiones';
     }, { passive: true });
   }
 
+  // Ejecutar en carga inicial y después de cada navegación con View Transitions
   document.addEventListener('astro:page-load', initMobileMenu);
   document.addEventListener('astro:page-load', initScrollEffect);
 </script>
@@ -215,6 +214,7 @@ const calLink = site?.calLink ?? 'https://cal.eu/eleahora/sesiones';
     box-shadow: 0 5px 15px rgba(140, 7, 3, 0.2);
   }
 
+  /* Mobile Toggle */
   .mobile-menu-toggle {
     display: block;
     background: none;
@@ -308,7 +308,7 @@ const calLink = site?.calLink ?? 'https://cal.eu/eleahora/sesiones';
   .mobile-nav-links a {
     font-family: var(--font-primary);
     font-size: 2.5rem;
-    color: var(--color-primary-dark);
+    color: var(--color-primary-dark); /* Morado Oscuro / Berenjena */
     text-decoration: none;
     transition: all 0.3s ease;
     opacity: 0.8;

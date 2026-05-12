@@ -1,43 +1,17 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import ContactExperience from '../components/svelte/ContactExperience.svelte';
-import { getContactoPage, getSiteConfig, getAllSesiones } from '../lib/keystatic';
 import type { ContactServiceOption } from '../types';
 
-const page   = await getContactoPage();
-const site   = await getSiteConfig();
-const sesionesData = await getAllSesiones();
-
-const heroTitle    = page?.heroTitle    ?? 'Este puede ser el primer paso para volver a ti.';
-const heroSubtitle = page?.heroSubtitle ?? '';
-const processTitle = page?.processTitle ?? '¿Cómo funciona?';
-const processSteps = page?.processSteps ?? [
-  { step: '1', title: 'Recibo tu mensaje', description: 'Reviso tu intención y te respondo en máximo 24 horas laborables.' },
-  { step: '2', title: 'Elegimos el formato', description: 'Definimos si te conviene llamada, sesión puntual o acompañamiento mensual.' },
-  { step: '3', title: 'Comenzamos', description: 'Te comparto enlace, horario y recomendaciones para tu primera sesión.' },
+const serviceOptions: ContactServiceOption[] = [
+  { value: 'acompanamiento-terapeutico', label: 'Acompañamiento Terapéutico (Meditación + PNL)' },
+  { value: 'terapia-angelical', label: 'Terapia Angelical' },
+  { value: 'perlas-de-eleahora', label: 'Perlas de Eleahora' },
+  { value: 'clase-de-meditacion', label: 'Clase de Meditación' },
+  { value: 'sesion-energetica', label: 'Sesión Energética (Chakras)' },
+  { value: 'workshop-empresas', label: 'Workshop para empresas' },
+  { value: 'otro', label: 'Otro / Aún no lo tengo claro' }
 ];
-
-const whatsapp = site?.phoneWhatsapp ?? '+34605373782';
-const waLink   = `https://wa.me/${whatsapp.replace(/\D/g, '')}`;
-
-// Opciones del select: desde Keystatic si hay sesiones, si no fallback
-const serviceOptions: ContactServiceOption[] = sesionesData.length > 0
-  ? [
-      ...sesionesData
-        .sort((a, b) => (a.entry.order ?? 0) - (b.entry.order ?? 0))
-        .map((s) => ({ value: s.slug, label: s.entry.title })),
-      { value: 'workshop-empresas', label: 'Workshop para empresas' },
-      { value: 'otro', label: 'Otro / Aún no lo tengo claro' },
-    ]
-  : [
-      { value: 'acompanamiento-terapeutico', label: 'Acompañamiento Terapéutico (Meditación + PNL)' },
-      { value: 'terapia-angelical', label: 'Terapia Angelical' },
-      { value: 'perlas-de-eleahora', label: 'Perlas de Eleahora' },
-      { value: 'clase-de-meditacion', label: 'Clase de Meditación' },
-      { value: 'sesion-energetica', label: 'Sesión Energética (Chakras)' },
-      { value: 'workshop-empresas', label: 'Workshop para empresas' },
-      { value: 'otro', label: 'Otro / Aún no lo tengo claro' },
-    ];
 ---
 
 <Layout
@@ -56,10 +30,13 @@ const serviceOptions: ContactServiceOption[] = sesionesData.length > 0
         <span class="contact-orbit orbit-b"></span>
         <span class="contact-orbit orbit-c"></span>
       </div>
+
       <div class="max-w-screen hero-wrap">
         <p class="hero-kicker contact-hero-animate">Contacto Eleahora</p>
-        <h1 id="contacto-title" class="contact-hero-animate">{heroTitle}</h1>
-        {heroSubtitle && <p class="hero-lead contact-hero-animate">{heroSubtitle}</p>}
+        <h1 id="contacto-title" class="contact-hero-animate">
+          Este puede ser el primer paso para volver a ti.
+        </h1>
+
         <div class="hero-cta-row contact-hero-animate">
           <a href="#formulario-contacto" class="btn-primary magnetic-cta">Escribir ahora</a>
         </div>
@@ -70,20 +47,33 @@ const serviceOptions: ContactServiceOption[] = sesionesData.length > 0
       <div class="max-w-screen contact-main-grid">
         <aside class="contact-process-panel contact-reveal" aria-label="Qué pasa después">
           <p class="panel-eyebrow">Qué pasa después</p>
-          <h2>{processTitle}</h2>
+          <h2>Un proceso claro, humano y sin prisa.</h2>
           <ol class="process-list">
-            {processSteps.map((s) => (
-              <li class="process-step">
-                <span>{s.step}</span>
-                <div>
-                  <h3>{s.title}</h3>
-                  <p>{s.description}</p>
-                </div>
-              </li>
-            ))}
+            <li class="process-step">
+              <span>1</span>
+              <div>
+                <h3>Recibo tu mensaje</h3>
+                <p>Reviso tu intención y te respondo en máximo 24 horas laborables.</p>
+              </div>
+            </li>
+            <li class="process-step">
+              <span>2</span>
+              <div>
+                <h3>Elegimos el formato</h3>
+                <p>Definimos si te conviene llamada, sesión puntual o acompañamiento mensual.</p>
+              </div>
+            </li>
+            <li class="process-step">
+              <span>3</span>
+              <div>
+                <h3>Comenzamos</h3>
+                <p>Te comparto enlace, horario y recomendaciones para tu primera sesión.</p>
+              </div>
+            </li>
           </ol>
+
           <div class="quick-links">
-            <a href={waLink} target="_blank" rel="noopener noreferrer">
+            <a href="https://wa.me/34605373782" target="_blank" rel="noopener noreferrer">
               Escríbeme, estoy aquí para ti.
             </a>
             <a href="mailto:info@eleahora.com">info@eleahora.com</a>
@@ -92,14 +82,19 @@ const serviceOptions: ContactServiceOption[] = sesionesData.length > 0
 
         <article id="formulario-contacto" class="contact-form-card contact-reveal">
           <h2>Formulario de contacto</h2>
+
           <form action="/gracias" method="GET" class="contact-form" aria-label="Formulario de contacto Eleahora">
             <input type="hidden" name="origen" value="contacto-web" />
+
             <label for="nombre">Nombre y apellido</label>
             <input id="nombre" name="nombre" type="text" autocomplete="name" placeholder="Tu nombre" required />
+
             <label for="email">Email</label>
             <input id="email" name="email" type="email" autocomplete="email" placeholder="info@eleahora.com" required />
+
             <label for="telefono">WhatsApp (opcional)</label>
             <input id="telefono" name="telefono" type="tel" autocomplete="tel" placeholder="+34 ..." />
+
             <label for="servicio">¿Qué te trajo hasta aquí?</label>
             <select id="servicio" name="servicio" required>
               <option value="">Selecciona una opción</option>
@@ -107,12 +102,21 @@ const serviceOptions: ContactServiceOption[] = sesionesData.length > 0
                 <option value={option.value}>{option.label}</option>
               ))}
             </select>
+
             <label for="mensaje">Cuéntame brevemente qué necesitas</label>
-            <textarea id="mensaje" name="mensaje" rows={6} placeholder="Estoy atravesando..." required></textarea>
+            <textarea
+              id="mensaje"
+              name="mensaje"
+              rows={6}
+              placeholder="Estoy atravesando..."
+              required
+            ></textarea>
+
             <label class="consent-wrap" for="consentimiento">
               <input id="consentimiento" name="consentimiento" type="checkbox" value="aceptado" required />
               <span>Acepto que Eleahora me contacte para responder esta solicitud.</span>
             </label>
+
             <button type="submit" class="btn-primary magnetic-cta w-full">Enviar mensaje</button>
           </form>
         </article>
@@ -122,48 +126,391 @@ const serviceOptions: ContactServiceOption[] = sesionesData.length > 0
 </Layout>
 
 <style>
-  .contact-page { padding-top: 6rem; overflow: visible; background-color: var(--color-background); }
-  .contact-hero { position: relative; padding: 10rem 0 8rem; isolation: isolate; overflow: hidden; background-color: #000; background-image: url('/images/contacto-hero-eleahora-02-edit-tiny.webp'); background-size: cover; background-position: right center; background-repeat: no-repeat; }
-  .contact-hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.65) 20%, rgba(0,0,0,0.45) 35%, transparent 60%); z-index: 1; pointer-events: none; }
-  .contact-glow { position: absolute; inset: 10% 15% auto; height: 400px; border-radius: 999px; background: radial-gradient(circle, rgba(187,137,107,0.15), rgba(109,68,146,0.1), transparent 70%); filter: blur(60px); z-index: -1; pointer-events: none; }
-  .contact-orbits { position: absolute; inset: 0; pointer-events: none; z-index: -1; }
-  .contact-orbit { position: absolute; border: 1px solid rgba(59,38,57,0.08); border-radius: 999px; }
-  .orbit-a { width: 80vw; height: 80vw; max-width: 800px; max-height: 800px; top: -15%; right: -10%; z-index: -1; }
-  .orbit-b { width: 60vw; height: 60vw; max-width: 500px; max-height: 500px; top: 20%; left: -15%; border-color: rgba(86,100,67,0.1); }
-  .orbit-c { width: 40vw; height: 40vw; max-width: 300px; max-height: 300px; bottom: 5%; right: 15%; border-color: rgba(140,7,3,0.08); }
-  .hero-wrap { position: relative; max-width: 900px; padding: 0 1.5rem; z-index: 2; }
-  .hero-kicker { margin-bottom: 1.5rem; font-family: var(--font-primary); color: var(--color-background); font-size: clamp(2rem, 8vw, 4.5rem); line-height: 1; text-transform: lowercase; }
-  .hero-kicker::first-letter { font-family: var(--font-accent); text-transform: uppercase; font-size: 1.5em; }
-  h1 { font-size: clamp(2.4rem, 10vw, 5.5rem); margin-bottom: 2rem; line-height: 1; letter-spacing: -0.02em; font-weight: 500; color: var(--color-background); text-shadow: 0px 4px 20px rgba(0,0,0,0.6); }
-  .hero-lead { font-size: clamp(1.1rem, 3vw, 1.4rem); line-height: 1.6; max-width: 45ch; margin-bottom: 3rem; opacity: 0.9; color: var(--color-background); }
-  .hero-cta-row { display: flex; flex-wrap: wrap; gap: 1.25rem; }
-  .hero-cta-row .btn-primary { background-color: transparent; color: var(--color-background); border-color: rgba(253,251,236,0.35); }
-  .hero-cta-row .btn-primary:hover { background-color: var(--color-background); color: var(--color-primary-dark); }
-  .contact-main { padding: 2rem 0 8rem; }
-  .contact-main-grid { display: grid; grid-template-columns: 420px 1fr; gap: 4rem; align-items: start; padding: 0 1.5rem; }
-  .contact-process-panel { padding: 3rem; border-radius: 32px; background: rgba(255,255,255,0.6); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.82); box-shadow: 0 30px 60px -12px rgba(59,38,57,0.08); }
-  .panel-eyebrow { font-size: 2.2rem; margin-bottom: 1rem; }
-  .contact-process-panel h2 { font-size: 1.8rem; margin-bottom: 2.5rem; line-height: 1.25; }
-  .process-list { list-style: none; display: grid; gap: 2rem; margin-bottom: 3rem; }
-  .process-step { display: flex; gap: 1.5rem; }
-  .process-step span { flex-shrink: 0; width: 2.5rem; height: 2.5rem; display: flex; align-items: center; justify-content: center; background: var(--color-primary-dark); color: var(--color-background); border-radius: 50%; font-weight: 600; font-size: 0.9rem; font-family: var(--font-primary); }
-  .process-step h3 { font-size: 1.15rem; margin-bottom: 0.5rem; font-weight: 600; }
-  .process-step p { font-size: 0.95rem; line-height: 1.6; margin: 0; }
-  .quick-links { display: grid; gap: 1rem; }
-  .quick-links a { display: flex; align-items: center; padding: 1rem 1.5rem; border-radius: 100px; background: var(--color-background); border: 1px solid rgba(59,38,57,0.1); font-size: 0.95rem; transition: var(--transition-smooth); }
-  .quick-links a:hover { border-color: var(--color-accent-red); color: var(--color-accent-red); transform: translateY(-2px); }
-  .contact-form-card { padding: 4rem; border-radius: 40px; background: #fff; box-shadow: 0 40px 100px -20px rgba(59,38,57,0.1); }
-  .contact-form-card h2 { font-size: 3rem; margin-bottom: 2rem; }
-  .contact-form { display: grid; gap: 2rem; }
-  .contact-form label { font-family: var(--font-primary); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-primary-dark); opacity: 0.8; }
-  .contact-form input, .contact-form select, .contact-form textarea { width: 100%; padding: 1.25rem; border: 1px solid rgba(59,38,57,0.15); border-radius: 16px; background: #fafaf8; font-family: var(--font-base); font-size: 1rem; color: var(--color-primary-dark); transition: var(--transition-smooth); }
-  .contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus { outline: none; border-color: var(--color-accent-purple); background: #fff; box-shadow: 0 0 0 4px rgba(109,68,146,0.1); }
-  .consent-wrap { display: flex; gap: 1rem; align-items: flex-start; cursor: pointer; }
-  .consent-wrap input { width: 1.2rem; height: 1.2rem; margin-top: 0.2rem; cursor: pointer; }
-  .consent-wrap span { font-size: 0.9rem; opacity: 0.8; line-height: 1.5; }
-  .w-full { width: 100%; }
-  .contact-form .btn-primary { border: 1px solid var(--color-accent-red) !important; background-color: var(--color-accent-red); color: var(--color-background); box-shadow: none !important; }
-  .contact-form .btn-primary:hover { filter: brightness(0.95); color: var(--color-background); opacity: 0.95; }
-  @media (max-width: 1200px) { .contact-main-grid { grid-template-columns: 1fr; gap: 3rem; } .contact-process-panel { order: 2; } .contact-form-card { padding: 3rem; } }
-  @media (max-width: 768px) { .contact-hero { padding: 6rem 0 4rem; } .hero-cta-row .btn-primary { width: 100%; } .contact-form-card { padding: 2rem; } .contact-process-panel { padding: 2rem; } }
+  .contact-page {
+    padding-top: 6rem;
+    overflow: visible;
+    background-color: var(--color-background);
+  }
+
+  .contact-hero {
+    position: relative;
+    padding: 10rem 0 8rem;
+    isolation: isolate;
+    overflow: hidden;
+    background-color: #000;
+    background-image: url('/images/contacto-hero-eleahora-02-edit-tiny.webp');
+    background-size: cover;
+    background-position: right center;
+    background-repeat: no-repeat;
+  }
+
+  .contact-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.8) 0%,
+      rgba(0, 0, 0, 0.65) 20%,
+      rgba(0, 0, 0, 0.45) 35%,
+      transparent 60%
+    );
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .contact-glow {
+    position: absolute;
+    inset: 10% 15% auto;
+    height: 400px;
+    border-radius: 999px;
+    background: radial-gradient(circle, rgba(187, 137, 107, 0.15), rgba(109, 68, 146, 0.1), transparent 70%);
+    filter: blur(60px);
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  .contact-orbits {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .contact-orbit {
+    position: absolute;
+    border: 1px solid rgba(59, 38, 57, 0.08);
+    border-radius: 999px;
+  }
+
+  .orbit-a {
+    width: 80vw;
+    height: 80vw;
+    max-width: 800px;
+    max-height: 800px;
+    top: -15%;
+    right: -10%;
+    z-index: -1;
+  }
+
+  .orbit-b {
+    width: 60vw;
+    height: 60vw;
+    max-width: 500px;
+    max-height: 500px;
+    top: 20%;
+    left: -15%;
+    border-color: rgba(86, 100, 67, 0.1);
+  }
+
+  .orbit-c {
+    width: 40vw;
+    height: 40vw;
+    max-width: 300px;
+    max-height: 300px;
+    bottom: 5%;
+    right: 15%;
+    border-color: rgba(140, 7, 3, 0.08);
+  }
+
+  .hero-wrap {
+    position: relative;
+    max-width: 900px;
+    padding: 0 1.5rem;
+    z-index: 2;
+  }
+
+  .hero-kicker {
+    margin-bottom: 1.5rem;
+    font-family: var(--font-primary);
+    color: var(--color-background);
+    font-size: clamp(2rem, 8vw, 4.5rem);
+    line-height: 1;
+    text-transform: lowercase;
+  }
+
+  .hero-kicker::first-letter {
+    font-family: var(--font-accent);
+    text-transform: uppercase;
+    font-size: 1.5em;
+  }
+
+  h1 {
+    font-size: clamp(2.4rem, 10vw, 5.5rem);
+    margin-bottom: 2rem;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    font-weight: 500;
+    color: var(--color-background);
+    text-shadow: 0px 4px 20px rgba(0, 0, 0, 0.6);
+  }
+
+  .hero-lead {
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    line-height: 1.6;
+    max-width: 45ch;
+    margin-bottom: 3rem;
+    opacity: 0.9;
+  }
+
+  .hero-cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+  }
+
+  .hero-cta-row .btn-primary {
+    background-color: transparent;
+    color: var(--color-background);
+    border-color: rgba(253, 251, 236, 0.35);
+  }
+
+  .hero-cta-row .btn-primary:hover {
+    background-color: var(--color-background);
+    color: var(--color-primary-dark);
+  }
+
+  .contact-main {
+    padding: 2rem 0 8rem;
+  }
+
+  .contact-main-grid {
+    display: grid;
+    grid-template-columns: 420px 1fr;
+    gap: 4rem;
+    align-items: start;
+    padding: 0 1.5rem;
+  }
+
+  .contact-process-panel {
+    padding: 3rem;
+    border-radius: 32px;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.82);
+    box-shadow: 0 30px 60px -12px rgba(59, 38, 57, 0.08);
+  }
+
+  .panel-eyebrow {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .contact-process-panel h2 {
+    font-size: 1.8rem;
+    margin-bottom: 2.5rem;
+    line-height: 1.25;
+  }
+
+  .process-list {
+    list-style: none;
+    display: grid;
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .process-step {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .step-num {
+    flex-shrink: 0;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-primary-dark);
+    color: var(--color-background);
+    border-radius: 50%;
+    font-weight: 600;
+    font-size: 0.9rem;
+    font-family: var(--font-primary);
+  }
+
+  .process-step h3 {
+    font-size: 1.15rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
+
+  .process-step p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .quick-links {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .link-pill {
+    display: flex;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    border-radius: 100px;
+    background: var(--color-background);
+    border: 1px solid rgba(59, 38, 57, 0.1);
+    font-size: 0.95rem;
+    transition: var(--transition-smooth);
+  }
+
+  .link-pill:hover {
+    border-color: var(--color-accent-red);
+    color: var(--color-accent-red);
+    transform: translateY(-2px);
+  }
+
+  .contact-form-card {
+    padding: 4rem;
+    border-radius: 40px;
+    background: #fff;
+    box-shadow: 0 40px 100px -20px rgba(59, 38, 57, 0.1);
+  }
+
+  .form-header {
+    margin-bottom: 3rem;
+  }
+
+  .form-header h2 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .form-header p {
+    font-size: 1.15rem;
+    opacity: 0.7;
+    margin: 0;
+  }
+
+  .contact-form {
+    display: grid;
+    gap: 2rem;
+  }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .field-group {
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .field-group label {
+    font-family: var(--font-primary);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-primary-dark);
+    opacity: 0.8;
+  }
+
+  .contact-form input,
+  .contact-form select,
+  .contact-form textarea {
+    width: 100%;
+    padding: 1.25rem;
+    border: 1px solid rgba(59, 38, 57, 0.15);
+    border-radius: 16px;
+    background: #fafaf8;
+    font-family: var(--font-base);
+    font-size: 1rem;
+    color: var(--color-primary-dark);
+    transition: var(--transition-smooth);
+  }
+
+  .contact-form input:focus,
+  .contact-form select:focus,
+  .contact-form textarea:focus {
+    outline: none;
+    border-color: var(--color-accent-purple);
+    background: #fff;
+    box-shadow: 0 0 0 4px rgba(109, 68, 146, 0.1);
+  }
+
+  .consent-wrap {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    cursor: pointer;
+  }
+
+  .consent-wrap input {
+    width: 1.2rem;
+    height: 1.2rem;
+    margin-top: 0.2rem;
+    cursor: pointer;
+  }
+
+  .consent-wrap span {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    line-height: 1.5;
+  }
+
+  .w-full {
+    width: 100%;
+  }
+
+  @media (max-width: 1200px) {
+    .contact-main-grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .contact-process-panel {
+      order: 2;
+    }
+
+    .contact-form-card {
+      padding: 3rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .contact-hero {
+      padding: 6rem 0 4rem;
+    }
+
+    .hero-cta-row .btn-primary,
+    .hero-cta-row .btn-outline {
+      width: 100%;
+    }
+
+    .form-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .contact-form-card {
+      padding: 2rem;
+    }
+
+    .form-header h2 {
+      font-size: 2.2rem;
+    }
+
+    .contact-process-panel {
+      padding: 2rem;
+    }
+  }
+
+  /* Fix for the reported red stroke on button */
+  .contact-form .btn-primary {
+    border: 1px solid var(--color-accent-red) !important;
+    background-color: var(--color-accent-red);
+    color: var(--color-background);
+    box-shadow: none !important;
+  }
+
+  .contact-form .btn-primary:hover {
+    filter: brightness(0.95);
+    color: var(--color-background);
+    opacity: 0.95;
+  }
 </style>

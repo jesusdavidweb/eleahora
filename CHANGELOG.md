@@ -7,42 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Changed
-- Migrado Keystatic de GitHub auto-alojado a Keystatic Cloud (`storage.kind: "cloud"`, project `eleahora/eleahora`).
-- Simplificada configuración de Astro a `output: static` (default), eliminado adapter `@astrojs/node` ya innecesario sin OAuth de GitHub.
-- Eliminada integración `@keystatic/astro` de `astro.config.mjs` — el admin UI se gestiona en cloud.keystatic.com.
-- Dockerfile simplificado a multi-stage puro: `oven/bun` para build + `caddy:alpine` sirviendo archivos estáticos.
-- Caddyfile convertido de reverse proxy a servidor de archivos estáticos con `file_server`.
-- `docker-compose.yml` limpio: eliminadas todas las variables de entorno de Keystatic/GitHub.
-- `.env.example` actualizado: ya no se requieren variables de entorno para el build ni runtime.
-
-### Removed
-- `src/middleware.ts` — protección Basic Auth para `/keystatic` ya no necesaria.
-- `start.sh` — script de inicio para Astro SSR + Caddy, reemplazado por `caddy run` directo.
-- Dependencia `@astrojs/node` — no requerida en build estático.
-- Dependencia `@keystatic/astro` — admin UI migrado a Keystatic Cloud.
-- Variables de entorno obsoletas: `KEYSTATIC_USER`, `KEYSTATIC_PASSWORD`, `KEYSTATIC_GITHUB_CLIENT_ID`, `KEYSTATIC_GITHUB_CLIENT_SECRET`, `GITHUB_TOKEN`, `KEYSTATIC_SECRET`.
-
 ### Added
-- Integración de Keystatic Admin UI en `/keystatic` como CMS headless con storage GitHub.
-- Middleware de autenticación Basic Auth para proteger el panel de administración (`src/middleware.ts`).
-- Script `start.sh` para ejecutar Astro SSR y Caddy como reverse proxy en producción.
-- Archivo `.env.example` con documentación de variables de entorno requeridas (`KEYSTATIC_USER`, `KEYSTATIC_PASSWORD`, `GITHUB_TOKEN`, `KEYSTATIC_GITHUB_CLIENT_ID`, `KEYSTATIC_GITHUB_CLIENT_SECRET`).
-
-### Changed
-- Migrado `astro.config.mjs` a `output: static` con adapter Node y modo standalone para habilitar SSR en rutas de Keystatic.
-- Dockerfile actualizado a multi-etapa con `node:22-alpine` + Caddy para servir Astro SSR con reverse proxy.
-- Caddyfile convertido de servidor de archivos estáticos a proxy inverso hacia Astro (puerto 4321).
-- Renombrado `keystatic.config.tsx` a `keystatic.config.ts` para compatibilidad con `@keystatic/astro`.
-- Dependencias actualizadas: añadidos `@keystatic/astro`, `@astrojs/react`, `@astrojs/node`.
-
-### Fixed
-- Corregida URL de callback OAuth de Keystatic que se generaba como `localhost` en producción. Se añadieron headers `X-Forwarded-*` en el `reverse_proxy` de Caddy y se reescribió `context.request` (el objeto `Request` completo) en el middleware de Astro para forzar `https://eleahora.com` como dominio público en todas las rutas de API.
-- Dockerfile: movidas las variables `KEYSTATIC_GITHUB_CLIENT_ID`, `KEYSTATIC_GITHUB_CLIENT_SECRET`, `KEYSTATIC_SECRET` y `GITHUB_TOKEN` al stage builder con `ARG` + `ENV` para que `import.meta.env.*` de Vite las incruste correctamente durante `bun run build`.
-- Dockerfile: copiadas `node_modules`, `package.json` y `keystatic.config.ts` al stage de runtime para resolver `ERR_MODULE_NOT_FOUND` en el servidor Astro SSR.
-- start.sh: añadida verificación de salud del proceso Astro (`kill -0`) y `set -e` para evitar que Caddy quede huérfano cuando Node falla.
-
-### Fixed
 - Plantilla inicial base generada.
 - Archivo de directrices arquitectónicas para el rebranding `agents.md`.
 - Habilitación de framework `Astro`, con `Svelte` para islas y animaciones de `GSAP`.
@@ -93,11 +58,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - Resolución de errores de enrutamiento 503 y 404 en el entorno de producción.
-- Corregida estructura de frontmatter en `workshop-empresas.astro` (falta delimitador `---`).
-- Corregido acceso a campos slug en Keystatic (API cambiada en 0.5.x: `.name` eliminado).
-- Corregido API de `itemLabel` en `keystatic.config.tsx` para arrays y objetos.
-- Corregidos tipos TypeScript implícitos en callbacks de map (parámetros `b`, `f`, `s`, `t`, `i`, `p`).
-- Reinstalación de dependencias (`bun.lock` actualizado).
 - Corrección de problemas en el pipeline de despliegue relacionados con la configuración de Docker Composer.
 - Reparación de regresiones visuales en la página de Contacto (tipografía, órbitas y degradados).
  - Corregido guard de SSR en `MeditationModal.svelte` para evitar acceso a `document` durante el prerender y prevenir errores en la generación estática.
