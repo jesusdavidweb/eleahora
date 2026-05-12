@@ -1,69 +1,97 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { getAboutPage } from "../lib/keystatic";
+
+// Keystatic: datos del CMS con fallback a contenido actual
+const about = await getAboutPage();
+
+// Fallbacks
+const heroLabel = about?.heroLabel ?? "Sobre Mí";
+const heroTitle = about?.heroTitle ?? "Soy quien soy y eso es suficiente.";
+const profileImage = about?.profileImage ?? "/images/about-eleahora-001.webp";
+const profileImageDesktop = (about as any)?.profileImageDesktop ?? "/images/about-desktop-2.webp";
+
+const recorridoLabel = (about as any)?.recorridoLabel ?? "Mi recorrido";
+const recorridoTitle = (about as any)?.recorridoTitle ?? "Tengo un sueño: llevar la meditación a personas que aún no saben que la necesitan.";
+const recorridoImage = (about as any)?.recorridoImage ?? "/images/about-mi-recorrido-01.webp";
+const bioIntro = about?.bioIntro ?? "Nací en Venezuela, en una familia italiana, y desde muy joven mi vida ha estado marcada por el movimiento: distintos países, idiomas y culturas.";
+const bioBodyHtml = about?.bioBodyHtml ?? null;
+
+const eleahoraLabel = (about as any)?.eleahoraLabel ?? "Así nació Eleahora";
+const eleahoraTitle = (about as any)?.eleahoraTitle ?? "Un espacio de espiritualidad aterrizada para vivir con más presencia.";
+const eleahoraImage = (about as any)?.eleahoraImage ?? "/images/about-eleahora-002.webp";
+
+const ctaTitle = about?.ctaTitle ?? "Te acompaño a volver a conectar con el presente. Bienvenidos";
+const ctaButtonText = about?.ctaButtonText ?? "Estoy aquí para tí";
+const ctaButtonLink = (about as any)?.ctaButtonLink ?? "/sesiones";
 ---
 
 <Layout
   title="Sobre Mí — Maria Eleonora Corallo | Eleahora"
   description="Conoce la historia de Maria Eleonora Corallo, fundadora de Eleahora: de lo corporativo en París al acompañamiento terapéutico con Meditación, PNL Transpersonal y conexión espiritual en Madrid."
   ogTitle="Sobre Mí — Maria Eleonora Corallo | Eleahora"
-  ogImage="/images/about-eleahora-001.webp"
+  ogImage={profileImage}
 >
   <main class="inner-page">
     <section class="page-hero" aria-labelledby="about-title">
       <picture>
-        <source media="(max-width: 768px)" srcset="/images/about-eleahora-001.webp" />
+        <source media="(max-width: 768px)" srcset={profileImage} />
         <img
-          src="/images/about-desktop-2.webp"
+          src={profileImageDesktop}
           alt="Fondo de la sección Sobre Mí de Eleahora — presencia y conexión interior"
           class="page-hero-bg"
         />
       </picture>
       <div class="page-hero-overlay"></div>
       <div class="max-w-screen page-hero-content">
-        <span class="text-accent page-kicker">Sobre Mí</span>
-        <h1 id="about-title">Soy quien soy y eso es suficiente.</h1>
+        <span class="text-accent page-kicker">{heroLabel}</span>
+        <h1 id="about-title">{heroTitle}</h1>
       </div>
     </section>
 
     <section class="about-story section-soft" aria-labelledby="historia-title">
       <div class="max-w-screen story-grid">
         <article>
-          <p class="section-label">Mi recorrido</p>
+          <p class="section-label">{recorridoLabel}</p>
           <h2 id="historia-title" class="section-title">
-            Tengo un sueño: llevar la meditación a personas que aún no saben que la necesitan.
+            {recorridoTitle}
           </h2>
           <img
-            src="/images/about-mi-recorrido-01.webp"
+            src={recorridoImage}
             alt="Maria Eleonora Corallo, terapeuta transpersonal y fundadora de Eleahora"
             class="about-image image-mobile"
           />
           <div class="section-body">
-            <p>
-              Nací en Venezuela, en una familia italiana, y desde muy joven mi vida ha estado marcada por el movimiento: distintos países, idiomas y culturas. Durante años seguí un camino más estructurado: estudié idiomas y comercio internacional en París y trabajé en entornos corporativos.
-            </p>
-            <p>
-              Pero algo dentro de mí siempre quería ir más allá.
-            </p>
-            <p>
-              Hace unos años tomé una decisión que cambió mi rumbo: mudarme a Madrid y empezar un viaje mucho más profundo. Mientras estudiaba y me formaba, también me estaba transformando.
-            </p>
-            <p>
-              En ese camino encontré —o recordé— algo que siempre había estado en mí: la capacidad de acompañar procesos internos, de escuchar con profundidad y de abrir espacios de consciencia.
-            </p>
-            <p>
-              La meditación se convirtió en mi herramienta más práctica y poderosa.
-            </p>
-            <p>
-              Un lugar donde volver a mí misma, entender mi mente, regular mis emociones y conectar con Dios.
-            </p>
-            <p>
-              Con el tiempo, diferentes herramientas fueron sumándose a este camino: la Programación Neurolingüística transpersonal, el trabajo energético y la conexión espiritual. No como conceptos abstractos, sino como herramientas muy prácticas para vivir con más presencia, claridad y coherencia.
-            </p>
+            <p>{bioIntro}</p>
+            {bioBodyHtml ? (
+              <div set:html={bioBodyHtml} />
+            ) : (
+              <>
+                <p>
+                  Pero algo dentro de mí siempre quería ir más allá.
+                </p>
+                <p>
+                  Hace unos años tomé una decisión que cambió mi rumbo: mudarme a Madrid y empezar un viaje mucho más profundo. Mientras estudiaba y me formaba, también me estaba transformando.
+                </p>
+                <p>
+                  En ese camino encontré —o recordé— algo que siempre había estado en mí: la capacidad de acompañar procesos internos, de escuchar con profundidad y de abrir espacios de consciencia.
+                </p>
+                <p>
+                  La meditación se convirtió en mi herramienta más práctica y poderosa.
+                </p>
+                <p>
+                  Un lugar donde volver a mí misma, entender mi mente, regular mis emociones y conectar con Dios.
+                </p>
+                <p>
+                  Con el tiempo, diferentes herramientas fueron sumándose a este camino: la Programación Neurolingüística transpersonal, el trabajo energético y la conexión espiritual. No como conceptos abstractos, sino como herramientas muy prácticas para vivir con más presencia, claridad y coherencia.
+                </p>
+              </>
+            )}
           </div>
         </article>
         <aside class="image-column" aria-label="Imagen vertical de historia personal">
           <img
-            src="/images/about-mi-recorrido-01.webp"
+            src={recorridoImage}
             alt="Maria Eleonora Corallo, terapeuta transpersonal y fundadora de Eleahora"
             class="about-image"
           />
@@ -75,18 +103,18 @@ import Layout from "../layouts/Layout.astro";
       <div class="max-w-screen path-grid">
         <aside class="image-stack" aria-label="Galería vertical sobre el proceso">
           <img
-            src="/images/about-eleahora-002.webp"
+            src={eleahoraImage}
             alt="Proceso de presencia y espiritualidad aterrizada — así nace Eleahora"
             class="about-image"
           />
         </aside>
         <article>
-          <p class="section-label">Así nació Eleahora</p>
+          <p class="section-label">{eleahoraLabel}</p>
           <h2 id="camino-title" class="section-title">
-            Un espacio de espiritualidad aterrizada para vivir con más presencia.
+            {eleahoraTitle}
           </h2>
           <img
-            src="/images/about-eleahora-002.webp"
+            src={eleahoraImage}
             alt="Proceso de presencia y espiritualidad aterrizada — así nace Eleahora"
             class="about-image image-mobile"
           />
@@ -115,14 +143,14 @@ import Layout from "../layouts/Layout.astro";
 
     <section class="about-cta section-soft" aria-labelledby="cta-title">
       <div class="max-w-screen cta-wrap">
-        <h2 id="cta-title">Te acompaño a volver a conectar con el presente. Bienvenidos</h2>
+        <h2 id="cta-title">{ctaTitle}</h2>
         <a
-          href="/sesiones"
+          href={ctaButtonLink}
           class="footer-meditation-cta"
           role="button"
           aria-label="Ir a sesiones"
           >
-          Estoy aquí para tí
+          {ctaButtonText}
         </a>
       </div>
     </section>

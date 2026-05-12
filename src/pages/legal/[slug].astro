@@ -1,0 +1,126 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getLegalPage, getAllLegalPages } from '../../lib/keystatic';
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const pages = await getAllLegalPages();
+  return pages.map((page) => ({
+    params: { slug: page.slug },
+  }));
+}
+
+const { slug } = Astro.params;
+const legalPage = await getLegalPage(slug);
+
+if (!legalPage) {
+  return Astro.redirect('/404');
+}
+
+const title = legalPage.title;
+const metaDescription = legalPage.metaDescription ?? '';
+const contentHtml = legalPage.contentHtml ?? '';
+const lastUpdated = legalPage.lastUpdated ?? '';
+---
+
+<Layout
+  title={`${title} | Eleahora`}
+  description={metaDescription}
+  ogTitle={`${title} | Eleahora`}
+>
+  <main class="legal-page">
+    <section class="legal-hero">
+      <div class="max-w-screen">
+        <h1>{title}</h1>
+        {lastUpdated && (
+          <p class="last-updated">Última actualización: {lastUpdated}</p>
+        )}
+      </div>
+    </section>
+
+    <section class="legal-content">
+      <div class="max-w-screen legal-content-wrap">
+        {contentHtml ? (
+          <div set:html={contentHtml} />
+        ) : (
+          <p>Contenido no disponible.</p>
+        )}
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .legal-page {
+    padding-top: 6rem;
+    min-height: 100vh;
+  }
+
+  .legal-hero {
+    padding: 6rem 0 3rem;
+    background: linear-gradient(
+      180deg,
+      rgba(109, 68, 146, 0.12) 0%,
+      rgba(253, 251, 236, 1) 75%
+    );
+  }
+
+  .legal-hero h1 {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    color: var(--color-primary-dark);
+    margin-bottom: 0.5rem;
+  }
+
+  .last-updated {
+    font-size: 0.9rem;
+    color: var(--color-earth);
+    opacity: 0.8;
+  }
+
+  .legal-content {
+    padding: 3rem 0 6rem;
+  }
+
+  .legal-content-wrap {
+    max-width: 800px;
+    line-height: 1.8;
+  }
+
+  .legal-content-wrap :global(h2) {
+    font-size: 1.5rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--color-primary-dark);
+  }
+
+  .legal-content-wrap :global(h3) {
+    font-size: 1.25rem;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    color: var(--color-primary-dark);
+  }
+
+  .legal-content-wrap :global(p) {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    opacity: 0.9;
+  }
+
+  .legal-content-wrap :global(ul),
+  .legal-content-wrap :global(ol) {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+  }
+
+  .legal-content-wrap :global(li) {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    opacity: 0.9;
+  }
+
+  .legal-content-wrap :global(strong) {
+    font-weight: 600;
+    color: var(--color-primary-dark);
+  }
+</style>

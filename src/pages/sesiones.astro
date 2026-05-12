@@ -1,5 +1,33 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { getSessionesPage, getAllSesiones, getSiteConfig } from "../lib/keystatic";
+
+// Keystatic: datos del CMS con fallback a contenido actual
+const sesionesPage = await getSessionesPage();
+const sesiones = await getAllSesiones();
+const siteConfig = await getSiteConfig();
+
+// Fallbacks para la cabecera
+const heroLabel = sesionesPage?.heroLabel ?? "Sesiones";
+const heroTitle = sesionesPage?.heroTitle ?? "¿Con cuál te gustaría empezar?";
+const heroSubtitle = sesionesPage?.heroSubtitle ?? "Permítete leer cada una con calma y déjate sentir.";
+const heroImage = sesionesPage?.heroImage ?? "/images/home-mindfulness-01-tiny.webp";
+const ctaTitle = sesionesPage?.ctaTitle ?? "Si aún no lo tienes claro, escríbeme aquí";
+const ctaLink = (sesionesPage as any)?.ctaLink ?? "/contacto";
+const bookingUrl = siteConfig?.calLink ?? "https://scheduler.zoom.us/maria-eleonora-051exv/sesi-n-eleahora";
+
+// Mapeo de modalidad
+function getModalityLabel(modality: string): string {
+  switch (modality) {
+    case 'online': return 'Videollamada';
+    case 'presencial': return 'Presencial en Madrid';
+    case 'ambas': return 'Videollamada o Presencial en Madrid';
+    default: return modality;
+  }
+}
+
+// Datos de sesiones: usar Keystatic o fallback hardcodeado
+const sesionesData = sesiones.length > 0 ? sesiones : null;
 ---
 
 <Layout
@@ -12,13 +40,13 @@ import Layout from "../layouts/Layout.astro";
     <section class="services-hero">
       <div class="max-w-screen hero-container">
         <div class="hero-media">
-          <img src="/images/home-mindfulness-01-tiny.webp" alt="" loading="eager" decoding="async" />
+          <img src={heroImage} alt="" loading="eager" decoding="async" />
         </div>
         <div class="hero-content">
-          <span class="text-accent section-label">Sesiones</span>
-          <h1>¿Con cuál te gustaría empezar?</h1>
+          <span class="text-accent section-label">{heroLabel}</span>
+          <h1>{heroTitle}</h1>
           <p>
-            Permítete leer cada una con calma y déjate sentir.
+            {heroSubtitle}
           </p>
         </div>
       </div>
@@ -26,6 +54,31 @@ import Layout from "../layouts/Layout.astro";
 
     <section class="services-list">
       <div class="max-w-screen list-wrap">
+        {sesionesData ? (
+          sesionesData.map((s, i) => (
+            <article class={`service-item ${i === 0 ? 'service-item-featured' : ''}`}>
+              <div class="service-top">
+                <span class="service-number">{String(i + 1).padStart(2, '0')}</span>
+                {s.entry.tagline && <span class="service-pill">{s.entry.tagline}</span>}
+              </div>
+              <h2>{s.entry.title}</h2>
+              <div set:html={s.entry.descriptionHtml} />
+              <ul>
+                {(s.entry as any)?.sessions && <li><strong>Sesiones:</strong> {(s.entry as any).sessions}</li>}
+                {s.entry.duration && <li><strong>Duración:</strong> {s.entry.duration}</li>}
+                <li><strong>Modalidad:</strong> {getModalityLabel(s.entry.modality)}</li>
+                {s.entry.price && <li><strong>Intercambio:</strong> {s.entry.price}</li>}
+              </ul>
+              {(s.entry as any)?.includesPlan && (
+                <div class="service-meta">
+                  <span>{(s.entry as any).includesPlan}</span>
+                </div>
+              )}
+              <a href={s.entry.bookingUrl || bookingUrl} class="btn-primary service-cta">{(s.entry as any)?.ctaText || 'Reservar ahora'}</a>
+            </article>
+          ))
+        ) : (
+          <>
         <article class="service-item service-item-featured">
           <div class="service-top">
             <span class="service-number">01</span>
@@ -54,7 +107,7 @@ import Layout from "../layouts/Layout.astro";
             <span>Incluye plan de integración</span>
             <span>Acompañamiento mensual</span>
           </div>
-          <a href="https://scheduler.zoom.us/maria-eleonora-051exv/30-min-con-eleahora" class="btn-primary service-cta">Agendar llamada de descubrimiento (30min)</a>
+          <a href={bookingUrl} class="btn-primary service-cta">Agendar llamada de descubrimiento (30min)</a>
         </article>
 
         <article class="service-item">
@@ -79,7 +132,7 @@ import Layout from "../layouts/Layout.astro";
             <span>Sanación + mensaje</span>
             <span>Oráculos especiales</span>
           </div>
-          <a href="https://scheduler.zoom.us/maria-eleonora-051exv/sesi-n-eleahora" class="btn-primary service-cta">Agendar Terapia</a>
+          <a href={bookingUrl} class="btn-primary service-cta">Agendar Terapia</a>
         </article>
 
         <article class="service-item">
@@ -111,7 +164,7 @@ import Layout from "../layouts/Layout.astro";
             <span>Exploración emocional</span>
             <span>Escritura consciente</span>
           </div>
-          <a href="https://scheduler.zoom.us/maria-eleonora-051exv/sesi-n-eleahora" class="btn-primary service-cta">Quiero mis perlas</a>
+          <a href={bookingUrl} class="btn-primary service-cta">Quiero mis perlas</a>
         </article>
 
         <article class="service-item">
@@ -143,7 +196,7 @@ import Layout from "../layouts/Layout.astro";
             <span>Enfoque mente-cuerpo</span>
             <span>Herramientas aplicables</span>
           </div>
-          <a href="https://scheduler.zoom.us/maria-eleonora-051exv/sesi-n-eleahora" class="btn-primary service-cta">Quiero aprender a meditar</a>
+          <a href={bookingUrl} class="btn-primary service-cta">Quiero aprender a meditar</a>
         </article>
 
         <article class="service-item">
@@ -171,15 +224,17 @@ import Layout from "../layouts/Layout.astro";
             <span>Armonización de chakras</span>
             <span>Impulso de energía vital</span>
           </div>
-          <a href="https://scheduler.zoom.us/maria-eleonora-051exv/sesi-n-eleahora" class="btn-primary service-cta">Agendar Sesión</a>
+          <a href={bookingUrl} class="btn-primary service-cta">Agendar Sesión</a>
         </article>
+          </>
+        )}
       </div>
     </section>
 
     <section class="services-final-cta" aria-label="Ayuda para elegir sesión">
       <div class="max-w-screen final-cta-wrap">
-        <p>Si aún no lo tienes claro, escríbeme aquí</p>
-        <a href="/contacto" class="btn-primary">Contactar para más información</a>
+        <p>{ctaTitle}</p>
+        <a href={ctaLink} class="btn-primary">Contactar para más información</a>
       </div>
     </section>
   </main>

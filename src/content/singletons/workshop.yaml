@@ -1,0 +1,75 @@
+heroLabel: "Experiencia para Empresas"
+heroTitle: "Pienso, luego medito"
+heroSubtitle: >-
+  Transformando el estrés en presencia.
+
+guideName: "Maria Eleonora Corallo"
+guideBio: >-
+  Formada en La Sorbonne (París), PNL transpersonal, Meditación y Mindfulness. Facilitadora de espacios de consciencia corporativa. Con más de 10 años de experiencia acompañando a personas y equipos a reconectar con el presente.
+guideSlogan: "Soy La Voz QUE TE RECUERDA QUE ESTÁS AQUÍ."
+
+workshopTitle: "Creado para transformar cómo los equipos perciben y manejan el estrés."
+workshopDescription: >-
+  Una experiencia inmersiva de 3 horas diseñada para equipos que quieren herramientas reales de gestión emocional, neuroregulación y presencia. A través de la meditación, la respiración y dinámicas vivenciales, los participantes descubren cómo volver al presente — en el trabajo y en la vida.
+
+experienceTitle: "Un recorrido práctico, consciente y aplicable."
+experienceItems:
+  - "Bienvenida y aterrizaje consciente"
+  - "¿Cómo estar más presentes?"
+  - "Meditación como método de neuroregulación"
+  - "Meditación en todas sus formas"
+  - "Niño Interior"
+  - "¿Y ahora qué?"
+
+benefitsTitle: "Lo que cambia después de la experiencia."
+benefits:
+  - title: "Regulación del estrés"
+    description: >-
+      Herramientas prácticas de neuroregulación que los equipos pueden aplicar en su día a día para reducir el estrés crónico y mejorar su bienestar.
+  - title: "Sinergia y empatía"
+    description: >-
+      La meditación compartida fortalece los vínculos del equipo, aumenta la empatía y mejora la comunicación interpersonal.
+  - title: "Claridad en la toma de decisiones"
+    description: >-
+      Un mente presente es una mente clara. Los participantes desarrollan la capacidad de tomar decisiones más conscientes y estratégicas.
+  - title: "Cultivar la mente y el rendimiento"
+    description: >-
+      El mindfulness no es solo bienestar — es una herramienta de alto rendimiento que potencia la concentración, la creatividad y la productividad.
+
+formatsTitle: "Formatos disponibles"
+formats:
+  - name: "Team building"
+    duration: "3 horas / sesión intensiva"
+    description: >-
+      Formato experiencial para equipos de hasta 12 personas. Ideal para team building y días de empresa.
+  - name: "Workshop corporativo"
+    duration: "Medio día / 4 horas"
+    description: >-
+      Formato extendido con más profundidad en las prácticas y dinámicas grupales.
+  - name: "Programa de bienestar"
+    duration: "Mensual / 4 sesiones"
+    description: >-
+      Programa continuo para empresas que quieren integrar el mindfulness en su cultura organizacional.
+
+testimonialsTitle: "Lo que ocurre cuando la pausa también es parte del proceso."
+testimonials:
+  - name: "María Aristeguieta"
+    role: "Talent Processes Senior Specialist at Avature, Spain"
+    quote: >-
+      El workshop de Maria Eleonora fue una experiencia transformadora para nuestro equipo. Las herramientas de mindfulness que nos compartió las aplicamos ahora en nuestro día a día laboral.
+  - name: "Vanessa Fernández"
+    role: "Senior Product Manager at Giftify, Belgium"
+    quote: >-
+      Una experiencia única que nos permitió reconectar como equipo y como personas. La energía de Maria Eleonora es contagiosa y su método es muy accesible.
+  - name: "Stella Camacho"
+    role: "Founder & Chief Creative Officer at Amorchi House"
+    quote: >-
+      Llevar el mindfulness a nuestro equipo fue la mejor decisión. El workshop de Eleahora nos dio herramientas que usamos a diario para manejar el estrés y trabajar con más presencia.
+
+closingQuote: >-
+  El verdadero reto de la condición humana no es estar presente, sino darnos cuenta de que no estamos presentes.
+closingQuoteAuthor: "Meggan Watterson"
+
+ctaTitle: "¿Quieres llevar esta experiencia a tu organización?"
+ctaButtonText: "Solicitar propuesta"
+ctaButtonLink: "/contacto"

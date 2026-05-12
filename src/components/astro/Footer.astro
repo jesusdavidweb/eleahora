@@ -1,7 +1,17 @@
 ---
 // Footer.astro
 import MeditationModal from '../svelte/MeditationModal.svelte';
+import { getSiteConfig } from '../../lib/keystatic';
+
 const currentYear = new Date().getFullYear();
+
+// Keystatic: configuración global
+const siteConfig = await getSiteConfig();
+const bookingUrl = siteConfig?.calLink ?? 'https://scheduler.zoom.us/maria-eleonora-051exv/sesi-n-eleahora';
+const instagramUrl = siteConfig?.instagramUrl ?? 'https://www.instagram.com/eleahora/';
+const linkedinUrl = (siteConfig as any)?.linkedinUrl ?? 'https://www.linkedin.com/in/maria-eleonora-corallo-16266165/';
+const insightTimerUrl = siteConfig?.insightTimerUrl ?? 'https://insighttimer.com/eleahora';
+const whatsappUrl = `https://wa.me/${(siteConfig?.phoneWhatsapp ?? '+34605373782').replace('+', '')}`;
 ---
 
 <footer class="eleahora-footer">
@@ -41,7 +51,7 @@ const currentYear = new Date().getFullYear();
           <li>
             <a
               class="social-link social-link--cal"
-              href="https://scheduler.zoom.us/maria-eleonora-051exv/sesi-n-eleahora"
+              href={bookingUrl}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Agenda una sesion en Cal.com"
@@ -62,7 +72,7 @@ const currentYear = new Date().getFullYear();
           <li>
             <a
               class="social-link social-link--instagram"
-              href="https://www.instagram.com/eleahora/"
+              href={instagramUrl}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram de Eleahora"
@@ -82,7 +92,7 @@ const currentYear = new Date().getFullYear();
           <li>
             <a
               class="social-link social-link--linkedin"
-              href="https://www.linkedin.com/in/maria-eleonora-corallo-16266165/"
+              href={linkedinUrl}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn de Eleahora"
@@ -102,7 +112,7 @@ const currentYear = new Date().getFullYear();
           <li>
             <a
               class="social-link social-link--insight"
-              href="https://insighttimer.com/eleahora"
+              href={insightTimerUrl}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Insight Timer de Eleahora"
@@ -118,7 +128,7 @@ const currentYear = new Date().getFullYear();
           <li>
             <a
               class="social-link social-link--whatsapp"
-              href="https://wa.me/+34605373782"
+              href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="WhatsApp de Eleahora"

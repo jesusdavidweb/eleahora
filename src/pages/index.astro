@@ -1,12 +1,53 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import ScrollAnimations from "../components/svelte/ScrollAnimations.svelte";
+import { getHomePage, getSiteConfig, getAllTestimonios } from "../lib/keystatic";
 import "../styles/global.css";
+
+// Keystatic: datos del CMS con fallback a contenido actual
+const home = await getHomePage();
+const siteConfig = await getSiteConfig();
+const testimonios = await getAllTestimonios(true);
+
+// Fallbacks: si Keystatic no tiene datos, usar los textos actuales
+const heroTitle = home?.heroTitle ?? "Bienvenido";
+const heroSubtitle = home?.heroSubtitle ?? "Soy la voz que te recuerda que estás aquí.\nEn el presente. Meditación y Terapia Transpersonal. Mindfulness. Espiritualidad aterrizada.";
+const heroCtaText = home?.heroCtaText ?? "Estoy aquí para ti";
+const heroCtaLink = (home as any)?.heroCtaLink ?? "/sesiones";
+const heroImage = home?.heroImage ?? "/images/home-hero-eleahora-01-tiny.webp";
+
+const manifestoLabel = home?.manifestoLabel ?? "Manifiesto";
+const manifestoTitle = home?.manifestoTitle ?? "Deja que el amor te regule.";
+const manifestoBodyHtml = home?.manifestoBodyHtml ?? null;
+const manifestoQuote = home?.manifestoQuote ?? "Soy estructura y soy caos. Soy servicio y soy soberanía. Deja que el amor te regule. Confía en el proceso.";
+const manifestoImage = home?.manifestoImage ?? "/images/home-manifiesto-eleahora-01-tiny.webp";
+
+const serviciosTitle = (home as any)?.serviciosTitle ?? "Estoy aquí para ti";
+
+const mindfulnessLabel = home?.mindfulnessLabel ?? "Ciencia & Espíritu";
+const mindfulnessTitle = home?.mindfulnessTitle ?? "Mindfulness como camino.";
+const mindfulnessLead = home?.mindfulnessLead ?? "La meditación no es escapar. Es llegar. Llegar a ti, a tu respiración, a tu cuerpo, a este momento exacto. Mindfulness es la práctica de estar presente — sin juicio, sin prisa, sin filtros.";
+const mindfulnessBody = home?.mindfulnessBody ?? "A través de la respiración consciente, la atención plena y la regulación del sistema nervioso, el Mindfulness nos permite responder en lugar de reaccionar. Es una herramienta científica y espiritual para vivir con más claridad, calma y compasión.";
+const mindfulnessBenefitsTitle = home?.mindfulnessBenefitsTitle ?? "Beneficios del Mindfulness";
+const mindfulnessBenefits = home?.mindfulnessBenefits?.length ? home.mindfulnessBenefits : [
+  "Reduce el estrés y la ansiedad de forma medible",
+  "Aumenta la claridad mental y la concentración",
+  "Mejora la regulación emocional",
+  "Favorece un sueño profundo y reparador",
+  "Despierta la creatividad y la intuición",
+];
+const mindfulnessConclusion = home?.mindfulnessConclusion ?? "En un mundo que nos empuja constantemente hacia el ruido y la velocidad, la meditación se convierte en una forma de volver a uno mismo.";
+const mindfulnessImage = home?.mindfulnessImage ?? "/images/sesion_maria_corallo_neima_pidal_161-tiny.webp";
+
+const insightTimerUrl = siteConfig?.insightTimerUrl ?? "https://insighttimer.com/eleahora";
+
+// Testimonios: usar datos de Keystatic o fallback hardcodeado
+const testimoniosData = testimonios.length > 0 ? testimonios : null;
 ---
 
 <Layout
-  title="Eleahora | Terapia Transpersonal y Meditación en Madrid"
-  description="Eleahora: Terapia Transpersonal, Meditación y Mindfulness con Maria Eleonora Corallo. Sesiones individuales, Terapia Angelical, PNL y workshop para empresas. Presencial en Madrid y online."
+  title={siteConfig?.siteTitle ?? "Eleahora | Terapia Transpersonal y Meditación en Madrid"}
+  description={siteConfig?.siteDescription ?? "Eleahora: Terapia Transpersonal, Meditación y Mindfulness con Maria Eleonora Corallo. Sesiones individuales, Terapia Angelical, PNL y workshop para empresas. Presencial en Madrid y online."}
   ogTitle="Eleahora — Terapia Transpersonal y Meditación"
 >
   <ScrollAnimations client:idle />
@@ -15,25 +56,24 @@ import "../styles/global.css";
   <section class="hero-section">
     <div class="hero-overlay"></div>
     <img
-      src="/images/home-hero-eleahora-01-tiny.webp"
+      src={heroImage}
       alt="Maria Eleonora Corallo, terapeuta transpersonal y guía de meditación de Eleahora"
       class="hero-bg gsap-parallax"
     />
 
     <div class="max-w-screen hero-content">
       <div class="hero-text-container">
-        <h2 class="gsap-reveal text-accent hero-accent">Bienvenido</h2>
+        <h2 class="gsap-reveal text-accent hero-accent">{heroTitle}</h2>
         <h1 class="gsap-hero-reveal hero-title">
-          Soy la voz que te recuerda que estás aquí.
+          {heroSubtitle.split('\n')[0]}
         </h1>
 
         <div class="gsap-hero-reveal hero-text-wrapper">
           <p class="hero-subtitle">
-            En el presente.<br />Meditación y Terapia Transpersonal.<br
-            />Mindfulness. Espiritualidad aterrizada.
+            {heroSubtitle.split('\n').slice(1).join('\n')}
           </p>
           <div class="hero-actions">
-            <a href="/sesiones" class="btn-primary">Estoy aquí para ti</a>
+            <a href={heroCtaLink} class="btn-primary">{heroCtaText}</a>
           </div>
         </div>
       </div>
@@ -45,30 +85,35 @@ import "../styles/global.css";
   <section id="manifiesto" class="manifiesto-section">
     <div class="max-w-screen manifiesto-grid">
       <div class="manifiesto-text">
-        <span class="gsap-reveal text-accent section-label">Manifiesto</span>
-        <h2 class="gsap-reveal section-title">Deja que el amor te regule.</h2>
+        <span class="gsap-reveal text-accent section-label">{manifestoLabel}</span>
+        <h2 class="gsap-reveal section-title">{manifestoTitle}</h2>
         <div class="gsap-reveal section-body">
-          <p>
-            Durante años creí que la estructura y lo sutil eran opuestas. Vivía
-            entre el deber ser y el anhelo de algo más grande. Hasta que entendí
-            que el verdadero milagro ocurre cuando los pies están bien plantados
-            en la tierra y el corazón abierto al cielo.
-          </p>
-          <p>
-            En Eleahora la espiritualidad es aterrizada, no es un escape, es una
-            herramienta. Usamos la mente (PNL y Meditación) para traducir el
-            alma (Ángeles). Porque tu proceso no necesita ser perfecto, solo
-            necesita ser tuyo.
-          </p>
+          {manifestoBodyHtml ? (
+            <div set:html={manifestoBodyHtml} />
+          ) : (
+            <>
+              <p>
+                Durante años creí que la estructura y lo sutil eran opuestas. Vivía
+                entre el deber ser y el anhelo de algo más grande. Hasta que entendí
+                que el verdadero milagro ocurre cuando los pies están bien plantados
+                en la tierra y el corazón abierto al cielo.
+              </p>
+              <p>
+                En Eleahora la espiritualidad es aterrizada, no es un escape, es una
+                herramienta. Usamos la mente (PNL y Meditación) para traducir el
+                alma (Ángeles). Porque tu proceso no necesita ser perfecto, solo
+                necesita ser tuyo.
+              </p>
+            </>
+          )}
           <blockquote class="gsap-reveal manifiesto-quote">
-            "Soy estructura y soy caos. Soy servicio y soy soberanía. Deja que
-            el amor te regule. Confía en el proceso."
+            "{manifestoQuote}"
           </blockquote>
         </div>
       </div>
       <div class="manifiesto-image-wrapper gsap-reveal">
         <img
-          src="/images/home-manifiesto-eleahora-01-tiny.webp"
+          src={manifestoImage}
           alt="Sesión de meditación y terapia transpersonal de Eleahora — Manifiesto"
           class="manifiesto-img"
         />
@@ -80,7 +125,7 @@ import "../styles/global.css";
   <section class="services-section">
     <div class="max-w-screen">
       <div class="services-header gsap-reveal">
-        <h2 class="section-title text-light">Estoy aquí para ti</h2>
+        <h2 class="section-title text-light">{serviciosTitle}</h2>
       </div>
 
       <div class="services-grid">
@@ -114,7 +159,7 @@ import "../styles/global.css";
 
         <div class="service-card-wrapper gsap-reveal" data-gsap-delay="0.3">
           <a
-            href="https://insighttimer.com/eleahora"
+            href={insightTimerUrl}
             target="_blank"
             rel="noopener noreferrer"
             class="service-card"
@@ -139,15 +184,15 @@ import "../styles/global.css";
     <div class="max-w-screen">
       <div class="mindfulness-header">
         <span class="gsap-reveal text-accent section-label"
-          >Ciencia & Espíritu</span
+          >{mindfulnessLabel}</span
         >
-        <h2 class="gsap-reveal section-title">Mindfulness como camino.</h2>
+        <h2 class="gsap-reveal section-title">{mindfulnessTitle}</h2>
       </div>
 
       <div class="mindfulness-grid">
         <div class="mindfulness-image-wrapper gsap-reveal">
           <img
-              src="/images/sesion_maria_corallo_neima_pidal_161-tiny.webp"
+              src={mindfulnessImage}
             alt="Práctica de mindfulness y meditación consciente con Eleahora"
             class="mindfulness-img"
           />
@@ -158,28 +203,18 @@ import "../styles/global.css";
         <div class="mindfulness-text">
           <div class="gsap-reveal section-body">
             <p class="mindfulness-lead">
-              La <strong class="text-primary-dark">meditación</strong> es una herramienta
-              de neuroregulación. El <strong class="text-primary-dark"
-                >mindfulness</strong
-              > es una práctica que entrena la mente para volver al momento presente.
+              {mindfulnessLead}
             </p>
             <p class="mindfulness-desc">
-              A través de la respiración, la atención plena y la consciencia
-              corporal, el sistema nervioso aprende a salir del estado de alerta
-              constante y a regresar a un estado de regulación y equilibrio. Hoy
-              sabemos que la meditación no solo transforma nuestra experiencia
-              interna: también produce cambios medibles en el cerebro y en el
-              sistema nervioso.
+              {mindfulnessBody}
             </p>
 
             <div class="mindfulness-benefits-card">
-              <h3 class="benefits-title">Beneficios de practicar mindfulness regularmente:</h3>
+              <h3 class="benefits-title">{mindfulnessBenefitsTitle}</h3>
               <ul class="mindfulness-benefits">
-                <li>Reducir el estrés y la ansiedad.</li>
-                <li>Mejorar la claridad mental y la concentración.</li>
-                <li>Regular emociones intensas.</li>
-                <li>Dormir mejor.</li>
-                <li>Aumentar la creatividad y la toma de decisiones.</li>
+                {mindfulnessBenefits.map((benefit: string) => (
+                  <li>{benefit}</li>
+                ))}
               </ul>
             </div>
           </div>
@@ -188,9 +223,7 @@ import "../styles/global.css";
 
       <div class="mindfulness-footer gsap-reveal">
         <p class="mindfulness-conclusion">
-          "En un mundo que nos empuja constantemente hacia el ruido y la
-          velocidad, la meditación se convierte en una forma de volver a uno
-          mismo."
+          "{mindfulnessConclusion}"
         </p>
       </div>
     </div>
@@ -204,20 +237,31 @@ import "../styles/global.css";
       </div>
 
       <div class="testimonials-grid">
-        <article class="testimonial-card testimonial-sage gsap-reveal">
-          <p class="testimonial-text">Maria ha sido un pilar fundamental en mi crecimiento personal este último año. En nuestras sesiones, he encontrado una escucha activa y consejos que me han ayudado a identificar los pasos necesarios para superar los desafíos que enfrentaba. Nunca había practicado la meditación antes de conocerla, y gracias a nuestras sesiones, he hallado una paz y serenidad profundas, así como la fuerza necesaria para seguir adelante. Lo que hace a Maria excepcional es la combinación de su voz, su profunda sabiduría científica y espiritual, y una sensibilidad humana extraordinaria.</p>
-          <p class="testimonial-author">— Flora Bautian.</p>
-        </article>
+        {testimoniosData ? (
+          testimoniosData.map((t) => (
+            <article class={`testimonial-card testimonial-${(t.entry as any)?.accentColor || 'sage'} gsap-reveal`}>
+              <p class="testimonial-text">{t.entry.quote}</p>
+              <p class="testimonial-author">— {t.entry.name}</p>
+            </article>
+          ))
+        ) : (
+          <>
+            <article class="testimonial-card testimonial-sage gsap-reveal">
+              <p class="testimonial-text">Maria ha sido un pilar fundamental en mi crecimiento personal este último año. En nuestras sesiones, he encontrado una escucha activa y consejos que me han ayudado a identificar los pasos necesarios para superar los desafíos que enfrentaba. Nunca había practicado la meditación antes de conocerla, y gracias a nuestras sesiones, he hallado una paz y serenidad profundas, así como la fuerza necesaria para seguir adelante. Lo que hace a Maria excepcional es la combinación de su voz, su profunda sabiduría científica y espiritual, y una sensibilidad humana extraordinaria.</p>
+              <p class="testimonial-author">— Flora Bautian.</p>
+            </article>
 
-        <article class="testimonial-card testimonial-red gsap-reveal">
-          <p class="testimonial-text">En este mundo que habitamos está muy de moda la desconexión: digital, de las ciudades… y nos olvidamos de lo más importante: la conexión con nosotros mismos. Y eso es lo que haces con Maria. Una de las personas más especiales que conozco. Y como tal te recibe y te hace sentir. Un ratito con Maria es “el spa para el alma” que todos necesitamos. Tengas un objetivo que quieras trabajar o simplemente un ratito para ti, Maria es, sin duda, “la persona”.</p>
-          <p class="testimonial-author">— Marta Leciñena</p>
-        </article>
+            <article class="testimonial-card testimonial-red gsap-reveal">
+              <p class="testimonial-text">En este mundo que habitamos está muy de moda la desconexión: digital, de las ciudades… y nos olvidamos de lo más importante: la conexión con nosotros mismos. Y eso es lo que haces con Maria. Una de las personas más especiales que conozco. Y como tal te recibe y te hace sentir. Un ratito con Maria es "el spa para el alma" que todos necesitamos. Tengas un objetivo que quieras trabajar o simplemente un ratito para ti, Maria es, sin duda, "la persona".</p>
+              <p class="testimonial-author">— Marta Leciñena</p>
+            </article>
 
-        <article class="testimonial-card testimonial-purple gsap-reveal">
-          <p class="testimonial-text">Mi experiencia con Maria Eleonora ha sido un viaje profundamente transformador en mi camino espiritual. Llegué buscando sostén en un momento de despertar interior, y encontré un espacio seguro, amoroso y lleno de luz donde pude abrirme, explorar y recordar partes de mí que estaban esperando ser escuchadas. Las meditaciones guiadas son un capítulo aparte: sublimes, profundas y llenas de una ternura que sostiene. Maria Eleonora tiene la capacidad de llevarnos a lo más profundo de nuestro ser, invitándonos a explorar lo sagrado desde la calma, la presencia y una guía que se siente verdaderamente luminosa.</p>
-          <p class="testimonial-author">— Andrea Trocel</p>
-        </article>
+            <article class="testimonial-card testimonial-purple gsap-reveal">
+              <p class="testimonial-text">Mi experiencia con Maria Eleonora ha sido un viaje profundamente transformador en mi camino espiritual. Llegué buscando sostén en un momento de despertar interior, y encontré un espacio seguro, amoroso y lleno de luz donde pude abrirme, explorar y recordar partes de mí que estaban esperando ser escuchadas. Las meditaciones guiadas son un capítulo aparte: sublimes, profundas y llenas de una ternura que sostiene. Maria Eleonora tiene la capacidad de llevarnos a lo más profundo de nuestro ser, invitándonos a explorar lo sagrado desde la calma, la presencia y una guía que se siente verdaderamente luminosa.</p>
+              <p class="testimonial-author">— Andrea Trocel</p>
+            </article>
+          </>
+        )}
       </div>
     </div>
   </section>

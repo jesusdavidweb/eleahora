@@ -3,6 +3,7 @@ import { ClientRouter } from 'astro:transitions';
 import '../styles/global.css';
 import Header from '../components/astro/Header.astro';
 import Footer from '../components/astro/Footer.astro';
+import { getSiteConfig } from '../lib/keystatic';
 
 interface Props {
   title: string;
@@ -16,9 +17,12 @@ interface Props {
 
 const SITE_URL = 'https://eleahora.com';
 
+// Keystatic: configuración global del sitio
+const siteConfig = await getSiteConfig();
+
 const {
   title,
-  description = 'Terapia Transpersonal y Meditación con Eleahora. Acompañamiento terapéutico con PNL, Mindfulness y conexión espiritual para volver al presente.',
+  description = siteConfig?.siteDescription ?? 'Terapia Transpersonal y Meditación con Eleahora. Acompañamiento terapéutico con PNL, Mindfulness y conexión espiritual para volver al presente.',
   ogTitle = title,
   ogImage = '/images/OG-images-eleahora-01.jpg',
   ogType = 'website',
@@ -28,6 +32,16 @@ const {
 
 const canonicalHref = `${SITE_URL}${canonicalUrl}`;
 const ogImageAbsolute = ogImage.startsWith('http') ? ogImage : `${SITE_URL}${ogImage}`;
+
+// Keystatic: colores dinámicos desde CMS
+const colors = {
+  background:   siteConfig?.colorBackground   ?? '#fdfbec',
+  primaryDark:  siteConfig?.colorPrimaryDark  ?? '#3b2639',
+  accentRed:    siteConfig?.colorAccentRed    ?? '#8c0703',
+  accentPurple: siteConfig?.colorAccentPurple ?? '#6d4492',
+  earth:        siteConfig?.colorEarth        ?? '#bb896b',
+  sage:         siteConfig?.colorSage         ?? '#566443',
+};
 ---
 
 <!doctype html>
@@ -66,10 +80,9 @@ const ogImageAbsolute = ogImage.startsWith('http') ? ogImage : `${SITE_URL}${ogI
     <ClientRouter />
 
     <!-- Dynamic theme color: set synchronously to prevent FOUC on hard reload -->
-    <script is:inline>
+    <script is:inline define:vars={{ themeColors: [colors.accentRed, colors.primaryDark, colors.sage] }}>
       (function () {
-        var THEME_COLORS = ['#8c0703', '#3b2639', '#566443'];
-        var color = THEME_COLORS[Math.floor(Math.random() * THEME_COLORS.length)];
+        var color = themeColors[Math.floor(Math.random() * themeColors.length)];
         document.documentElement.style.setProperty('--color-theme-dynamic', color);
       })();
     </script>
@@ -118,10 +131,33 @@ const ogImageAbsolute = ogImage.startsWith('http') ? ogImage : `${SITE_URL}${ogI
   document.addEventListener('astro:page-load', updateActiveNav);
 
   // Cambiar color dinámico en cada navegación SPA
-  const THEME_COLORS = ['#8c0703', '#3b2639', '#566443'];
   function applyRandomThemeColor() {
-    const color = THEME_COLORS[Math.floor(Math.random() * THEME_COLORS.length)];
+    const root = getComputedStyle(document.documentElement);
+    const colors = [
+      root.getPropertyValue('--color-accent-red').trim(),
+      root.getPropertyValue('--color-primary-dark').trim(),
+      root.getPropertyValue('--color-sage').trim(),
+    ];
+    const color = colors[Math.floor(Math.random() * colors.length)];
     document.documentElement.style.setProperty('--color-theme-dynamic', color);
   }
   document.addEventListener('astro:page-load', applyRandomThemeColor);
 </script>
+
+<style define:vars={{
+  colorBackground: colors.background,
+  colorPrimaryDark: colors.primaryDark,
+  colorAccentRed: colors.accentRed,
+  colorAccentPurple: colors.accentPurple,
+  colorEarth: colors.earth,
+  colorSage: colors.sage,
+}}>
+  :root {
+    --color-background: var(--colorBackground);
+    --color-primary-dark: var(--colorPrimaryDark);
+    --color-accent-red: var(--colorAccentRed);
+    --color-accent-purple: var(--colorAccentPurple);
+    --color-earth: var(--colorEarth);
+    --color-sage: var(--colorSage);
+  }
+</style>

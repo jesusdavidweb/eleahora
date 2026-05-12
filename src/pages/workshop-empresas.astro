@@ -1,65 +1,72 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { getWorkshopPage } from "../lib/keystatic";
 
-const experienceItems = [
+// Keystatic: datos del CMS
+const workshop = await getWorkshopPage();
+
+// Fallbacks
+const heroLabel = workshop?.heroLabel ?? "Experiencia para Empresas";
+const heroTitle = workshop?.heroTitle ?? "Pienso, luego medito";
+const heroSubtitle = workshop?.heroSubtitle ?? "Transformando el estrés en presencia.";
+const heroImage = workshop?.heroImage ?? "/images/Workshop Pienso Luego Medito-15-tiny.webp";
+const heroImage2 = (workshop as any)?.heroImage2 ?? "/images/Workshop Pienso Luego Medito-92-tiny.webp";
+
+const guideName = (workshop as any)?.guideName ?? "Maria Eleonora Corallo";
+const guideBio = (workshop as any)?.guideBio ?? "Formada en La Sorbonne (París), PNL transpersonal, Meditación y Mindfulness. Facilitadora de espacios de consciencia corporativa.";
+const guideSlogan = (workshop as any)?.guideSlogan ?? "Soy La Voz QUE TE RECUERDA QUE ESTÁS AQUÍ.";
+
+const workshopTitle = (workshop as any)?.workshopTitle ?? "Creado para transformar cómo los equipos perciben y manejan el estrés.";
+const workshopDescription = (workshop as any)?.workshopDescription ?? "Una experiencia inmersiva de 3 horas diseñada para equipos que quieren herramientas reales de gestión emocional, neuroregulación y presencia.";
+
+const experienceTitle = (workshop as any)?.experienceTitle ?? "Un recorrido práctico, consciente y aplicable.";
+const experienceItems = (workshop as any)?.experienceItems?.length ? (workshop as any).experienceItems : [
+  "Bienvenida y aterrizaje consciente",
+  "¿Cómo estar más presentes?",
+  "Meditación como método de neuroregulación",
+  "Meditación en todas sus formas",
+  "Niño Interior",
+  "¿Y ahora qué?"
+];
+
+const benefitsTitle = (workshop as any)?.benefitsTitle ?? "Lo que cambia después de la experiencia.";
+const companyBenefits = workshop?.benefits?.length ? workshop.benefits : [
+  { title: "Regulación del estrés", description: "Herramientas prácticas para regular altos niveles de estrés." },
+  { title: "Sinergia y empatía", description: "Mejor sinergia grupal, empatía y conexión." },
+  { title: "Claridad en decisiones", description: "Mayor claridad en la toma de decisiones." },
+  { title: "Cultivar la mente", description: "Información valiosa para cultivar la mente y potenciar el rendimiento." }
+];
+
+const testimonialsTitle = (workshop as any)?.testimonialsTitle ?? "Lo que ocurre cuando la pausa también es parte del proceso.";
+const testimonials = (workshop as any)?.testimonials?.length ? (workshop as any).testimonials : [
   {
-    title: "Bienvenida y aterrizaje consciente",
-    description: "Apertura del espacio, intención compartida y práctica breve para llegar al aquí y ahora como equipo."
+    quote: "El profesionalismo y la calma de María marcan una verdadera diferencia. Practicar meditación después de su taller me ha ayudado muchísimo a ser más productiva y a ordenar mis prioridades con mayor claridad.",
+    name: "María Aristeguieta",
+    role: "Talent Processes Senior Specialist at Avature, Spain"
   },
   {
-    title: "¿Cómo estar más presentes?",
-    description: "Prácticas conscientes que integran los sentidos y los elementos."
+    quote: "¡Ojalá todos pudieran asistir a este workshop! Fue increíblemente valioso experimentar el mindfulness y llevarnos herramientas concretas para aplicar en el trabajo.",
+    name: "Vanessa Fernández",
+    role: "Senior Product Manager at Giftify, Belgium"
   },
   {
-    title: "Meditación como método de neuroregulación",
-    description: "Sistema nervioso, dopamina y cortisol."
-  },
-  {
-    title: "Meditación en todas sus formas",
-    description: "Con el cuerpo, la mente y el alma."
-  },
-  {
-    title: "Niño Interior",
-    description: "Dinámicas lúdicas que despiertan la creatividad y la alegría."
-  },
-  {
-    title: "¿Y ahora qué?",
-    description: "Acciones concretas para aplicar en el día a día."
+    quote: "Gracias, Maria, por enseñarme que la pausa también es parte del proceso. Tu workshop me recordó que regularnos no es frenar, sino crear espacio para decidir mejor.",
+    name: "Stella Camacho",
+    role: "Founder & Chief Creative Officer at Amorchi House"
   }
 ];
+
+const closingQuote = (workshop as any)?.closingQuote ?? "El verdadero reto de la condición humana no es estar presente, sino darnos cuenta de que no estamos presentes.";
+const closingQuoteAuthor = (workshop as any)?.closingQuoteAuthor ?? "Meggan Watterson";
+
+const ctaTitle = workshop?.ctaTitle ?? "¿Quieres llevar esta experiencia a tu organización?";
+const ctaButtonText = workshop?.ctaButtonText ?? "Solicitar propuesta";
+const ctaButtonLink = (workshop as any)?.ctaButtonLink ?? "/contacto";
 
 const workshopFacts = [
   { label: "Formato", value: "Team building", detail: "aprox. 12 personas" },
   { label: "Duración", value: "3 horas", detail: "sesión intensiva" },
   { label: "Modalidad", value: "Presencial", detail: "en tu empresa" }
-];
-
-const companyBenefits = [
-  { text: "Herramientas prácticas para regular altos niveles de estrés.", color: "earth" },
-  { text: "Mejor sinergia grupal, empatía y conexión.", color: "sage" },
-  { text: "Mayor claridad en la toma de decisiones.", color: "purple" },
-  { text: "Información valiosa para cultivar la mente y potenciar el rendimiento.", color: "red" }
-];
-
-const testimonials = [
-  {
-    quote: "El profesionalismo y la calma de María marcan una verdadera diferencia. Practicar meditación después de su taller me ha ayudado muchísimo a ser más productiva y a ordenar mis prioridades con mayor claridad. También noto una mejor gestión del estrés en momentos de presión.",
-    author: "María Aristeguieta",
-    role: "Talent Processes Senior Specialist at Avature, Spain",
-    color: "vinotinto"
-  },
-  {
-    quote: "¡Ojalá todos pudieran asistir a este workshop! Fue increíblemente valioso experimentar el mindfulness y llevarnos herramientas concretas para aplicar en el trabajo. Salimos con más presencia, mejor escucha y una energía de equipo mucho más conectada. ¡Tu workshop es oro puro!",
-    author: "Vanessa Fernández",
-    role: "Senior Product Manager at Giftify, Belgium",
-    color: "verde"
-  },
-  {
-    quote: "Gracias, Maria, por enseñarme que la pausa también es parte del proceso. Tu workshop me recordó que regularnos no es frenar, sino crear espacio para decidir mejor y colaborar con más empatía. Es una experiencia que realmente transforma la forma de vivir el día a día laboral.",
-    author: "Stella Camacho",
-    role: "Founder & Chief Creative Officer at Amorchi House",
-    color: "morado"
-  }
 ];
 ---
 
@@ -195,12 +202,12 @@ const testimonials = [
         </header>
 
         <ol class="experience-list">
-          {experienceItems.map((item, index) => (
+          {experienceItems.map((item: any, index: number) => (
             <li class="exp-item">
               <span class="exp-num">{String(index + 1).padStart(2, "0")}</span>
               <div class="exp-content">
-                <h3>{item.title}</h3>
-                <p>{item.description}</p>
+                <h3>{typeof item === 'string' ? item : item.title}</h3>
+                <p>{typeof item === 'string' ? '' : item.description}</p>
               </div>
               <div class="exp-line" aria-hidden="true"></div>
             </li>
@@ -214,14 +221,14 @@ const testimonials = [
       <div class="max-w-screen benefits-inner">
         <header class="benefits-header">
           <span class="eyebrow">¿Qué te llevas como empresa?</span>
-          <h2 id="benefits-title">Lo que cambia después de la experiencia.</h2>
+          <h2 id="benefits-title">{benefitsTitle}</h2>
         </header>
 
         <ul class="benefits-cards" aria-label="Beneficios para la empresa">
-          {companyBenefits.map((benefit) => (
-            <li class={`benefit-card benefit-card--${benefit.color}`}>
+          {companyBenefits.map((benefit: any, i: number) => (
+            <li class={`benefit-card benefit-card--${benefit.color || ['earth', 'sage', 'purple', 'red'][i % 4]}`}>
               <span class="benefit-dot" aria-hidden="true"></span>
-              <p>{benefit.text}</p>
+              <p>{benefit.text || benefit.description}</p>
             </li>
           ))}
         </ul>
@@ -233,16 +240,16 @@ const testimonials = [
       <div class="max-w-screen">
         <header class="section-header">
           <span class="eyebrow">Quienes han vivido la experiencia</span>
-          <h2 id="test-title">Lo que ocurre cuando la pausa también es parte del proceso.</h2>
+          <h2 id="test-title">{testimonialsTitle}</h2>
         </header>
 
         <div class="testimonials-grid">
-          {testimonials.map((t, i) => (
-            <blockquote class={`testimonial ${i === 0 ? 'testimonial--featured' : ''} testimonial--${t.color}`}>
+          {testimonials.map((t: any, i: number) => (
+            <blockquote class={`testimonial ${i === 0 ? 'testimonial--featured' : ''} testimonial--${t.color || ['vinotinto', 'verde', 'morado'][i % 3]}`}>
               <div class="testimonial-quote-mark" aria-hidden="true">"</div>
               <p class="testimonial-text">{t.quote}</p>
               <footer class="testimonial-footer">
-                <strong class="testimonial-author">{t.author}</strong>
+                <strong class="testimonial-author">{t.author || t.name}</strong>
                 <span class="testimonial-role">{t.role}</span>
               </footer>
             </blockquote>
@@ -255,8 +262,8 @@ const testimonials = [
     <section class="section-quote" aria-labelledby="quote-title">
       <div class="max-w-screen quote-inner">
         <blockquote class="closing-quote">
-          "El verdadero reto de la condición humana no es estar presente, sino darnos cuenta de que no estamos presentes."
-          <cite>— Meggan Watterson</cite>
+          "{closingQuote}"
+          <cite>— {closingQuoteAuthor}</cite>
         </blockquote>
       </div>
     </section>
@@ -265,9 +272,9 @@ const testimonials = [
     <section class="section-cta section-soft" aria-labelledby="cta-title">
       <div class="max-w-screen cta-inner">
         <p class="text-accent cta-kicker">Siguiente paso</p>
-        <h2 id="cta-title">¿Quieres llevar esta experiencia a tu organización?</h2>
+        <h2 id="cta-title">{ctaTitle}</h2>
         <div class="cta-actions">
-          <a href="https://wa.me/34605373782" class="btn-primary">Agendar llamada de descubrimiento</a>
+          <a href="https://wa.me/34605373782" class="btn-primary">{ctaButtonText}</a>
         </div>
         <ul class="cta-contact" aria-label="Datos de contacto">
           <li><a href="mailto:info@eleahora.com">info@eleahora.com</a></li>

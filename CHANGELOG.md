@@ -7,6 +7,42 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-05-12
+
+### Added
+- **Integración completa de Keystatic Cloud** como CMS headless para gestión de contenido.
+  - Archivo de configuración `keystatic.config.ts` con 6 singletons y 3 collections.
+  - Capa de lectura `src/lib/keystatic.ts` con `createReader()` y 11 funciones helper.
+  - Soporte para rich text (`fields.document`) con conversión ProseMirror → HTML.
+- **Contenido YAML estructurado** en `src/content/`:
+  - 6 singletons: site-config, home, about, sesiones-page, workshop, contacto.
+  - 5 sesiones: acompañamiento terapéutico, terapia angelical, perlas de eleahora, clase de meditación, sesión energética.
+  - 3 testimonios: Flora Bautian, Marta Leciñena, Andrea Trocel.
+  - 3 páginas legales: aviso legal, política de privacidad, política de cookies.
+- **Página dinámica** `/legal/[slug].astro` para renderizado de páginas legales desde Keystatic.
+- **Script `start.sh`** para inicio de servidor SSR Node + Caddy reverse proxy en Docker.
+- Dependencias: `@keystatic/core`, `@keystatic/astro`, `@astrojs/react`, `@astrojs/node`, `react`, `react-dom`.
+
+### Changed
+- **Migración de SSG a SSR**: `output: 'server'` con adapter `@astrojs/node` modo `standalone`.
+- **Layout.astro**: consume `getSiteConfig()` para SEO, OG tags y colores CSS dinámicos vía `define:vars`.
+- **Header.astro**: URL de booking centralizada desde Keystatic.
+- **Footer.astro**: URLs de redes sociales y WhatsApp centralizadas desde Keystatic.
+- **index.astro**: consume `getHomePage()`, `getSiteConfig()`, `getAllTestimonios()` con fallbacks.
+- **about.astro**: consume `getAboutPage()` con fallbacks para bio, recorrido y CTAs.
+- **sesiones.astro**: consume `getSessionesPage()`, `getAllSesiones()` con fallback para 5 servicios.
+- **contacto.astro**: consume `getContactoPage()`, `getSiteConfig()`, opciones de servicio desde Keystatic.
+- **workshop-empresas.astro**: consume `getWorkshopPage()` con fallbacks para experiencia, beneficios y testimonios.
+- **Dockerfile**: migrado a 3 stages (bun builder → node SSR → caddy reverse proxy).
+- **Caddyfile**: cambiado de `file_server` estático a `reverse_proxy localhost:4321`.
+- **astro.config.mjs**: añadidas integraciones `react()` y `keystatic()`.
+- **tsconfig.json**: incluye `keystatic.config.ts` en el type-checking.
+- Actualizado `astro` a v6.3.1 para compatibilidad con `@astrojs/node`.
+
+### Fixed
+- Compatibilidad entre `@astrojs/node@10.1.0` y `astro@6.0.4` (actualizado a v6.3.1).
+- Warning de `getStaticPaths()` en páginas legales con `export const prerender = true`.
+
 ### Added
 - Documentación completa de la integración de Keystatic Cloud como referencia para reimplementación futura (`docs/keystatic-implementation.md`).
 - Plantilla inicial base generada.

@@ -2,8 +2,29 @@
 import Layout from '../layouts/Layout.astro';
 import ContactExperience from '../components/svelte/ContactExperience.svelte';
 import type { ContactServiceOption } from '../types';
+import { getContactoPage, getSiteConfig, getAllSesiones } from '../lib/keystatic';
 
-const serviceOptions: ContactServiceOption[] = [
+// Keystatic: datos del CMS
+const contactoPage = await getContactoPage();
+const siteConfig = await getSiteConfig();
+const sesiones = await getAllSesiones();
+
+// Fallbacks
+const heroTitle = contactoPage?.heroTitle ?? "Este puede ser el primer paso para volver a ti.";
+const heroSubtitle = (contactoPage as any)?.heroSubtitle ?? "Escribe a Eleahora para iniciar tu proceso de Terapia Transpersonal, Meditación o Mindfulness. Respuesta en 24h.";
+const heroImage = (contactoPage as any)?.heroImage ?? "/images/contacto-hero-eleahora-02-edit-tiny.webp";
+const processTitle = contactoPage?.processTitle ?? "Un proceso claro, humano y sin prisa.";
+const processSteps = contactoPage?.processSteps?.length ? contactoPage.processSteps : [
+  { step: "1", title: "Recibo tu mensaje", description: "Reviso tu intención y te respondo en máximo 24 horas laborables." },
+  { step: "2", title: "Elegimos el formato", description: "Definimos si te conviene llamada, sesión puntual o acompañamiento mensual." },
+  { step: "3", title: "Comenzamos", description: "Te comparto enlace, horario y recomendaciones para tu primera sesión." },
+];
+const whatsappUrl = `https://wa.me/${(siteConfig?.phoneWhatsapp ?? '+34605373782').replace('+', '')}`;
+
+// Opciones de servicio: usar Keystatic si hay datos, si no fallback
+const serviceOptions: ContactServiceOption[] = sesiones.length > 0
+  ? sesiones.map(s => ({ value: s.slug, label: s.entry.title }))
+  : [
   { value: 'acompanamiento-terapeutico', label: 'Acompañamiento Terapéutico (Meditación + PNL)' },
   { value: 'terapia-angelical', label: 'Terapia Angelical' },
   { value: 'perlas-de-eleahora', label: 'Perlas de Eleahora' },
@@ -34,7 +55,7 @@ const serviceOptions: ContactServiceOption[] = [
       <div class="max-w-screen hero-wrap">
         <p class="hero-kicker contact-hero-animate">Contacto Eleahora</p>
         <h1 id="contacto-title" class="contact-hero-animate">
-          Este puede ser el primer paso para volver a ti.
+          {heroTitle}
         </h1>
 
         <div class="hero-cta-row contact-hero-animate">
@@ -47,33 +68,21 @@ const serviceOptions: ContactServiceOption[] = [
       <div class="max-w-screen contact-main-grid">
         <aside class="contact-process-panel contact-reveal" aria-label="Qué pasa después">
           <p class="panel-eyebrow">Qué pasa después</p>
-          <h2>Un proceso claro, humano y sin prisa.</h2>
+          <h2>{processTitle}</h2>
           <ol class="process-list">
-            <li class="process-step">
-              <span>1</span>
-              <div>
-                <h3>Recibo tu mensaje</h3>
-                <p>Reviso tu intención y te respondo en máximo 24 horas laborables.</p>
-              </div>
-            </li>
-            <li class="process-step">
-              <span>2</span>
-              <div>
-                <h3>Elegimos el formato</h3>
-                <p>Definimos si te conviene llamada, sesión puntual o acompañamiento mensual.</p>
-              </div>
-            </li>
-            <li class="process-step">
-              <span>3</span>
-              <div>
-                <h3>Comenzamos</h3>
-                <p>Te comparto enlace, horario y recomendaciones para tu primera sesión.</p>
-              </div>
-            </li>
+            {processSteps.map((step) => (
+              <li class="process-step">
+                <span>{step.step}</span>
+                <div>
+                  <h3>{step.title}</h3>
+                  <p>{step.description}</p>
+                </div>
+              </li>
+            ))}
           </ol>
 
           <div class="quick-links">
-            <a href="https://wa.me/34605373782" target="_blank" rel="noopener noreferrer">
+            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
               Escríbeme, estoy aquí para ti.
             </a>
             <a href="mailto:info@eleahora.com">info@eleahora.com</a>
