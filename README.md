@@ -14,7 +14,7 @@ Bienvenido al repositorio oficial del proyecto web **Eleahora (Rebranding 2026)*
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
 ![Bun](https://img.shields.io/badge/Bun-282a36?style=for-the-badge&logo=bun&logoColor=fbf0df)
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
-![Caddy](https://img.shields.io/badge/Caddy-00599C?style=for-the-badge&logo=caddy&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white)
 
 Este sitio está construido bajo el paradigma de **"Zero-JS by default"**, inyectando interactividad solo donde es estrictamente necesario a través de islas de hidratación.
 
@@ -53,7 +53,6 @@ El diseño de Eleahora se basa en la integración de contrastes:
 │   ├── styles/              # Design System (Tokens, CSS Variables)
 │   └── types/               # Interfaces y tipos TypeScript
 ├── Dockerfile               # Configuración multi-stage optimizada
-├── Caddyfile                # Servidor ligero con compresión zstd/gzip
 └── agents.md                # El manifiesto de reglas para desarrollo
 ```
 
@@ -76,8 +75,9 @@ Asegúrate de tener [Bun](https://bun.sh/) instalado.
 ## 🐳 Despliegue y Dokploy
 
 El proyecto está diseñado para ser desplegado instantáneamente en **Dokploy**:
-1. **Build Stage:** Usa `oven/bun` para procesar dependencias y generar el build estático.
-2. **Runtime Stage:** Servidor `caddy:alpine` ultra eficiente para servir archivos estáticos con pre-compresión y headers de seguridad configurados.
+1. **Build Stage:** Usa `oven/bun` para procesar dependencias y generar el build SSR.
+2. **Runtime Stage:** Servidor `node:22-alpine` ejecutando Astro SSR directamente en el puerto 80.
+3. **Proxy Inverso:** Dokploy gestiona Traefik automáticamente como proxy inverso.
 
 ---
 

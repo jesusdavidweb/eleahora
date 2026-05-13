@@ -11,7 +11,7 @@ El proyecto está construido usando las siguientes tecnologías modernas y efici
 - **Animaciones:** GSAP (GreenSock Animation Platform) para experiencias de alto impacto y micro-interacciones.
 - **Lenguaje:** TypeScript (estricto) para tipado seguro en toda la aplicación (Astro y Svelte).
 - **Gestor de Paquetes y Runtime:** Bun (reemplazando a npm/yarn/node para mayor velocidad de instalación y ejecución).
-- **Contenedores y Despliegue:** Docker, Caddyfile (servidor web proxy inverso), preparado para despliegue en Dokploy.
+- **Contenedores y Despliegue:** Docker, Traefik (proxy inverso de Dokploy), despliegue automatizado via GitHub.
 
 ## 2. Identidad y Diseño de Marca
 
@@ -70,32 +70,15 @@ El posicionamiento orgánico es crucial:
 - Estructura semántica de encabezados H1-H6 estricta.
 - Accesibilidad optimizada (ARIA tags donde aplique).
 
-## 6. Configuración de Entorno y Despliegue (Docker + Dokploy + Caddy)
+## 6. Configuración de Entorno y Despliegue (Docker + Dokploy)
 
 ### 6.1 Dockerfile
-El `Dockerfile` deberá usar `oven/bun` oficial como imagen base en un flujo multi-stage:
-- Install: `bun install`.
-- Build: `bun run build`.
-- Servidor: Imagen `caddy:alpine` sirviendo la carpeta `dist/`.
+El `Dockerfile` usa un flujo multi-stage optimizado:
+- **Stage 1 (Build):** `oven/bun` para `bun install` y `bun run build`.
+- **Stage 2 (Runtime):** `node:22-alpine` ejecutando el servidor SSR de Astro directamente.
 
-### 6.2 Caddyfile Base
-```caddyfile
-:80 {
-    root * /usr/src/app/dist
-    encode gzip zstd
-    file_server {
-        precompressed gzip zstd
-    }
-    try_files {path} {path}/ /index.html
-    header {
-        Strict-Transport-Security max-age=31536000;
-        X-Content-Type-Options nosniff
-        X-Frame-Options DENY
-    }
-    @assets path /assets/*
-    header @assets Cache-Control "public, max-age=31536000, immutable"
-}
-```
+### 6.2 Proxy Inverso
+Dokploy gestiona el proxy inverso automáticamente mediante **Traefik**. No se necesita Caddy ni ningún otro proxy en el contenedor. El servidor Astro SSR escucha en el puerto 80 (`ENV PORT=80`).
 
 ## 7. Directrices de Desarrollo para Agentes
 

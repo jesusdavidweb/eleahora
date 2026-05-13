@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-05-13
+
+### Changed
+- **Migración de Caddy a Traefik (Dokploy)**: Eliminado Caddy del contenedor. Traefik de Dokploy actúa como proxy inverso.
+- **Dockerfile**: Simplificado a 2 stages (bun builder → node:22-alpine runtime). Eliminado stage de Caddy.
+- **AGENTS.md**: Actualizada sección de despliegue para reflejar Traefik de Dokploy.
+- **README.md**: Eliminado badge de Caddy y actualizada documentación de despliegue.
+
+### Removed
+- **Caddyfile**: Eliminado (proxy inverso gestionado por Traefik de Dokploy).
+- **start.sh**: Eliminado (Node se ejecuta directamente via CMD).
+
+### Fixed
+- **Error 404**: Corregido causado por `node: not found` en imagen caddy:alpine.
+
 ## [0.2.1] - 2026-05-12
 
 ### Fixed
