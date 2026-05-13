@@ -1,30 +1,35 @@
-heroTitle: "Bienvenido"
+heroTitle: Bienvenido
 heroSubtitle: >-
   Soy la voz que te recuerda que estás aquí.
 
-  En el presente. Meditación y Terapia Transpersonal. Mindfulness. Espiritualidad aterrizada.
-heroCtaText: "Estoy aquí para ti"
-heroCtaLink: "/sesiones"
-
-manifestoLabel: "Manifiesto"
-manifestoTitle: "Deja que el amor te regule."
+  En el presente. Meditación y Terapia Transpersonal. Mindfulness.
+  Espiritualidad aterrizada.
+heroCtaText: Estoy aquí para ti
+heroCtaLink: /sesiones
+manifestoLabel: Manifiesto
+manifestoTitle: Deja que el amor te regule
 manifestoQuote: >-
-  Soy estructura y soy caos. Soy servicio y soy soberanía. Deja que el amor te regule. Confía en el proceso.
-
-serviciosTitle: "Estoy aquí para ti"
-
-mindfulnessLabel: "Ciencia & Espíritu"
-mindfulnessTitle: "Mindfulness como camino."
+  Soy estructura y soy caos. Soy servicio y soy soberanía. Deja que el amor te
+  regule. Confía en el proceso.
+serviciosTitle: Estoy aquí para ti
+mindfulnessLabel: Ciencia & Espíritu
+mindfulnessTitle: Mindfulness como camino.
 mindfulnessLead: >-
-  La meditación no es escapar. Es llegar. Llegar a ti, a tu respiración, a tu cuerpo, a este momento exacto. Mindfulness es la práctica de estar presente — sin juicio, sin prisa, sin filtros.
+  La meditación no es escapar. Es llegar. Llegar a ti, a tu respiración, a tu
+  cuerpo, a este momento exacto. Mindfulness es la práctica de estar presente —
+  sin juicio, sin prisa, sin filtros.
 mindfulnessBody: >-
-  A través de la respiración consciente, la atención plena y la regulación del sistema nervioso, el Mindfulness nos permite responder en lugar de reaccionar. Es una herramienta científica y espiritual para vivir con más claridad, calma y compasión.
-mindfulnessBenefitsTitle: "Beneficios del Mindfulness"
+  A través de la respiración consciente, la atención plena y la regulación del
+  sistema nervioso, el Mindfulness nos permite responder en lugar de reaccionar.
+  Es una herramienta científica y espiritual para vivir con más claridad, calma
+  y compasión.
+mindfulnessBenefitsTitle: Beneficios del Mindfulness
 mindfulnessBenefits:
-  - "Reduce el estrés y la ansiedad de forma medible"
-  - "Aumenta la claridad mental y la concentración"
-  - "Mejora la regulación emocional"
-  - "Favorece un sueño profundo y reparador"
-  - "Despierta la creatividad y la intuición"
+  - Reduce el estrés y la ansiedad de forma medible
+  - Aumenta la claridad mental y la concentración
+  - Mejora la regulación emocional
+  - Favorece un sueño profundo y reparador
+  - Despierta la creatividad y la intuición
 mindfulnessConclusion: >-
-  En un mundo que nos empuja constantemente hacia el ruido y la velocidad, la meditación se convierte en una forma de volver a uno mismo.
+  En un mundo que nos empuja constantemente hacia el ruido y la velocidad, la
+  meditación se convierte en una forma de volver a uno mismo.
