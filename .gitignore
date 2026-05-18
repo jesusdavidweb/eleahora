@@ -1,22 +1,14 @@
-# build output
 dist/
 .output/
-
-# Node
 node_modules/
 npm-debug.log
 yarn-error.log
 bun.lockb
 .pnp
 .pnp.js
-
-# Environment variables
 .env
 .env.production
 .env.local
-
-# Astro
 .astro/
-
-# MacOS
 .DS_Store
+.hyperframes-video

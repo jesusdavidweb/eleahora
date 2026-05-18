@@ -24,6 +24,7 @@ RUN apk add --no-cache wget
 
 # Copy build artifacts from builder
 COPY --from=builder /app/keystatic.config.ts ./
+COPY --from=builder /app/src ./src
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./

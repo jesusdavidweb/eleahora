@@ -11,9 +11,20 @@ async function initReader() {
 
   _initPromise = (async () => {
     try {
-      const { createReader } = await import('@keystatic/core/reader');
       const configModule = await import('../../keystatic.config');
       const cfg = configModule.default ?? configModule;
+
+      const githubPat = process.env.GITHUB_PAT;
+      if (githubPat) {
+        const { createGitHubReader } = await import('@keystatic/core/reader/github');
+        _reader = createGitHubReader(cfg, {
+          repo: 'jesusdavidweb/eleahora',
+          token: githubPat,
+        });
+        return _reader;
+      }
+
+      const { createReader } = await import('@keystatic/core/reader');
       _reader = createReader(process.cwd(), cfg);
       return _reader;
     } catch (err) {
