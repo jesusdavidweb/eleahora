@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **public/images/textos/**: nuevos assets de tipografía de marca para labels visuales (Bienvenido, Manifiesto, Ciencia y Espíritu, Mi recorrido, Así nació Eleahora, Siguiente paso, Soy la voz que te recuerda que estás aquí).
 - **workshop-empresas.astro**: nueva sección de testimonios rediseñada con grid asimétrico, comillas decorativas en Sloop, colores por persona (vinotinto/verde/morado) y hover con elevación.
 - **keystatic.config.ts**: nuevo campo `role` en colección testimonios, nuevo campo `testimonialsEyebrow` en workshopPage.
 - **workshop-empresas.astro**: sección de testimonios migrada a campo `testimonials` propio del workshopPage en Keystatic (con `name`, `role`, `quote`), colores asignados secuencialmente, fallback con 3 testimonios específicos de empresa.
@@ -15,6 +16,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **keystatic.config.ts**: nuevos campos `closingQuote`, `closingQuoteAuthor`, `testimonialsTitle`, `testimonialsEyebrow` en workshop.
 
 ### Changed
+- **index.astro / about.astro / workshop-empresas.astro**: labels de texto reemplazados por imágenes de tipografía de marca en hero, manifiesto, mindfulness y secciones de about.
+- **workshop-empresas.astro**: hero rediseñado — título partido en dos líneas con colores de marca (rojo vinotinto + morado oscuro), imágenes en posición absoluta (sin grid), facts como tarjetas individuales con border-radius y sombra.
+- **workshop.yaml**: actualizados heroLabel ("Experiencia para empresas"), heroSubtitle ("Transformando el estrés en presencia") y estructura de facts (Formato/Duración/Modalidad).
 - **workshop-empresas.astro**: CTA final rediseñado con botón "Agendar llamada de descubrimiento" (enlace a calLink) y email "Escríbeme un correo" (mailto).
 - **keystatic.config.ts / workshop.yaml**: nuevos campos editables `ctaEmailLabel` y `ctaEmailAddress`; actualizados defaults de `ctaTitle` y `ctaButtonText`.
 - **contacto.yaml / contacto.astro**: eliminado heroSubtitle "Hablemos. / Estoy aquí para escucharte..." y processEyebrow "Qué pasa después".
