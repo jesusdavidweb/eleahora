@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - **workshop-empresas.astro**: nueva sección de testimonios rediseñada con grid asimétrico, comillas decorativas en Sloop, colores por persona (vinotinto/verde/morado) y hover con elevación.
 - **keystatic.config.ts**: nuevo campo `role` en colección testimonios, nuevo campo `testimonialsEyebrow` en workshopPage.
-- **workshop-empresas.astro**: sección de testimonios integrada con Keystatic (`getAllTestimonios`), mapeo de colores y fallback con testimonios específicos de empresa.
+- **workshop-empresas.astro**: sección de testimonios migrada a campo `testimonials` propio del workshopPage en Keystatic (con `name`, `role`, `quote`), colores asignados secuencialmente, fallback con 3 testimonios específicos de empresa.
 - **workshop-empresas.astro**: sección de cita de cierre (`closingQuote`, `closingQuoteAuthor`) desde CMS.
 - **keystatic.config.ts**: nuevos campos `closingQuote`, `closingQuoteAuthor`, `testimonialsTitle`, `testimonialsEyebrow` en workshop.
 

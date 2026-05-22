@@ -1,10 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { getWorkshopPage, getSiteConfig, getAllTestimonios } from '../lib/keystatic';
+import { getWorkshopPage, getSiteConfig } from '../lib/keystatic';
 
 const workshop = await getWorkshopPage();
 const site = await getSiteConfig();
-const testimonios = await getAllTestimonios(true);
 
 const heroLabel = workshop?.heroLabel ?? 'Workshop para empresas';
 const heroTitle = workshop?.heroTitle ?? 'Pienso, luego medito.';
@@ -73,13 +72,16 @@ const closingQuoteAuthor = (workshop as any)?.closingQuoteAuthor ?? 'Meggan Watt
 const testimonialsEyebrow = (workshop as any)?.testimonialsEyebrow ?? 'Quienes han vivido la experiencia';
 const testimonialsTitle = (workshop as any)?.testimonialsTitle ?? 'Lo que ocurre cuando la pausa también es parte del proceso.';
 
-const colorMap: Record<string, string> = {
-  sage: 'verde',
-  red: 'vinotinto',
-  purple: 'morado',
-};
-
-const testimonialsFallback = [
+const testimonialColors = ['vinotinto', 'verde', 'morado'];
+const testimonialsRaw = (workshop as any)?.testimonials;
+const testimonialsData = testimonialsRaw?.length
+  ? testimonialsRaw.map((t: any, i: number) => ({
+      author: t.name,
+      role: t.role,
+      quote: t.quote,
+      color: testimonialColors[i % 3],
+    }))
+  : [
   {
     author: 'María Aristeguieta',
     role: 'Talent Processes Senior Specialist at Avature, Spain',
@@ -99,15 +101,6 @@ const testimonialsFallback = [
     color: 'morado',
   },
 ];
-
-const testimonialsData = testimonios.length > 0
-  ? testimonios.map((t) => ({
-      quote: t.entry.quote,
-      author: t.entry.name,
-      role: (t.entry as any)?.role ?? '',
-      color: colorMap[t.entry.accentColor] ?? 'morado',
-    }))
-  : testimonialsFallback;
 
 const whatsapp = site?.phoneWhatsapp ?? '+34605373782';
 const waLink = `https://wa.me/${whatsapp.replace(/\D/g, '')}`;
