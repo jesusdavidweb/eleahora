@@ -22,8 +22,13 @@ const guideSlogan = (workshop as any)?.guideSlogan ?? 'Soy la voz que te recuerd
 const workshopEyebrow = (workshop as any)?.workshopEyebrow ?? 'El workshop';
 const workshopTitle = (workshop as any)?.workshopTitle ?? heroTitle;
 const workshopDescription = (workshop as any)?.workshopDescription ?? `El workshop: "Pienso, luego medito" combina ciencia, introspección y técnicas prácticas para reconectar con nuestra esencia, regular nuestras emociones y vivir con mayor presencia.
-El workshop guía a los asistentes a través de dinámicas envolventes que integran los cinco sentidos y los elementos de la naturaleza para cultivar la atención plena. Además, aborda cómo nivelar el cortisol y la dopamina, dos hormonas clave en la productividad y el bienestar, ofreciendo herramientas como ejercicios de respiración, meditación y prácticas creativas.
+
+El workshop guía a los asistentes a través de dinámicas envolventes que integran los cinco sentidos y los elementos de la naturaleza para cultivar la atención plena.
+
+Además, aborda cómo nivelar el cortisol y la dopamina, dos hormonas clave en la productividad y el bienestar, ofreciendo herramientas como ejercicios de respiración, meditación y prácticas creativas.
+
 Con un enfoque en la regulación del sistema nervioso, este espacio fomenta claridad mental, mejor toma de decisiones y una conexión más profunda entre los individuos y sus equipos.
+
 Ideal para empresas que buscan empoderar a sus colaboradores con recursos para enfrentar los desafíos modernos, este workshop es más que una pausa: Es una invitación para transformar la manera en que vivimos y trabajamos, con una práctica tan esencial como la de volver al presente.`;
 const experienceEyebrow = (workshop as any)?.experienceEyebrow ?? '¿Qué incluye la experiencia?';
 const experienceTitle = (workshop as any)?.experienceTitle ?? 'Un recorrido práctico, consciente y aplicable.';
@@ -57,7 +62,6 @@ const benefits = workshop?.benefits?.length ? workshop.benefits : [
   },
 ];
 const ctaTitle = workshop?.ctaTitle ?? '¿Quieres llevar esta experiencia a tu organización?';
-const ctaBody = workshop?.ctaBody ?? 'Hablemos para llevar esta experiencia a tu organización.';
 const ctaEyebrow = (workshop as any)?.ctaEyebrow ?? 'Siguiente paso';
 const ctaButtonText = workshop?.ctaButtonText ?? 'Agendar llamada de descubrimiento';
 const ctaButtonLink = (workshop as any)?.ctaButtonLink ?? '/contacto';
@@ -65,18 +69,54 @@ const ctaEmailLabel = (workshop as any)?.ctaEmailLabel ?? 'Escríbeme un correo'
 const ctaEmailAddress = (workshop as any)?.ctaEmailAddress ?? 'info@eleahora.com';
 const closingQuote = (workshop as any)?.closingQuote ?? 'El verdadero reto de la condición humana no es estar presente, sino darnos cuenta de que no estamos presentes.';
 const closingQuoteAuthor = (workshop as any)?.closingQuoteAuthor ?? 'Meggan Watterson';
-const testimonialsTitle = (workshop as any)?.testimonialsTitle ?? 'Testimonios';
 
-const testimonioData = testimonios.length > 0 ? testimonios : null;
+const testimonialsEyebrow = (workshop as any)?.testimonialsEyebrow ?? 'Quienes han vivido la experiencia';
+const testimonialsTitle = (workshop as any)?.testimonialsTitle ?? 'Lo que ocurre cuando la pausa también es parte del proceso.';
+
+const colorMap: Record<string, string> = {
+  sage: 'verde',
+  red: 'vinotinto',
+  purple: 'morado',
+};
+
+const testimonialsFallback = [
+  {
+    author: 'María Aristeguieta',
+    role: 'Talent Processes Senior Specialist at Avature, Spain',
+    quote: 'El profesionalismo y la calma de María marcan una verdadera diferencia. Practicar meditación después de su taller me ha ayudado muchísimo a ser más productiva y a ordenar mis prioridades con mayor claridad. También noto una mejor gestión del estrés en momentos de presión.',
+    color: 'vinotinto',
+  },
+  {
+    author: 'Vanessa Fernández',
+    role: 'Senior Product Manager at Giftify, Belgium',
+    quote: '¡Ojalá todos pudieran asistir a este workshop! Fue increíblemente valioso experimentar el mindfulness y llevarnos herramientas concretas para aplicar en el trabajo. Salimos con más presencia, mejor escucha y una energía de equipo mucho más conectada. ¡Tu workshop es oro puro!',
+    color: 'verde',
+  },
+  {
+    author: 'Stella Camacho',
+    role: 'Founder & Chief Creative Officer at Amorchi House',
+    quote: 'Gracias, Maria, por enseñarme que la pausa también es parte del proceso. Tu workshop me recordó que regularnos no es frenar, sino crear espacio para decidir mejor y colaborar con más empatía. Es una experiencia que realmente transforma la forma de vivir el día a día laboral.',
+    color: 'morado',
+  },
+];
+
+const testimonialsData = testimonios.length > 0
+  ? testimonios.map((t) => ({
+      quote: t.entry.quote,
+      author: t.entry.name,
+      role: (t.entry as any)?.role ?? '',
+      color: colorMap[t.entry.accentColor] ?? 'morado',
+    }))
+  : testimonialsFallback;
 
 const whatsapp = site?.phoneWhatsapp ?? '+34605373782';
 const waLink = `https://wa.me/${whatsapp.replace(/\D/g, '')}`;
 const ctaHref = ctaButtonLink === '/contacto' ? '/contacto' : ctaButtonLink || waLink;
 
 const workshopFacts = (workshop as any)?.facts?.length ? (workshop as any).facts : [
-  { label: 'Formato', value: 'Empresas', detail: 'equipos y organizaciones' },
-  { label: 'Modalidad', value: 'Presencial', detail: 'adaptable a tu equipo' },
-  { label: 'Enfoque', value: 'Mindfulness', detail: 'práctico y aplicable' },
+  { label: 'Personas', value: '12–15', detail: 'por grupo' },
+  { label: 'Duración', value: '3 h', detail: 'de inmersión' },
+  { label: 'Formato', value: 'Presencial', detail: 'en tu empresa' },
 ];
 ---
 
@@ -210,23 +250,26 @@ const workshopFacts = (workshop as any)?.facts?.length ? (workshop as any).facts
       </div>
     </section>
 
-    <!-- Testimonios -->
-    <section class="section-testimonials" aria-labelledby="testimonials-title">
+    <!-- ─── TESTIMONIOS ───────────────────────────────────── -->
+    <section class="section-testimonials" aria-labelledby="test-title">
       <div class="max-w-screen">
         <header class="section-header">
-          <h2 id="testimonials-title">{testimonialsTitle}</h2>
+          <span class="eyebrow">{testimonialsEyebrow}</span>
+          <h2 id="test-title">{testimonialsTitle}</h2>
         </header>
 
-        {testimonioData && testimonioData.length > 0 && (
-          <div class="testimonials-grid">
-            {testimonioData.map((t) => (
-              <article class="testimonial-card">
-                <p class="testimonial-text">{t.entry.quote}</p>
-                <p class="testimonial-author">— {t.entry.name}</p>
-              </article>
-            ))}
-          </div>
-        )}
+        <div class="testimonials-grid">
+          {testimonialsData.map((t, i) => (
+            <blockquote class={`testimonial ${i === 0 ? 'testimonial--featured' : ''} testimonial--${t.color}`}>
+              <div class="testimonial-quote-mark" aria-hidden="true">"</div>
+              <p class="testimonial-text">{t.quote}</p>
+              <footer class="testimonial-footer">
+                <strong class="testimonial-author">{t.author}</strong>
+                <span class="testimonial-role">{t.role}</span>
+              </footer>
+            </blockquote>
+          ))}
+        </div>
       </div>
     </section>
 
@@ -553,40 +596,90 @@ const workshopFacts = (workshop as any)?.facts?.length ? (workshop as any).facts
 
   .section-testimonials {
     padding: 5rem 0;
-    background: var(--color-background);
+    background:
+      radial-gradient(ellipse 70% 60% at 95% 20%, rgba(140, 7, 3, 0.07), transparent 55%),
+      var(--color-background);
   }
 
   .testimonials-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 1.2rem;
+    align-items: start;
   }
 
-  .testimonial-card {
+  .testimonial {
+    margin: 0;
+    padding: 2rem 2.2rem;
+    border-radius: 24px;
+    border: 1px solid rgba(59, 38, 57, 0.1);
+    background: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 16px 40px rgba(59, 38, 57, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.9);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    gap: 1.2rem;
-    padding: 2rem 2.2rem;
-    border: 1px solid rgba(59, 38, 57, 0.1);
-    border-radius: 22px;
-    background: rgba(255, 255, 255, 0.55);
-    box-shadow: 0 12px 30px rgba(59, 38, 57, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    gap: 1.4rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .testimonial:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 24px 52px rgba(59, 38, 57, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  }
+
+  .testimonial--featured {
+    background:
+      radial-gradient(ellipse 100% 80% at 50% -10%, rgba(109, 68, 146, 0.1), transparent 50%),
+      rgba(255, 255, 255, 0.85);
+    border-color: rgba(109, 68, 146, 0.2);
+  }
+
+  .testimonial--vinotinto { border-color: var(--color-accent-red); }
+  .testimonial--verde     { border-color: var(--color-sage); }
+  .testimonial--morado    { border-color: var(--color-accent-purple); }
+
+  .testimonial-quote-mark {
+    font-family: var(--font-accent);
+    font-size: 5rem;
+    color: var(--color-accent-purple);
+    opacity: 0.25;
+    line-height: 0.8;
+    user-select: none;
+  }
+
+  .testimonial--featured .testimonial-quote-mark {
+    opacity: 0.35;
   }
 
   .testimonial-text {
-    color: var(--color-primary-dark);
-    font-size: 1rem;
-    line-height: 1.7;
     margin: 0;
-    white-space: pre-line;
+    font-size: 1.02rem;
+    line-height: 1.82;
+    color: rgba(59, 38, 57, 0.88);
+    flex: 1;
+  }
+
+  .testimonial--featured .testimonial-text {
+    font-size: 1.1rem;
+  }
+
+  .testimonial-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid rgba(59, 38, 57, 0.1);
   }
 
   .testimonial-author {
-    color: var(--color-accent-red);
     font-family: var(--font-primary);
-    font-size: 1.05rem;
-    margin: 0;
+    font-size: 1rem;
+    color: var(--color-primary-dark);
+  }
+
+  .testimonial-role {
+    font-size: 0.82rem;
+    color: rgba(59, 38, 57, 0.58);
+    line-height: 1.5;
   }
 
   .section-closing-quote {
@@ -799,6 +892,7 @@ const workshopFacts = (workshop as any)?.facts?.length ? (workshop as any).facts
   .cta-inner h2 {
     max-width: 20ch;
     margin-inline: auto;
+    margin-bottom: 20px;
     color: var(--color-primary-dark);
   }
 
@@ -827,6 +921,14 @@ const workshopFacts = (workshop as any)?.facts?.length ? (workshop as any).facts
     .about-grid {
       grid-template-columns: 1fr;
       gap: 2.5rem;
+    }
+
+    .testimonials-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .testimonial:first-child {
+      grid-column: span 2;
     }
 
   }
@@ -893,6 +995,10 @@ const workshopFacts = (workshop as any)?.facts?.length ? (workshop as any).facts
     .benefits-cards,
     .testimonials-grid {
       grid-template-columns: 1fr;
+    }
+
+    .testimonial:first-child {
+      grid-column: span 1;
     }
 
     .experience-list li,

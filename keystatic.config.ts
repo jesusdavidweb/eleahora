@@ -797,6 +797,10 @@ export default config({
         ),
 
         // Testimonios de empresa
+        testimonialsEyebrow: fields.text({
+          label: "Testimonios — Etiqueta",
+          defaultValue: "Quienes han vivido la experiencia",
+        }),
         testimonialsTitle: fields.text({
           label: "Testimonios — Título",
           defaultValue: "Lo que ocurre cuando la pausa también es parte del proceso.",
@@ -1081,6 +1085,10 @@ export default config({
         }),
         service: fields.text({
           label: "Servicio / Contexto",
+          defaultValue: "",
+        }),
+        role: fields.text({
+          label: "Cargo / Empresa",
           defaultValue: "",
         }),
         accentColor: fields.select({

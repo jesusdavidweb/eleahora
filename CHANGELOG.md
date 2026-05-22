@@ -8,26 +8,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- **workshop-empresas.astro**: nueva sección de testimonios dinámicos desde Keystatic.
-- **workshop-empresas.astro**: nueva sección de cita de cierre con parámetros desde CMS (`closingQuote`, `closingQuoteAuthor`).
-- **keystatic.config.ts**: nuevos campos `closingQuote`, `closingQuoteAuthor`, `testimonialsTitle` en workshop.
+- **workshop-empresas.astro**: nueva sección de testimonios rediseñada con grid asimétrico, comillas decorativas en Sloop, colores por persona (vinotinto/verde/morado) y hover con elevación.
+- **keystatic.config.ts**: nuevo campo `role` en colección testimonios, nuevo campo `testimonialsEyebrow` en workshopPage.
+- **workshop-empresas.astro**: sección de testimonios integrada con Keystatic (`getAllTestimonios`), mapeo de colores y fallback con testimonios específicos de empresa.
+- **workshop-empresas.astro**: sección de cita de cierre (`closingQuote`, `closingQuoteAuthor`) desde CMS.
+- **keystatic.config.ts**: nuevos campos `closingQuote`, `closingQuoteAuthor`, `testimonialsTitle`, `testimonialsEyebrow` en workshop.
 
 ### Changed
 - **workshop-empresas.astro**: CTA final rediseñado con botón "Agendar llamada de descubrimiento" (enlace a calLink) y email "Escríbeme un correo" (mailto).
 - **keystatic.config.ts / workshop.yaml**: nuevos campos editables `ctaEmailLabel` y `ctaEmailAddress`; actualizados defaults de `ctaTitle` y `ctaButtonText`.
 - **contacto.yaml / contacto.astro**: eliminado heroSubtitle "Hablemos. / Estoy aquí para escucharte..." y processEyebrow "Qué pasa después".
 - **keystatic.config.ts**: defaults de `processPanelAriaLabel` actualizados a "Proceso de contacto", `processEyebrow` a vacío.
-- **workshop-empresas.astro**: rediseñado hero-facts de lista flex a CSS grid; actualizados textos CTA ("Estoy aquí para ti." / "Hablemos para llevar esta experiencia a tu organización.").
+- **workshop-empresas.astro**: hero-facts migrado de flex-wrap a CSS grid de 3 columnas con estilo unificado; actualizados datos de fallback (Personas/Duración/Formato).
+- **workshop-empresas.astro**: descripción del workshop dividida en 5 párrafos para mejorar legibilidad.
+- **workshop-empresas.astro**: eliminado botón WhatsApp del CTA y variable `ctaBody` huérfana.
+- **about.astro**: ampliado texto de `bioIntro` con mención a estudios en París y experiencia corporativa.
 - **URLs de booking**: migradas todas las sesiones de Zoom Scheduler a `cal.com/eleahora/*`.
 - **Descripciones de sesiones**: enriquecidas con párrafos adicionales en las 6 sesiones (acompañamiento, terapia angelical, perlas, meditación, energética).
 - **index.astro**: añadido segundo párrafo (`mindfulnessBody2`) en sección de Mindfulness. Actualizados textos de benefits y lead.
 - **sesiones-page.yaml**: actualizado `heroTitle` a "¿con cuál te gustaría empezar?" y limpiado `ctaBody`.
 - **sesiones.astro**: CTA final migrado de `<p>` a `<h2>` y eliminada referencia a `ctaBody`.
 - **about.md**: reordenado contenido del manifiesto y simplificado closing.
-- **workshop-empresas.astro**: descripción del workshop convertida a multi-párrafo con `split('\n\n')`.
 
 ### Removed
 - **workshop-empresas.astro**: eliminada sección completa de "Formatos" (HTML, CSS, datos y campos de Keystatic).
+- **workshop-empresas.astro**: eliminado botón WhatsApp del CTA y variable `ctaBody` huérfana.
 - **keystatic.config.ts**: eliminados campos `formats*` (formatsEyebrow, formatsTitle, formats array).
 
 ### Fixed
