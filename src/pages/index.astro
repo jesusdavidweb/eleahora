@@ -43,12 +43,37 @@ const insightTimerUrl = siteConfig?.insightTimerUrl ?? "https://insighttimer.com
 
 // Testimonios: usar datos de Keystatic o fallback hardcodeado
 const testimoniosData = testimonios.length > 0 ? testimonios : null;
+const serviceCards = (home as any)?.serviceCards?.length ? (home as any).serviceCards : [
+  {
+    title: 'Sesiones Eleahora',
+    description: 'Acompañamiento terapéutico con Meditación + PNL, Terapia Angelical, Perlas de Eleahora, Clases de Meditación y Sesión Energética.',
+    href: '/sesiones',
+    arrow: '→',
+    external: false,
+  },
+  {
+    title: 'Workshop "Pienso, luego medito"',
+    description: 'Experiencia team building para grupos y empresas con herramientas prácticas para volver al presente que ayudan a regular niveles de estrés y a potenciar el rendimiento.',
+    href: '/workshop-empresas',
+    arrow: '→',
+    external: false,
+  },
+  {
+    title: 'Meditaciones Guiadas',
+    description: 'Escuchar en Insight Timer',
+    href: 'insightTimer',
+    arrow: '↗',
+    external: true,
+  },
+];
+const resolveHomeLink = (href: string) => href === 'insightTimer' ? insightTimerUrl : href;
 ---
 
 <Layout
-  title={siteConfig?.siteTitle ?? "Eleahora | Terapia Transpersonal y Meditación en Madrid"}
-  description={siteConfig?.siteDescription ?? "Eleahora: Terapia Transpersonal, Meditación y Mindfulness con Maria Eleonora Corallo. Sesiones individuales, Terapia Angelical, PNL y workshop para empresas. Presencial en Madrid y online."}
-  ogTitle="Eleahora — Terapia Transpersonal y Meditación"
+  title={(home as any)?.seoTitle ?? siteConfig?.siteTitle ?? "Eleahora | Terapia Transpersonal y Meditación en Madrid"}
+  description={(home as any)?.seoDescription ?? siteConfig?.siteDescription ?? "Eleahora: Terapia Transpersonal, Meditación y Mindfulness con Maria Eleonora Corallo. Sesiones individuales, Terapia Angelical, PNL y workshop para empresas. Presencial en Madrid y online."}
+  ogTitle={(home as any)?.ogTitle ?? "Eleahora — Terapia Transpersonal y Meditación"}
+  ogImage={(home as any)?.ogImage ?? siteConfig?.ogImage ?? "/images/OG-images-eleahora-02.png"}
 >
   <ScrollAnimations client:idle />
 
@@ -57,7 +82,7 @@ const testimoniosData = testimonios.length > 0 ? testimonios : null;
     <div class="hero-overlay"></div>
     <img
       src={heroImage}
-      alt="Maria Eleonora Corallo, terapeuta transpersonal y guía de meditación de Eleahora"
+      alt={(home as any)?.heroImageAlt ?? "Maria Eleonora Corallo, terapeuta transpersonal y guía de meditación de Eleahora"}
       class="hero-bg gsap-parallax"
     />
 
@@ -114,7 +139,7 @@ const testimoniosData = testimonios.length > 0 ? testimonios : null;
       <div class="manifiesto-image-wrapper gsap-reveal">
         <img
           src={manifestoImage}
-          alt="Sesión de meditación y terapia transpersonal de Eleahora — Manifiesto"
+          alt={(home as any)?.manifestoImageAlt ?? "Sesión de meditación y terapia transpersonal de Eleahora — Manifiesto"}
           class="manifiesto-img"
         />
       </div>
@@ -129,50 +154,22 @@ const testimoniosData = testimonios.length > 0 ? testimonios : null;
       </div>
 
       <div class="services-grid">
-        <div class="service-card-wrapper gsap-reveal">
-          <a href="/sesiones" class="service-card">
-            <div class="service-content">
-              <h3>Sesiones Eleahora</h3>
-              <p>
-                Acompañamiento terapéutico con Meditación + PNL, Terapia
-                Angelical, Perlas de Eleahora, Clases de Meditación y Sesión Energética.
-              </p>
-            </div>
-            <div class="service-arrow">→</div>
-          </a>
-        </div>
-
-        <div class="service-card-wrapper gsap-reveal" data-gsap-delay="0.15">
-          <a
-            href="/workshop-empresas"
-            class="service-card"
-          >
-            <div class="service-content">
-              <h3>Workshop "Pienso, luego medito"</h3>
-              <p>
-                Experiencia team building para grupos y empresas con herramientas prácticas para volver al presente <b>que ayudan a regular niveles de estrés y a potenciar el rendimiento.</b>
-              </p>
-            </div>
-            <div class="service-arrow">→</div>
-          </a>
-        </div>
-
-        <div class="service-card-wrapper gsap-reveal" data-gsap-delay="0.3">
-          <a
-            href={insightTimerUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="service-card"
-          >
-            <div class="service-content">
-              <h3>Meditaciones Guiadas</h3>
-              <p>
-                Escuchar en Insight Timer
-              </p>
-            </div>
-            <div class="service-arrow">↗</div>
-          </a>
-        </div>
+        {serviceCards.map((card: { title: string; description: string; href: string; arrow?: string; external?: boolean }, index: number) => (
+          <div class="service-card-wrapper gsap-reveal" data-gsap-delay={index ? String(index * 0.15) : undefined}>
+            <a
+              href={resolveHomeLink(card.href)}
+              target={card.external ? "_blank" : undefined}
+              rel={card.external ? "noopener noreferrer" : undefined}
+              class="service-card"
+            >
+              <div class="service-content">
+                <h3>{card.title}</h3>
+                <p>{card.description}</p>
+              </div>
+              <div class="service-arrow">{card.arrow ?? "→"}</div>
+            </a>
+          </div>
+        ))}
       </div>
     </div>
   </section>
@@ -193,7 +190,7 @@ const testimoniosData = testimonios.length > 0 ? testimonios : null;
         <div class="mindfulness-image-wrapper gsap-reveal">
           <img
               src={mindfulnessImage}
-            alt="Práctica de mindfulness y meditación consciente con Eleahora"
+            alt={(home as any)?.mindfulnessImageAlt ?? "Práctica de mindfulness y meditación consciente con Eleahora"}
             class="mindfulness-img"
           />
         </div>
@@ -233,34 +230,17 @@ const testimoniosData = testimonios.length > 0 ? testimonios : null;
   <section id="testimonios" class="testimonials-section">
     <div class="max-w-screen">
       <div class="section-header gsap-reveal">
-        <h2 class="section-title">Testimonios</h2>
+        <h2 class="section-title">{(home as any)?.testimonialsTitle ?? "Testimonios"}</h2>
       </div>
 
       <div class="testimonials-grid">
-        {testimoniosData ? (
+        {testimoniosData && (
           testimoniosData.map((t) => (
             <article class={`testimonial-card testimonial-${(t.entry as any)?.accentColor || 'sage'} gsap-reveal`}>
               <p class="testimonial-text">{t.entry.quote}</p>
               <p class="testimonial-author">— {t.entry.name}</p>
             </article>
           ))
-        ) : (
-          <>
-            <article class="testimonial-card testimonial-sage gsap-reveal">
-              <p class="testimonial-text">Maria ha sido un pilar fundamental en mi crecimiento personal este último año. En nuestras sesiones, he encontrado una escucha activa y consejos que me han ayudado a identificar los pasos necesarios para superar los desafíos que enfrentaba. Nunca había practicado la meditación antes de conocerla, y gracias a nuestras sesiones, he hallado una paz y serenidad profundas, así como la fuerza necesaria para seguir adelante. Lo que hace a Maria excepcional es la combinación de su voz, su profunda sabiduría científica y espiritual, y una sensibilidad humana extraordinaria.</p>
-              <p class="testimonial-author">— Flora Bautian.</p>
-            </article>
-
-            <article class="testimonial-card testimonial-red gsap-reveal">
-              <p class="testimonial-text">En este mundo que habitamos está muy de moda la desconexión: digital, de las ciudades… y nos olvidamos de lo más importante: la conexión con nosotros mismos. Y eso es lo que haces con Maria. Una de las personas más especiales que conozco. Y como tal te recibe y te hace sentir. Un ratito con Maria es "el spa para el alma" que todos necesitamos. Tengas un objetivo que quieras trabajar o simplemente un ratito para ti, Maria es, sin duda, "la persona".</p>
-              <p class="testimonial-author">— Marta Leciñena</p>
-            </article>
-
-            <article class="testimonial-card testimonial-purple gsap-reveal">
-              <p class="testimonial-text">Mi experiencia con Maria Eleonora ha sido un viaje profundamente transformador en mi camino espiritual. Llegué buscando sostén en un momento de despertar interior, y encontré un espacio seguro, amoroso y lleno de luz donde pude abrirme, explorar y recordar partes de mí que estaban esperando ser escuchadas. Las meditaciones guiadas son un capítulo aparte: sublimes, profundas y llenas de una ternura que sostiene. Maria Eleonora tiene la capacidad de llevarnos a lo más profundo de nuestro ser, invitándonos a explorar lo sagrado desde la calma, la presencia y una guía que se siente verdaderamente luminosa.</p>
-              <p class="testimonial-author">— Andrea Trocel</p>
-            </article>
-          </>
         )}
       </div>
     </div>

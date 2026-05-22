@@ -24,7 +24,7 @@ const {
   title,
   description = siteConfig?.siteDescription ?? 'Terapia Transpersonal y Meditación con Eleahora. Acompañamiento terapéutico con PNL, Mindfulness y conexión espiritual para volver al presente.',
   ogTitle = title,
-  ogImage = '/images/OG-images-eleahora-02.png',
+  ogImage = siteConfig?.ogImage ?? '/images/OG-images-eleahora-02.png',
   ogType = 'website',
   noindex = false,
   canonicalUrl = Astro.url.pathname,

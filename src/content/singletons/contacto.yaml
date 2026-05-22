@@ -1,6 +1,20 @@
+seoTitle: 'Contacto | Inicia tu proceso con Eleahora'
+seoDescription: >-
+  Escribe a Eleahora para iniciar tu proceso de Terapia Transpersonal,
+  Meditación o Mindfulness. Respuesta en 24h. También puedes agendar
+  directamente o escribir por WhatsApp.
+ogTitle: 'Contacto — Inicia tu proceso con Eleahora'
+ogImage: '/images/OG-images-eleahora-02.png'
+heroKicker: 'Contacto Eleahora'
 heroTitle: 'Este puede ser el primer paso para volver a ti.'
 heroSubtitle: >-
   Hablemos. / Estoy aquí para escucharte y acompañarte en el primer paso.
+heroImage: '/images/contacto-hero-eleahora-02-edit-tiny.webp'
+heroCtaText: 'Escribir ahora'
+heroCtaLink: '#formulario-contacto'
+contactChannelsAriaLabel: 'Canales de contacto'
+processPanelAriaLabel: 'Qué pasa después'
+processEyebrow: 'Qué pasa después'
 processTitle: '¿Cómo funciona?'
 processSteps:
   - step: '1'
@@ -15,3 +29,21 @@ processSteps:
     title: 'Comenzamos'
     description: >-
       Te comparto enlace, horario y recomendaciones para tu primera sesión.
+whatsappLinkText: 'Escríbeme, estoy aquí para ti.'
+emailAddress: 'info@eleahora.com'
+formTitle: 'Formulario de contacto'
+formAriaLabel: 'Formulario de contacto Eleahora'
+nameLabel: 'Nombre y apellido'
+namePlaceholder: 'Tu nombre'
+emailLabel: 'Email'
+emailPlaceholder: 'info@eleahora.com'
+phoneLabel: 'WhatsApp (opcional)'
+phonePlaceholder: '+34 ...'
+serviceLabel: '¿Qué te trajo hasta aquí?'
+servicePlaceholder: 'Selecciona una opción'
+workshopServiceOptionLabel: 'Workshop para empresas'
+otherServiceOptionLabel: 'Otro / Aún no lo tengo claro'
+messageLabel: 'Cuéntame brevemente qué necesitas'
+messagePlaceholder: 'Estoy atravesando...'
+consentText: 'Acepto que Eleahora me contacte para responder esta solicitud.'
+submitButtonText: 'Enviar mensaje'

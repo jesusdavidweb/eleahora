@@ -12,7 +12,7 @@ export default config({
       name: "Eleahora CMS",
     },
     navigation: {
-      "Configuración": ["siteConfig"],
+      "Configuración": ["siteConfig", "globalContent"],
       "Páginas": ["homePage", "aboutPage", "sessionesPage", "workshopPage", "contactoPage"],
       "Contenido": ["sesiones", "testimonios", "legalPages"],
     },
@@ -91,12 +91,213 @@ export default config({
     }),
 
     // ──────────────────────────────────────────────
+    // Global Content — Header, Footer y páginas técnicas
+    // ──────────────────────────────────────────────
+    globalContent: singleton({
+      label: "Contenido Global",
+      path: "src/content/singletons/global-content",
+      schema: {
+        headerLogo: fields.image({
+          label: "Header — Logo",
+          directory: "public/images",
+          publicPath: "/images/",
+        }),
+        headerLogoAlt: fields.text({
+          label: "Header — Texto alternativo del logo",
+          defaultValue: "Eleahora",
+        }),
+        navLinks: fields.array(
+          fields.object({
+            label: fields.text({ label: "Texto" }),
+            href: fields.text({ label: "Enlace" }),
+            activeKey: fields.text({ label: "Clave activa", defaultValue: "" }),
+          }),
+          {
+            label: "Header — Navegación",
+            itemLabel: (props) => props.fields.label.value || "Enlace",
+          }
+        ),
+        headerCtaText: fields.text({
+          label: "Header — Texto CTA escritorio",
+          defaultValue: "Agendar",
+        }),
+        headerMobileCtaText: fields.text({
+          label: "Header — Texto CTA móvil",
+          defaultValue: "Agendar Sesión",
+        }),
+        mobileMenuAriaLabel: fields.text({
+          label: "Header — Etiqueta accesible del menú móvil",
+          defaultValue: "Abrir menú",
+        }),
+        footerLogo: fields.image({
+          label: "Footer — Logo",
+          directory: "public/images",
+          publicPath: "/images/",
+        }),
+        footerLogoAlt: fields.text({
+          label: "Footer — Texto alternativo del logo",
+          defaultValue: "Eleahora",
+        }),
+        footerSlogan: fields.text({
+          label: "Footer — Slogan",
+          defaultValue: "Soy la voz que te recuerda que estás aquí.",
+        }),
+        footerMeditationCtaText: fields.text({
+          label: "Footer — Texto botón meditación",
+          defaultValue: "Escuchar meditación gratuita",
+        }),
+        footerMeditationCtaAriaLabel: fields.text({
+          label: "Footer — Etiqueta accesible botón meditación",
+          defaultValue: "Abrir meditación gratuita de Insight Timer en un pop-up",
+        }),
+        footerExploreTitle: fields.text({ label: "Footer — Título explora", defaultValue: "Explora" }),
+        footerExploreLinks: fields.array(
+          fields.object({
+            label: fields.text({ label: "Texto" }),
+            href: fields.text({ label: "Enlace" }),
+          }),
+          {
+            label: "Footer — Enlaces explora",
+            itemLabel: (props) => props.fields.label.value || "Enlace",
+          }
+        ),
+        footerContactTitle: fields.text({ label: "Footer — Título conecta", defaultValue: "Conecta" }),
+        footerContactLinks: fields.array(
+          fields.object({
+            label: fields.text({ label: "Texto" }),
+            href: fields.text({ label: "Enlace" }),
+            external: fields.checkbox({ label: "Abrir en nueva pestaña", defaultValue: false }),
+          }),
+          {
+            label: "Footer — Enlaces conecta",
+            itemLabel: (props) => props.fields.label.value || "Enlace",
+          }
+        ),
+        footerLegalTitle: fields.text({ label: "Footer — Título legal", defaultValue: "Legal" }),
+        footerLegalLinks: fields.array(
+          fields.object({
+            label: fields.text({ label: "Texto" }),
+            href: fields.text({ label: "Enlace" }),
+          }),
+          {
+            label: "Footer — Enlaces legales",
+            itemLabel: (props) => props.fields.label.value || "Enlace",
+          }
+        ),
+        footerCopyright: fields.text({
+          label: "Footer — Copyright",
+          defaultValue: "Eleahora. Todos los derechos reservados.",
+        }),
+        footerCreditsPrefix: fields.text({
+          label: "Footer — Créditos prefijo",
+          defaultValue: "Hecho con amor por",
+        }),
+        footerCreditsLinks: fields.array(
+          fields.object({
+            label: fields.text({ label: "Texto" }),
+            href: fields.url({ label: "URL" }),
+          }),
+          {
+            label: "Footer — Créditos enlaces",
+            itemLabel: (props) => props.fields.label.value || "Crédito",
+          }
+        ),
+        meditationModalTitle: fields.text({
+          label: "Modal meditación — Título",
+          defaultValue: "Meditación gratuita",
+        }),
+        meditationModalCloseText: fields.text({
+          label: "Modal meditación — Texto cerrar",
+          defaultValue: "Cerrar",
+        }),
+        meditationModalCloseAriaLabel: fields.text({
+          label: "Modal meditación — Etiqueta accesible cerrar",
+          defaultValue: "Cerrar meditación",
+        }),
+        meditationModalIframeTitle: fields.text({
+          label: "Modal meditación — Título iframe",
+          defaultValue: "Insight Timer Embed: Maria Eleonora Corallo",
+        }),
+        meditationModalEmbedUrl: fields.url({
+          label: "Modal meditación — URL embed",
+          defaultValue: "https://widgets.insighttimer.com/publisher/Qi5htL7vZhRNNN9BOvdTdSUt6E32?created_at=1776166254",
+        }),
+        thanksSeoTitle: fields.text({ label: "Gracias — SEO título", defaultValue: "Gracias | Eleahora" }),
+        thanksSeoDescription: fields.text({
+          label: "Gracias — SEO descripción",
+          multiline: true,
+          defaultValue: "Gracias por contactar con Eleahora. Hemos recibido tu mensaje y en breve recibirás una respuesta para comenzar tu proceso.",
+        }),
+        thanksOgTitle: fields.text({ label: "Gracias — OG título", defaultValue: "Gracias por tu mensaje | Eleahora" }),
+        thanksKicker: fields.text({ label: "Gracias — Etiqueta", defaultValue: "Mensaje recibido" }),
+        thanksTitle: fields.text({ label: "Gracias — Título sin nombre", defaultValue: "Gracias por escribir a Eleahora." }),
+        thanksPersonalizedTitle: fields.text({
+          label: "Gracias — Título con nombre",
+          defaultValue: "{name}, gracias por escribir a Eleahora.",
+        }),
+        thanksLead: fields.text({
+          label: "Gracias — Texto",
+          multiline: true,
+          defaultValue: "Tu solicitud ya entró en la bandeja prioritaria. Te responderé en máximo 24 horas laborables para coordinar el siguiente paso.",
+        }),
+        thanksPrimaryCtaText: fields.text({ label: "Gracias — CTA principal texto", defaultValue: "Reservar ahora" }),
+        thanksPrimaryCtaLink: fields.url({ label: "Gracias — CTA principal enlace", defaultValue: "https://scheduler.zoom.us/maria-eleonora-051exv/sesi-n-eleahora" }),
+        thanksSecondaryCtaText: fields.text({ label: "Gracias — CTA secundario texto", defaultValue: "Escribir por WhatsApp" }),
+        notFoundSeoTitle: fields.text({ label: "404 — SEO título", defaultValue: "Página no encontrada | Eleahora" }),
+        notFoundSeoDescription: fields.text({
+          label: "404 — SEO descripción",
+          multiline: true,
+          defaultValue: "La página que buscas no existe o ha sido movida. Vuelve al inicio de Eleahora y continúa tu camino.",
+        }),
+        notFoundOgTitle: fields.text({ label: "404 — OG título", defaultValue: "404 — Página no encontrada | Eleahora" }),
+        notFoundNumber: fields.text({ label: "404 — Número visible", defaultValue: "404" }),
+        notFoundKicker: fields.text({ label: "404 — Etiqueta", defaultValue: "Página no encontrada" }),
+        notFoundTitle: fields.text({ label: "404 — Título", defaultValue: "Este camino no lleva a ningún lado." }),
+        notFoundLead: fields.text({
+          label: "404 — Texto",
+          multiline: true,
+          defaultValue: "La página que buscas no existe o ha sido movida. Respira, no pasa nada — vuelve al inicio y retoma tu camino.",
+        }),
+        notFoundPrimaryCtaText: fields.text({ label: "404 — CTA principal texto", defaultValue: "Volver al inicio" }),
+        notFoundPrimaryCtaLink: fields.text({ label: "404 — CTA principal enlace", defaultValue: "/" }),
+        notFoundSecondaryCtaText: fields.text({ label: "404 — CTA secundario texto", defaultValue: "Ver sesiones" }),
+        notFoundSecondaryCtaLink: fields.text({ label: "404 — CTA secundario enlace", defaultValue: "/sesiones" }),
+        legalLastUpdatedPrefix: fields.text({
+          label: "Legal — Prefijo última actualización",
+          defaultValue: "Última actualización:",
+        }),
+        legalContentUnavailableText: fields.text({
+          label: "Legal — Texto contenido no disponible",
+          defaultValue: "Contenido no disponible.",
+        }),
+      },
+    }),
+
+    // ──────────────────────────────────────────────
     // Home Page — Página de Inicio
     // ──────────────────────────────────────────────
     homePage: singleton({
       label: "Página de Inicio",
       path: "src/content/singletons/home",
       schema: {
+        seoTitle: fields.text({
+          label: "SEO — Título",
+          defaultValue: "Eleahora | Terapia Transpersonal y Meditación en Madrid",
+        }),
+        seoDescription: fields.text({
+          label: "SEO — Descripción",
+          multiline: true,
+          defaultValue: "Eleahora: Terapia Transpersonal, Meditación y Mindfulness con Maria Eleonora Corallo. Sesiones individuales, Terapia Angelical, PNL y workshop para empresas. Presencial en Madrid y online.",
+        }),
+        ogTitle: fields.text({
+          label: "SEO — Título Open Graph",
+          defaultValue: "Eleahora — Terapia Transpersonal y Meditación",
+        }),
+        ogImage: fields.image({
+          label: "SEO — Imagen Open Graph",
+          directory: "public/images",
+          publicPath: "/images/",
+        }),
         // Hero
         heroTitle: fields.text({
           label: "Hero — Título",
@@ -119,6 +320,10 @@ export default config({
           label: "Hero — Imagen de fondo",
           directory: "public/images",
           publicPath: "/images/",
+        }),
+        heroImageAlt: fields.text({
+          label: "Hero — Texto alternativo",
+          defaultValue: "Maria Eleonora Corallo, terapeuta transpersonal y guía de meditación de Eleahora",
         }),
 
         // Manifiesto
@@ -145,12 +350,29 @@ export default config({
           directory: "public/images",
           publicPath: "/images/",
         }),
+        manifestoImageAlt: fields.text({
+          label: "Manifiesto — Texto alternativo imagen",
+          defaultValue: "Sesión de meditación y terapia transpersonal de Eleahora — Manifiesto",
+        }),
 
         // Servicios (resumen en home)
         serviciosTitle: fields.text({
           label: "Servicios — Título",
           defaultValue: "Estoy aquí para ti",
         }),
+        serviceCards: fields.array(
+          fields.object({
+            title: fields.text({ label: "Título" }),
+            description: fields.text({ label: "Descripción", multiline: true }),
+            href: fields.text({ label: "Enlace" }),
+            arrow: fields.text({ label: "Símbolo", defaultValue: "→" }),
+            external: fields.checkbox({ label: "Abrir en nueva pestaña", defaultValue: false }),
+          }),
+          {
+            label: "Servicios — Tarjetas",
+            itemLabel: (props) => props.fields.title.value || "Tarjeta",
+          }
+        ),
 
         // Mindfulness
         mindfulnessLabel: fields.text({
@@ -194,6 +416,14 @@ export default config({
           directory: "public/images",
           publicPath: "/images/",
         }),
+        mindfulnessImageAlt: fields.text({
+          label: "Mindfulness — Texto alternativo imagen",
+          defaultValue: "Práctica de mindfulness y meditación consciente con Eleahora",
+        }),
+        testimonialsTitle: fields.text({
+          label: "Testimonios — Título",
+          defaultValue: "Testimonios",
+        }),
       },
     }),
 
@@ -204,6 +434,24 @@ export default config({
       label: "Sobre Mí",
       path: "src/content/singletons/about",
       schema: {
+        seoTitle: fields.text({
+          label: "SEO — Título",
+          defaultValue: "Sobre Mí — Maria Eleonora Corallo | Eleahora",
+        }),
+        seoDescription: fields.text({
+          label: "SEO — Descripción",
+          multiline: true,
+          defaultValue: "Conoce la historia de Maria Eleonora Corallo, fundadora de Eleahora: de lo corporativo en París al acompañamiento terapéutico con Meditación, PNL Transpersonal y conexión espiritual en Madrid.",
+        }),
+        ogTitle: fields.text({
+          label: "SEO — Título Open Graph",
+          defaultValue: "Sobre Mí — Maria Eleonora Corallo | Eleahora",
+        }),
+        ogImage: fields.image({
+          label: "SEO — Imagen Open Graph",
+          directory: "public/images",
+          publicPath: "/images/",
+        }),
         heroLabel: fields.text({
           label: "Hero — Etiqueta",
           defaultValue: "Sobre Mi",
@@ -227,6 +475,10 @@ export default config({
           directory: "public/images",
           publicPath: "/images/",
         }),
+        profileImageAlt: fields.text({
+          label: "Hero — Texto alternativo imagen",
+          defaultValue: "Fondo de la sección Sobre Mí de Eleahora — presencia y conexión interior",
+        }),
 
         // Mi recorrido
         recorridoLabel: fields.text({
@@ -241,6 +493,10 @@ export default config({
           label: "Recorrido — Imagen",
           directory: "public/images",
           publicPath: "/images/",
+        }),
+        recorridoImageAlt: fields.text({
+          label: "Recorrido — Texto alternativo imagen",
+          defaultValue: "Maria Eleonora Corallo, terapeuta transpersonal y fundadora de Eleahora",
         }),
         bioIntro: fields.text({
           label: "Bio — Introducción",
@@ -267,6 +523,10 @@ export default config({
           directory: "public/images",
           publicPath: "/images/",
         }),
+        eleahoraImageAlt: fields.text({
+          label: "Eleahora — Texto alternativo imagen",
+          defaultValue: "Proceso de presencia y espiritualidad aterrizada — así nace Eleahora",
+        }),
 
         // Manifiesto personal
         manifestoTitle: fields.text({
@@ -277,6 +537,15 @@ export default config({
           label: "Manifiesto — Texto",
           multiline: true,
           defaultValue: "Creo en la meditación como acto de amor propio. Creo en la vulnerabilidad como fortaleza. Creo que sanar no es llegar a un destino — es aprender a caminar con presencia.",
+        }),
+        serviceList: fields.array(fields.text({ label: "Servicio" }), {
+          label: "Eleahora — Lista de formatos",
+          itemLabel: (props) => props.value || "Servicio",
+        }),
+        eleahoraClosingText: fields.text({
+          label: "Eleahora — Texto de cierre",
+          multiline: true,
+          defaultValue: "Porque creo profundamente que estamos viviendo un momento de cambio colectivo donde la consciencia, la presencia y la conexión interior ya no son un lujo, sino una necesidad.",
         }),
 
         // Galería
@@ -319,6 +588,24 @@ export default config({
       label: "Página de Sesiones",
       path: "src/content/singletons/sesiones-page",
       schema: {
+        seoTitle: fields.text({
+          label: "SEO — Título",
+          defaultValue: "Sesiones | Terapia Transpersonal y Meditación | Eleahora",
+        }),
+        seoDescription: fields.text({
+          label: "SEO — Descripción",
+          multiline: true,
+          defaultValue: "Descubre las sesiones de Eleahora: Acompañamiento Terapéutico con PNL, Terapia Angelical, Perlas de Eleahora, Clase de Meditación y Sesión Energética. Presencial en Madrid y online.",
+        }),
+        ogTitle: fields.text({
+          label: "SEO — Título Open Graph",
+          defaultValue: "Sesiones — Eleahora",
+        }),
+        ogImage: fields.image({
+          label: "SEO — Imagen Open Graph",
+          directory: "public/images",
+          publicPath: "/images/",
+        }),
         heroLabel: fields.text({
           label: "Hero — Etiqueta",
           defaultValue: "Sesiones",
@@ -337,6 +624,10 @@ export default config({
           directory: "public/images",
           publicPath: "/images/",
         }),
+        heroImageAlt: fields.text({
+          label: "Hero — Texto alternativo imagen",
+          defaultValue: "Sesiones Eleahora",
+        }),
         ctaTitle: fields.text({
           label: "CTA — Título",
           defaultValue: "Si aún no lo tienes claro, escríbeme aquí",
@@ -350,6 +641,10 @@ export default config({
           label: "CTA — Enlace",
           defaultValue: "/contacto",
         }),
+        ctaButtonText: fields.text({
+          label: "CTA — Texto del botón",
+          defaultValue: "Contactar para más información",
+        }),
       },
     }),
 
@@ -360,6 +655,24 @@ export default config({
       label: "Workshop Empresas",
       path: "src/content/singletons/workshop",
       schema: {
+        seoTitle: fields.text({
+          label: "SEO — Título",
+          defaultValue: "Workshop 'Pienso, luego medito' | Mindfulness para Empresas | Eleahora",
+        }),
+        seoDescription: fields.text({
+          label: "SEO — Descripción",
+          multiline: true,
+          defaultValue: "Workshop de mindfulness y meditación para empresas y equipos. Programa 'Pienso, luego medito' de Eleahora: reduce el estrés, mejora el foco y fortalece la cohesión del equipo.",
+        }),
+        ogTitle: fields.text({
+          label: "SEO — Título Open Graph",
+          defaultValue: "Workshop para Empresas — Eleahora",
+        }),
+        ogImage: fields.image({
+          label: "SEO — Imagen Open Graph",
+          directory: "public/images",
+          publicPath: "/images/",
+        }),
         // Hero
         heroLabel: fields.text({
           label: "Hero — Etiqueta",
@@ -384,8 +697,31 @@ export default config({
           directory: "public/images",
           publicPath: "/images/",
         }),
+        heroSecondaryCtaText: fields.text({
+          label: "Hero — CTA secundario texto",
+          defaultValue: "Ver formatos",
+        }),
+        heroSecondaryCtaLink: fields.text({
+          label: "Hero — CTA secundario enlace",
+          defaultValue: "#formatos",
+        }),
+        facts: fields.array(
+          fields.object({
+            label: fields.text({ label: "Etiqueta" }),
+            value: fields.text({ label: "Valor" }),
+            detail: fields.text({ label: "Detalle" }),
+          }),
+          {
+            label: "Datos destacados",
+            itemLabel: (props) => props.fields.label.value || "Dato",
+          }
+        ),
 
         // Sobre la guía
+        guideEyebrow: fields.text({
+          label: "Guía — Etiqueta",
+          defaultValue: "Sobre la guía",
+        }),
         guideName: fields.text({
           label: "Guía — Nombre",
           defaultValue: "Maria Eleonora Corallo",
@@ -401,6 +737,10 @@ export default config({
         }),
 
         // Workshop
+        workshopEyebrow: fields.text({
+          label: "Workshop — Etiqueta",
+          defaultValue: "El workshop",
+        }),
         workshopTitle: fields.text({
           label: "Workshop — Título",
           defaultValue: "Creado para transformar cómo los equipos perciben y manejan el estrés.",
@@ -412,6 +752,10 @@ export default config({
         }),
 
         // Experiencia
+        experienceEyebrow: fields.text({
+          label: "Experiencia — Etiqueta",
+          defaultValue: "¿Qué incluye la experiencia?",
+        }),
         experienceTitle: fields.text({
           label: "Experiencia — Título",
           defaultValue: "Un recorrido práctico, consciente y aplicable.",
@@ -427,6 +771,10 @@ export default config({
         ),
 
         // Beneficios
+        benefitsEyebrow: fields.text({
+          label: "Beneficios — Etiqueta",
+          defaultValue: "¿Qué te llevas como empresa?",
+        }),
         benefitsTitle: fields.text({
           label: "Beneficios — Título",
           defaultValue: "Lo que cambia después de la experiencia.",
@@ -443,6 +791,10 @@ export default config({
         ),
 
         // Formatos
+        formatsEyebrow: fields.text({
+          label: "Formatos — Etiqueta",
+          defaultValue: "Formatos",
+        }),
         formatsTitle: fields.text({
           label: "Formatos — Título",
           defaultValue: "Formatos disponibles",
@@ -488,9 +840,18 @@ export default config({
         }),
 
         // CTA
+        ctaEyebrow: fields.text({
+          label: "CTA — Etiqueta",
+          defaultValue: "Siguiente paso",
+        }),
         ctaTitle: fields.text({
           label: "CTA — Título",
           defaultValue: "¿Quieres llevar esta experiencia a tu organización?",
+        }),
+        ctaBody: fields.text({
+          label: "CTA — Texto",
+          multiline: true,
+          defaultValue: "Cuéntame el tamaño de tu equipo y qué necesitáis, y diseñamos juntos la experiencia perfecta.",
         }),
         ctaButtonText: fields.text({
           label: "CTA — Texto del botón",
@@ -499,6 +860,10 @@ export default config({
         ctaButtonLink: fields.text({
           label: "CTA — Enlace del botón",
           defaultValue: "/contacto",
+        }),
+        whatsappCtaText: fields.text({
+          label: "CTA — Texto WhatsApp",
+          defaultValue: "WhatsApp",
         }),
       },
     }),
@@ -510,6 +875,28 @@ export default config({
       label: "Página de Contacto",
       path: "src/content/singletons/contacto",
       schema: {
+        seoTitle: fields.text({
+          label: "SEO — Título",
+          defaultValue: "Contacto | Inicia tu proceso con Eleahora",
+        }),
+        seoDescription: fields.text({
+          label: "SEO — Descripción",
+          multiline: true,
+          defaultValue: "Escribe a Eleahora para iniciar tu proceso de Terapia Transpersonal, Meditación o Mindfulness. Respuesta en 24h. También puedes agendar directamente o escribir por WhatsApp.",
+        }),
+        ogTitle: fields.text({
+          label: "SEO — Título Open Graph",
+          defaultValue: "Contacto — Inicia tu proceso con Eleahora",
+        }),
+        ogImage: fields.image({
+          label: "SEO — Imagen Open Graph",
+          directory: "public/images",
+          publicPath: "/images/",
+        }),
+        heroKicker: fields.text({
+          label: "Hero — Etiqueta",
+          defaultValue: "Contacto Eleahora",
+        }),
         heroTitle: fields.text({
           label: "Hero — Título",
           defaultValue: "Este puede ser el primer paso para volver a ti.",
@@ -523,6 +910,26 @@ export default config({
           label: "Hero — Imagen de fondo",
           directory: "public/images",
           publicPath: "/images/",
+        }),
+        heroCtaText: fields.text({
+          label: "Hero — CTA texto",
+          defaultValue: "Escribir ahora",
+        }),
+        heroCtaLink: fields.text({
+          label: "Hero — CTA enlace",
+          defaultValue: "#formulario-contacto",
+        }),
+        contactChannelsAriaLabel: fields.text({
+          label: "Contacto — Etiqueta accesible canales",
+          defaultValue: "Canales de contacto",
+        }),
+        processPanelAriaLabel: fields.text({
+          label: "Proceso — Etiqueta accesible panel",
+          defaultValue: "Qué pasa después",
+        }),
+        processEyebrow: fields.text({
+          label: "Proceso — Etiqueta",
+          defaultValue: "Qué pasa después",
         }),
         processTitle: fields.text({
           label: "Proceso — Título",
@@ -539,6 +946,39 @@ export default config({
             itemLabel: () => "Paso",
           }
         ),
+        whatsappLinkText: fields.text({
+          label: "Links rápidos — WhatsApp texto",
+          defaultValue: "Escríbeme, estoy aquí para ti.",
+        }),
+        emailAddress: fields.text({
+          label: "Links rápidos — Email",
+          defaultValue: "info@eleahora.com",
+        }),
+        formTitle: fields.text({
+          label: "Formulario — Título",
+          defaultValue: "Formulario de contacto",
+        }),
+        formAriaLabel: fields.text({
+          label: "Formulario — Etiqueta accesible",
+          defaultValue: "Formulario de contacto Eleahora",
+        }),
+        nameLabel: fields.text({ label: "Formulario — Nombre label", defaultValue: "Nombre y apellido" }),
+        namePlaceholder: fields.text({ label: "Formulario — Nombre placeholder", defaultValue: "Tu nombre" }),
+        emailLabel: fields.text({ label: "Formulario — Email label", defaultValue: "Email" }),
+        emailPlaceholder: fields.text({ label: "Formulario — Email placeholder", defaultValue: "info@eleahora.com" }),
+        phoneLabel: fields.text({ label: "Formulario — Teléfono label", defaultValue: "WhatsApp (opcional)" }),
+        phonePlaceholder: fields.text({ label: "Formulario — Teléfono placeholder", defaultValue: "+34 ..." }),
+        serviceLabel: fields.text({ label: "Formulario — Servicio label", defaultValue: "¿Qué te trajo hasta aquí?" }),
+        servicePlaceholder: fields.text({ label: "Formulario — Servicio placeholder", defaultValue: "Selecciona una opción" }),
+        workshopServiceOptionLabel: fields.text({ label: "Formulario — Opción workshop", defaultValue: "Workshop para empresas" }),
+        otherServiceOptionLabel: fields.text({ label: "Formulario — Opción otro", defaultValue: "Otro / Aún no lo tengo claro" }),
+        messageLabel: fields.text({ label: "Formulario — Mensaje label", defaultValue: "Cuéntame brevemente qué necesitas" }),
+        messagePlaceholder: fields.text({ label: "Formulario — Mensaje placeholder", defaultValue: "Estoy atravesando..." }),
+        consentText: fields.text({
+          label: "Formulario — Consentimiento",
+          defaultValue: "Acepto que Eleahora me contacte para responder esta solicitud.",
+        }),
+        submitButtonText: fields.text({ label: "Formulario — Botón enviar", defaultValue: "Enviar mensaje" }),
       },
     }),
   },

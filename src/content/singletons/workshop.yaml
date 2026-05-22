@@ -1,3 +1,10 @@
+seoTitle: "Workshop 'Pienso, luego medito' | Mindfulness para Empresas | Eleahora"
+seoDescription: >-
+  Workshop de mindfulness y meditación para empresas y equipos. Programa
+  'Pienso, luego medito' de Eleahora: reduce el estrés, mejora el foco y
+  fortalece la cohesión del equipo.
+ogTitle: 'Workshop para Empresas — Eleahora'
+ogImage: '/images/OG-images-eleahora-01.jpg'
 heroLabel: 'Workshop para empresas'
 heroTitle: 'Pienso, luego medito.'
 heroSubtitle: >-
@@ -5,6 +12,39 @@ heroSubtitle: >-
   organizaciones que quieren reducir el estrés y potenciar el rendimiento.
 heroImage: '/images/Workshop Pienso Luego Medito-15-tiny.webp'
 heroImage2: '/images/Workshop Pienso Luego Medito-92-tiny.webp'
+heroSecondaryCtaText: 'Ver formatos'
+heroSecondaryCtaLink: '#formatos'
+facts:
+  - label: 'Formato'
+    value: 'Empresas'
+    detail: 'equipos y organizaciones'
+  - label: 'Modalidad'
+    value: 'Presencial'
+    detail: 'adaptable a tu equipo'
+  - label: 'Enfoque'
+    value: 'Mindfulness'
+    detail: 'práctico y aplicable'
+guideEyebrow: 'Sobre la guía'
+guideName: 'Maria Eleonora Corallo'
+guideBio: >-
+  Terapeuta transpersonal, guía de meditación y fundadora de Eleahora. Combina
+  su carrera de idiomas, PNL transpersonal, mindfulness y conexión energética
+  para llevar herramientas prácticas de neuroregulación al entorno corporativo.
+guideSlogan: 'Soy la voz que te recuerda que estás aquí.'
+workshopEyebrow: 'El workshop'
+workshopTitle: 'Pienso, luego medito.'
+workshopDescription: >-
+  Una experiencia de mindfulness y meditación diseñada para equipos y
+  organizaciones que quieren reducir el estrés y potenciar el rendimiento.
+experienceEyebrow: '¿Qué incluye la experiencia?'
+experienceTitle: 'Un recorrido práctico, consciente y aplicable.'
+experienceItems:
+  - 'Bienvenida y aterrizaje consciente'
+  - 'Respiración y regulación del sistema nervioso'
+  - 'Meditación guiada aplicada al entorno laboral'
+  - 'Herramientas de atención plena para el día a día'
+  - 'Integración y cierre compartido'
+benefitsEyebrow: '¿Qué te llevas como empresa?'
 benefitsTitle: '¿Qué se llevan los equipos?'
 benefits:
   - title: 'Regulación del sistema nervioso'
@@ -17,6 +57,7 @@ benefits:
     description: >-
       El bienestar emocional es una inversión que impacta directamente en la
       productividad y la retención del talento.
+formatsEyebrow: 'Formatos'
 formatsTitle: 'Formatos disponibles'
 formats:
   - name: 'Sesión única'
@@ -28,9 +69,17 @@ formats:
   - name: 'Programa mensual'
     duration: '4 sesiones'
     description: 'Un mes de acompañamiento con sesiones semanales para consolidar el hábito.'
+testimonialsTitle: 'Lo que ocurre cuando la pausa también es parte del proceso.'
+testimonials: []
+closingQuote: >-
+  El verdadero reto de la condición humana no es estar presente, sino darnos
+  cuenta de que no estamos presentes.
+closingQuoteAuthor: 'Meggan Watterson'
+ctaEyebrow: 'Siguiente paso'
 ctaTitle: '¿Hablamos para tu empresa?'
 ctaBody: >-
   Cuéntame el tamaño de tu equipo y qué necesitáis, y diseñamos juntos la
   experiencia perfecta.
 ctaButtonText: 'Solicitar información'
 ctaButtonLink: '/contacto'
+whatsappCtaText: 'WhatsApp'

@@ -1,80 +1,135 @@
 ---
 import MeditationModal from '../svelte/MeditationModal.svelte';
-import { getSiteConfig } from '../../lib/keystatic';
+import { getGlobalContent, getSiteConfig } from '../../lib/keystatic';
 
 const currentYear = new Date().getFullYear();
 const site = await getSiteConfig();
+const globalContent = await getGlobalContent();
 
 const whatsappNumber = site?.phoneWhatsapp ?? '+34605373782';
 const calLink = site?.calLink ?? 'https://cal.eu/eleahora/sesiones';
 const instagramUrl = site?.instagramUrl ?? 'https://www.instagram.com/eleahora/';
 const insightUrl = site?.insightTimerUrl ?? 'https://insighttimer.com/eleahora';
+const linkedinUrl = site?.linkedinUrl ?? 'https://www.linkedin.com/in/maria-eleonora-corallo-16266165/';
+const whatsappUrl = `https://wa.me/${whatsappNumber.replace(/[^0-9+]/g, '')}`;
+const resolveHref = (href: string) => {
+  const links: Record<string, string> = {
+    booking: calLink,
+    instagram: instagramUrl,
+    insightTimer: insightUrl,
+    linkedin: linkedinUrl,
+    whatsapp: whatsappUrl,
+  };
+  return links[href] ?? href;
+};
+const footerLogo = globalContent?.footerLogo ?? '/images/logo-white.png';
+const footerLogoAlt = globalContent?.footerLogoAlt ?? 'Eleahora';
+const footerExploreLinks = globalContent?.footerExploreLinks?.length ? globalContent.footerExploreLinks : [
+  { label: 'Inicio', href: '/' },
+  { label: 'Sobre Mí', href: '/about' },
+  { label: 'Manifiesto', href: '/#manifiesto' },
+  { label: 'Sesiones y servicios', href: '/sesiones' },
+  { label: 'Workshop Empresas', href: '/workshop-empresas' },
+  { label: 'Mindfulness', href: '/#mindfulness' },
+  { label: 'Contacto', href: '/contacto' },
+];
+const footerContactLinks = globalContent?.footerContactLinks?.length ? globalContent.footerContactLinks : [
+  { label: 'Agenda una Sesión', href: 'booking', external: true },
+  { label: 'Instagram', href: 'instagram', external: true },
+  { label: 'LinkedIn', href: 'linkedin', external: true },
+  { label: 'Meditaciones Guiadas', href: 'insightTimer', external: true },
+  { label: 'WhatsApp', href: 'whatsapp', external: true },
+];
+const footerLegalLinks = globalContent?.footerLegalLinks?.length ? globalContent.footerLegalLinks : [
+  { label: 'Aviso Legal', href: '/legal/aviso-legal' },
+  { label: 'Privacidad', href: '/legal/politica-de-privacidad' },
+  { label: 'Cookies', href: '/legal/politica-de-cookies' },
+];
+const footerCreditsLinks = globalContent?.footerCreditsLinks?.length ? globalContent.footerCreditsLinks : [
+  { label: 'Amorchi House', href: 'http://amorchihouse.com/' },
+  { label: '@jesusdavidweb', href: 'https://jesusdavid.net/' },
+];
 ---
 
 <footer class="eleahora-footer">
   <div class="footer-container max-w-screen">
     <div class="footer-grid">
       <div class="footer-brand">
-        <img src="/images/logo-white.png" alt="Eleahora" class="footer-logo" />
-        <p class="brand-slogan text-accent">Soy la voz que te recuerda que estás aquí.</p>
+        <img src={footerLogo} alt={footerLogoAlt} class="footer-logo" />
+        <p class="brand-slogan text-accent">{globalContent?.footerSlogan ?? 'Soy la voz que te recuerda que estás aquí.'}</p>
         <button
           class="footer-meditation-cta"
           type="button"
           data-meditation-modal-trigger
-          aria-label="Abrir meditación gratuita de Insight Timer en un pop-up"
+          aria-label={globalContent?.footerMeditationCtaAriaLabel ?? 'Abrir meditación gratuita de Insight Timer en un pop-up'}
         >
-          Escuchar meditación gratuita
+          {globalContent?.footerMeditationCtaText ?? 'Escuchar meditación gratuita'}
         </button>
       </div>
 
       <div class="footer-links">
-        <h3 class="footer-title">Explora</h3>
+        <h3 class="footer-title">{globalContent?.footerExploreTitle ?? 'Explora'}</h3>
         <nav aria-label="Footer Navigation">
           <ul>
-            <li><a href="/">Inicio</a></li>
-            <li><a href="/about">Sobre Mí</a></li>
-            <li><a href="/#manifiesto">Manifiesto</a></li>
-            <li><a href="/sesiones">Sesiones y servicios</a></li>
-            <li><a href="/workshop-empresas">Workshop Empresas</a></li>
-            <li><a href="/#mindfulness">Mindfulness</a></li>
-            <li><a href="/contacto">Contacto</a></li>
+            {footerExploreLinks.map((link: { label: string; href: string }) => (
+              <li><a href={link.href}>{link.label}</a></li>
+            ))}
           </ul>
         </nav>
       </div>
 
       <div class="footer-contact">
-        <h3 class="footer-title">Conecta</h3>
+        <h3 class="footer-title">{globalContent?.footerContactTitle ?? 'Conecta'}</h3>
         <ul>
-          <li><a href={calLink} target="_blank" rel="noopener noreferrer">Agenda una Sesión</a></li>
-          <li><a href={instagramUrl} target="_blank" rel="noopener noreferrer">Instagram</a></li>
-          <li><a href="https://www.linkedin.com/in/maria-eleonora-corallo-16266165/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-          <li><a href={insightUrl} target="_blank" rel="noopener noreferrer">Meditaciones Guiadas</a></li>
-          <li><a href={`https://wa.me/${whatsappNumber.replace(/[^0-9+]/g, '')}`} target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+          {footerContactLinks.map((link: { label: string; href: string; external?: boolean }) => (
+            <li>
+              <a
+                href={resolveHref(link.href)}
+                target={link.external ? '_blank' : undefined}
+                rel={link.external ? 'noopener noreferrer' : undefined}
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
         </ul>
       </div>
 
       <div class="footer-legal-col">
-        <h3 class="footer-title">Legal</h3>
+        <h3 class="footer-title">{globalContent?.footerLegalTitle ?? 'Legal'}</h3>
         <nav aria-label="Legal Navigation">
           <ul>
-            <li><a href="/legal/aviso-legal">Aviso Legal</a></li>
-            <li><a href="/legal/politica-de-privacidad">Privacidad</a></li>
-            <li><a href="/legal/politica-de-cookies">Cookies</a></li>
+            {footerLegalLinks.map((link: { label: string; href: string }) => (
+              <li><a href={link.href}>{link.label}</a></li>
+            ))}
           </ul>
         </nav>
       </div>
     </div>
 
     <div class="footer-bottom">
-      <p>&copy; {currentYear} Eleahora. Todos los derechos reservados.</p>
+      <p>&copy; {currentYear} {globalContent?.footerCopyright ?? 'Eleahora. Todos los derechos reservados.'}</p>
       <p class="credits">
-        Hecho con amor 🤍 por <a href="http://amorchihouse.com/" target="_blank" rel="noopener noreferrer">Amorchi House</a> y <a href="https://jesusdavid.net/" target="_blank" rel="noopener noreferrer">@jesusdavidweb</a>
+        {globalContent?.footerCreditsPrefix ?? 'Hecho con amor por'}{' '}
+        {footerCreditsLinks.map((link: { label: string; href: string }, index: number) => (
+          <>
+            {index > 0 && ' y '}
+            <a href={link.href} target="_blank" rel="noopener noreferrer">{link.label}</a>
+          </>
+        ))}
       </p>
     </div>
   </div>
 </footer>
 
-<MeditationModal client:idle />
+<MeditationModal
+  title={globalContent?.meditationModalTitle ?? 'Meditación gratuita'}
+  closeText={globalContent?.meditationModalCloseText ?? 'Cerrar'}
+  closeAriaLabel={globalContent?.meditationModalCloseAriaLabel ?? 'Cerrar meditación'}
+  iframeTitle={globalContent?.meditationModalIframeTitle ?? 'Insight Timer Embed: Maria Eleonora Corallo'}
+  embedUrl={globalContent?.meditationModalEmbedUrl ?? 'https://widgets.insighttimer.com/publisher/Qi5htL7vZhRNNN9BOvdTdSUt6E32?created_at=1776166254'}
+  client:idle
+/>
 
 <style>
   .eleahora-footer {

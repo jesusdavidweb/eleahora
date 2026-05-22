@@ -10,8 +10,15 @@ const siteConfig = await getSiteConfig();
 const sesiones = await getAllSesiones();
 
 // Fallbacks
+const heroKicker = (contactoPage as any)?.heroKicker ?? "Contacto Eleahora";
 const heroTitle = contactoPage?.heroTitle ?? "Este puede ser el primer paso para volver a ti.";
 const heroSubtitle = (contactoPage as any)?.heroSubtitle ?? "Hablemos. / Estoy aquí para escucharte y acompañarte en el primer paso.";
+const heroImage = (contactoPage as any)?.heroImage ?? "/images/contacto-hero-eleahora-02-edit-tiny.webp";
+const heroCtaText = (contactoPage as any)?.heroCtaText ?? "Escribir ahora";
+const heroCtaLink = (contactoPage as any)?.heroCtaLink ?? "#formulario-contacto";
+const contactChannelsAriaLabel = (contactoPage as any)?.contactChannelsAriaLabel ?? "Canales de contacto";
+const processPanelAriaLabel = (contactoPage as any)?.processPanelAriaLabel ?? "Qué pasa después";
+const processEyebrow = (contactoPage as any)?.processEyebrow ?? "Qué pasa después";
 const processTitle = contactoPage?.processTitle ?? "¿Cómo funciona?";
 const processSteps = contactoPage?.processSteps?.length ? contactoPage.processSteps : [
   { step: "1", title: "Recibo tu mensaje", description: "Reviso tu intención y te respondo en máximo 24 horas laborables." },
@@ -19,6 +26,24 @@ const processSteps = contactoPage?.processSteps?.length ? contactoPage.processSt
   { step: "3", title: "Comenzamos", description: "Te comparto enlace, horario y recomendaciones para tu primera sesión." },
 ];
 const whatsappUrl = `https://wa.me/${(siteConfig?.phoneWhatsapp ?? '+34605373782').replace('+', '')}`;
+const emailAddress = (contactoPage as any)?.emailAddress ?? "info@eleahora.com";
+const formLabels = {
+  whatsappLinkText: (contactoPage as any)?.whatsappLinkText ?? "Escríbeme, estoy aquí para ti.",
+  formTitle: (contactoPage as any)?.formTitle ?? "Formulario de contacto",
+  formAriaLabel: (contactoPage as any)?.formAriaLabel ?? "Formulario de contacto Eleahora",
+  nameLabel: (contactoPage as any)?.nameLabel ?? "Nombre y apellido",
+  namePlaceholder: (contactoPage as any)?.namePlaceholder ?? "Tu nombre",
+  emailLabel: (contactoPage as any)?.emailLabel ?? "Email",
+  emailPlaceholder: (contactoPage as any)?.emailPlaceholder ?? "info@eleahora.com",
+  phoneLabel: (contactoPage as any)?.phoneLabel ?? "WhatsApp (opcional)",
+  phonePlaceholder: (contactoPage as any)?.phonePlaceholder ?? "+34 ...",
+  serviceLabel: (contactoPage as any)?.serviceLabel ?? "¿Qué te trajo hasta aquí?",
+  servicePlaceholder: (contactoPage as any)?.servicePlaceholder ?? "Selecciona una opción",
+  messageLabel: (contactoPage as any)?.messageLabel ?? "Cuéntame brevemente qué necesitas",
+  messagePlaceholder: (contactoPage as any)?.messagePlaceholder ?? "Estoy atravesando...",
+  consentText: (contactoPage as any)?.consentText ?? "Acepto que Eleahora me contacte para responder esta solicitud.",
+  submitButtonText: (contactoPage as any)?.submitButtonText ?? "Enviar mensaje",
+};
 
 // Opciones de servicio: usar Keystatic si hay datos, si no fallback
 const serviceOptions: ContactServiceOption[] = sesiones.length > 0
@@ -26,8 +51,8 @@ const serviceOptions: ContactServiceOption[] = sesiones.length > 0
       ...sesiones
         .sort((a, b) => (a.entry.order ?? 0) - (b.entry.order ?? 0))
         .map((s) => ({ value: s.slug, label: s.entry.title })),
-      { value: 'workshop-empresas', label: 'Workshop para empresas' },
-      { value: 'otro', label: 'Otro / Aún no lo tengo claro' },
+      { value: 'workshop-empresas', label: (contactoPage as any)?.workshopServiceOptionLabel ?? 'Workshop para empresas' },
+      { value: 'otro', label: (contactoPage as any)?.otherServiceOptionLabel ?? 'Otro / Aún no lo tengo claro' },
     ]
   : [
   { value: 'acompanamiento-terapeutico', label: 'Acompañamiento Terapéutico (Meditación + PNL)' },
@@ -41,10 +66,10 @@ const serviceOptions: ContactServiceOption[] = sesiones.length > 0
 ---
 
 <Layout
-  title="Contacto | Inicia tu proceso con Eleahora"
-  description="Escribe a Eleahora para iniciar tu proceso de Terapia Transpersonal, Meditación o Mindfulness. Respuesta en 24h. También puedes agendar directamente o escribir por WhatsApp."
-  ogTitle="Contacto — Inicia tu proceso con Eleahora"
-  ogImage="/images/OG-images-eleahora-02.png"
+  title={(contactoPage as any)?.seoTitle ?? "Contacto | Inicia tu proceso con Eleahora"}
+  description={(contactoPage as any)?.seoDescription ?? "Escribe a Eleahora para iniciar tu proceso de Terapia Transpersonal, Meditación o Mindfulness. Respuesta en 24h. También puedes agendar directamente o escribir por WhatsApp."}
+  ogTitle={(contactoPage as any)?.ogTitle ?? "Contacto — Inicia tu proceso con Eleahora"}
+  ogImage={(contactoPage as any)?.ogImage ?? "/images/OG-images-eleahora-02.png"}
 >
   <ContactExperience client:load />
 
@@ -58,22 +83,22 @@ const serviceOptions: ContactServiceOption[] = sesiones.length > 0
       </div>
 
       <div class="max-w-screen hero-wrap">
-        <p class="hero-kicker contact-hero-animate">Contacto Eleahora</p>
+        <p class="hero-kicker contact-hero-animate">{heroKicker}</p>
         <h1 id="contacto-title" class="contact-hero-animate">
           {heroTitle}
         </h1>
         {heroSubtitle && <p class="hero-lead contact-hero-animate">{heroSubtitle}</p>}
 
         <div class="hero-cta-row contact-hero-animate">
-          <a href="#formulario-contacto" class="btn-primary magnetic-cta">Escribir ahora</a>
+          <a href={heroCtaLink} class="btn-primary magnetic-cta">{heroCtaText}</a>
         </div>
       </div>
     </section>
 
-    <section class="contact-main" aria-label="Canales de contacto">
+    <section class="contact-main" aria-label={contactChannelsAriaLabel}>
       <div class="max-w-screen contact-main-grid">
-        <aside class="contact-process-panel contact-reveal" aria-label="Qué pasa después">
-          <p class="panel-eyebrow">Qué pasa después</p>
+        <aside class="contact-process-panel contact-reveal" aria-label={processPanelAriaLabel}>
+          <p class="panel-eyebrow">{processEyebrow}</p>
           <h2>{processTitle}</h2>
           <ol class="process-list">
             {processSteps.map((step: { step: string; title: string; description: string }) => (
@@ -89,50 +114,50 @@ const serviceOptions: ContactServiceOption[] = sesiones.length > 0
 
           <div class="quick-links">
             <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
-              Escríbeme, estoy aquí para ti.
+              {formLabels.whatsappLinkText}
             </a>
-            <a href="mailto:info@eleahora.com">info@eleahora.com</a>
+            <a href={`mailto:${emailAddress}`}>{emailAddress}</a>
           </div>
         </aside>
 
         <article id="formulario-contacto" class="contact-form-card contact-reveal">
-          <h2>Formulario de contacto</h2>
+          <h2>{formLabels.formTitle}</h2>
 
-          <form action="/gracias" method="GET" class="contact-form" aria-label="Formulario de contacto Eleahora">
+          <form action="/gracias" method="GET" class="contact-form" aria-label={formLabels.formAriaLabel}>
             <input type="hidden" name="origen" value="contacto-web" />
 
-            <label for="nombre">Nombre y apellido</label>
-            <input id="nombre" name="nombre" type="text" autocomplete="name" placeholder="Tu nombre" required />
+            <label for="nombre">{formLabels.nameLabel}</label>
+            <input id="nombre" name="nombre" type="text" autocomplete="name" placeholder={formLabels.namePlaceholder} required />
 
-            <label for="email">Email</label>
-            <input id="email" name="email" type="email" autocomplete="email" placeholder="info@eleahora.com" required />
+            <label for="email">{formLabels.emailLabel}</label>
+            <input id="email" name="email" type="email" autocomplete="email" placeholder={formLabels.emailPlaceholder} required />
 
-            <label for="telefono">WhatsApp (opcional)</label>
-            <input id="telefono" name="telefono" type="tel" autocomplete="tel" placeholder="+34 ..." />
+            <label for="telefono">{formLabels.phoneLabel}</label>
+            <input id="telefono" name="telefono" type="tel" autocomplete="tel" placeholder={formLabels.phonePlaceholder} />
 
-            <label for="servicio">¿Qué te trajo hasta aquí?</label>
+            <label for="servicio">{formLabels.serviceLabel}</label>
             <select id="servicio" name="servicio" required>
-              <option value="">Selecciona una opción</option>
+              <option value="">{formLabels.servicePlaceholder}</option>
               {serviceOptions.map((option) => (
                 <option value={option.value}>{option.label}</option>
               ))}
             </select>
 
-            <label for="mensaje">Cuéntame brevemente qué necesitas</label>
+            <label for="mensaje">{formLabels.messageLabel}</label>
             <textarea
               id="mensaje"
               name="mensaje"
               rows={6}
-              placeholder="Estoy atravesando..."
+              placeholder={formLabels.messagePlaceholder}
               required
             ></textarea>
 
             <label class="consent-wrap" for="consentimiento">
               <input id="consentimiento" name="consentimiento" type="checkbox" value="aceptado" required />
-              <span>Acepto que Eleahora me contacte para responder esta solicitud.</span>
+              <span>{formLabels.consentText}</span>
             </label>
 
-            <button type="submit" class="btn-primary magnetic-cta w-full">Enviar mensaje</button>
+            <button type="submit" class="btn-primary magnetic-cta w-full">{formLabels.submitButtonText}</button>
           </form>
         </article>
       </div>
@@ -140,7 +165,7 @@ const serviceOptions: ContactServiceOption[] = sesiones.length > 0
   </main>
 </Layout>
 
-<style>
+<style define:vars={{ contactHeroImage: `url('${heroImage}')` }}>
   .contact-page {
     padding-top: 6rem;
     overflow: visible;
@@ -153,7 +178,7 @@ const serviceOptions: ContactServiceOption[] = sesiones.length > 0
     isolation: isolate;
     overflow: hidden;
     background-color: #000;
-    background-image: url('/images/contacto-hero-eleahora-02-edit-tiny.webp');
+    background-image: var(--contactHeroImage);
     background-size: cover;
     background-position: right center;
     background-repeat: no-repeat;

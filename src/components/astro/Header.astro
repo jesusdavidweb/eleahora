@@ -1,5 +1,5 @@
 ---
-import { getSiteConfig } from '../../lib/keystatic';
+import { getGlobalContent, getSiteConfig } from '../../lib/keystatic';
 
 interface Props {
   activeNav?: string;
@@ -9,25 +9,36 @@ const { activeNav } = Astro.props;
 
 // Keystatic: configuración global
 const siteConfig = await getSiteConfig();
+const globalContent = await getGlobalContent();
 const bookingUrl = siteConfig?.calLink ?? 'https://scheduler.zoom.us/maria-eleonora-051exv/sesi-n-eleahora';
+const navLinks = globalContent?.navLinks?.length ? globalContent.navLinks : [
+  { label: 'Sobre Mí', href: '/about', activeKey: 'about' },
+  { label: 'Sesiones', href: '/sesiones', activeKey: 'sesiones' },
+  { label: 'Workshop', href: '/workshop-empresas', activeKey: 'workshop' },
+  { label: 'Contacto', href: '/contacto', activeKey: 'contacto' },
+];
+const headerLogo = globalContent?.headerLogo ?? '/images/logo-1.png';
+const headerLogoAlt = globalContent?.headerLogoAlt ?? 'Eleahora';
+const headerCtaText = globalContent?.headerCtaText ?? 'Agendar';
+const headerMobileCtaText = globalContent?.headerMobileCtaText ?? 'Agendar Sesión';
+const mobileMenuAriaLabel = globalContent?.mobileMenuAriaLabel ?? 'Abrir menú';
 ---
 
 <header class="navbar-wrapper" transition:name="site-header" transition:animate="none">
   <div class="navbar-container max-w-screen">
-    <a href="/" class="logo" aria-label="Eleahora Home">
-      <img src="/images/logo-1.png" alt="Eleahora" class="nav-logo" />
+    <a href="/" class="logo" aria-label={headerLogoAlt}>
+      <img src={headerLogo} alt={headerLogoAlt} class="nav-logo" />
     </a>
 
     <nav class="nav-links" aria-label="Main navigation">
-      <a href="/about" class:list={[{ active: activeNav === 'about' }]}>Sobre Mí</a>
-      <a href="/sesiones" class:list={[{ active: activeNav === 'sesiones' }]}>Sesiones</a>
-      <a href="/workshop-empresas" class:list={[{ active: activeNav === 'workshop' }]}>Workshop</a>
-      <a href="/contacto" class:list={[{ active: activeNav === 'contacto' }]}>Contacto</a>
+      {navLinks.map((link: { label: string; href: string; activeKey?: string }) => (
+        <a href={link.href} class:list={[{ active: activeNav === link.activeKey }]}>{link.label}</a>
+      ))}
     </nav>
 
     <div class="nav-actions">
-      <a href={bookingUrl} class="btn-modern-nav">Agendar</a>
-      <button class="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <a href={bookingUrl} class="btn-modern-nav">{headerCtaText}</a>
+      <button class="mobile-menu-toggle" aria-label={mobileMenuAriaLabel} aria-expanded="false">
         <span class="hamburger"></span>
       </button>
     </div>
@@ -37,15 +48,14 @@ const bookingUrl = siteConfig?.calLink ?? 'https://scheduler.zoom.us/maria-eleon
   <div class="mobile-menu-overlay">
     <div class="mobile-menu-content">
       <nav class="mobile-nav-links">
-        <a href="/about" class:list={[{ active: activeNav === 'about' }]}>Sobre Mí</a>
-        <a href="/sesiones" class:list={[{ active: activeNav === 'sesiones' }]}>Sesiones</a>
-        <a href="/workshop-empresas" class:list={[{ active: activeNav === 'workshop' }]}>Workshop</a>
-        <a href="/contacto" class:list={[{ active: activeNav === 'contacto' }]}>Contacto</a>
+        {navLinks.map((link: { label: string; href: string; activeKey?: string }) => (
+          <a href={link.href} class:list={[{ active: activeNav === link.activeKey }]}>{link.label}</a>
+        ))}
       </nav>
       
       <div class="mobile-nav-footer">
         <a href={bookingUrl} class="btn-premium-mobile">
-          <span>Agendar Sesión</span>
+          <span>{headerMobileCtaText}</span>
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <line x1="5" y1="12" x2="19" y2="12"></line>
             <polyline points="12 5 19 12 12 19"></polyline>

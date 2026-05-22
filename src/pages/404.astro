@@ -1,12 +1,15 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import NotFoundExperience from '../components/svelte/NotFoundExperience.svelte';
+import { getGlobalContent } from '../lib/keystatic';
+
+const globalContent = await getGlobalContent();
 ---
 
 <Layout
-  title="Página no encontrada | Eleahora"
-  description="La página que buscas no existe o ha sido movida. Vuelve al inicio de Eleahora y continúa tu camino."
-  ogTitle="404 — Página no encontrada | Eleahora"
+  title={globalContent?.notFoundSeoTitle ?? "Página no encontrada | Eleahora"}
+  description={globalContent?.notFoundSeoDescription ?? "La página que buscas no existe o ha sido movida. Vuelve al inicio de Eleahora y continúa tu camino."}
+  ogTitle={globalContent?.notFoundOgTitle ?? "404 — Página no encontrada | Eleahora"}
   noindex={true}
 >
   <NotFoundExperience client:load />
@@ -26,23 +29,23 @@ import NotFoundExperience from '../components/svelte/NotFoundExperience.svelte';
 
       <!-- Content -->
       <div class="notfound-content">
-        <p class="notfound-number notfound-animate" aria-hidden="true">404</p>
-        <p class="notfound-kicker notfound-animate">Página no encontrada</p>
+        <p class="notfound-number notfound-animate" aria-hidden="true">{globalContent?.notFoundNumber ?? '404'}</p>
+        <p class="notfound-kicker notfound-animate">{globalContent?.notFoundKicker ?? 'Página no encontrada'}</p>
         <h1 id="notfound-title" class="notfound-animate">
-          Este camino no lleva a ningún lado.
+          {globalContent?.notFoundTitle ?? 'Este camino no lleva a ningún lado.'}
         </h1>
         <p class="notfound-lead notfound-animate">
-          La página que buscas no existe o ha sido movida. Respira, no pasa nada&nbsp;— vuelve al inicio y retoma tu camino.
+          {globalContent?.notFoundLead ?? 'La página que buscas no existe o ha sido movida. Respira, no pasa nada — vuelve al inicio y retoma tu camino.'}
         </p>
         <div class="notfound-actions notfound-animate">
           <a
-            href="/"
+            href={globalContent?.notFoundPrimaryCtaLink ?? '/'}
             class="btn-primary notfound-magnetic"
-          >Volver al inicio</a>
+          >{globalContent?.notFoundPrimaryCtaText ?? 'Volver al inicio'}</a>
           <a
-            href="/sesiones"
+            href={globalContent?.notFoundSecondaryCtaLink ?? '/sesiones'}
             class="btn-outline notfound-magnetic"
-          >Ver sesiones</a>
+          >{globalContent?.notFoundSecondaryCtaText ?? 'Ver sesiones'}</a>
         </div>
       </div>
 

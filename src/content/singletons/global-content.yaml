@@ -1,0 +1,107 @@
+headerLogo: '/images/logo-1.png'
+headerLogoAlt: 'Eleahora'
+navLinks:
+  - label: 'Sobre Mí'
+    href: '/about'
+    activeKey: 'about'
+  - label: 'Sesiones'
+    href: '/sesiones'
+    activeKey: 'sesiones'
+  - label: 'Workshop'
+    href: '/workshop-empresas'
+    activeKey: 'workshop'
+  - label: 'Contacto'
+    href: '/contacto'
+    activeKey: 'contacto'
+headerCtaText: 'Agendar'
+headerMobileCtaText: 'Agendar Sesión'
+mobileMenuAriaLabel: 'Abrir menú'
+footerLogo: '/images/logo-white.png'
+footerLogoAlt: 'Eleahora'
+footerSlogan: 'Soy la voz que te recuerda que estás aquí.'
+footerMeditationCtaText: 'Escuchar meditación gratuita'
+footerMeditationCtaAriaLabel: 'Abrir meditación gratuita de Insight Timer en un pop-up'
+footerExploreTitle: 'Explora'
+footerExploreLinks:
+  - label: 'Inicio'
+    href: '/'
+  - label: 'Sobre Mí'
+    href: '/about'
+  - label: 'Manifiesto'
+    href: '/#manifiesto'
+  - label: 'Sesiones y servicios'
+    href: '/sesiones'
+  - label: 'Workshop Empresas'
+    href: '/workshop-empresas'
+  - label: 'Mindfulness'
+    href: '/#mindfulness'
+  - label: 'Contacto'
+    href: '/contacto'
+footerContactTitle: 'Conecta'
+footerContactLinks:
+  - label: 'Agenda una Sesión'
+    href: 'booking'
+    external: true
+  - label: 'Instagram'
+    href: 'instagram'
+    external: true
+  - label: 'LinkedIn'
+    href: 'linkedin'
+    external: true
+  - label: 'Meditaciones Guiadas'
+    href: 'insightTimer'
+    external: true
+  - label: 'WhatsApp'
+    href: 'whatsapp'
+    external: true
+footerLegalTitle: 'Legal'
+footerLegalLinks:
+  - label: 'Aviso Legal'
+    href: '/legal/aviso-legal'
+  - label: 'Privacidad'
+    href: '/legal/politica-de-privacidad'
+  - label: 'Cookies'
+    href: '/legal/politica-de-cookies'
+footerCopyright: 'Eleahora. Todos los derechos reservados.'
+footerCreditsPrefix: 'Hecho con amor por'
+footerCreditsLinks:
+  - label: 'Amorchi House'
+    href: 'http://amorchihouse.com/'
+  - label: '@jesusdavidweb'
+    href: 'https://jesusdavid.net/'
+meditationModalTitle: 'Meditación gratuita'
+meditationModalCloseText: 'Cerrar'
+meditationModalCloseAriaLabel: 'Cerrar meditación'
+meditationModalIframeTitle: 'Insight Timer Embed: Maria Eleonora Corallo'
+meditationModalEmbedUrl: 'https://widgets.insighttimer.com/publisher/Qi5htL7vZhRNNN9BOvdTdSUt6E32?created_at=1776166254'
+thanksSeoTitle: 'Gracias | Eleahora'
+thanksSeoDescription: >-
+  Gracias por contactar con Eleahora. Hemos recibido tu mensaje y en breve
+  recibirás una respuesta para comenzar tu proceso.
+thanksOgTitle: 'Gracias por tu mensaje | Eleahora'
+thanksKicker: 'Mensaje recibido'
+thanksTitle: 'Gracias por escribir a Eleahora.'
+thanksPersonalizedTitle: '{name}, gracias por escribir a Eleahora.'
+thanksLead: >-
+  Tu solicitud ya entró en la bandeja prioritaria. Te responderé en máximo 24
+  horas laborables para coordinar el siguiente paso.
+thanksPrimaryCtaText: 'Reservar ahora'
+thanksPrimaryCtaLink: 'https://scheduler.zoom.us/maria-eleonora-051exv/sesi-n-eleahora'
+thanksSecondaryCtaText: 'Escribir por WhatsApp'
+notFoundSeoTitle: 'Página no encontrada | Eleahora'
+notFoundSeoDescription: >-
+  La página que buscas no existe o ha sido movida. Vuelve al inicio de Eleahora
+  y continúa tu camino.
+notFoundOgTitle: '404 — Página no encontrada | Eleahora'
+notFoundNumber: '404'
+notFoundKicker: 'Página no encontrada'
+notFoundTitle: 'Este camino no lleva a ningún lado.'
+notFoundLead: >-
+  La página que buscas no existe o ha sido movida. Respira, no pasa nada —
+  vuelve al inicio y retoma tu camino.
+notFoundPrimaryCtaText: 'Volver al inicio'
+notFoundPrimaryCtaLink: '/'
+notFoundSecondaryCtaText: 'Ver sesiones'
+notFoundSecondaryCtaLink: '/sesiones'
+legalLastUpdatedPrefix: 'Última actualización:'
+legalContentUnavailableText: 'Contenido no disponible.'

@@ -106,6 +106,16 @@ export async function getSiteConfig() {
   }
 }
 
+export async function getGlobalContent() {
+  try {
+    const r = await getReader();
+    if (!r) return null;
+    return await r.singletons.globalContent.read();
+  } catch {
+    return null;
+  }
+}
+
 export async function getHomePage() {
   try {
     const r = await getReader();

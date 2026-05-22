@@ -74,7 +74,7 @@ errores conocidos y guía de reimplementación paso a paso.
 
 | Archivo | Rol |
 |---|---|
-| `keystatic.config.ts` | Schema: 6 singletons, 3 collections. Storage cloud, project `eleahora/eleahora`. |
+| `keystatic.config.ts` | Schema: 7 singletons, 3 collections. Storage cloud, project `eleahora/eleahora`. |
 | `astro.config.mjs` | Integración `@keystatic/astro`, modo `server`, adapter `@astrojs/node`. |
 | `package.json` | Dependencias: `@keystatic/core`, `@keystatic/astro`, `@astrojs/react`, `@astrojs/node`. |
 | `.env.example` | Documenta que **no se requieren variables de entorno**. |
@@ -85,26 +85,29 @@ errores conocidos y guía de reimplementación paso a paso.
 | Archivo | Rol |
 |---|---|
 | `src/lib/keystatic.ts` | `createReader()`, helpers por singleton/collection, `resolveDocument()`. |
-| `src/layouts/Layout.astro` | Consume `getSiteConfig()` para SEO, OG tags y colores CSS dinámicos. |
-| `src/pages/index.astro` | `getHomePage()`, `getSiteConfig()`, `getAllTestimonios()`. |
-| `src/pages/about.astro` | `getAboutPage()`. |
-| `src/pages/sesiones.astro` | `getSessionesPage()`, `getAllSesiones()`, `getSiteConfig()`. |
-| `src/pages/contacto.astro` | `getContactoPage()`, `getSiteConfig()`, `getAllSesiones()`. |
-| `src/pages/workshop-empresas.astro` | `getWorkshopPage()`, `getSiteConfig()`. |
-| `src/pages/legal/[slug].astro` | `getAllLegalPages()`, `getLegalPage()`. |
-| `src/components/astro/Header.astro` | `getSiteConfig()`. |
-| `src/components/astro/Footer.astro` | `getSiteConfig()`. |
+| `src/layouts/Layout.astro` | Consume `getSiteConfig()` para SEO, OG tags, OG image por defecto y colores CSS dinámicos. |
+| `src/pages/index.astro` | `getHomePage()`, `getSiteConfig()`, `getAllTestimonios()`: SEO, hero, manifiesto, tarjetas, mindfulness y testimonios. |
+| `src/pages/about.astro` | `getAboutPage()`: SEO, hero, imágenes, biografía, bloque Eleahora, lista de servicios y CTA. |
+| `src/pages/sesiones.astro` | `getSessionesPage()`, `getAllSesiones()`, `getSiteConfig()`: SEO, hero, colección de servicios y CTA final. |
+| `src/pages/contacto.astro` | `getContactoPage()`, `getSiteConfig()`, `getAllSesiones()`: SEO, hero, imagen, proceso, links rápidos y formulario. |
+| `src/pages/workshop-empresas.astro` | `getWorkshopPage()`, `getSiteConfig()`: SEO, hero, guía, datos destacados, experiencia, beneficios, formatos y CTAs. |
+| `src/pages/gracias.astro` | `getGlobalContent()`, `getSiteConfig()`: textos, CTAs y SEO de la página de confirmación. |
+| `src/pages/404.astro` | `getGlobalContent()`: textos, CTAs y SEO de la página 404. |
+| `src/pages/legal/[slug].astro` | `getAllLegalPages()`, `getLegalPage()`, `getGlobalContent()`: páginas legales y etiquetas auxiliares. |
+| `src/components/astro/Header.astro` | `getGlobalContent()`, `getSiteConfig()`: logo, navegación y CTA. |
+| `src/components/astro/Footer.astro` | `getGlobalContent()`, `getSiteConfig()`: logo, enlaces, créditos, CTA y modal de meditación. |
 
 ### Contenido (YAML)
 
 | Directorio | Descripción |
 |---|---|
 | `src/content/singletons/site-config.yaml` | Configuración global (SEO, colores, redes, OG image). |
-| `src/content/singletons/home.yaml` | Home: hero, manifiesto, mindfulness. |
-| `src/content/singletons/about.yaml` | Sobre Mí: bio, galería, CTAs. |
-| `src/content/singletons/sesiones-page.yaml` | Cabecera de la página de sesiones. |
-| `src/content/singletons/workshop.yaml` | Workshop para empresas. |
-| `src/content/singletons/contacto.yaml` | Contacto: título y pasos del proceso. |
+| `src/content/singletons/global-content.yaml` | Header, footer, modal de meditación, páginas `404`/`gracias` y etiquetas legales auxiliares. |
+| `src/content/singletons/home.yaml` | Home: SEO, hero, manifiesto, tarjetas de servicios, mindfulness, testimonios y alt text. |
+| `src/content/singletons/about.yaml` | Sobre Mí: SEO, hero, imágenes, bio, bloque Eleahora, lista de servicios y CTAs. |
+| `src/content/singletons/sesiones-page.yaml` | SEO, cabecera y CTA final de la página de sesiones. |
+| `src/content/singletons/workshop.yaml` | SEO y contenido completo de Workshop para empresas. |
+| `src/content/singletons/contacto.yaml` | SEO, hero, imagen, proceso, links rápidos y formulario. |
 | `src/content/sesiones/*.yaml` (5 archivos) | Colección de sesiones/servicios. |
 | `src/content/testimonios/*.yaml` (3 archivos) | Colección de testimonios. |
 | `src/content/legal/*.yaml` (3 archivos) | Páginas legales (aviso legal, privacidad, cookies). |
@@ -122,7 +125,35 @@ errores conocidos y guía de reimplementación paso a paso.
 
 ## 4. Schema detallado
 
-### 4.1 Singletons (6)
+### 4.1 Singletons (7)
+
+#### Cobertura editorial actual
+
+El cliente puede editar desde Keystatic:
+
+- SEO por página: título, descripción, OG title y OG image en home, about, sesiones, contacto y workshop.
+- Header y footer: logos, navegación, textos de CTAs, slogan, grupos de enlaces, créditos y enlaces dinámicos a booking/redes.
+- Home: hero, imágenes, alt text, manifiesto, tarjetas de servicios, mindfulness y título/testimonios.
+- About: hero, subtítulo, imágenes, alt text, biografía, bloque "Así nació Eleahora", lista de servicios y CTA.
+- Sesiones: hero, imagen, alt text, CTA final y la colección de sesiones/servicios.
+- Contacto: hero, imagen de fondo, CTAs, proceso, links rápidos y todos los labels/placeholders del formulario.
+- Workshop: hero, imágenes, datos destacados, guía, workshop, experiencia, beneficios, formatos y CTAs.
+- Páginas técnicas: `/gracias`, `/404`, etiquetas legales auxiliares y modal de meditación.
+
+Campos técnicos que siguen fuera del CMS por diseño: rutas Astro, clases CSS, animaciones GSAP,
+estructura HTML, scripts de navegación, IDs de formulario, `canonicalUrl`, `SITE_URL`, favicon y
+metadatos generados por Astro.
+
+#### `globalContent` — Contenido Global
+
+| Grupo | Campos principales |
+|---|---|
+| Header | `headerLogo`, `headerLogoAlt`, `navLinks`, `headerCtaText`, `headerMobileCtaText`, `mobileMenuAriaLabel` |
+| Footer | `footerLogo`, `footerSlogan`, `footerExploreLinks`, `footerContactLinks`, `footerLegalLinks`, `footerCopyright`, `footerCredits*` |
+| Modal | `meditationModalTitle`, `meditationModalClose*`, `meditationModalIframeTitle`, `meditationModalEmbedUrl` |
+| Gracias | `thanksSeo*`, `thanksKicker`, `thanksTitle`, `thanksPersonalizedTitle`, `thanksLead`, CTAs |
+| 404 | `notFoundSeo*`, `notFoundNumber`, `notFoundKicker`, `notFoundTitle`, `notFoundLead`, CTAs |
+| Legal auxiliar | `legalLastUpdatedPrefix`, `legalContentUnavailableText` |
 
 #### `siteConfig` — Configuración Global
 

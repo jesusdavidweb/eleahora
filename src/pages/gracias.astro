@@ -1,15 +1,22 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import ThanksExperience from '../components/svelte/ThanksExperience.svelte';
+import { getGlobalContent, getSiteConfig } from '../lib/keystatic';
 
 const contactName = (Astro.url.searchParams.get('nombre') ?? '').trim();
 const firstName = contactName ? contactName.split(/\s+/)[0] : '';
+const globalContent = await getGlobalContent();
+const siteConfig = await getSiteConfig();
+const whatsappUrl = `https://wa.me/${(siteConfig?.phoneWhatsapp ?? '+34605373782').replace(/\D/g, '')}`;
+const thanksTitle = firstName
+  ? (globalContent?.thanksPersonalizedTitle ?? '{name}, gracias por escribir a Eleahora.').replace('{name}', firstName)
+  : globalContent?.thanksTitle ?? 'Gracias por escribir a Eleahora.';
 ---
 
 <Layout
-  title="Gracias | Eleahora"
-  description="Gracias por contactar con Eleahora. Hemos recibido tu mensaje y en breve recibirás una respuesta para comenzar tu proceso."
-  ogTitle="Gracias por tu mensaje | Eleahora"
+  title={globalContent?.thanksSeoTitle ?? "Gracias | Eleahora"}
+  description={globalContent?.thanksSeoDescription ?? "Gracias por contactar con Eleahora. Hemos recibido tu mensaje y en breve recibirás una respuesta para comenzar tu proceso."}
+  ogTitle={globalContent?.thanksOgTitle ?? "Gracias por tu mensaje | Eleahora"}
   noindex={true}
 >
   <ThanksExperience client:load />
@@ -29,26 +36,26 @@ const firstName = contactName ? contactName.split(/\s+/)[0] : '';
 
       <!-- Content — centrado horizontal y vertical -->
       <div class="thanks-content">
-        <p class="thanks-kicker thanks-hero-animate">Mensaje recibido</p>
+        <p class="thanks-kicker thanks-hero-animate">{globalContent?.thanksKicker ?? 'Mensaje recibido'}</p>
         <h1 id="gracias-title" class="thanks-hero-animate">
-          {firstName ? `${firstName}, gracias por escribir a Eleahora.` : 'Gracias por escribir a Eleahora.'}
+          {thanksTitle}
         </h1>
         <p class="thanks-lead thanks-hero-animate">
-          Tu solicitud ya entró en la bandeja prioritaria. Te responderé en máximo 24&nbsp;horas laborables para coordinar el siguiente paso.
+          {globalContent?.thanksLead ?? 'Tu solicitud ya entró en la bandeja prioritaria. Te responderé en máximo 24 horas laborables para coordinar el siguiente paso.'}
         </p>
         <div class="thanks-actions thanks-hero-animate">
           <a
-            href="https://scheduler.zoom.us/maria-eleonora-051exv/sesi-n-eleahora"
+            href={globalContent?.thanksPrimaryCtaLink ?? 'https://scheduler.zoom.us/maria-eleonora-051exv/sesi-n-eleahora'}
             target="_blank"
             rel="noopener noreferrer"
             class="btn-primary thanks-magnetic"
-          >Reservar ahora</a>
+          >{globalContent?.thanksPrimaryCtaText ?? 'Reservar ahora'}</a>
           <a
-            href="https://wa.me/34605373782"
+            href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
             class="btn-outline thanks-magnetic"
-          >Escribir por WhatsApp</a>
+          >{globalContent?.thanksSecondaryCtaText ?? 'Escribir por WhatsApp'}</a>
         </div>
       </div>
 

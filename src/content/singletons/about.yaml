@@ -1,11 +1,20 @@
+seoTitle: 'Sobre Mí — Maria Eleonora Corallo | Eleahora'
+seoDescription: >-
+  Conoce la historia de Maria Eleonora Corallo, fundadora de Eleahora: de lo
+  corporativo en París al acompañamiento terapéutico con Meditación, PNL
+  Transpersonal y conexión espiritual en Madrid.
+ogTitle: 'Sobre Mí — Maria Eleonora Corallo | Eleahora'
+ogImage: '/images/about-eleahora-001.webp'
 heroLabel: 'Sobre mí'
 heroTitle: 'Soy quien soy y eso es suficiente.'
 heroSubtitle: 'Terapeuta Transpersonal · Guía de Meditación · PNL'
 profileImage: '/images/about-eleahora-001.webp'
 profileImageDesktop: '/images/about-desktop-2.webp'
+profileImageAlt: 'Fondo de la sección Sobre Mí de Eleahora — presencia y conexión interior'
 recorridoLabel: 'Mi recorrido'
 recorridoTitle: 'Tengo un sueño: llevar la meditación a personas que aún no saben que la necesitan.'
 recorridoImage: '/images/about-mi-recorrido-01.webp'
+recorridoImageAlt: 'Maria Eleonora Corallo, terapeuta transpersonal y fundadora de Eleahora'
 bioIntro: ''
 bioBody:
   - type: paragraph
@@ -50,10 +59,19 @@ bioBody:
 eleahoraLabel: 'Así nació Eleahora'
 eleahoraTitle: 'Un espacio de espiritualidad aterrizada para vivir con más presencia.'
 eleahoraImage: '/images/about-eleahora-002.webp'
+eleahoraImageAlt: 'Proceso de presencia y espiritualidad aterrizada — así nace Eleahora'
 manifestoTitle: 'Así nació Eleahora'
 manifestoText: >-
   Hoy acompaño a personas que sienten que algo dentro de ellas quiere moverse,
   ordenarse o simplemente respirar un poco más profundo. Trabajo a través de:
+serviceList:
+  - 'Sesiones individuales de terapia.'
+  - 'Experiencias de meditación y espacios conscientes.'
+  - 'Workshops y programas para empresas.'
+eleahoraClosingText: >-
+  Porque creo profundamente que estamos viviendo un momento de cambio colectivo
+  donde la consciencia, la presencia y la conexión interior ya no son un lujo,
+  sino una necesidad.
 galleryImage1: '/images/about-desktop-2.webp'
 galleryImage2: '/images/about-eleahora-002.webp'
 ctaTitle: 'Te acompaño a volver a conectar con el presente. Bienvenidos'

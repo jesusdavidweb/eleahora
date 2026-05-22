@@ -10,13 +10,18 @@ const heroTitle = workshop?.heroTitle ?? 'Pienso, luego medito.';
 const heroSubtitle = workshop?.heroSubtitle ?? 'Una experiencia de mindfulness y meditación diseñada para equipos y organizaciones que quieren reducir el estrés y potenciar el rendimiento.';
 const heroImage = workshop?.heroImage ?? '/images/Workshop Pienso Luego Medito-15-tiny.webp';
 const heroImage2 = (workshop as any)?.heroImage2 ?? '/images/Workshop Pienso Luego Medito-92-tiny.webp';
+const heroSecondaryCtaText = (workshop as any)?.heroSecondaryCtaText ?? 'Ver formatos';
+const heroSecondaryCtaLink = (workshop as any)?.heroSecondaryCtaLink ?? '#formatos';
 
+const guideEyebrow = (workshop as any)?.guideEyebrow ?? 'Sobre la guía';
 const guideName = (workshop as any)?.guideName ?? 'Maria Eleonora Corallo';
 const guideBio = (workshop as any)?.guideBio ?? 'Terapeuta transpersonal, guía de meditación y fundadora de Eleahora. Combina su carrera de idiomas, PNL transpersonal, mindfulness y conexión energética para llevar herramientas prácticas de neuroregulación al entorno corporativo.';
 const guideSlogan = (workshop as any)?.guideSlogan ?? 'Soy la voz que te recuerda que estás aquí.';
 
+const workshopEyebrow = (workshop as any)?.workshopEyebrow ?? 'El workshop';
 const workshopTitle = (workshop as any)?.workshopTitle ?? heroTitle;
 const workshopDescription = (workshop as any)?.workshopDescription ?? heroSubtitle;
+const experienceEyebrow = (workshop as any)?.experienceEyebrow ?? '¿Qué incluye la experiencia?';
 const experienceTitle = (workshop as any)?.experienceTitle ?? 'Un recorrido práctico, consciente y aplicable.';
 const experienceItems = (workshop as any)?.experienceItems?.length ? (workshop as any).experienceItems : [
   'Bienvenida y aterrizaje consciente',
@@ -26,6 +31,7 @@ const experienceItems = (workshop as any)?.experienceItems?.length ? (workshop a
   'Integración y cierre compartido',
 ];
 
+const benefitsEyebrow = (workshop as any)?.benefitsEyebrow ?? '¿Qué te llevas como empresa?';
 const benefitsTitle = workshop?.benefitsTitle ?? '¿Qué se llevan los equipos?';
 const benefits = workshop?.benefits?.length ? workshop.benefits : [
   {
@@ -45,6 +51,7 @@ const benefits = workshop?.benefits?.length ? workshop.benefits : [
     description: 'El bienestar emocional es una inversión que impacta directamente en la productividad y la retención del talento.',
   },
 ];
+const formatsEyebrow = (workshop as any)?.formatsEyebrow ?? 'Formatos';
 const formatsTitle = workshop?.formatsTitle ?? 'Formatos disponibles';
 const formats = workshop?.formats?.length ? workshop.formats : [
   {
@@ -65,14 +72,16 @@ const formats = workshop?.formats?.length ? workshop.formats : [
 ];
 const ctaTitle = workshop?.ctaTitle ?? '¿Hablamos para tu empresa?';
 const ctaBody = workshop?.ctaBody ?? 'Cuéntame el tamaño de tu equipo y qué necesitáis, y diseñamos juntos la experiencia perfecta.';
+const ctaEyebrow = (workshop as any)?.ctaEyebrow ?? 'Siguiente paso';
 const ctaButtonText = workshop?.ctaButtonText ?? 'Solicitar información';
 const ctaButtonLink = (workshop as any)?.ctaButtonLink ?? '/contacto';
+const whatsappCtaText = (workshop as any)?.whatsappCtaText ?? 'WhatsApp';
 
 const whatsapp = site?.phoneWhatsapp ?? '+34605373782';
 const waLink = `https://wa.me/${whatsapp.replace(/\D/g, '')}`;
 const ctaHref = ctaButtonLink === '/contacto' ? '/contacto' : ctaButtonLink || waLink;
 
-const workshopFacts = [
+const workshopFacts = (workshop as any)?.facts?.length ? (workshop as any).facts : [
   { label: 'Formato', value: 'Empresas', detail: 'equipos y organizaciones' },
   { label: 'Modalidad', value: 'Presencial', detail: 'adaptable a tu equipo' },
   { label: 'Enfoque', value: 'Mindfulness', detail: 'práctico y aplicable' },
@@ -80,10 +89,10 @@ const workshopFacts = [
 ---
 
 <Layout
-  title="Workshop 'Pienso, luego medito' | Mindfulness para Empresas | Eleahora"
-  description="Workshop de mindfulness y meditación para empresas y equipos. Programa 'Pienso, luego medito' de Eleahora: reduce el estrés, mejora el foco y fortalece la cohesión del equipo."
-  ogTitle="Workshop para Empresas — Eleahora"
-  ogImage="/images/OG-images-eleahora-01.jpg"
+  title={(workshop as any)?.seoTitle ?? "Workshop 'Pienso, luego medito' | Mindfulness para Empresas | Eleahora"}
+  description={(workshop as any)?.seoDescription ?? "Workshop de mindfulness y meditación para empresas y equipos. Programa 'Pienso, luego medito' de Eleahora: reduce el estrés, mejora el foco y fortalece la cohesión del equipo."}
+  ogTitle={(workshop as any)?.ogTitle ?? "Workshop para Empresas — Eleahora"}
+  ogImage={(workshop as any)?.ogImage ?? "/images/OG-images-eleahora-01.jpg"}
 >
   <main class="workshop-page">
     <section class="workshop-hero" aria-labelledby="workshop-title">
@@ -124,11 +133,11 @@ const workshopFacts = [
 
           <div class="hero-cta-row">
             <a href={ctaHref} class="btn-primary">{ctaButtonText}</a>
-            <a href="#formatos" class="btn-outline">Ver formatos</a>
+            <a href={heroSecondaryCtaLink} class="btn-outline">{heroSecondaryCtaText}</a>
           </div>
 
           <ul class="hero-facts" aria-label="Datos del workshop">
-            {workshopFacts.map((fact) => (
+            {workshopFacts.map((fact: { label: string; value: string; detail: string }) => (
               <li class="fact-chip">
                 <span>{fact.label}</span>
                 <strong>{fact.value}</strong>
@@ -143,7 +152,7 @@ const workshopFacts = [
     <section class="section-guide" aria-labelledby="guide-title">
       <div class="max-w-screen guide-grid">
         <div>
-          <span class="eyebrow">Sobre la guía</span>
+          <span class="eyebrow">{guideEyebrow}</span>
           <h2 id="guide-title">{guideName}</h2>
           <p>{guideBio}</p>
         </div>
@@ -158,13 +167,13 @@ const workshopFacts = [
     <section class="section-about" aria-labelledby="about-title">
       <div class="max-w-screen about-grid">
         <header>
-          <span class="eyebrow">El workshop</span>
+          <span class="eyebrow">{workshopEyebrow}</span>
           <h2 id="about-title">{workshopTitle}</h2>
         </header>
         <div>
           <p>{workshopDescription}</p>
           <div class="about-facts-row" aria-label="Detalles del workshop">
-            {workshopFacts.map((fact) => (
+            {workshopFacts.map((fact: { label: string; value: string; detail: string }) => (
               <div>
                 <span>{fact.label}</span>
                 <strong>{fact.value}</strong>
@@ -179,7 +188,7 @@ const workshopFacts = [
     <section class="section-experience" aria-labelledby="experience-title">
       <div class="max-w-screen">
         <header class="section-header">
-          <span class="eyebrow">¿Qué incluye la experiencia?</span>
+          <span class="eyebrow">{experienceEyebrow}</span>
           <h2 id="experience-title">{experienceTitle}</h2>
         </header>
 
@@ -200,7 +209,7 @@ const workshopFacts = [
     <section class="section-benefits" aria-labelledby="benefits-title">
       <div class="max-w-screen benefits-inner">
         <header>
-          <span class="eyebrow">¿Qué te llevas como empresa?</span>
+          <span class="eyebrow">{benefitsEyebrow}</span>
           <h2 id="benefits-title">{benefitsTitle}</h2>
         </header>
 
@@ -221,7 +230,7 @@ const workshopFacts = [
     <section class="section-formats" id="formatos" aria-labelledby="formats-title">
       <div class="max-w-screen">
         <header class="section-header">
-          <span class="eyebrow">Formatos</span>
+          <span class="eyebrow">{formatsEyebrow}</span>
           <h2 id="formats-title">{formatsTitle}</h2>
         </header>
 
@@ -239,12 +248,12 @@ const workshopFacts = [
 
     <section class="section-cta section-soft" aria-labelledby="cta-title">
       <div class="max-w-screen cta-inner">
-        <p class="text-accent">Siguiente paso</p>
+        <p class="text-accent">{ctaEyebrow}</p>
         <h2 id="cta-title">{ctaTitle}</h2>
         <p>{ctaBody}</p>
         <div class="cta-actions">
           <a href={ctaHref} class="btn-primary">{ctaButtonText}</a>
-          <a href={waLink} target="_blank" rel="noopener noreferrer" class="btn-outline">WhatsApp</a>
+          <a href={waLink} target="_blank" rel="noopener noreferrer" class="btn-outline">{whatsappCtaText}</a>
         </div>
       </div>
     </section>

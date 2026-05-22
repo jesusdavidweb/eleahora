@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { getLegalPage, getAllLegalPages } from '../../lib/keystatic';
+import { getGlobalContent, getLegalPage, getAllLegalPages } from '../../lib/keystatic';
 
 export const prerender = true;
 
@@ -22,6 +22,7 @@ const title = legalPage.title;
 const metaDescription = legalPage.metaDescription ?? '';
 const contentHtml = legalPage.contentHtml ?? '';
 const lastUpdated = legalPage.lastUpdated ?? '';
+const globalContent = await getGlobalContent();
 ---
 
 <Layout
@@ -34,7 +35,7 @@ const lastUpdated = legalPage.lastUpdated ?? '';
       <div class="max-w-screen">
         <h1>{title}</h1>
         {lastUpdated && (
-          <p class="last-updated">Última actualización: {lastUpdated}</p>
+          <p class="last-updated">{globalContent?.legalLastUpdatedPrefix ?? 'Última actualización:'} {lastUpdated}</p>
         )}
       </div>
     </section>
@@ -44,7 +45,7 @@ const lastUpdated = legalPage.lastUpdated ?? '';
         {contentHtml ? (
           <div set:html={contentHtml} />
         ) : (
-          <p>Contenido no disponible.</p>
+          <p>{globalContent?.legalContentUnavailableText ?? 'Contenido no disponible.'}</p>
         )}
       </div>
     </section>

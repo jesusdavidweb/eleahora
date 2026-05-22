@@ -17,13 +17,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Documentación de variable de entorno `GITHUB_PAT` en `.env.example` para uso de GitHub Reader.
+- **`src/content/singletons/global-content.yaml`**: nuevo archivo de contenido global centralizado para header, footer, navegación, legal, 404, gracias, modal de meditación y créditos.
+- **keystatic.config.ts**: configurado singleton `globalContent` con campos editoriales completos.
+- **`getGlobalContent()`**: nueva función en `src/lib/keystatic.ts` para leer contenido global desde el CMS.
+- **workshop.yaml**: nuevo campo `heroImage2` para galería dual en hero del workshop.
+- Nuevo asset OG: `public/images/OG-images-eleahora-02.png`.
+- **about.yaml / contacto.yaml / home.yaml / sesiones-page.yaml**: campos extendidos para SEO, alt text, subtítulos, listas de servicios, opciones de formulario y CTAs.
+- **workshop.yaml**: nuevos campos `heroSecondaryCta*`, `guideEyebrow`, `workshopEyebrow`, `experienceEyebrow`, `benefitsEyebrow`, `formatsEyebrow`, `ctaEyebrow`, `whatsappCtaText`, `facts`, SEO completo.
 
 ### Changed
 - Limpieza de comentarios en `.gitignore`.
 - **OG Image**: actualizada imagen OG por defecto a PNG en Layout, contacto y sesiones.
-
-### Added
-- Nuevo asset OG: `public/images/OG-images-eleahora-02.png`.
+- **Todas las páginas**: migradas a consumo de `getGlobalContent()` para textos, enlaces, SEO, ARIA labels y CTAs desde el CMS.
+- **Header.astro**: navegación, CTAs, logo y menú móvil ahora gestionados desde `globalContent`.
+- **Footer.astro**: estructura completa migrada a contenido centralizado — enlaces de exploración, contacto, legal, créditos y copyright desde `globalContent`. Estilos CSS migrados a bloque `<style>` inline.
+- **contacto.astro**: todos los textos, labels, placeholders, opciones de servicio, enlaces de contacto y SEO parametrizados desde Keystatic. Hero image dinámica vía CSS `define:vars`.
+- **gracias.astro**: titular personalizado con nombre, CTAs, enlaces y SEO desde `globalContent`.
+- **404.astro**: todos los textos, CTAs y enlaces gestionados desde `globalContent`.
+- **legal/[slug].astro**: prefijo "Última actualización" y texto "Contenido no disponible" desde `globalContent`.
+- **about.astro**: hero subtitle, alt texts, lista de servicios, manifesto y closing text desde CMS. SEO dinámico.
+- **sesiones.astro**: hero image alt, ctaBody, ctaLink, ctaButtonText y SEO desde CMS.
+- **workshop-empresas.astro**: eyebrows, secondary CTAs, facts, whatsappCtaText y SEO desde CMS.
+- **index.astro**: service cards desde `home.yaml` con enlace dinámico a Insight Timer, testimonials sin fallback hardcodeado, alt texts desde CMS. SEO dinámico.
+- **MeditationModal.svelte**: título, textos y URL embed desde `globalContent`.
+- **workshop-empresas.astro**: rediseño completo con secciones hero (galería dual), guía, experiencia paso a paso, beneficios con tarjetas de color, formatos y CTA inteligente.
+- **docs/keystatic-implementation.md**: documentación actualizada con `globalContent` y nuevos campos.
 
 ## [0.3.0] - 2026-05-13
 

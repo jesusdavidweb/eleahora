@@ -1,10 +1,19 @@
+seoTitle: 'Sesiones | Terapia Transpersonal y Meditación | Eleahora'
+seoDescription: >-
+  Descubre las sesiones de Eleahora: Acompañamiento Terapéutico con PNL,
+  Terapia Angelical, Perlas de Eleahora, Clase de Meditación y Sesión
+  Energética. Presencial en Madrid y online.
+ogTitle: 'Sesiones — Eleahora'
+ogImage: '/images/OG-images-eleahora-01.jpg'
 heroLabel: 'Sesiones'
 heroTitle: 'Estoy aquí para ti.'
 heroSubtitle: >-
   Cada sesión está diseñada como un espacio seguro para que puedas volver a
   ti. Sea cual sea el punto en el que te encuentres.
 heroImage: '/images/home-mindfulness-01-tiny.webp'
+heroImageAlt: 'Sesiones Eleahora'
 ctaTitle: 'Si aún no lo tienes claro, escríbeme aquí'
 ctaBody: >-
   Escríbeme y hablamos. Juntas encontramos el punto de partida.
 ctaLink: '/contacto'
+ctaButtonText: 'Contactar para más información'

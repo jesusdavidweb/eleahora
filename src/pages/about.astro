@@ -8,29 +8,41 @@ const about = await getAboutPage();
 // Fallbacks
 const heroLabel = about?.heroLabel ?? "Sobre Mí";
 const heroTitle = about?.heroTitle ?? "Soy quien soy y eso es suficiente.";
+const heroSubtitle = about?.heroSubtitle ?? "";
 const profileImage = about?.profileImage ?? "/images/about-eleahora-001.webp";
 const profileImageDesktop = (about as any)?.profileImageDesktop ?? "/images/about-desktop-2.webp";
+const profileImageAlt = (about as any)?.profileImageAlt ?? "Fondo de la sección Sobre Mí de Eleahora — presencia y conexión interior";
 
 const recorridoLabel = (about as any)?.recorridoLabel ?? "Mi recorrido";
 const recorridoTitle = (about as any)?.recorridoTitle ?? "Tengo un sueño: llevar la meditación a personas que aún no saben que la necesitan.";
 const recorridoImage = (about as any)?.recorridoImage ?? "/images/about-mi-recorrido-01.webp";
+const recorridoImageAlt = (about as any)?.recorridoImageAlt ?? "Maria Eleonora Corallo, terapeuta transpersonal y fundadora de Eleahora";
 const bioIntro = about?.bioIntro ?? "Nací en Venezuela, en una familia italiana, y desde muy joven mi vida ha estado marcada por el movimiento: distintos países, idiomas y culturas.";
 const bioBodyHtml = about?.bioBodyHtml ?? null;
 
 const eleahoraLabel = (about as any)?.eleahoraLabel ?? "Así nació Eleahora";
 const eleahoraTitle = (about as any)?.eleahoraTitle ?? "Un espacio de espiritualidad aterrizada para vivir con más presencia.";
 const eleahoraImage = (about as any)?.eleahoraImage ?? "/images/about-eleahora-002.webp";
+const eleahoraImageAlt = (about as any)?.eleahoraImageAlt ?? "Proceso de presencia y espiritualidad aterrizada — así nace Eleahora";
+const manifestoText = (about as any)?.manifestoText ?? "Hoy acompaño a personas que sienten que algo dentro de ellas quiere moverse, ordenarse o simplemente respirar un poco más profundo. Trabajo a través de:";
+const serviceList = (about as any)?.serviceList?.length ? (about as any).serviceList : [
+  "Sesiones individuales de terapia.",
+  "Experiencias de meditación y espacios conscientes.",
+  "Workshops y programas para empresas.",
+];
+const eleahoraClosingText = (about as any)?.eleahoraClosingText ?? "Porque creo profundamente que estamos viviendo un momento de cambio colectivo donde la consciencia, la presencia y la conexión interior ya no son un lujo, sino una necesidad.";
 
 const ctaTitle = about?.ctaTitle ?? "Te acompaño a volver a conectar con el presente. Bienvenidos";
+const ctaBody = about?.ctaBody ?? "";
 const ctaButtonText = about?.ctaButtonText ?? "Estoy aquí para ti";
 const ctaButtonLink = (about as any)?.ctaButtonLink ?? "/sesiones";
 ---
 
 <Layout
-  title="Sobre Mí — Maria Eleonora Corallo | Eleahora"
-  description="Conoce la historia de Maria Eleonora Corallo, fundadora de Eleahora: de lo corporativo en París al acompañamiento terapéutico con Meditación, PNL Transpersonal y conexión espiritual en Madrid."
-  ogTitle="Sobre Mí — Maria Eleonora Corallo | Eleahora"
-  ogImage={profileImage}
+  title={(about as any)?.seoTitle ?? "Sobre Mí — Maria Eleonora Corallo | Eleahora"}
+  description={(about as any)?.seoDescription ?? "Conoce la historia de Maria Eleonora Corallo, fundadora de Eleahora: de lo corporativo en París al acompañamiento terapéutico con Meditación, PNL Transpersonal y conexión espiritual en Madrid."}
+  ogTitle={(about as any)?.ogTitle ?? "Sobre Mí — Maria Eleonora Corallo | Eleahora"}
+  ogImage={(about as any)?.ogImage ?? profileImage}
 >
   <main class="inner-page">
     <section class="page-hero" aria-labelledby="about-title">
@@ -38,7 +50,7 @@ const ctaButtonLink = (about as any)?.ctaButtonLink ?? "/sesiones";
         <source media="(max-width: 768px)" srcset={profileImage} />
         <img
           src={profileImageDesktop}
-          alt="Fondo de la sección Sobre Mí de Eleahora — presencia y conexión interior"
+          alt={profileImageAlt}
           class="page-hero-bg"
         />
       </picture>
@@ -46,6 +58,7 @@ const ctaButtonLink = (about as any)?.ctaButtonLink ?? "/sesiones";
       <div class="max-w-screen page-hero-content">
         <span class="text-accent page-kicker">{heroLabel}</span>
         <h1 id="about-title">{heroTitle}</h1>
+        {heroSubtitle && <p class="page-hero-subtitle">{heroSubtitle}</p>}
       </div>
     </section>
 
@@ -58,7 +71,7 @@ const ctaButtonLink = (about as any)?.ctaButtonLink ?? "/sesiones";
           </h2>
           <img
             src={recorridoImage}
-            alt="Maria Eleonora Corallo, terapeuta transpersonal y fundadora de Eleahora"
+            alt={recorridoImageAlt}
             class="about-image image-mobile"
           />
           <div class="section-body">
@@ -92,7 +105,7 @@ const ctaButtonLink = (about as any)?.ctaButtonLink ?? "/sesiones";
         <aside class="image-column" aria-label="Imagen vertical de historia personal">
           <img
             src={recorridoImage}
-            alt="Maria Eleonora Corallo, terapeuta transpersonal y fundadora de Eleahora"
+            alt={recorridoImageAlt}
             class="about-image"
           />
         </aside>
@@ -104,7 +117,7 @@ const ctaButtonLink = (about as any)?.ctaButtonLink ?? "/sesiones";
         <aside class="image-stack" aria-label="Galería vertical sobre el proceso">
           <img
             src={eleahoraImage}
-            alt="Proceso de presencia y espiritualidad aterrizada — así nace Eleahora"
+            alt={eleahoraImageAlt}
             class="about-image"
           />
         </aside>
@@ -115,26 +128,17 @@ const ctaButtonLink = (about as any)?.ctaButtonLink ?? "/sesiones";
           </h2>
           <img
             src={eleahoraImage}
-            alt="Proceso de presencia y espiritualidad aterrizada — así nace Eleahora"
+            alt={eleahoraImageAlt}
             class="about-image image-mobile"
           />
           <div class="section-body">
-            <p>
-              Hoy acompaño a personas que sienten que algo dentro de ellas quiere moverse, ordenarse o simplemente respirar un poco más profundo.
-            </p>
-            <p>
-              Trabajo a través de:
-            </p>
+            <p>{manifestoText}</p>
           </div>
           <ul class="service-list" aria-label="Formatos de acompañamiento">
-            <li>Sesiones individuales de terapia.</li>
-            <li>Experiencias de meditación y espacios conscientes.</li>
-            <li>Workshops y programas para empresas.</li>
+            {serviceList.map((service: string) => <li>{service}</li>)}
           </ul>
           <div class="section-body">
-            <p>
-              Porque creo profundamente que estamos viviendo un momento de cambio colectivo donde la consciencia, la presencia y la conexión interior ya no son un lujo, sino una necesidad.
-            </p>
+            <p>{eleahoraClosingText}</p>
 
           </div>
         </article>
@@ -144,6 +148,7 @@ const ctaButtonLink = (about as any)?.ctaButtonLink ?? "/sesiones";
     <section class="about-cta section-soft" aria-labelledby="cta-title">
       <div class="max-w-screen cta-wrap">
         <h2 id="cta-title">{ctaTitle}</h2>
+        {ctaBody && <p>{ctaBody}</p>}
         <a
           href={ctaButtonLink}
           class="footer-meditation-cta"
@@ -214,6 +219,15 @@ const ctaButtonLink = (about as any)?.ctaButtonLink ?? "/sesiones";
     font-size: clamp(2.2rem, 5vw, 4.5rem);
     margin: 0;
     max-width: 18ch;
+  }
+
+  .page-hero-subtitle {
+    max-width: 34ch;
+    margin-top: 1rem;
+    color: var(--color-background);
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    line-height: 1.6;
+    opacity: 0.88;
   }
 
   .section-soft {

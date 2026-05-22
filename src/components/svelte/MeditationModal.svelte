@@ -3,6 +3,12 @@
   import { gsap } from 'gsap';
   import { getGsap } from '../../animations/gsap-config';
 
+  export let title = 'Meditación gratuita';
+  export let closeText = 'Cerrar';
+  export let closeAriaLabel = 'Cerrar meditación';
+  export let iframeTitle = 'Insight Timer Embed: Maria Eleonora Corallo';
+  export let embedUrl = 'https://widgets.insighttimer.com/publisher/Qi5htL7vZhRNNN9BOvdTdSUt6E32?created_at=1776166254';
+
   let isOpen = false;
   let isAnimating = false;
   let shouldRender = false;
@@ -159,15 +165,15 @@
       <button
         class="meditation-modal__close"
         type="button"
-        aria-label="Cerrar meditación"
+        aria-label={closeAriaLabel}
         on:click={closeModal}
         bind:this={closeButtonElement}
       >
-        Cerrar
+        {closeText}
       </button>
 
       <h2 id="meditation-modal-title" class="meditation-modal__title">
-        Meditacion gratuita
+        {title}
       </h2>
 
       {#if shouldLoadIframe}
@@ -175,12 +181,12 @@
           style="border-radius:16px"
           width="100%"
           height="455px"
-          title="Insight Timer Embed: Maria Eleonora Corallo"
+          title={iframeTitle}
           frameborder="0"
           allowfullscreen
           allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
           loading="lazy"
-          src="https://widgets.insighttimer.com/publisher/Qi5htL7vZhRNNN9BOvdTdSUt6E32?created_at=1776166254"
+          src={embedUrl}
         ></iframe>
       {/if}
     </div>

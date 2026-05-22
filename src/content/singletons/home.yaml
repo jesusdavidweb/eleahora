@@ -1,8 +1,16 @@
+seoTitle: 'Eleahora | Terapia Transpersonal y Meditación en Madrid'
+seoDescription: >-
+  Eleahora: Terapia Transpersonal, Meditación y Mindfulness con Maria Eleonora
+  Corallo. Sesiones individuales, Terapia Angelical, PNL y workshop para
+  empresas. Presencial en Madrid y online.
+ogTitle: 'Eleahora — Terapia Transpersonal y Meditación'
+ogImage: '/images/OG-images-eleahora-02.png'
 heroTitle: 'Bienvenido'
 heroSubtitle: "Soy la voz que te recuerda que estás aquí.\nEn el presente. Meditación y Terapia Transpersonal.\nMindfulness. Espiritualidad aterrizada."
 heroCtaText: 'Estoy aquí para ti'
 heroCtaLink: '/sesiones'
 heroImage: '/images/home-hero-eleahora-01-tiny.webp'
+heroImageAlt: 'Maria Eleonora Corallo, terapeuta transpersonal y guía de meditación de Eleahora'
 manifestoLabel: 'Manifiesto'
 manifestoTitle: 'Deja que el amor te regule.'
 manifestoBody:
@@ -24,7 +32,29 @@ manifestoQuote: >-
   Soy estructura y soy caos. Soy servicio y soy soberanía. Deja que el amor te
   regule. Confía en el proceso.
 manifestoImage: '/images/home-manifiesto-eleahora-01-tiny.webp'
+manifestoImageAlt: 'Sesión de meditación y terapia transpersonal de Eleahora — Manifiesto'
 serviciosTitle: 'Estoy aquí para ti'
+serviceCards:
+  - title: 'Sesiones Eleahora'
+    description: >-
+      Acompañamiento terapéutico con Meditación + PNL, Terapia Angelical,
+      Perlas de Eleahora, Clases de Meditación y Sesión Energética.
+    href: '/sesiones'
+    arrow: '→'
+    external: false
+  - title: 'Workshop "Pienso, luego medito"'
+    description: >-
+      Experiencia team building para grupos y empresas con herramientas
+      prácticas para volver al presente que ayudan a regular niveles de estrés
+      y a potenciar el rendimiento.
+    href: '/workshop-empresas'
+    arrow: '→'
+    external: false
+  - title: 'Meditaciones Guiadas'
+    description: 'Escuchar en Insight Timer'
+    href: 'insightTimer'
+    arrow: '↗'
+    external: true
 mindfulnessLabel: 'Ciencia & Espíritu'
 mindfulnessTitle: 'Mindfulness como camino.'
 mindfulnessLead: >-
@@ -45,3 +75,5 @@ mindfulnessConclusion: >-
   En un mundo que nos empuja constantemente hacia el ruido y la velocidad, la
   meditación se convierte en una forma de volver a uno mismo.
 mindfulnessImage: '/images/sesion_maria_corallo_neima_pidal_161-tiny.webp'
+mindfulnessImageAlt: 'Práctica de mindfulness y meditación consciente con Eleahora'
+testimonialsTitle: 'Testimonios'
