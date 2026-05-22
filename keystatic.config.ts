@@ -32,7 +32,7 @@ export default config({
         siteDescription: fields.text({
           label: "Descripción del sitio (meta description)",
           multiline: true,
-          defaultValue: "Eleahora: Terapia Transpersonal, Meditación y Mindfulness con Maria Eleonora Corallo. Acompañamiento terapéutico con PNL, conexión espiritual y meditación en Madrid y online.",
+          defaultValue: "Eleahora: Terapia Transpersonal, Meditación y Mindfulness con Maria Eleonora Corallo. Sesiones individuales, Terapia Angelical, PNL y workshop para empresas. Presencial en Madrid y online.",
         }),
         phoneWhatsapp: fields.text({
           label: "Teléfono WhatsApp",
@@ -303,7 +303,7 @@ export default config({
         }),
         ctaButtonText: fields.text({
           label: "CTA — Texto del botón",
-          defaultValue: "Estoy aquí para tí",
+          defaultValue: "Estoy aquí para ti",
         }),
         ctaButtonLink: fields.text({
           label: "CTA — Enlace del botón",
@@ -325,7 +325,7 @@ export default config({
         }),
         heroTitle: fields.text({
           label: "Hero — Título",
-          defaultValue: "¿Con cuál te gustaría empezar?",
+          defaultValue: "Estoy aquí para ti.",
         }),
         heroSubtitle: fields.text({
           label: "Hero — Subtítulo",
@@ -372,7 +372,7 @@ export default config({
         heroSubtitle: fields.text({
           label: "Hero — Subtítulo",
           multiline: true,
-          defaultValue: "Transformando el estrés en presencia.",
+          defaultValue: "Una experiencia de mindfulness y meditación diseñada para equipos y organizaciones que quieren reducir el estrés y potenciar el rendimiento.",
         }),
         heroImage: fields.image({
           label: "Hero — Imagen 1",
@@ -526,7 +526,7 @@ export default config({
         }),
         processTitle: fields.text({
           label: "Proceso — Título",
-          defaultValue: "Un proceso claro, humano y sin prisa.",
+          defaultValue: "¿Cómo funciona?",
         }),
         processSteps: fields.array(
           fields.object({
@@ -564,7 +564,11 @@ export default config({
           defaultValue: false,
         }),
         tagline: fields.text({
-          label: "Tagline / Pill",
+          label: "Número visible",
+          defaultValue: "01",
+        }),
+        pill: fields.text({
+          label: "Pill",
           defaultValue: "",
         }),
         description: fields.document({
@@ -572,13 +576,22 @@ export default config({
           formatting: true,
           links: true,
         }),
+        descriptionText: fields.text({
+          label: "Descripción visible",
+          multiline: true,
+          defaultValue: "",
+        }),
+        details: fields.array(fields.text({ label: "Detalle", multiline: true }), {
+          label: "Detalles",
+          itemLabel: (props) => props.value || "Detalle",
+        }),
+        meta: fields.array(fields.text({ label: "Meta" }), {
+          label: "Chips meta",
+          itemLabel: (props) => props.value || "Meta",
+        }),
         duration: fields.text({
           label: "Duración",
           defaultValue: "60 min",
-        }),
-        sessions: fields.text({
-          label: "Número de sesiones",
-          defaultValue: "1 sesión",
         }),
         modality: fields.select({
           label: "Modalidad",
@@ -593,11 +606,6 @@ export default config({
           label: "Precio",
           defaultValue: "",
         }),
-        includesPlan: fields.text({
-          label: "Plan de integración (opcional)",
-          multiline: true,
-          defaultValue: "",
-        }),
         image: fields.image({
           label: "Imagen",
           directory: "public/images/sesiones",
@@ -609,7 +617,7 @@ export default config({
         }),
         ctaText: fields.text({
           label: "Texto del botón CTA",
-          defaultValue: "Reservar ahora",
+          defaultValue: "Agendar sesión",
         }),
         seoTitle: fields.text({
           label: "SEO — Título",

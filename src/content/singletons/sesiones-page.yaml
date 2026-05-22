@@ -1,9 +1,10 @@
-heroLabel: "Sesiones"
-heroTitle: "¿Con cuál te gustaría empezar?"
+heroLabel: 'Sesiones'
+heroTitle: 'Estoy aquí para ti.'
 heroSubtitle: >-
-  Permítete leer cada una con calma y déjate sentir.
-
-ctaTitle: "Si aún no lo tienes claro, escríbeme aquí"
+  Cada sesión está diseñada como un espacio seguro para que puedas volver a
+  ti. Sea cual sea el punto en el que te encuentres.
+heroImage: '/images/home-hero-eleahora-01-tiny.webp'
+ctaTitle: 'Si aún no lo tienes claro, escríbeme aquí'
 ctaBody: >-
-  Cuéntame qué necesitas y te ayudo a encontrar la sesión ideal para ti.
-ctaLink: "/contacto"
+  Escríbeme y hablamos. Juntas encontramos el punto de partida.
+ctaLink: '/contacto'

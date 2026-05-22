@@ -1,9 +1,21 @@
-title: Perlas de Eleahora
+title: 'Perlas de Eleahora'
 order: 3
 featured: false
-tagline: Canal íntimo
-duration: 1 hora - 1 hora 30
-sessions: 1 sesión
-modality: presencial
-price: 70€
-ctaText: Quiero mis perlas
+tagline: '03'
+pill: 'Canal íntimo'
+descriptionText: >-
+  Sesión íntima, canalizada y reveladora. A través de una metodología única que
+  combina preguntas poderosas, oráculos y dinámicas de escritura consciente.
+details:
+  - '<strong>Sesiones:</strong> 1'
+  - '<strong>Duración:</strong> 1h - 1h30 máx'
+  - '<strong>Modalidad:</strong> Presencial en Madrid'
+  - '<strong>Intercambio:</strong> 70€'
+meta:
+  - 'Exploración emocional'
+  - 'Escritura consciente'
+duration: '1h - 1h30 máx'
+modality: 'presencial'
+price: '70€'
+bookingUrl: 'https://scheduler.zoom.us/maria-eleonora-051exv/sesi-n-eleahora'
+ctaText: 'Quiero mis perlas'

@@ -1,22 +1,64 @@
-heroLabel: "Sobre Mi"
-heroTitle: "Soy quien soy y eso es suficiente."
-heroSubtitle: >-
-  Un espacio de espiritualidad aterrizada para vivir con más presencia.
-
-recorridoLabel: "Mi recorrido"
-recorridoTitle: "Tengo un sueño: llevar la meditación a personas que aún no saben que la necesitan."
-bioIntro: >-
-  Nací en Venezuela, en una familia de raíces italianas donde el amor, la expresión y la fuerza emocional eran el lenguaje cotidiano. Crecí entre culturas, entre mundos, aprendiendo desde pequeña que la identidad no es un lugar fijo — es un viaje.
-
-eleahoraLabel: "Así nació Eleahora"
-eleahoraTitle: "Un espacio de espiritualidad aterrizada para vivir con más presencia."
-
-manifestoTitle: "Mi manifiesto"
+heroLabel: 'Sobre mí'
+heroTitle: 'Soy quien soy y eso es suficiente.'
+heroSubtitle: 'Terapeuta Transpersonal · Guía de Meditación · PNL'
+profileImage: '/images/about-eleahora-001.webp'
+profileImageDesktop: '/images/about-desktop-2.webp'
+recorridoLabel: 'Mi recorrido'
+recorridoTitle: 'Tengo un sueño: llevar la meditación a personas que aún no saben que la necesitan.'
+recorridoImage: '/images/about-mi-recorrido-01.webp'
+bioIntro: ''
+bioBody:
+  - type: paragraph
+    children:
+      - text: >-
+          Nací en Venezuela, en una familia italiana, y desde muy joven mi vida
+          ha estado marcada por el movimiento: distintos países, idiomas y
+          culturas. Durante años seguí un camino más estructurado: estudié
+          idiomas y comercio internacional en París y trabajé en entornos
+          corporativos.
+  - type: paragraph
+    children:
+      - text: 'Pero algo dentro de mí siempre quería ir más allá.'
+  - type: paragraph
+    children:
+      - text: >-
+          Hace unos años tomé una decisión que cambió mi rumbo: mudarme a Madrid
+          y empezar un viaje mucho más profundo. Mientras estudiaba y me
+          formaba, también me estaba transformando.
+  - type: paragraph
+    children:
+      - text: >-
+          En ese camino encontré —o recordé— algo que siempre había estado en mí:
+          la capacidad de acompañar procesos internos, de escuchar con
+          profundidad y de abrir espacios de consciencia.
+  - type: paragraph
+    children:
+      - text: 'La meditación se convirtió en mi herramienta más práctica y poderosa.'
+  - type: paragraph
+    children:
+      - text: >-
+          Un lugar donde volver a mí misma, entender mi mente, regular mis
+          emociones y conectar con Dios.
+  - type: paragraph
+    children:
+      - text: >-
+          Con el tiempo, diferentes herramientas fueron sumándose a este camino:
+          la Programación Neurolingüística transpersonal, el trabajo energético
+          y la conexión espiritual. No como conceptos abstractos, sino como
+          herramientas muy prácticas para vivir con más presencia, claridad y
+          coherencia.
+eleahoraLabel: 'Así nació Eleahora'
+eleahoraTitle: 'Un espacio de espiritualidad aterrizada para vivir con más presencia.'
+eleahoraImage: '/images/about-eleahora-002.webp'
+manifestoTitle: 'Así nació Eleahora'
 manifestoText: >-
-  Creo en la meditación como acto de amor propio. Creo en la vulnerabilidad como fortaleza. Creo que sanar no es llegar a un destino — es aprender a caminar con presencia.
-
-ctaTitle: "Te acompaño a volver a conectar con el presente. Bienvenidos"
+  Hoy acompaño a personas que sienten que algo dentro de ellas quiere moverse,
+  ordenarse o simplemente respirar un poco más profundo. Trabajo a través de:
+galleryImage1: '/images/about-desktop-2.webp'
+galleryImage2: '/images/about-eleahora-002.webp'
+ctaTitle: 'Te acompaño a volver a conectar con el presente. Bienvenidos'
 ctaBody: >-
-  Da el primer paso. Estoy aquí para acompañarte en tu proceso de sanación y crecimiento personal.
-ctaButtonText: "Estoy aquí para tí"
-ctaButtonLink: "/sesiones"
+  Si algo de lo que has leído resuena contigo, me encantaría acompañarte en tu
+  proceso.
+ctaButtonText: 'Estoy aquí para ti'
+ctaButtonLink: '/sesiones'

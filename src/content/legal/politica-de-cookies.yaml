@@ -1,0 +1,37 @@
+title: 'politica-de-cookies'
+metaDescription: >-
+  Política de cookies de Eleahora. Información detallada sobre el uso de
+  cookies en este sitio web.
+lastUpdated: '2025-01-01'
+content:
+  - type: heading
+    level: 2
+    children:
+      - text: '1. ¿Qué son?'
+  - type: paragraph
+    children:
+      - text: 'Pequeños archivos que se almacenan en tu dispositivo para recordar preferencias.'
+  - type: heading
+    level: 2
+    children:
+      - text: '2. Cookies utilizadas'
+  - type: paragraph
+    children:
+      - text: '_ga, _ga_* — Analítica — Google Analytics, audiencias anónimas — 2 años'
+  - type: paragraph
+    children:
+      - text: 'cookieconsent — Funcional — Guardar preferencia de cookies — 1 año'
+  - type: heading
+    level: 2
+    children:
+      - text: '3. Gestión'
+  - type: paragraph
+    children:
+      - text: 'Desde la configuración del navegador.'
+  - type: heading
+    level: 2
+    children:
+      - text: '4. Actualizaciones'
+  - type: paragraph
+    children:
+      - text: 'Esta política puede actualizarse periódicamente.'

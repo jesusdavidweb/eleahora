@@ -1,0 +1,52 @@
+title: 'politica-de-privacidad'
+metaDescription: >-
+  Política de privacidad de Eleahora. Conoce cómo recopilamos, usamos y
+  protegemos tus datos personales conforme al RGPD.
+lastUpdated: '2025-01-01'
+content:
+  - type: heading
+    level: 2
+    children:
+      - text: '1. Responsable'
+  - type: paragraph
+    children:
+      - text: >-
+          Maria Eleonora Corallo — Terapia Transpersonal y Meditación —
+          info@eleahora.com
+  - type: heading
+    level: 2
+    children:
+      - text: '2. Datos recopilados'
+  - type: paragraph
+    children:
+      - text: 'Nombre, email, teléfono (opcional) y mensaje del formulario de contacto.'
+  - type: heading
+    level: 2
+    children:
+      - text: '3. Base legal'
+  - type: paragraph
+    children:
+      - text: 'Consentimiento (art. 6.1.a RGPD).'
+  - type: heading
+    level: 2
+    children:
+      - text: '4. Conservación'
+  - type: paragraph
+    children:
+      - text: 'Tiempo necesario para gestionar la solicitud + tiempo legal.'
+  - type: heading
+    level: 2
+    children:
+      - text: '5. Derechos'
+  - type: paragraph
+    children:
+      - text: >-
+          Acceso, rectificación, supresión, limitación, portabilidad y oposición
+          (info@eleahora.com). Reclamación ante AEPD (aepd.es).
+  - type: heading
+    level: 2
+    children:
+      - text: '6. Cookies'
+  - type: paragraph
+    children:
+      - text: 'Consultar Política de Cookies.'

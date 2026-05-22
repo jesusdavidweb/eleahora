@@ -1,10 +1,22 @@
-title: Terapia Angelical
+title: 'Terapia Angelical'
 order: 2
 featured: false
-tagline: Canalización
-duration: 1 hora - 1 hora 30
-sessions: 1 sesión
-modality: ambas
-price: 55€
-bookingUrl: https://scheduler.zoom.us/maria-eleonora-051exv/sesi-n-eleahora
-ctaText: Reservar ahora
+tagline: '02'
+pill: 'Canalización'
+descriptionText: >-
+  Sesión de conexión con tus ángeles y seres de luz. Iniciamos con una
+  meditación de sanación para elevar tu vibración. Luego canalizamos sus
+  mensajes a través de oráculos angelicales.
+details:
+  - '<strong>Sesiones:</strong> 1'
+  - '<strong>Duración:</strong> 1h - 1h30 máx'
+  - '<strong>Modalidad:</strong> Videollamada o Presencial en Madrid'
+  - '<strong>Intercambio:</strong> 55€'
+meta:
+  - 'Sanación + mensaje'
+  - 'Oráculos especiales'
+duration: '1h - 1h30 máx'
+modality: 'ambas'
+price: '55€'
+bookingUrl: 'https://scheduler.zoom.us/maria-eleonora-051exv/sesi-n-eleahora'
+ctaText: 'Agendar Terapia'

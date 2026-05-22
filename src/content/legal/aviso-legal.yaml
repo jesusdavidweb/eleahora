@@ -1,21 +1,47 @@
-title: "aviso-legal"
-metaDescription: "Aviso legal de Eleahora. Información sobre el titular del sitio web, condiciones de uso y propiedad intelectual."
-lastUpdated: "2025-01-01"
-content: >-
-  **Titular del sitio web**
-
-  Maria Eleonora Corallo
-  Correo electrónico: info@eleahora.com
-  Sitio web: https://eleahora.com
-
-  **Condiciones de uso**
-
-  El acceso y uso de este sitio web atribuye la condición de usuario e implica la aceptación plena de todas las condiciones incluidas en este aviso legal.
-
-  **Propiedad intelectual**
-
-  Todos los contenidos del sitio web, incluyendo textos, imágenes, gráficos, logotipos, iconos, y software, son propiedad de Eleahora o de terceros, estando protegidos por las leyes de propiedad intelectual.
-
-  **Exclusión de garantías y responsabilidad**
-
-  Eleahora no se hace responsable, en ningún caso, de los daños y perjuicios de cualquier naturaleza que pudieran ocasionar, a título enunciativo: errores u omisiones en los contenidos, falta de disponibilidad del sitio o la transmisión de virus o programas maliciosos en los contenidos.
+title: 'aviso-legal'
+metaDescription: >-
+  Aviso legal de Eleahora. Información sobre el titular del sitio web,
+  propiedad intelectual y condiciones de uso.
+lastUpdated: '2025-01-01'
+content:
+  - type: heading
+    level: 2
+    children:
+      - text: '1. Datos del titular'
+  - type: paragraph
+    children:
+      - text: >-
+          Maria Eleonora Corallo — Terapeuta Transpersonal y Guía de
+          Meditación — info@eleahora.com — https://eleahora.com
+  - type: heading
+    level: 2
+    children:
+      - text: '2. Objeto y ámbito de aplicación'
+  - type: paragraph
+    children:
+      - text: 'Regula el acceso y uso del sitio web eleahora.com.'
+  - type: heading
+    level: 2
+    children:
+      - text: '3. Propiedad intelectual'
+  - type: paragraph
+    children:
+      - text: >-
+          Todos los contenidos son propiedad de Maria Eleonora Corallo o de
+          terceros. Prohibida su reproducción sin autorización expresa.
+  - type: heading
+    level: 2
+    children:
+      - text: '4. Responsabilidad'
+  - type: paragraph
+    children:
+      - text: >-
+          Los contenidos son meramente informativos y no sustituyen a ningún
+          tratamiento médico o psicológico.
+  - type: heading
+    level: 2
+    children:
+      - text: '5. Ley aplicable'
+  - type: paragraph
+    children:
+      - text: 'Legislación española. Juzgados y tribunales de Madrid.'

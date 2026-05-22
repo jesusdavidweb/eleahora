@@ -11,9 +11,8 @@ const sesiones = await getAllSesiones();
 
 // Fallbacks
 const heroTitle = contactoPage?.heroTitle ?? "Este puede ser el primer paso para volver a ti.";
-const heroSubtitle = (contactoPage as any)?.heroSubtitle ?? "Escribe a Eleahora para iniciar tu proceso de Terapia Transpersonal, Meditación o Mindfulness. Respuesta en 24h.";
-const heroImage = (contactoPage as any)?.heroImage ?? "/images/contacto-hero-eleahora-02-edit-tiny.webp";
-const processTitle = contactoPage?.processTitle ?? "Un proceso claro, humano y sin prisa.";
+const heroSubtitle = (contactoPage as any)?.heroSubtitle ?? "Hablemos. / Estoy aquí para escucharte y acompañarte en el primer paso.";
+const processTitle = contactoPage?.processTitle ?? "¿Cómo funciona?";
 const processSteps = contactoPage?.processSteps?.length ? contactoPage.processSteps : [
   { step: "1", title: "Recibo tu mensaje", description: "Reviso tu intención y te respondo en máximo 24 horas laborables." },
   { step: "2", title: "Elegimos el formato", description: "Definimos si te conviene llamada, sesión puntual o acompañamiento mensual." },
@@ -23,7 +22,13 @@ const whatsappUrl = `https://wa.me/${(siteConfig?.phoneWhatsapp ?? '+34605373782
 
 // Opciones de servicio: usar Keystatic si hay datos, si no fallback
 const serviceOptions: ContactServiceOption[] = sesiones.length > 0
-  ? sesiones.map(s => ({ value: s.slug, label: s.entry.title }))
+  ? [
+      ...sesiones
+        .sort((a, b) => (a.entry.order ?? 0) - (b.entry.order ?? 0))
+        .map((s) => ({ value: s.slug, label: s.entry.title })),
+      { value: 'workshop-empresas', label: 'Workshop para empresas' },
+      { value: 'otro', label: 'Otro / Aún no lo tengo claro' },
+    ]
   : [
   { value: 'acompanamiento-terapeutico', label: 'Acompañamiento Terapéutico (Meditación + PNL)' },
   { value: 'terapia-angelical', label: 'Terapia Angelical' },
@@ -57,6 +62,7 @@ const serviceOptions: ContactServiceOption[] = sesiones.length > 0
         <h1 id="contacto-title" class="contact-hero-animate">
           {heroTitle}
         </h1>
+        {heroSubtitle && <p class="hero-lead contact-hero-animate">{heroSubtitle}</p>}
 
         <div class="hero-cta-row contact-hero-animate">
           <a href="#formulario-contacto" class="btn-primary magnetic-cta">Escribir ahora</a>

@@ -1,9 +1,22 @@
-title: Sesión Energetica
+title: 'Sesión Energética (Chakras)'
 order: 5
 featured: false
-tagline: Reset energético
-duration: 1 hora 30
-sessions: 1 sesión
-modality: ambas
-price: 65€
-ctaText: Agendar Sesión
+tagline: '05'
+pill: 'Reset energético'
+descriptionText: >-
+  Revisaremos cómo se encuentran tus 7 centros energéticos, identificando cuáles
+  necesitan más atención y nos centraremos en limpiarlos, alinearlos y
+  activarlos.
+details:
+  - '<strong>Sesiones:</strong> 1'
+  - '<strong>Duración:</strong> 1h30'
+  - '<strong>Modalidad:</strong> Videollamada o Presencial en Madrid'
+  - '<strong>Intercambio:</strong> 65€'
+meta:
+  - 'Armonización de chakras'
+  - 'Impulso de energía vital'
+duration: '1h30'
+modality: 'ambas'
+price: '65€'
+bookingUrl: 'https://scheduler.zoom.us/maria-eleonora-051exv/sesi-n-eleahora'
+ctaText: 'Agendar Sesión'

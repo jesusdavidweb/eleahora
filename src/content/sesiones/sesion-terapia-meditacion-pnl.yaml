@@ -1,0 +1,23 @@
+title: 'Acompañamiento Terapéutico (Meditación + PNL)'
+order: 1
+featured: true
+tagline: '01'
+pill: 'Proceso profundo'
+descriptionText: >-
+  Este acompañamiento nace para sostenerte en los procesos que estás
+  atravesando, especialmente cuando necesitas claridad, calma y una nueva
+  manera de habitar lo que estás viviendo.
+details:
+  - '<strong>¿En qué consiste?</strong> Combinamos conversación terapéutica, meditación guiada y técnicas de PNL.'
+  - '<strong>Sesiones:</strong> 4 (acompañamiento mensual)'
+  - '<strong>Duración:</strong> 1h cada sesión'
+  - '<strong>Modalidad:</strong> Videollamada'
+  - '<strong>Intercambio mensual:</strong> 180€'
+meta:
+  - 'Incluye plan de integración'
+  - 'Acompañamiento mensual'
+duration: '1h cada sesión'
+modality: 'online'
+price: '180€'
+bookingUrl: 'https://scheduler.zoom.us/maria-eleonora-051exv/30-min-con-eleahora'
+ctaText: 'Agendar llamada de descubrimiento (30min)'
