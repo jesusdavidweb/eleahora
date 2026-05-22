@@ -7,14 +7,13 @@ ogTitle: 'Contacto — Inicia tu proceso con Eleahora'
 ogImage: '/images/OG-images-eleahora-02.png'
 heroKicker: 'Contacto Eleahora'
 heroTitle: 'Este puede ser el primer paso para volver a ti.'
-heroSubtitle: >-
-  Hablemos. / Estoy aquí para escucharte y acompañarte en el primer paso.
+heroSubtitle: ''
 heroImage: '/images/contacto-hero-eleahora-02-edit-tiny.webp'
 heroCtaText: 'Escribir ahora'
 heroCtaLink: '#formulario-contacto'
 contactChannelsAriaLabel: 'Canales de contacto'
-processPanelAriaLabel: 'Qué pasa después'
-processEyebrow: 'Qué pasa después'
+processPanelAriaLabel: 'Proceso de contacto'
+processEyebrow: ''
 processTitle: '¿Cómo funciona?'
 processSteps:
   - step: '1'

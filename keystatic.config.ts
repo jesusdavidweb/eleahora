@@ -831,12 +831,12 @@ export default config({
         }),
         ctaTitle: fields.text({
           label: "CTA — Título",
-          defaultValue: "¿Quieres llevar esta experiencia a tu organización?",
+          defaultValue: "Estoy aquí para ti.",
         }),
         ctaBody: fields.text({
           label: "CTA — Texto",
           multiline: true,
-          defaultValue: "Cuéntame el tamaño de tu equipo y qué necesitáis, y diseñamos juntos la experiencia perfecta.",
+          defaultValue: "Hablemos para llevar esta experiencia a tu organización.",
         }),
         ctaButtonText: fields.text({
           label: "CTA — Texto del botón",
@@ -910,11 +910,11 @@ export default config({
         }),
         processPanelAriaLabel: fields.text({
           label: "Proceso — Etiqueta accesible panel",
-          defaultValue: "Qué pasa después",
+          defaultValue: "Proceso de contacto",
         }),
         processEyebrow: fields.text({
           label: "Proceso — Etiqueta",
-          defaultValue: "Qué pasa después",
+          defaultValue: "",
         }),
         processTitle: fields.text({
           label: "Proceso — Título",

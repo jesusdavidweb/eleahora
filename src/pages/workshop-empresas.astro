@@ -1,9 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { getWorkshopPage, getSiteConfig } from '../lib/keystatic';
+import { getWorkshopPage, getSiteConfig, getAllTestimonios } from '../lib/keystatic';
 
 const workshop = await getWorkshopPage();
 const site = await getSiteConfig();
+const testimonios = await getAllTestimonios(true);
 
 const heroLabel = workshop?.heroLabel ?? 'Workshop para empresas';
 const heroTitle = workshop?.heroTitle ?? 'Pienso, luego medito.';
@@ -55,12 +56,16 @@ const benefits = workshop?.benefits?.length ? workshop.benefits : [
     description: 'El bienestar emocional es una inversión que impacta directamente en la productividad y la retención del talento.',
   },
 ];
-const ctaTitle = workshop?.ctaTitle ?? '¿Hablamos para tu empresa?';
-const ctaBody = workshop?.ctaBody ?? 'Cuéntame el tamaño de tu equipo y qué necesitáis, y diseñamos juntos la experiencia perfecta.';
+const ctaTitle = workshop?.ctaTitle ?? 'Estoy aquí para ti.';
+const ctaBody = workshop?.ctaBody ?? 'Hablemos para llevar esta experiencia a tu organización.';
 const ctaEyebrow = (workshop as any)?.ctaEyebrow ?? 'Siguiente paso';
 const ctaButtonText = workshop?.ctaButtonText ?? 'Solicitar información';
 const ctaButtonLink = (workshop as any)?.ctaButtonLink ?? '/contacto';
-const whatsappCtaText = (workshop as any)?.whatsappCtaText ?? 'WhatsApp';
+const closingQuote = (workshop as any)?.closingQuote ?? 'El verdadero reto de la condición humana no es estar presente, sino darnos cuenta de que no estamos presentes.';
+const closingQuoteAuthor = (workshop as any)?.closingQuoteAuthor ?? 'Meggan Watterson';
+const testimonialsTitle = (workshop as any)?.testimonialsTitle ?? 'Testimonios';
+
+const testimonioData = testimonios.length > 0 ? testimonios : null;
 
 const whatsapp = site?.phoneWhatsapp ?? '+34605373782';
 const waLink = `https://wa.me/${whatsapp.replace(/\D/g, '')}`;
@@ -121,15 +126,15 @@ const workshopFacts = (workshop as any)?.facts?.length ? (workshop as any).facts
             <a href={heroSecondaryCtaLink} class="btn-outline">{heroSecondaryCtaText}</a>
           </div>
 
-          <ul class="hero-facts" aria-label="Datos del workshop">
+          <div class="hero-facts-row" aria-label="Datos del workshop">
             {workshopFacts.map((fact: { label: string; value: string; detail: string }) => (
-              <li class="fact-chip">
+              <div class="fact-chip">
                 <span>{fact.label}</span>
                 <strong>{fact.value}</strong>
-                <small>{fact.detail}</small>
-              </li>
+                <em>{fact.detail}</em>
+              </div>
             ))}
-          </ul>
+          </div>
         </div>
       </div>
     </section>
@@ -157,15 +162,6 @@ const workshopFacts = (workshop as any)?.facts?.length ? (workshop as any).facts
         </header>
         <div>
           {workshopDescription.split('\n\n').filter(Boolean).map(p => <p>{p}</p>)}
-          <div class="about-facts-row" aria-label="Detalles del workshop">
-            {workshopFacts.map((fact: { label: string; value: string; detail: string }) => (
-              <div>
-                <span>{fact.label}</span>
-                <strong>{fact.value}</strong>
-                <em>{fact.detail}</em>
-              </div>
-            ))}
-          </div>
         </div>
       </div>
     </section>
@@ -212,6 +208,36 @@ const workshopFacts = (workshop as any)?.facts?.length ? (workshop as any).facts
       </div>
     </section>
 
+    <!-- Testimonios -->
+    <section class="section-testimonials" aria-labelledby="testimonials-title">
+      <div class="max-w-screen">
+        <header class="section-header">
+          <h2 id="testimonials-title">{testimonialsTitle}</h2>
+        </header>
+
+        {testimonioData && testimonioData.length > 0 && (
+          <div class="testimonials-grid">
+            {testimonioData.map((t) => (
+              <article class="testimonial-card">
+                <p class="testimonial-text">{t.entry.quote}</p>
+                <p class="testimonial-author">— {t.entry.name}</p>
+              </article>
+            ))}
+          </div>
+        )}
+      </div>
+    </section>
+
+    <!-- Cita de cierre -->
+    <section class="section-closing-quote" aria-label="Cita de cierre">
+      <div class="max-w-screen closing-quote-inner">
+        <blockquote>
+          <p>"{closingQuote}"</p>
+          <cite>— {closingQuoteAuthor}</cite>
+        </blockquote>
+      </div>
+    </section>
+
     <section class="section-cta section-soft" aria-labelledby="cta-title">
       <div class="max-w-screen cta-inner">
         <p class="text-accent">{ctaEyebrow}</p>
@@ -219,7 +245,6 @@ const workshopFacts = (workshop as any)?.facts?.length ? (workshop as any).facts
         <p>{ctaBody}</p>
         <div class="cta-actions">
           <a href={ctaHref} class="btn-primary">{ctaButtonText}</a>
-          <a href={waLink} target="_blank" rel="noopener noreferrer" class="btn-outline">{whatsappCtaText}</a>
         </div>
       </div>
     </section>
@@ -376,45 +401,44 @@ const workshopFacts = (workshop as any)?.facts?.length ? (workshop as any).facts
     margin-bottom: 3.5rem;
   }
 
-  .hero-facts {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    padding: 0;
-    margin: 0;
-    list-style: none;
-  }
-
-  .fact-chip {
-    display: flex;
-    min-width: 160px;
-    flex-direction: column;
-    gap: 0.15rem;
-    padding: 1.1rem 1.5rem;
+  .hero-facts-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    overflow: hidden;
     border: 1px solid rgba(59, 38, 57, 0.1);
     border-radius: 20px;
-    background: rgba(255, 255, 255, 0.6);
-    box-shadow: 0 8px 24px rgba(59, 38, 57, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.65);
+    box-shadow: 0 12px 30px rgba(59, 38, 57, 0.06);
   }
 
-  .fact-chip span {
+  .hero-facts-row .fact-chip {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 1.4rem 1.2rem;
+    border-right: 1px solid rgba(59, 38, 57, 0.1);
+  }
+
+  .hero-facts-row .fact-chip:last-child {
+    border-right: none;
+  }
+
+  .hero-facts-row .fact-chip span {
     color: rgba(59, 38, 57, 0.5);
-    font-size: 0.7rem;
+    font-size: 0.68rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
   }
 
-  .fact-chip strong {
+  .hero-facts-row .fact-chip strong {
     color: var(--color-primary-dark);
     font-family: var(--font-primary);
-    font-size: 1.25rem;
-    line-height: 1.15;
+    font-size: 1.3rem;
   }
 
-  .fact-chip small {
-    color: rgba(59, 38, 57, 0.55);
-    font-size: 0.8rem;
-    font-style: italic;
+  .hero-facts-row .fact-chip em {
+    color: rgba(59, 38, 57, 0.5);
+    font-size: 0.78rem;
   }
 
   .eyebrow {
@@ -525,45 +549,73 @@ const workshopFacts = (workshop as any)?.facts?.length ? (workshop as any).facts
     align-items: start;
   }
 
-  .about-facts-row {
+  .section-testimonials {
+    padding: 5rem 0;
+    background: var(--color-background);
+  }
+
+  .testimonials-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    margin-top: 2.5rem;
-    overflow: hidden;
-    border: 1px solid rgba(59, 38, 57, 0.1);
-    border-radius: 20px;
-    background: rgba(255, 255, 255, 0.65);
-    box-shadow: 0 12px 30px rgba(59, 38, 57, 0.06);
+    gap: 2rem;
   }
 
-  .about-facts-row div {
+  .testimonial-card {
     display: flex;
     flex-direction: column;
-    gap: 0.25rem;
-    padding: 1.4rem 1.2rem;
-    border-right: 1px solid rgba(59, 38, 57, 0.1);
+    justify-content: space-between;
+    gap: 1.2rem;
+    padding: 2rem 2.2rem;
+    border: 1px solid rgba(59, 38, 57, 0.1);
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.55);
+    box-shadow: 0 12px 30px rgba(59, 38, 57, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.8);
   }
 
-  .about-facts-row div:last-child {
-    border-right: none;
-  }
-
-  .about-facts-row span {
-    color: rgba(59, 38, 57, 0.5);
-    font-size: 0.68rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-  }
-
-  .about-facts-row strong {
+  .testimonial-text {
     color: var(--color-primary-dark);
-    font-family: var(--font-primary);
-    font-size: 1.3rem;
+    font-size: 1rem;
+    line-height: 1.7;
+    margin: 0;
+    white-space: pre-line;
   }
 
-  .about-facts-row em {
-    color: rgba(59, 38, 57, 0.5);
-    font-size: 0.78rem;
+  .testimonial-author {
+    color: var(--color-accent-red);
+    font-family: var(--font-primary);
+    font-size: 1.05rem;
+    margin: 0;
+  }
+
+  .section-closing-quote {
+    padding: 5rem 0;
+    background: var(--color-primary-dark);
+  }
+
+  .closing-quote-inner {
+    max-width: 820px;
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  .closing-quote-inner blockquote {
+    margin: 0;
+  }
+
+  .closing-quote-inner blockquote p {
+    margin: 0 0 1.5rem;
+    color: var(--color-background);
+    font-family: var(--font-primary);
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    line-height: 1.3;
+  }
+
+  .closing-quote-inner cite {
+    color: var(--color-earth);
+    font-family: var(--font-base);
+    font-size: 1rem;
+    font-style: normal;
+    letter-spacing: 0.04em;
   }
 
   .section-header {
@@ -826,20 +878,24 @@ const workshopFacts = (workshop as any)?.facts?.length ? (workshop as any).facts
       margin-inline: auto;
     }
 
-    .hero-cta-row,
-    .hero-facts {
+    .hero-cta-row {
       justify-content: center;
     }
 
-    .about-facts-row,
+    .hero-facts-row {
+      width: min(100%, 400px);
+    }
+
+    .hero-facts-row,
     .experience-list,
-    .benefits-cards {
+    .benefits-cards,
+    .testimonials-grid {
       grid-template-columns: 1fr;
     }
 
     .experience-list li,
     .benefit-card,
-    .about-facts-row div {
+    .hero-facts-row .fact-chip {
       border-right: none;
     }
   }
@@ -861,16 +917,6 @@ const workshopFacts = (workshop as any)?.facts?.length ? (workshop as any).facts
       width: 100%;
       justify-content: center;
       text-align: center;
-    }
-
-    .hero-facts {
-      width: 100%;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .fact-chip {
-      width: min(100%, 280px);
     }
 
     .guide-quote-block blockquote {

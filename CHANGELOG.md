@@ -7,7 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- **workshop-empresas.astro**: nueva sección de testimonios dinámicos desde Keystatic.
+- **workshop-empresas.astro**: nueva sección de cita de cierre con parámetros desde CMS (`closingQuote`, `closingQuoteAuthor`).
+- **keystatic.config.ts**: nuevos campos `closingQuote`, `closingQuoteAuthor`, `testimonialsTitle` en workshop.
+
 ### Changed
+- **contacto.yaml / contacto.astro**: eliminado heroSubtitle "Hablemos. / Estoy aquí para escucharte..." y processEyebrow "Qué pasa después".
+- **keystatic.config.ts**: defaults de `processPanelAriaLabel` actualizados a "Proceso de contacto", `processEyebrow` a vacío.
+- **workshop-empresas.astro**: rediseñado hero-facts de lista flex a CSS grid; actualizados textos CTA ("Estoy aquí para ti." / "Hablemos para llevar esta experiencia a tu organización.").
 - **URLs de booking**: migradas todas las sesiones de Zoom Scheduler a `cal.com/eleahora/*`.
 - **Descripciones de sesiones**: enriquecidas con párrafos adicionales en las 6 sesiones (acompañamiento, terapia angelical, perlas, meditación, energética).
 - **index.astro**: añadido segundo párrafo (`mindfulnessBody2`) en sección de Mindfulness. Actualizados textos de benefits y lead.

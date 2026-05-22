@@ -12,13 +12,13 @@ const sesiones = await getAllSesiones();
 // Fallbacks
 const heroKicker = (contactoPage as any)?.heroKicker ?? "Contacto Eleahora";
 const heroTitle = contactoPage?.heroTitle ?? "Este puede ser el primer paso para volver a ti.";
-const heroSubtitle = (contactoPage as any)?.heroSubtitle ?? "Hablemos. / Estoy aquí para escucharte y acompañarte en el primer paso.";
+const heroSubtitle = (contactoPage as any)?.heroSubtitle ?? "";
 const heroImage = (contactoPage as any)?.heroImage ?? "/images/contacto-hero-eleahora-02-edit-tiny.webp";
 const heroCtaText = (contactoPage as any)?.heroCtaText ?? "Escribir ahora";
 const heroCtaLink = (contactoPage as any)?.heroCtaLink ?? "#formulario-contacto";
 const contactChannelsAriaLabel = (contactoPage as any)?.contactChannelsAriaLabel ?? "Canales de contacto";
-const processPanelAriaLabel = (contactoPage as any)?.processPanelAriaLabel ?? "Qué pasa después";
-const processEyebrow = (contactoPage as any)?.processEyebrow ?? "Qué pasa después";
+const processPanelAriaLabel = (contactoPage as any)?.processPanelAriaLabel ?? "Proceso de contacto";
+const processEyebrow = (contactoPage as any)?.processEyebrow ?? "";
 const processTitle = contactoPage?.processTitle ?? "¿Cómo funciona?";
 const processSteps = contactoPage?.processSteps?.length ? contactoPage.processSteps : [
   { step: "1", title: "Recibo tu mensaje", description: "Reviso tu intención y te respondo en máximo 24 horas laborables." },
@@ -98,7 +98,7 @@ const serviceOptions: ContactServiceOption[] = sesiones.length > 0
     <section class="contact-main" aria-label={contactChannelsAriaLabel}>
       <div class="max-w-screen contact-main-grid">
         <aside class="contact-process-panel contact-reveal" aria-label={processPanelAriaLabel}>
-          <p class="panel-eyebrow">{processEyebrow}</p>
+          {processEyebrow && <p class="panel-eyebrow">{processEyebrow}</p>}
           <h2>{processTitle}</h2>
           <ol class="process-list">
             {processSteps.map((step: { step: string; title: string; description: string }) => (

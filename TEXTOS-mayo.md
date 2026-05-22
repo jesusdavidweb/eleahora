@@ -238,7 +238,7 @@
 ### Hero
 - **Kicker:** Contacto Eleahora
 - **Título (h1):** Este puede ser el primer paso para volver a ti.
-- **Subtítulo (YAML):** Hablemos. / Estoy aquí para escucharte y acompañarte en el primer paso.
+- **Subtítulo (YAML):** ''
 - **CTA:** Escribir ahora
 
 ### Proceso — Título: ¿Cómo funciona?
