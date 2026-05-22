@@ -1,14 +1,9 @@
-title: "clase-de-meditacion"
+title: Clase de meditación
 order: 4
 featured: false
-tagline: "Base práctica"
-description: >-
-  Una clase de meditación personalizada donde aprendes las bases de la práctica meditativa de forma accesible y directa. Es ideal para principiantes o para quienes quieren establecer una práctica regular de meditación.
-
-  Trabajamos diferentes técnicas de meditación: mindfulness, meditación guiada, respiración consciente y visualización. Al finalizar, tendrás herramientas claras para crear tu propia rutina de meditación en casa.
-duration: "1 hora - 1 hora 30"
-sessions: "1 sesión"
-modality: "online"
-price: "40€"
-bookingUrl: ""
-ctaText: "Quiero aprender a meditar"
+tagline: Base práctica
+duration: 1 hora - 1 hora 30
+sessions: 1 sesión
+modality: online
+price: 40€
+ctaText: Quiero aprender a meditar
