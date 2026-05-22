@@ -21,12 +21,12 @@ const workshopDescription = (workshop as any)?.workshopDescription ?? "Una exper
 
 const experienceTitle = (workshop as any)?.experienceTitle ?? "Un recorrido práctico, consciente y aplicable.";
 const experienceItems = (workshop as any)?.experienceItems?.length ? (workshop as any).experienceItems : [
-  "Bienvenida y aterrizaje consciente",
-  "¿Cómo estar más presentes?",
-  "Meditación como método de neuroregulación",
-  "Meditación en todas sus formas",
-  "Niño Interior",
-  "¿Y ahora qué?"
+  { title: "Bienvenida y aterrizaje consciente", description: "Apertura del espacio, intención compartida y práctica breve para llegar al aquí y ahora como equipo." },
+  { title: "¿Cómo estar más presentes?", description: "Prácticas conscientes que integran los sentidos y los elementos." },
+  { title: "Meditación como método de neuroregulación", description: "Sistema nervioso, dopamina y cortisol." },
+  { title: "Meditación en todas sus formas", description: "Con el cuerpo, la mente y el alma." },
+  { title: "Niño Interior", description: "Dinámicas lúdicas que despiertan la creatividad y la alegría." },
+  { title: "¿Y ahora qué?", description: "Acciones concretas para aplicar en el día a día." }
 ];
 
 const benefitsTitle = (workshop as any)?.benefitsTitle ?? "Lo que cambia después de la experiencia.";

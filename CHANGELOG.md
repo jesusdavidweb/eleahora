@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- **workshop-empresas**: `experienceItems` migrado de array de strings a objetos con `title` y `description`. Actualizado esquema Keystatic, contenido YAML y renderizado en página para mostrar descripciones de cada paso de la experiencia.
+
 ### Fixed
 - **about.astro**: corregida posición vertical de imagen de fondo en hero desktop (`object-position` ajustado a 70%).
 - **Lectura de contenido Keystatic en SSR**: Agregado `createGitHubReader` como reader primario (requiere `GITHUB_PAT`) con fallback a `createReader` local. Copiado `src/content/` al runtime del contenedor Docker para que el reader local encuentre los archivos YAML y el frontend refleje los cambios del CMS.
