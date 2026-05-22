@@ -13,14 +13,12 @@ const profileImage = about?.profileImage ?? "/images/about-eleahora-001.webp";
 const profileImageDesktop = (about as any)?.profileImageDesktop ?? "/images/about-desktop-2.webp";
 const profileImageAlt = (about as any)?.profileImageAlt ?? "Fondo de la sección Sobre Mí de Eleahora — presencia y conexión interior";
 
-const recorridoLabel = (about as any)?.recorridoLabel ?? "Mi recorrido";
 const recorridoTitle = (about as any)?.recorridoTitle ?? "Tengo un sueño: llevar la meditación a personas que aún no saben que la necesitan.";
 const recorridoImage = (about as any)?.recorridoImage ?? "/images/about-mi-recorrido-01.webp";
 const recorridoImageAlt = (about as any)?.recorridoImageAlt ?? "Maria Eleonora Corallo, terapeuta transpersonal y fundadora de Eleahora";
 const bioIntro = about?.bioIntro ?? "Nací en Venezuela, en una familia italiana, y desde muy joven mi vida ha estado marcada por el movimiento: distintos países, idiomas y culturas. Durante años seguí un camino más estructurado: estudié idiomas y comercio internacional en París y trabajé en entornos corporativos.";
 const bioBodyHtml = about?.bioBodyHtml ?? null;
 
-const eleahoraLabel = (about as any)?.eleahoraLabel ?? "Así nació Eleahora";
 const eleahoraTitle = (about as any)?.eleahoraTitle ?? "Un espacio de espiritualidad aterrizada para vivir con más presencia.";
 const eleahoraImage = (about as any)?.eleahoraImage ?? "/images/about-eleahora-002.webp";
 const eleahoraImageAlt = (about as any)?.eleahoraImageAlt ?? "Proceso de presencia y espiritualidad aterrizada — así nace Eleahora";
@@ -65,7 +63,7 @@ const ctaButtonLink = (about as any)?.ctaButtonLink ?? "/sesiones";
     <section class="about-story section-soft" aria-labelledby="historia-title">
       <div class="max-w-screen story-grid">
         <article>
-          <p class="section-label">{recorridoLabel}</p>
+          <img src="/images/textos/Mi-recorrido.png" alt="Mi recorrido" class="section-label-img" />
           <h2 id="historia-title" class="section-title">
             {recorridoTitle}
           </h2>
@@ -122,7 +120,7 @@ const ctaButtonLink = (about as any)?.ctaButtonLink ?? "/sesiones";
           />
         </aside>
         <article>
-          <p class="section-label">{eleahoraLabel}</p>
+          <img src="/images/textos/Así-nació-eleahora.png" alt="Así nació Eleahora" class="section-label-img" />
           <h2 id="camino-title" class="section-title">
             {eleahoraTitle}
           </h2>
@@ -258,6 +256,13 @@ const ctaButtonLink = (about as any)?.ctaButtonLink ?? "/sesiones";
 
   .path-grid {
     grid-template-columns: minmax(220px, 0.6fr) minmax(0, 1.1fr);
+  }
+
+  .section-label-img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 0.8rem;
   }
 
   .section-label {

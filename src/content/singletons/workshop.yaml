@@ -5,23 +5,21 @@ seoDescription: >-
   fortalece la cohesión del equipo.
 ogTitle: 'Workshop para Empresas — Eleahora'
 ogImage: '/images/OG-images-eleahora-01.jpg'
-heroLabel: 'Workshop para empresas'
+heroLabel: 'Experiencia para empresas'
 heroTitle: 'Pienso, luego medito.'
-heroSubtitle: >-
-  Una experiencia de mindfulness y meditación diseñada para equipos y
-  organizaciones que quieren reducir el estrés y potenciar el rendimiento.
+heroSubtitle: 'Transformando el estrés en presencia.'
 heroImage: '/images/Workshop Pienso Luego Medito-15-tiny.webp'
 heroImage2: '/images/Workshop Pienso Luego Medito-92-tiny.webp'
-heroSecondaryCtaText: 'Ver formatos'
-heroSecondaryCtaLink: '#formatos'
+heroSecondaryCtaText: 'Ver experiencia'
+heroSecondaryCtaLink: '#experiencia'
 facts:
-  - label: 'Personas'
-    value: '12–15'
-    detail: 'por grupo'
-  - label: 'Duración'
-    value: '3 h'
-    detail: 'de inmersión'
   - label: 'Formato'
+    value: 'Team building'
+    detail: 'aprox. 12 personas'
+  - label: 'Duración'
+    value: '3 horas'
+    detail: 'sesión intensiva'
+  - label: 'Modalidad'
     value: 'Presencial'
     detail: 'en tu empresa'
 guideEyebrow: 'Sobre la guía'

@@ -5,13 +5,18 @@ import { getWorkshopPage, getSiteConfig } from '../lib/keystatic';
 const workshop = await getWorkshopPage();
 const site = await getSiteConfig();
 
-const heroLabel = workshop?.heroLabel ?? 'Workshop para empresas';
+const heroLabel = workshop?.heroLabel ?? 'Experiencia para empresas';
 const heroTitle = workshop?.heroTitle ?? 'Pienso, luego medito.';
-const heroSubtitle = workshop?.heroSubtitle ?? 'Una experiencia de mindfulness y meditación diseñada para equipos y organizaciones que quieren reducir el estrés y potenciar el rendimiento.';
+const heroSubtitle = workshop?.heroSubtitle ?? 'Transformando el estrés en presencia.';
 const heroImage = workshop?.heroImage ?? '/images/Workshop Pienso Luego Medito-15-tiny.webp';
 const heroImage2 = (workshop as any)?.heroImage2 ?? '/images/Workshop Pienso Luego Medito-92-tiny.webp';
-const heroSecondaryCtaText = (workshop as any)?.heroSecondaryCtaText ?? 'Ver formatos';
-const heroSecondaryCtaLink = (workshop as any)?.heroSecondaryCtaLink ?? '#formatos';
+const heroSecondaryCtaText = (workshop as any)?.heroSecondaryCtaText ?? 'Ver experiencia';
+const heroSecondaryCtaLink = (workshop as any)?.heroSecondaryCtaLink ?? '#experiencia';
+const heroAccessibleTitle = `"${heroTitle.replace(/\.$/, '')}"`;
+const heroTitleClean = heroTitle.replace(/\.$/, '');
+const heroTitleParts = heroTitleClean.split(', ');
+const heroLine1 = heroTitleParts[0];
+const heroLine2 = heroTitleParts.slice(1).join(', ');
 
 const guideEyebrow = (workshop as any)?.guideEyebrow ?? 'Sobre la guía';
 const guideName = (workshop as any)?.guideName ?? 'Maria Eleonora Corallo';
@@ -72,9 +77,16 @@ const closingQuoteAuthor = (workshop as any)?.closingQuoteAuthor ?? 'Meggan Watt
 const testimonialsEyebrow = (workshop as any)?.testimonialsEyebrow ?? 'Quienes han vivido la experiencia';
 const testimonialsTitle = (workshop as any)?.testimonialsTitle ?? 'Lo que ocurre cuando la pausa también es parte del proceso.';
 
+type TestimonialData = {
+  author: string;
+  role: string;
+  quote: string;
+  color: string;
+};
+
 const testimonialColors = ['vinotinto', 'verde', 'morado'];
 const testimonialsRaw = (workshop as any)?.testimonials;
-const testimonialsData = testimonialsRaw?.length
+const testimonialsData: TestimonialData[] = testimonialsRaw?.length
   ? testimonialsRaw.map((t: any, i: number) => ({
       author: t.name,
       role: t.role,
@@ -107,9 +119,9 @@ const waLink = `https://wa.me/${whatsapp.replace(/\D/g, '')}`;
 const ctaHref = ctaButtonLink === '/contacto' ? '/contacto' : ctaButtonLink || waLink;
 
 const workshopFacts = (workshop as any)?.facts?.length ? (workshop as any).facts : [
-  { label: 'Personas', value: '12–15', detail: 'por grupo' },
-  { label: 'Duración', value: '3 h', detail: 'de inmersión' },
-  { label: 'Formato', value: 'Presencial', detail: 'en tu empresa' },
+  { label: 'Formato', value: 'Team building', detail: 'aprox. 12 personas' },
+  { label: 'Duración', value: '3 horas', detail: 'sesión intensiva' },
+  { label: 'Modalidad', value: 'Presencial', detail: 'en tu empresa' },
 ];
 ---
 
@@ -151,8 +163,9 @@ const workshopFacts = (workshop as any)?.facts?.length ? (workshop as any).facts
 
         <div class="hero-content">
           <span class="hero-tag">{heroLabel}</span>
-          <h1 id="workshop-title">
-            <em>{heroTitle}</em>
+          <h1 id="workshop-title" aria-label={heroAccessibleTitle}>
+            <span class="hero-title-line hero-title-line--red" aria-hidden="true">"{heroLine1},</span>
+            <span class="hero-title-line hero-title-line--dark" aria-hidden="true">{heroLine2}"</span>
           </h1>
           <p>{heroSubtitle}</p>
 
@@ -196,12 +209,12 @@ const workshopFacts = (workshop as any)?.facts?.length ? (workshop as any).facts
           <h2 id="about-title">{workshopTitle}</h2>
         </header>
         <div>
-          {workshopDescription.split('\n\n').filter(Boolean).map(p => <p>{p}</p>)}
+          {workshopDescription.split('\n\n').filter(Boolean).map((p: string) => <p>{p}</p>)}
         </div>
       </div>
     </section>
 
-    <section class="section-experience" aria-labelledby="experience-title">
+    <section class="section-experience" id="experiencia" aria-labelledby="experience-title">
       <div class="max-w-screen">
         <header class="section-header">
           <span class="eyebrow">{experienceEyebrow}</span>
@@ -252,7 +265,7 @@ const workshopFacts = (workshop as any)?.facts?.length ? (workshop as any).facts
         </header>
 
         <div class="testimonials-grid">
-          {testimonialsData.map((t, i) => (
+          {testimonialsData.map((t: TestimonialData, i: number) => (
             <blockquote class={`testimonial ${i === 0 ? 'testimonial--featured' : ''} testimonial--${t.color}`}>
               <div class="testimonial-quote-mark" aria-hidden="true">"</div>
               <p class="testimonial-text">{t.quote}</p>
@@ -297,12 +310,12 @@ const workshopFacts = (workshop as any)?.facts?.length ? (workshop as any).facts
 
   .workshop-hero {
     position: relative;
-    padding: 8rem 0 6rem;
+    padding: 6.4rem 0 5rem;
     isolation: isolate;
     overflow: hidden;
     background:
-      radial-gradient(ellipse 80% 60% at 60% -10%, rgba(109, 68, 146, 0.18) 0%, transparent 60%),
-      radial-gradient(ellipse 60% 50% at -5% 80%, rgba(187, 137, 107, 0.14) 0%, transparent 55%),
+      radial-gradient(ellipse 58% 42% at 62% 10%, rgba(59, 38, 57, 0.12) 0%, transparent 62%),
+      radial-gradient(ellipse 46% 38% at 8% 72%, rgba(187, 137, 107, 0.12) 0%, transparent 58%),
       var(--color-background);
   }
 
@@ -323,35 +336,38 @@ const workshopFacts = (workshop as any)?.facts?.length ? (workshop as any).facts
   .hero-grid {
     position: relative;
     z-index: 1;
+    width: min(86.5vw, 1768px);
+    max-width: none;
+    padding: 0;
     display: grid;
-    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.9fr);
     grid-template-areas: "content media";
-    gap: 2.5rem;
+    gap: clamp(2rem, 4vw, 4rem);
     align-items: center;
   }
 
   .hero-media {
     grid-area: media;
     margin: 0;
+    align-self: stretch;
   }
 
   .hero-media-grid {
-    display: grid;
-    gap: 1rem;
+    position: relative;
+    min-height: clamp(500px, 44vw, 620px);
   }
 
   .hero-image-card {
     border: 1px solid rgba(59, 38, 57, 0.12);
-    border-radius: 22px;
+    border-radius: 24px;
     overflow: hidden;
     background: rgba(255, 255, 255, 0.48);
-    box-shadow: 0 20px 46px rgba(59, 38, 57, 0.14), inset 0 1px 0 rgba(255, 255, 255, 0.5);
-    transform: translateY(var(--card-offset-y, 0)) rotate(var(--card-rotate, 0));
+    box-shadow: 0 24px 64px rgba(59, 38, 57, 0.13), inset 0 1px 0 rgba(255, 255, 255, 0.5);
     transition: transform 0.35s ease, box-shadow 0.35s ease;
   }
 
   .hero-image-card:hover {
-    transform: translateY(var(--card-offset-y, 0)) rotate(var(--card-rotate, 0)) scale(1.04);
+    transform: translateY(-4px) scale(1.02);
     box-shadow: 0 28px 60px rgba(59, 38, 57, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.62);
   }
 
@@ -364,14 +380,18 @@ const workshopFacts = (workshop as any)?.facts?.length ? (workshop as any).facts
   }
 
   .hero-image-card-primary {
-    --card-rotate: -1.2deg;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: min(100%, 650px);
   }
 
   .hero-image-card-secondary {
-    --card-offset-y: -12%;
-    --card-rotate: 2deg;
-    max-width: 82%;
-    justify-self: end;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    width: min(82%, 540px);
   }
 
   .hero-content {
@@ -381,7 +401,8 @@ const workshopFacts = (workshop as any)?.facts?.length ? (workshop as any).facts
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 2.4rem 2.1rem;
+    min-height: clamp(520px, 45vw, 640px);
+    padding: clamp(2rem, 3.4vw, 3.4rem) clamp(1.65rem, 3.3vw, 3rem);
     border-radius: 26px;
   }
 
@@ -392,9 +413,10 @@ const workshopFacts = (workshop as any)?.facts?.length ? (workshop as any).facts
     z-index: -1;
     border-radius: inherit;
     background:
-      linear-gradient(110deg, rgba(253, 251, 236, 0.86) 0%, rgba(253, 251, 236, 0.72) 48%, rgba(253, 251, 236, 0.52) 100%),
+      linear-gradient(110deg, rgba(253, 251, 236, 0.92) 0%, rgba(253, 251, 236, 0.78) 54%, rgba(253, 251, 236, 0.6) 100%),
       radial-gradient(ellipse 120% 95% at 20% 15%, rgba(253, 251, 236, 0.5) 0%, transparent 66%);
-    box-shadow: 0 20px 50px rgba(59, 38, 57, 0.11), inset 0 1px 0 rgba(255, 255, 255, 0.78);
+    border: 1px solid rgba(255, 255, 255, 0.72);
+    box-shadow: 0 28px 72px rgba(59, 38, 57, 0.11), inset 0 1px 0 rgba(255, 255, 255, 0.82);
     backdrop-filter: blur(3px);
   }
 
@@ -413,52 +435,64 @@ const workshopFacts = (workshop as any)?.facts?.length ? (workshop as any).facts
   }
 
   .hero-content h1 {
-    margin: 0 0 1.15rem;
-    color: var(--color-accent-red);
-    font-size: clamp(2.4rem, 5.6vw, 4.8rem);
-    line-height: 0.98;
+    margin: 0 0 1.2rem;
+    font-size: clamp(3.45rem, 5.8vw, 6.45rem);
+    line-height: 0.93;
     letter-spacing: 0;
   }
 
-  .hero-content h1 em {
+  .hero-title-line {
+    display: block;
     font-style: normal;
+    white-space: nowrap;
+  }
+
+  .hero-title-line--red {
+    color: var(--color-accent-red);
+  }
+
+  .hero-title-line--dark {
+    color: var(--color-primary-dark);
   }
 
   .hero-content p {
     max-width: 38ch;
-    margin: 0 0 2.1rem;
-    color: rgba(59, 38, 57, 0.78);
+    margin: 0 0 2.4rem;
+    color: rgba(59, 38, 57, 0.66);
     font-size: clamp(1.02rem, 1.5vw, 1.28rem);
-    line-height: 1.55;
+    line-height: 1.35;
   }
 
   .hero-cta-row {
     display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin-bottom: 3.5rem;
+    flex-wrap: nowrap;
+    gap: 1.2rem;
+    margin-bottom: clamp(2.8rem, 4.8vw, 4.6rem);
+  }
+
+  .hero-cta-row :global(a) {
+    padding-inline: clamp(1.65rem, 2.35vw, 2.5rem);
   }
 
   .hero-facts-row {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    overflow: hidden;
-    border: 1px solid rgba(59, 38, 57, 0.1);
-    border-radius: 20px;
-    background: rgba(255, 255, 255, 0.65);
-    box-shadow: 0 12px 30px rgba(59, 38, 57, 0.06);
+    gap: 1rem;
+    width: 100%;
+    margin-top: auto;
   }
 
   .hero-facts-row .fact-chip {
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
-    padding: 1.4rem 1.2rem;
-    border-right: 1px solid rgba(59, 38, 57, 0.1);
-  }
-
-  .hero-facts-row .fact-chip:last-child {
-    border-right: none;
+    min-width: 0;
+    min-height: 112px;
+    padding: 1.35rem 1.2rem;
+    border: 1px solid rgba(59, 38, 57, 0.09);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.68);
+    box-shadow: 0 14px 32px rgba(59, 38, 57, 0.07), inset 0 1px 0 rgba(255, 255, 255, 0.82);
   }
 
   .hero-facts-row .fact-chip span {
@@ -471,12 +505,14 @@ const workshopFacts = (workshop as any)?.facts?.length ? (workshop as any).facts
   .hero-facts-row .fact-chip strong {
     color: var(--color-primary-dark);
     font-family: var(--font-primary);
-    font-size: 1.3rem;
+    font-size: clamp(1.12rem, 1.45vw, 1.45rem);
+    line-height: 1.08;
   }
 
   .hero-facts-row .fact-chip em {
     color: rgba(59, 38, 57, 0.5);
     font-size: 0.78rem;
+    line-height: 1.25;
   }
 
   .eyebrow {
@@ -932,15 +968,18 @@ const workshopFacts = (workshop as any)?.facts?.length ? (workshop as any).facts
     }
 
     .workshop-hero {
-      padding: 7rem 0 5rem;
+      padding: 6.2rem 0 4.5rem;
     }
 
     .hero-grid {
+      width: auto;
+      max-width: 1400px;
+      padding: 0 5%;
       grid-template-columns: 1fr;
       grid-template-areas:
         "media"
         "content";
-      gap: 1.4rem;
+      gap: 1.6rem;
       justify-items: center;
     }
 
@@ -950,25 +989,28 @@ const workshopFacts = (workshop as any)?.facts?.length ? (workshop as any).facts
     }
 
     .hero-media-grid {
-      gap: 0;
-      justify-items: center;
+      min-height: min(84vw, 520px);
     }
 
     .hero-image-card-primary {
-      max-width: 100%;
+      width: 100%;
       z-index: 1;
     }
 
     .hero-image-card-secondary {
-      max-width: 74%;
+      width: 76%;
       z-index: 2;
-      margin-top: -22%;
     }
 
     .hero-content {
       width: min(100%, 620px);
+      min-height: auto;
       align-items: center;
       text-align: center;
+    }
+
+    .hero-content h1 {
+      font-size: clamp(3rem, 12vw, 5.6rem);
     }
 
     .hero-content p {
@@ -980,7 +1022,7 @@ const workshopFacts = (workshop as any)?.facts?.length ? (workshop as any).facts
     }
 
     .hero-facts-row {
-      width: min(100%, 400px);
+      width: min(100%, 460px);
     }
 
     .hero-facts-row,
@@ -995,8 +1037,7 @@ const workshopFacts = (workshop as any)?.facts?.length ? (workshop as any).facts
     }
 
     .experience-list li,
-    .benefit-card,
-    .hero-facts-row .fact-chip {
+    .benefit-card {
       border-right: none;
     }
   }
@@ -1005,6 +1046,14 @@ const workshopFacts = (workshop as any)?.facts?.length ? (workshop as any).facts
     .hero-content {
       padding: 1.65rem 1.35rem;
       border-radius: 20px;
+    }
+
+    .hero-media-grid {
+      min-height: min(92vw, 430px);
+    }
+
+    .hero-title-line {
+      white-space: normal;
     }
 
     .hero-cta-row {

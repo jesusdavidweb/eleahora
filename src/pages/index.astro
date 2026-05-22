@@ -10,13 +10,11 @@ const siteConfig = await getSiteConfig();
 const testimonios = await getAllTestimonios(true);
 
 // Fallbacks: si Keystatic no tiene datos, usar los textos actuales
-const heroTitle = home?.heroTitle ?? "Bienvenido";
 const heroSubtitle = home?.heroSubtitle ?? "Soy la voz que te recuerda que estás aquí.\nEn el presente. Meditación y Terapia Transpersonal. Mindfulness. Espiritualidad aterrizada.";
 const heroCtaText = home?.heroCtaText ?? "Estoy aquí para ti";
 const heroCtaLink = (home as any)?.heroCtaLink ?? "/sesiones";
 const heroImage = home?.heroImage ?? "/images/home-hero-eleahora-01-tiny.webp";
 
-const manifestoLabel = home?.manifestoLabel ?? "Manifiesto";
 const manifestoTitle = home?.manifestoTitle ?? "Deja que el amor te regule.";
 const manifestoBodyHtml = home?.manifestoBodyHtml ?? null;
 const manifestoQuote = home?.manifestoQuote ?? "Soy estructura y soy caos. Soy servicio y soy soberanía. Deja que el amor te regule. Confía en el proceso.";
@@ -24,7 +22,6 @@ const manifestoImage = home?.manifestoImage ?? "/images/home-manifiesto-eleahora
 
 const serviciosTitle = (home as any)?.serviciosTitle ?? "Estoy aquí para ti";
 
-const mindfulnessLabel = home?.mindfulnessLabel ?? "Ciencia & Espíritu";
 const mindfulnessTitle = home?.mindfulnessTitle ?? "Mindfulness como camino.";
 const mindfulnessLead = home?.mindfulnessLead ?? "La meditación es una herramienta de neuroregulación.";
 const mindfulnessBody = home?.mindfulnessBody ?? "El mindfulness es una práctica que entrena la mente para volver al momento presente. A través de la respiración, la atención plena y la consciencia corporal, el sistema nervioso aprende a salir del estado de alerta constante y a regresar a un estado de regulación y equilibrio.";
@@ -89,7 +86,7 @@ const resolveHomeLink = (href: string) => href === 'insightTimer' ? insightTimer
 
     <div class="max-w-screen hero-content">
       <div class="hero-text-container">
-        <h2 class="gsap-reveal text-accent hero-accent">{heroTitle}</h2>
+        <img src="/images/textos/Bienvenido.png" alt="Bienvenido" class="gsap-reveal hero-label-img" />
         <h1 class="gsap-hero-reveal hero-title">
           {heroSubtitle.split('\n')[0]}
         </h1>
@@ -111,7 +108,7 @@ const resolveHomeLink = (href: string) => href === 'insightTimer' ? insightTimer
   <section id="manifiesto" class="manifiesto-section">
     <div class="max-w-screen manifiesto-grid">
       <div class="manifiesto-text">
-        <span class="gsap-reveal text-accent section-label">{manifestoLabel}</span>
+        <img src="/images/textos/Manifiesto.png" alt="Manifiesto" class="gsap-reveal section-label-img" />
         <h2 class="gsap-reveal section-title">{manifestoTitle}</h2>
         <div class="gsap-reveal section-body">
           {manifestoBodyHtml ? (
@@ -181,9 +178,7 @@ const resolveHomeLink = (href: string) => href === 'insightTimer' ? insightTimer
   <section id="mindfulness" class="mindfulness-section">
     <div class="max-w-screen">
       <div class="mindfulness-header">
-        <span class="gsap-reveal text-accent section-label"
-          >{mindfulnessLabel}</span
-        >
+        <img src="/images/textos/Ciencia-y-espiritu.png" alt="Ciencia y Espíritu" class="gsap-reveal section-label-img" />
         <h2 class="gsap-reveal section-title">{mindfulnessTitle}</h2>
       </div>
 
@@ -364,7 +359,21 @@ const resolveHomeLink = (href: string) => href === 'insightTimer' ? insightTimer
     color: var(--color-primary-dark);
   }
 
+  .hero-label-img {
+    display: block;
+    max-width: min(100%, 400px);
+    height: auto;
+    margin-bottom: 0.5rem;
+  }
+
   /* General typography layout */
+  .section-label-img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 1rem;
+  }
+
   .section-label {
     font-size: 2.5rem;
     display: block;
