@@ -10,12 +10,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - **Lectura de contenido Keystatic en SSR**: Agregado `createGitHubReader` como reader primario (requiere `GITHUB_PAT`) con fallback a `createReader` local. Copiado `src/content/` al runtime del contenedor Docker para que el reader local encuentre los archivos YAML y el frontend refleje los cambios del CMS.
 - **Dockerfile**: Añadida copia del directorio `src/` al stage runtime para disponibilidad de contenido YAML.
+- **Testimonios**: corregidos nombres (slug → nombre propio) y eliminados puntos finales en citas.
+- **about.astro**: corregida ortografía ("tí" → "ti") y ajuste responsive de imagen hero.
+- **index.astro**: corregido enlace de Workshop a ruta `/workshop-empresas`.
 
 ### Added
 - Documentación de variable de entorno `GITHUB_PAT` en `.env.example` para uso de GitHub Reader.
 
 ### Changed
 - Limpieza de comentarios en `.gitignore`.
+- **OG Image**: actualizada imagen OG por defecto a PNG en Layout, contacto y sesiones.
+
+### Added
+- Nuevo asset OG: `public/images/OG-images-eleahora-02.png`.
 
 ## [0.3.0] - 2026-05-13
 

@@ -22,7 +22,7 @@ const eleahoraTitle = (about as any)?.eleahoraTitle ?? "Un espacio de espiritual
 const eleahoraImage = (about as any)?.eleahoraImage ?? "/images/about-eleahora-002.webp";
 
 const ctaTitle = about?.ctaTitle ?? "Te acompaño a volver a conectar con el presente. Bienvenidos";
-const ctaButtonText = about?.ctaButtonText ?? "Estoy aquí para tí";
+const ctaButtonText = about?.ctaButtonText ?? "Estoy aquí para ti";
 const ctaButtonLink = (about as any)?.ctaButtonLink ?? "/sesiones";
 ---
 
@@ -136,7 +136,7 @@ const ctaButtonLink = (about as any)?.ctaButtonLink ?? "/sesiones";
               Porque creo profundamente que estamos viviendo un momento de cambio colectivo donde la consciencia, la presencia y la conexión interior ya no son un lujo, sino una necesidad.
             </p>
 
-          </div>  
+          </div>
         </article>
       </div>
     </section>
@@ -177,6 +177,12 @@ const ctaButtonLink = (about as any)?.ctaButtonLink ?? "/sesiones";
     height: 100%;
     object-fit: cover;
     object-position: center;
+  }
+
+  @media (min-width: 769px) {
+    .page-hero-bg {
+      object-position: center 30%;
+    }
   }
 
   .page-hero-overlay {
@@ -364,7 +370,7 @@ const ctaButtonLink = (about as any)?.ctaButtonLink ?? "/sesiones";
       padding: 4.5rem 0;
     }
   }
-  
+
     /* About CTA specific colors (override section-soft gradient) */
     .about-cta {
       background: var(--color-accent-red);
