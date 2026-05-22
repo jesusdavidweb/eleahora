@@ -7,7 +7,7 @@ ogTitle: 'Sobre Mí — Maria Eleonora Corallo | Eleahora'
 ogImage: '/images/about-eleahora-001.webp'
 heroLabel: 'Sobre mí'
 heroTitle: 'Soy quien soy y eso es suficiente.'
-heroSubtitle: 'Terapeuta Transpersonal · Guía de Meditación · PNL'
+heroSubtitle: ''
 profileImage: '/images/about-eleahora-001.webp'
 profileImageDesktop: '/images/about-desktop-2.webp'
 profileImageAlt: 'Fondo de la sección Sobre Mí de Eleahora — presencia y conexión interior'
@@ -75,8 +75,6 @@ eleahoraClosingText: >-
 galleryImage1: '/images/about-desktop-2.webp'
 galleryImage2: '/images/about-eleahora-002.webp'
 ctaTitle: 'Te acompaño a volver a conectar con el presente. Bienvenidos'
-ctaBody: >-
-  Si algo de lo que has leído resuena contigo, me encantaría acompañarte en tu
-  proceso.
+ctaBody: ''
 ctaButtonText: 'Estoy aquí para ti'
 ctaButtonLink: '/sesiones'
