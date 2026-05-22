@@ -3,9 +3,12 @@ order: 3
 featured: false
 tagline: '03'
 pill: 'Canal íntimo'
-descriptionText: >-
-  Sesión íntima, canalizada y reveladora. A través de una metodología única que
-  combina preguntas poderosas, oráculos y dinámicas de escritura consciente.
+descriptionText: |-
+  Sesión íntima, canalizada y reveladora. A través de una metodología única que combina preguntas poderosas, oráculos y dinámicas de escritura consciente, iremos explorando los temas que hoy tienes "sobre la mesa".
+
+  Es un espacio que une coaching y espiritualidad. Trabajamos con la voz de tu niñ@ interior, tu sabiduría y tu visión hacia lo que quieres.
+
+  Ideal para vaciar la mente, poner orden en lo interno y salir con más dirección.
 details:
   - '<strong>Sesiones:</strong> 1'
   - '<strong>Duración:</strong> 1h - 1h30 máx'
@@ -17,5 +20,5 @@ meta:
 duration: '1h - 1h30 máx'
 modality: 'presencial'
 price: '70€'
-bookingUrl: 'https://scheduler.zoom.us/maria-eleonora-051exv/sesi-n-eleahora'
+bookingUrl: 'https://cal.com/eleahora/sesiones'
 ctaText: 'Quiero mis perlas'

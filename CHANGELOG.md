@@ -8,9 +8,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Changed
-- **workshop-empresas**: `experienceItems` migrado de array de strings a objetos con `title` y `description`. Actualizado esquema Keystatic, contenido YAML y renderizado en página para mostrar descripciones de cada paso de la experiencia.
-- **testimonios**: actualizados textos de Flora Bautian, Marta Leciñena y Andrea Trocel con nuevas citas. Corregido nombre "Marta Leciñena" (añadida ñ).
-- **about.yaml**: limpiados `heroSubtitle` y `ctaBody` (vaciados).
+- **URLs de booking**: migradas todas las sesiones de Zoom Scheduler a `cal.com/eleahora/*`.
+- **Descripciones de sesiones**: enriquecidas con párrafos adicionales en las 6 sesiones (acompañamiento, terapia angelical, perlas, meditación, energética).
+- **index.astro**: añadido segundo párrafo (`mindfulnessBody2`) en sección de Mindfulness. Actualizados textos de benefits y lead.
+- **sesiones-page.yaml**: actualizado `heroTitle` a "¿con cuál te gustaría empezar?" y limpiado `ctaBody`.
+- **sesiones.astro**: CTA final migrado de `<p>` a `<h2>` y eliminada referencia a `ctaBody`.
+- **about.md**: reordenado contenido del manifiesto y simplificado closing.
+- **workshop-empresas.astro**: descripción del workshop convertida a multi-párrafo con `split('\n\n')`.
+
+### Removed
+- **workshop-empresas.astro**: eliminada sección completa de "Formatos" (HTML, CSS, datos y campos de Keystatic).
+- **keystatic.config.ts**: eliminados campos `formats*` (formatsEyebrow, formatsTitle, formats array).
 
 ### Fixed
 - **Testimonios**: añadido `white-space: pre-line` en `.testimonial-text` para soporte de testimonios multi-párrafo.
@@ -24,12 +32,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Documentación de variable de entorno `GITHUB_PAT` en `.env.example` para uso de GitHub Reader.
 - **`src/content/singletons/global-content.yaml`**: nuevo archivo de contenido global centralizado para header, footer, navegación, legal, 404, gracias, modal de meditación y créditos.
-- **keystatic.config.ts**: configurado singleton `globalContent` con campos editoriales completos.
+- **keystatic.config.ts**: configurado singleton `globalContent` con campos editoriales completos, y nuevo campo `mindfulnessBody2`.
 - **`getGlobalContent()`**: nueva función en `src/lib/keystatic.ts` para leer contenido global desde el CMS.
 - **workshop.yaml**: nuevo campo `heroImage2` para galería dual en hero del workshop.
 - Nuevo asset OG: `public/images/OG-images-eleahora-02.png`.
 - **about.yaml / contacto.yaml / home.yaml / sesiones-page.yaml**: campos extendidos para SEO, alt text, subtítulos, listas de servicios, opciones de formulario y CTAs.
-- **workshop.yaml**: nuevos campos `heroSecondaryCta*`, `guideEyebrow`, `workshopEyebrow`, `experienceEyebrow`, `benefitsEyebrow`, `formatsEyebrow`, `ctaEyebrow`, `whatsappCtaText`, `facts`, SEO completo.
+- **workshop.yaml**: nuevos campos `heroSecondaryCta*`, `guideEyebrow`, `workshopEyebrow`, `experienceEyebrow`, `benefitsEyebrow`, `ctaEyebrow`, `whatsappCtaText`, `facts`, SEO completo.
 
 ### Changed
 - Limpieza de comentarios en `.gitignore`.
@@ -46,8 +54,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **workshop-empresas.astro**: eyebrows, secondary CTAs, facts, whatsappCtaText y SEO desde CMS.
 - **index.astro**: service cards desde `home.yaml` con enlace dinámico a Insight Timer, testimonials sin fallback hardcodeado, alt texts desde CMS. SEO dinámico.
 - **MeditationModal.svelte**: título, textos y URL embed desde `globalContent`.
-- **workshop-empresas.astro**: rediseño completo con secciones hero (galería dual), guía, experiencia paso a paso, beneficios con tarjetas de color, formatos y CTA inteligente.
+- **workshop-empresas.astro**: rediseño completo con secciones hero (galería dual), guía, experiencia paso a paso, beneficios con tarjetas de color y CTA inteligente.
 - **docs/keystatic-implementation.md**: documentación actualizada con `globalContent` y nuevos campos.
+- **workshop-empresas**: `experienceItems` migrado de array de strings a objetos con `title` y `description`. Actualizado esquema Keystatic, contenido YAML y renderizado en página para mostrar descripciones de cada paso de la experiencia.
+- **testimonios**: actualizados textos de Flora Bautian, Marta Leciñena y Andrea Trocel con nuevas citas. Corregido nombre "Marta Leciñena" (añadida ñ).
+- **about.yaml**: limpiados `heroSubtitle` y `ctaBody` (vaciados).
 
 ## [0.3.0] - 2026-05-13
 

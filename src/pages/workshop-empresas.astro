@@ -20,7 +20,10 @@ const guideSlogan = (workshop as any)?.guideSlogan ?? 'Soy la voz que te recuerd
 
 const workshopEyebrow = (workshop as any)?.workshopEyebrow ?? 'El workshop';
 const workshopTitle = (workshop as any)?.workshopTitle ?? heroTitle;
-const workshopDescription = (workshop as any)?.workshopDescription ?? heroSubtitle;
+const workshopDescription = (workshop as any)?.workshopDescription ?? `El workshop: "Pienso, luego medito" combina ciencia, introspección y técnicas prácticas para reconectar con nuestra esencia, regular nuestras emociones y vivir con mayor presencia.
+El workshop guía a los asistentes a través de dinámicas envolventes que integran los cinco sentidos y los elementos de la naturaleza para cultivar la atención plena. Además, aborda cómo nivelar el cortisol y la dopamina, dos hormonas clave en la productividad y el bienestar, ofreciendo herramientas como ejercicios de respiración, meditación y prácticas creativas.
+Con un enfoque en la regulación del sistema nervioso, este espacio fomenta claridad mental, mejor toma de decisiones y una conexión más profunda entre los individuos y sus equipos.
+Ideal para empresas que buscan empoderar a sus colaboradores con recursos para enfrentar los desafíos modernos, este workshop es más que una pausa: Es una invitación para transformar la manera en que vivimos y trabajamos, con una práctica tan esencial como la de volver al presente.`;
 const experienceEyebrow = (workshop as any)?.experienceEyebrow ?? '¿Qué incluye la experiencia?';
 const experienceTitle = (workshop as any)?.experienceTitle ?? 'Un recorrido práctico, consciente y aplicable.';
 const experienceItems = (workshop as any)?.experienceItems?.length ? (workshop as any).experienceItems : [
@@ -50,25 +53,6 @@ const benefits = workshop?.benefits?.length ? workshop.benefits : [
   {
     title: 'Reducción del absentismo',
     description: 'El bienestar emocional es una inversión que impacta directamente en la productividad y la retención del talento.',
-  },
-];
-const formatsEyebrow = (workshop as any)?.formatsEyebrow ?? 'Formatos';
-const formatsTitle = workshop?.formatsTitle ?? 'Formatos disponibles';
-const formats = workshop?.formats?.length ? workshop.formats : [
-  {
-    name: 'Sesión única',
-    duration: '90 min',
-    description: 'Introducción al mindfulness con práctica guiada. Ideal para eventos o team days.',
-  },
-  {
-    name: 'Taller de medio día',
-    duration: '3-4 horas',
-    description: 'Teoría + práctica + meditaciones guiadas. Incluye material de apoyo.',
-  },
-  {
-    name: 'Programa mensual',
-    duration: '4 sesiones',
-    description: 'Un mes de acompañamiento con sesiones semanales para consolidar el hábito.',
   },
 ];
 const ctaTitle = workshop?.ctaTitle ?? '¿Hablamos para tu empresa?';
@@ -172,7 +156,7 @@ const workshopFacts = (workshop as any)?.facts?.length ? (workshop as any).facts
           <h2 id="about-title">{workshopTitle}</h2>
         </header>
         <div>
-          <p>{workshopDescription}</p>
+          {workshopDescription.split('\n\n').filter(Boolean).map(p => <p>{p}</p>)}
           <div class="about-facts-row" aria-label="Detalles del workshop">
             {workshopFacts.map((fact: { label: string; value: string; detail: string }) => (
               <div>
@@ -225,25 +209,6 @@ const workshopFacts = (workshop as any)?.facts?.length ? (workshop as any).facts
             </li>
           ))}
         </ul>
-      </div>
-    </section>
-
-    <section class="section-formats" id="formatos" aria-labelledby="formats-title">
-      <div class="max-w-screen">
-        <header class="section-header">
-          <span class="eyebrow">{formatsEyebrow}</span>
-          <h2 id="formats-title">{formatsTitle}</h2>
-        </header>
-
-        <div class="formats-grid">
-          {formats.map((format: { name: string; duration: string; description: string }) => (
-            <article>
-              <span>{format.duration}</span>
-              <h3>{format.name}</h3>
-              <p>{format.description}</p>
-            </article>
-          ))}
-        </div>
       </div>
     </section>
 
@@ -550,8 +515,7 @@ const workshopFacts = (workshop as any)?.facts?.length ? (workshop as any).facts
   }
 
   .section-about,
-  .section-experience,
-  .section-formats {
+  .section-experience {
     background:
       radial-gradient(ellipse 70% 50% at 95% 50%, rgba(109, 68, 146, 0.06), transparent 55%),
       var(--color-background);
@@ -653,8 +617,7 @@ const workshopFacts = (workshop as any)?.facts?.length ? (workshop as any).facts
   }
 
   .experience-list h3,
-  .benefit-card h3,
-  .formats-grid h3 {
+  .benefit-card h3 {
     margin: 0 0 0.45rem;
     color: var(--color-primary-dark);
     font-size: 1.2rem;
@@ -662,8 +625,7 @@ const workshopFacts = (workshop as any)?.facts?.length ? (workshop as any).facts
   }
 
   .experience-list p,
-  .benefit-card p,
-  .formats-grid p {
+  .benefit-card p {
     margin: 0;
     line-height: 1.7;
   }
@@ -748,32 +710,6 @@ const workshopFacts = (workshop as any)?.facts?.length ? (workshop as any).facts
     color: rgba(253, 251, 236, 0.86);
   }
 
-  .formats-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-  }
-
-  .formats-grid article {
-    padding: 2.2rem;
-    border: 1px solid rgba(59, 38, 57, 0.1);
-    border-radius: 24px;
-    background: rgba(255, 255, 255, 0.68);
-    box-shadow: 0 16px 40px rgba(59, 38, 57, 0.06);
-  }
-
-  .formats-grid article > span {
-    display: inline-block;
-    margin-bottom: 1rem;
-    padding: 0.3rem 0.8rem;
-    border: 1px solid rgba(187, 137, 107, 0.3);
-    border-radius: 999px;
-    color: var(--color-accent-red);
-    font-size: 0.78rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
-
   .section-soft {
     background:
       radial-gradient(ellipse 95% 70% at 15% 20%, rgba(187, 137, 107, 0.26) 0%, transparent 60%),
@@ -839,9 +775,6 @@ const workshopFacts = (workshop as any)?.facts?.length ? (workshop as any).facts
       gap: 2.5rem;
     }
 
-    .formats-grid {
-      grid-template-columns: 1fr;
-    }
   }
 
   @media (max-width: 820px) {

@@ -3,9 +3,12 @@ order: 4
 featured: false
 tagline: '04'
 pill: 'Base práctica'
-descriptionText: >-
-  Clase teórico-práctica para comprender cómo funciona tu sistema nervioso y
-  cómo regularlo puede ayudarte a volver al presente.
+descriptionText: |-
+  Clase teórico-práctica para comprender cómo funciona tu sistema nervioso y cómo regularlo puede ayudarte a volver al presente.
+
+  Aprenderás herramientas concretas de neurorregulación que podrás aplicar en tu día a día, y terminaremos con una meditación guiada que te permitirá experimentar la diferencia entre cómo llegaste y cómo te vas.
+
+  Mi intención con esta sesión es que te lleves la práctica y lo aprendido a tu cotidianidad.
 details:
   - '<strong>Sesiones:</strong> 1'
   - '<strong>Duración:</strong> 1h - 1h30 máx'
@@ -17,5 +20,5 @@ meta:
 duration: '1h - 1h30 máx'
 modality: 'online'
 price: '40€'
-bookingUrl: 'https://scheduler.zoom.us/maria-eleonora-051exv/sesi-n-eleahora'
+bookingUrl: 'https://cal.com/eleahora/sesiones'
 ctaText: 'Quiero aprender a meditar'

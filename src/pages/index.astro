@@ -26,15 +26,16 @@ const serviciosTitle = (home as any)?.serviciosTitle ?? "Estoy aquí para ti";
 
 const mindfulnessLabel = home?.mindfulnessLabel ?? "Ciencia & Espíritu";
 const mindfulnessTitle = home?.mindfulnessTitle ?? "Mindfulness como camino.";
-const mindfulnessLead = home?.mindfulnessLead ?? "La meditación es una herramienta de neuroregulación. El mindfulness es una práctica que entrena la mente para volver al momento presente.";
-const mindfulnessBody = home?.mindfulnessBody ?? "A través de la respiración, la atención plena y la consciencia corporal, el sistema nervioso aprende a salir del estado de alerta constante y a encontrar un nuevo equilibrio entre el hacer y el ser.";
-const mindfulnessBenefitsTitle = home?.mindfulnessBenefitsTitle ?? "Beneficios de practicar mindfulness regularmente:";
+const mindfulnessLead = home?.mindfulnessLead ?? "La meditación es una herramienta de neuroregulación.";
+const mindfulnessBody = home?.mindfulnessBody ?? "El mindfulness es una práctica que entrena la mente para volver al momento presente. A través de la respiración, la atención plena y la consciencia corporal, el sistema nervioso aprende a salir del estado de alerta constante y a regresar a un estado de regulación y equilibrio.";
+const mindfulnessBody2 = home?.mindfulnessBody2 ?? "Hoy sabemos que la meditación no solo transforma nuestra experiencia interna: también produce cambios medibles en el cerebro y en el sistema nervioso.";
+const mindfulnessBenefitsTitle = home?.mindfulnessBenefitsTitle ?? "Practicar mindfulness de forma regular puede ayudarte a:";
 const mindfulnessBenefits = home?.mindfulnessBenefits?.length ? home.mindfulnessBenefits : [
-  "Reducir el estrés y la ansiedad.",
-  "Mejorar la claridad mental y la concentración.",
-  "Regular emociones intensas.",
-  "Dormir mejor.",
-  "Aumentar la creatividad y la toma de decisiones.",
+  "reducir el estrés y la ansiedad",
+  "mejorar la claridad mental y la concentración",
+  "regular emociones intensas",
+  "dormir mejor",
+  "aumentar la creatividad y la toma de decisiones",
 ];
 const mindfulnessConclusion = home?.mindfulnessConclusion ?? "En un mundo que nos empuja constantemente hacia el ruido y la velocidad, la meditación se convierte en una forma de volver a uno mismo.";
 const mindfulnessImage = home?.mindfulnessImage ?? "/images/sesion_maria_corallo_neima_pidal_161-tiny.webp";
@@ -204,6 +205,9 @@ const resolveHomeLink = (href: string) => href === 'insightTimer' ? insightTimer
             </p>
             <p class="mindfulness-desc">
               {mindfulnessBody}
+            </p>
+            <p class="mindfulness-desc">
+              {mindfulnessBody2}
             </p>
 
             <div class="mindfulness-benefits-card">

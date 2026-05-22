@@ -3,12 +3,12 @@ order: 1
 featured: true
 tagline: '01'
 pill: 'Proceso profundo'
-descriptionText: >-
-  Este acompañamiento nace para sostenerte en los procesos que estás
-  atravesando, especialmente cuando necesitas claridad, calma y una nueva
-  manera de habitar lo que estás viviendo.
+descriptionText: |-
+  Este acompañamiento nace para sostenerte en los procesos que estás atravesando, especialmente cuando necesitas claridad, calma y una nueva manera de habitar lo que estás viviendo.
+
+  Cada sesión es única. No hay fórmulas rígidas, sino una escucha atenta y un acompañamiento presente, respetuoso y humano.
 details:
-  - '<strong>¿En qué consiste?</strong> Combinamos conversación terapéutica, meditación guiada y técnicas de PNL.'
+  - '<strong>¿En qué consiste?</strong> Combinamos conversación terapéutica, meditación guiada y técnicas de PNL para revisar tu diálogo interno y permitir que nuevas perspectivas emerjan en ti.'
   - '<strong>Sesiones:</strong> 4 (acompañamiento mensual)'
   - '<strong>Duración:</strong> 1h cada sesión'
   - '<strong>Modalidad:</strong> Videollamada'
@@ -19,5 +19,5 @@ meta:
 duration: '1h cada sesión'
 modality: 'online'
 price: '180€'
-bookingUrl: 'https://scheduler.zoom.us/maria-eleonora-051exv/30-min-con-eleahora'
+bookingUrl: 'https://cal.com/eleahora/llamada-de-descubrimiento'
 ctaText: 'Agendar llamada de descubrimiento (30min)'

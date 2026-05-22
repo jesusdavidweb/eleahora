@@ -6,14 +6,13 @@ seoDescription: >-
 ogTitle: 'Sesiones — Eleahora'
 ogImage: '/images/OG-images-eleahora-01.jpg'
 heroLabel: 'Sesiones'
-heroTitle: 'Estoy aquí para ti.'
+heroTitle: '¿con cuál te gustaría empezar?'
 heroSubtitle: >-
-  Cada sesión está diseñada como un espacio seguro para que puedas volver a
-  ti. Sea cual sea el punto en el que te encuentres.
+  Elige la que más resuene contigo. Permítete leer cada una con calma y
+  déjate sentir.
 heroImage: '/images/home-mindfulness-01-tiny.webp'
 heroImageAlt: 'Sesiones Eleahora'
 ctaTitle: 'Si aún no lo tienes claro, escríbeme aquí'
-ctaBody: >-
-  Escríbeme y hablamos. Juntas encontramos el punto de partida.
+ctaBody: ''
 ctaLink: '/contacto'
 ctaButtonText: 'Contactar para más información'

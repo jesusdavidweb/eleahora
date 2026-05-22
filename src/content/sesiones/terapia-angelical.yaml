@@ -3,10 +3,8 @@ order: 2
 featured: false
 tagline: '02'
 pill: 'Canalización'
-descriptionText: >-
-  Sesión de conexión con tus ángeles y seres de luz. Iniciamos con una
-  meditación de sanación para elevar tu vibración. Luego canalizamos sus
-  mensajes a través de oráculos angelicales.
+descriptionText: |-
+  Sesión de conexión con tus ángeles y seres de luz. Iniciamos con una meditación de sanación para elevar tu vibración. Luego canalizamos sus mensajes a través de oráculos angelicales, donde podrás hacer entre 6 y 8 preguntas para recibir guía y claridad.
 details:
   - '<strong>Sesiones:</strong> 1'
   - '<strong>Duración:</strong> 1h - 1h30 máx'
@@ -18,5 +16,5 @@ meta:
 duration: '1h - 1h30 máx'
 modality: 'ambas'
 price: '55€'
-bookingUrl: 'https://scheduler.zoom.us/maria-eleonora-051exv/sesi-n-eleahora'
+bookingUrl: 'https://cal.com/eleahora/sesiones'
 ctaText: 'Agendar Terapia'

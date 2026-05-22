@@ -7,12 +7,11 @@ const sesiones = await getAllSesiones();
 const site = await getSiteConfig();
 
 const heroLabel = page?.heroLabel ?? "Sesiones";
-const heroTitle = page?.heroTitle ?? "Estoy aquí para ti.";
-const heroSubtitle = page?.heroSubtitle ?? "Permítete leer cada una con calma y déjate sentir.";
+const heroTitle = page?.heroTitle ?? "¿con cuál te gustaría empezar?";
+const heroSubtitle = page?.heroSubtitle ?? "Elige la que más resuene contigo. Permítete leer cada una con calma y déjate sentir.";
 const heroImage = page?.heroImage ?? "/images/home-hero-eleahora-01-tiny.webp";
 const heroImageAlt = (page as any)?.heroImageAlt ?? "Sesiones Eleahora";
 const ctaTitle = page?.ctaTitle ?? "Si aún no lo tienes claro, escríbeme aquí";
-const ctaBody = page?.ctaBody ?? "";
 const ctaLink = page?.ctaLink ?? "/contacto";
 const ctaButtonText = (page as any)?.ctaButtonText ?? "Contactar para más información";
 const calLink = site?.calLink ?? "https://cal.eu/eleahora/sesiones";
@@ -71,8 +70,7 @@ const calLink = site?.calLink ?? "https://cal.eu/eleahora/sesiones";
 
     <section class="services-final-cta" aria-label="Ayuda para elegir sesión">
       <div class="max-w-screen final-cta-wrap">
-        <p>{ctaTitle}</p>
-        {ctaBody && <p class="final-cta-body">{ctaBody}</p>}
+        <h2 class="final-cta-title">{ctaTitle}</h2>
         <a href={ctaLink} class="btn-primary">{ctaButtonText}</a>
       </div>
     </section>
@@ -92,8 +90,8 @@ const calLink = site?.calLink ?? "https://cal.eu/eleahora/sesiones";
   .services-list { padding: 2.5rem 0 6rem; }
   .services-final-cta { padding: 0 0 6rem; }
   .final-cta-wrap { display: flex; flex-direction: column; align-items: center; gap: 1rem; padding: 2rem 1.5rem; border: 1px solid rgba(109,68,146,0.24); border-radius: 22px; background: radial-gradient(circle at 10% 10%, rgba(109,68,146,0.08), transparent 45%), radial-gradient(circle at 90% 90%, rgba(140,7,3,0.08), transparent 42%), rgba(255,255,255,0.7); box-shadow: 0 12px 26px rgba(59,38,57,0.08), inset 0 1px 0 rgba(255,255,255,0.85); }
+  .final-cta-title { margin: 0; font-size: clamp(1.6rem, 3vw, 2.4rem); line-height: 1.2; text-align: center; color: var(--color-primary-dark); }
   .final-cta-wrap p { margin: 0; font-size: 1.2rem; text-align: center; color: rgba(59,38,57,0.9); }
-  .final-cta-wrap .final-cta-body { max-width: 42rem; font-size: 1rem; line-height: 1.6; opacity: 0.82; }
   .list-wrap { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); grid-auto-flow: dense; align-items: stretch; gap: 1.6rem; }
   .service-item { display: flex; flex-direction: column; position: relative; overflow: hidden; border: 1px solid rgba(59,38,57,0.1); border-radius: 22px; padding: 2rem; background: radial-gradient(circle at 92% -8%, rgba(109,68,146,0.11), transparent 52%), radial-gradient(circle at 8% 108%, rgba(140,7,3,0.08), transparent 50%), rgba(255,255,255,0.8); box-shadow: 0 16px 34px rgba(59,38,57,0.07), inset 0 1px 0 rgba(255,255,255,0.84); transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease; min-height: 100%; }
   .service-item-featured { grid-column: span 2; }

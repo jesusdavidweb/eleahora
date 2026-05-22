@@ -393,6 +393,11 @@ export default config({
           multiline: true,
           defaultValue: "A través de la respiración consciente, la atención plena y la regulación del sistema nervioso, el Mindfulness nos permite responder en lugar de reaccionar. Es una herramienta científica y espiritual para vivir con más claridad, calma y compasión.",
         }),
+        mindfulnessBody2: fields.text({
+          label: "Mindfulness — Segundo descriptivo",
+          multiline: true,
+          defaultValue: "Hoy sabemos que la meditación no solo transforma nuestra experiencia interna: también produce cambios medibles en el cerebro y en el sistema nervioso.",
+        }),
         mindfulnessBenefitsTitle: fields.text({
           label: "Mindfulness — Título beneficios",
           defaultValue: "Beneficios del Mindfulness",
@@ -788,27 +793,6 @@ export default config({
           {
             label: "Beneficios",
             itemLabel: (props) => props.fields.title.value || "Beneficio",
-          }
-        ),
-
-        // Formatos
-        formatsEyebrow: fields.text({
-          label: "Formatos — Etiqueta",
-          defaultValue: "Formatos",
-        }),
-        formatsTitle: fields.text({
-          label: "Formatos — Título",
-          defaultValue: "Formatos disponibles",
-        }),
-        formats: fields.array(
-          fields.object({
-            name: fields.text({ label: "Nombre" }),
-            duration: fields.text({ label: "Duración" }),
-            description: fields.text({ label: "Descripción", multiline: true }),
-          }),
-          {
-            label: "Formatos",
-            itemLabel: (props) => props.fields.name.value || "Formato",
           }
         ),
 
