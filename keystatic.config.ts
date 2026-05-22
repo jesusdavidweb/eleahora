@@ -761,12 +761,13 @@ export default config({
           defaultValue: "Un recorrido práctico, consciente y aplicable.",
         }),
         experienceItems: fields.array(
-          fields.text({
-            label: "Item",
+          fields.object({
+            title: fields.text({ label: "Título" }),
+            description: fields.text({ label: "Descripción", multiline: true }),
           }),
           {
             label: "Experiencia — Items",
-            itemLabel: (props) => props.value || "Item",
+            itemLabel: (props) => props.fields.title.value || "Item",
           }
         ),
 

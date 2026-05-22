@@ -39,13 +39,27 @@ workshopDescription: >-
 experienceEyebrow: '¿Qué incluye la experiencia?'
 experienceTitle: 'Un recorrido práctico, consciente y aplicable.'
 experienceItems:
-  - 'Bienvenida y aterrizaje consciente'
-  - 'Respiración y regulación del sistema nervioso'
-  - 'Meditación guiada aplicada al entorno laboral'
-  - 'Herramientas de atención plena para el día a día'
-  - 'Integración y cierre compartido'
+  - title: "Bienvenida y aterrizaje consciente"
+    description: >-
+      Apertura del espacio, intención compartida y práctica breve para llegar al aquí y ahora como equipo.
+  - title: "¿Cómo estar más presentes?"
+    description: >-
+      Prácticas conscientes que integran los sentidos y los elementos.
+  - title: "Meditación como método de neuroregulación"
+    description: >-
+      Sistema nervioso, dopamina y cortisol.
+  - title: "Meditación en todas sus formas"
+    description: >-
+      Con el cuerpo, la mente y el alma.
+  - title: "Niño Interior"
+    description: >-
+      Dinámicas lúdicas que despiertan la creatividad y la alegría.
+  - title: "¿Y ahora qué?"
+    description: >-
+      Acciones concretas para aplicar en el día a día.
+
 benefitsEyebrow: '¿Qué te llevas como empresa?'
-benefitsTitle: '¿Qué se llevan los equipos?'
+benefitsTitle: "Lo que cambia después de la experiencia."
 benefits:
   - title: 'Regulación del sistema nervioso'
     description: 'Herramientas prácticas para gestionar el estrés en el entorno laboral.'

@@ -24,11 +24,12 @@ const workshopDescription = (workshop as any)?.workshopDescription ?? heroSubtit
 const experienceEyebrow = (workshop as any)?.experienceEyebrow ?? '¿Qué incluye la experiencia?';
 const experienceTitle = (workshop as any)?.experienceTitle ?? 'Un recorrido práctico, consciente y aplicable.';
 const experienceItems = (workshop as any)?.experienceItems?.length ? (workshop as any).experienceItems : [
-  'Bienvenida y aterrizaje consciente',
-  'Respiración y regulación del sistema nervioso',
-  'Meditación guiada aplicada al entorno laboral',
-  'Herramientas de atención plena para el día a día',
-  'Integración y cierre compartido',
+  { title: "Bienvenida y aterrizaje consciente", description: "Apertura del espacio, intención compartida y práctica breve para llegar al aquí y ahora como equipo." },
+  { title: "¿Cómo estar más presentes?", description: "Prácticas conscientes que integran los sentidos y los elementos." },
+  { title: "Meditación como método de neuroregulación", description: "Sistema nervioso, dopamina y cortisol." },
+  { title: "Meditación en todas sus formas", description: "Con el cuerpo, la mente y el alma." },
+  { title: "Niño Interior", description: "Dinámicas lúdicas que despiertan la creatividad y la alegría." },
+  { title: "¿Y ahora qué?", description: "Acciones concretas para aplicar en el día a día." }
 ];
 
 const benefitsEyebrow = (workshop as any)?.benefitsEyebrow ?? '¿Qué te llevas como empresa?';
