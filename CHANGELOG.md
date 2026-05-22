@@ -16,6 +16,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **keystatic.config.ts**: nuevos campos `closingQuote`, `closingQuoteAuthor`, `testimonialsTitle`, `testimonialsEyebrow` en workshop.
 
 ### Changed
+- **index.astro / about.astro**: limitada altura de imágenes de tipografía a 38px en `.section-label-img` y `.hero-label-img`.
+- **index.astro**: centrado horizontalmente el label "Ciencia y Espíritu" en la sección de mindfulness.
 - **index.astro / about.astro / workshop-empresas.astro**: labels de texto reemplazados por imágenes de tipografía de marca en hero, manifiesto, mindfulness y secciones de about.
 - **workshop-empresas.astro**: hero rediseñado — título partido en dos líneas con colores de marca (rojo vinotinto + morado oscuro), imágenes en posición absoluta (sin grid), facts como tarjetas individuales con border-radius y sombra.
 - **workshop.yaml**: actualizados heroLabel ("Experiencia para empresas"), heroSubtitle ("Transformando el estrés en presencia") y estructura de facts (Formato/Duración/Modalidad).
