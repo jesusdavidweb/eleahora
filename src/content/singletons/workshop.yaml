@@ -90,10 +90,12 @@ closingQuote: >-
   cuenta de que no estamos presentes.
 closingQuoteAuthor: 'Meggan Watterson'
 ctaEyebrow: 'Siguiente paso'
-ctaTitle: '¿Hablamos para tu empresa?'
+ctaTitle: '¿Quieres llevar esta experiencia a tu organización?'
 ctaBody: >-
   Cuéntame el tamaño de tu equipo y qué necesitáis, y diseñamos juntos la
   experiencia perfecta.
-ctaButtonText: 'Solicitar información'
+ctaButtonText: 'Agendar llamada de descubrimiento'
 ctaButtonLink: '/contacto'
+ctaEmailLabel: 'Escríbeme un correo'
+ctaEmailAddress: 'info@eleahora.com'
 whatsappCtaText: 'WhatsApp'

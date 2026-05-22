@@ -831,7 +831,7 @@ export default config({
         }),
         ctaTitle: fields.text({
           label: "CTA — Título",
-          defaultValue: "Estoy aquí para ti.",
+          defaultValue: "¿Quieres llevar esta experiencia a tu organización?",
         }),
         ctaBody: fields.text({
           label: "CTA — Texto",
@@ -840,11 +840,19 @@ export default config({
         }),
         ctaButtonText: fields.text({
           label: "CTA — Texto del botón",
-          defaultValue: "Solicitar propuesta",
+          defaultValue: "Agendar llamada de descubrimiento",
         }),
         ctaButtonLink: fields.text({
           label: "CTA — Enlace del botón",
           defaultValue: "/contacto",
+        }),
+        ctaEmailLabel: fields.text({
+          label: "CTA — Texto del email",
+          defaultValue: "Escríbeme un correo",
+        }),
+        ctaEmailAddress: fields.text({
+          label: "CTA — Dirección de email",
+          defaultValue: "info@eleahora.com",
         }),
         whatsappCtaText: fields.text({
           label: "CTA — Texto WhatsApp",

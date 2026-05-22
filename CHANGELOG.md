@@ -13,6 +13,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **keystatic.config.ts**: nuevos campos `closingQuote`, `closingQuoteAuthor`, `testimonialsTitle` en workshop.
 
 ### Changed
+- **workshop-empresas.astro**: CTA final rediseñado con botón "Agendar llamada de descubrimiento" (enlace a calLink) y email "Escríbeme un correo" (mailto).
+- **keystatic.config.ts / workshop.yaml**: nuevos campos editables `ctaEmailLabel` y `ctaEmailAddress`; actualizados defaults de `ctaTitle` y `ctaButtonText`.
 - **contacto.yaml / contacto.astro**: eliminado heroSubtitle "Hablemos. / Estoy aquí para escucharte..." y processEyebrow "Qué pasa después".
 - **keystatic.config.ts**: defaults de `processPanelAriaLabel` actualizados a "Proceso de contacto", `processEyebrow` a vacío.
 - **workshop-empresas.astro**: rediseñado hero-facts de lista flex a CSS grid; actualizados textos CTA ("Estoy aquí para ti." / "Hablemos para llevar esta experiencia a tu organización.").

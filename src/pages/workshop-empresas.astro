@@ -56,11 +56,13 @@ const benefits = workshop?.benefits?.length ? workshop.benefits : [
     description: 'El bienestar emocional es una inversión que impacta directamente en la productividad y la retención del talento.',
   },
 ];
-const ctaTitle = workshop?.ctaTitle ?? 'Estoy aquí para ti.';
+const ctaTitle = workshop?.ctaTitle ?? '¿Quieres llevar esta experiencia a tu organización?';
 const ctaBody = workshop?.ctaBody ?? 'Hablemos para llevar esta experiencia a tu organización.';
 const ctaEyebrow = (workshop as any)?.ctaEyebrow ?? 'Siguiente paso';
-const ctaButtonText = workshop?.ctaButtonText ?? 'Solicitar información';
+const ctaButtonText = workshop?.ctaButtonText ?? 'Agendar llamada de descubrimiento';
 const ctaButtonLink = (workshop as any)?.ctaButtonLink ?? '/contacto';
+const ctaEmailLabel = (workshop as any)?.ctaEmailLabel ?? 'Escríbeme un correo';
+const ctaEmailAddress = (workshop as any)?.ctaEmailAddress ?? 'info@eleahora.com';
 const closingQuote = (workshop as any)?.closingQuote ?? 'El verdadero reto de la condición humana no es estar presente, sino darnos cuenta de que no estamos presentes.';
 const closingQuoteAuthor = (workshop as any)?.closingQuoteAuthor ?? 'Meggan Watterson';
 const testimonialsTitle = (workshop as any)?.testimonialsTitle ?? 'Testimonios';
@@ -242,9 +244,9 @@ const workshopFacts = (workshop as any)?.facts?.length ? (workshop as any).facts
       <div class="max-w-screen cta-inner">
         <p class="text-accent">{ctaEyebrow}</p>
         <h2 id="cta-title">{ctaTitle}</h2>
-        <p>{ctaBody}</p>
         <div class="cta-actions">
-          <a href={ctaHref} class="btn-primary">{ctaButtonText}</a>
+          <a href={site?.calLink ?? ctaHref} class="btn-primary">{ctaButtonText}</a>
+          <a href={`mailto:${ctaEmailAddress}`} class="btn-outline">{ctaEmailLabel}</a>
         </div>
       </div>
     </section>
