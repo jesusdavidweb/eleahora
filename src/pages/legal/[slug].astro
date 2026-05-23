@@ -18,9 +18,16 @@ if (!legalPage) {
   return Astro.redirect('/404');
 }
 
-const title = legalPage.title;
+const pageTitles: Record<string, string> = {
+  'aviso-legal': 'Aviso Legal',
+  'politica-de-privacidad': 'Política de Privacidad',
+  'politica-de-cookies': 'Política de Cookies',
+};
+
+const title = pageTitles[slug] ?? legalPage.title;
 const metaDescription = legalPage.metaDescription ?? '';
-const contentHtml = legalPage.contentHtml ?? '';
+const rawContentHtml = legalPage.contentHtml;
+const contentHtml = typeof rawContentHtml === 'string' ? rawContentHtml : '';
 const lastUpdated = legalPage.lastUpdated ?? '';
 const globalContent = await getGlobalContent();
 ---

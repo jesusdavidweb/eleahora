@@ -80,11 +80,11 @@ function nodesToHtml(nodes: DocNode[]): string {
 }
 
 async function resolveDocument(
-  docFn: (() => Promise<unknown[]>) | null | undefined,
+  docFn: (() => Promise<unknown[]>) | unknown[] | null | undefined,
 ): Promise<string> {
   if (!docFn) return '';
   try {
-    const nodes = await docFn();
+    const nodes = typeof docFn === 'function' ? await docFn() : docFn;
     if (!Array.isArray(nodes)) return '';
     return nodesToHtml(nodes as DocNode[]);
   } catch {
@@ -261,11 +261,13 @@ export async function getAllLegalPages() {
       slugs.map(async (slug: string) => {
         const entry = await r.collections.legalPages.read(slug);
         if (!entry) return null;
+        let contentHtml = await resolveTextContent((entry as Record<string, unknown>).content);
+        if (!contentHtml) contentHtml = await readLegalContentYaml(slug);
         return {
           slug,
           entry: {
             ...entry,
-            contentHtml: await resolveDocument(entry.content),
+            contentHtml,
           },
         };
       }),
@@ -282,11 +284,50 @@ export async function getLegalPage(slug: string) {
     if (!r) return null;
     const entry = await r.collections.legalPages.read(slug);
     if (!entry) return null;
+    let contentHtml = await resolveTextContent((entry as Record<string, unknown>).content);
+    if (!contentHtml) contentHtml = await readLegalContentYaml(slug);
     return {
       ...entry,
-      contentHtml: await resolveDocument(entry.content),
+      contentHtml,
     };
   } catch {
     return null;
   }
+}
+
+async function readLegalContentYaml(slug: string): Promise<string> {
+  try {
+    const fs = await import('node:fs');
+    const path = await import('node:path');
+    const filePath = path.default.join(process.cwd(), 'src', 'content', 'legal', `${slug}.yaml`);
+    const raw = fs.default.readFileSync(filePath, 'utf-8');
+    const regex = /^content:\s*\|-?\s*\n((?:  .*\n?)*)/m;
+    const match = raw.match(regex);
+    if (!match) return '';
+    return match[1]
+      .split('\n')
+      .map((line: string) => line.replace(/^  /, ''))
+      .join('\n')
+      .trim();
+  } catch {
+    return '';
+  }
+}
+
+async function resolveTextContent(value: unknown): Promise<string> {
+  if (typeof value === 'string') return value;
+  if (typeof value === 'function') {
+    const result = await value();
+    return typeof result === 'string' ? result : '';
+  }
+  if (value && typeof value === 'object') {
+    const obj = value as Record<string, unknown>;
+    if (typeof obj.value === 'string') return obj.value;
+    if (typeof obj.text === 'string') return obj.text;
+    if (typeof obj.content === 'string') return obj.content;
+    if (typeof obj.html === 'string') return obj.html;
+    const str = String(value);
+    if (str !== '[object Object]') return str;
+  }
+  return '';
 }

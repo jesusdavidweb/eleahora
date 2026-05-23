@@ -28,6 +28,11 @@ const footerCreditsLinks = globalContent?.footerCreditsLinks?.length ? globalCon
   { label: 'Amorchi House', href: 'http://amorchihouse.com/' },
   { label: '@jesusdavidweb', href: 'https://jesusdavid.net/' },
 ];
+const footerLegalLinks = globalContent?.footerLegalLinks?.length ? globalContent.footerLegalLinks : [
+  { label: 'Aviso Legal', href: '/legal/aviso-legal' },
+  { label: 'Privacidad', href: '/legal/politica-de-privacidad' },
+  { label: 'Cookies', href: '/legal/politica-de-cookies' },
+];
 const footerContactLinks = globalContent?.footerContactLinks?.length ? globalContent.footerContactLinks : [
   { label: 'Agenda una Sesion', href: 'booking', external: true },
   { label: 'Instagram', href: 'instagram', external: true },
@@ -62,6 +67,17 @@ const footerContactLabel = (href: string, fallback: string) => {
         <nav aria-label="Footer Navigation">
           <ul>
             {footerExploreLinks.map((link: { label: string; href: string }) => (
+              <li><a href={link.href}>{link.label}</a></li>
+            ))}
+          </ul>
+        </nav>
+      </div>
+      
+      <div class="footer-links">
+        <h3 class="footer-title">{globalContent?.footerLegalTitle ?? 'Legal'}</h3>
+        <nav aria-label="Legal">
+          <ul>
+            {footerLegalLinks.map((link: { label: string; href: string }) => (
               <li><a href={link.href}>{link.label}</a></li>
             ))}
           </ul>
@@ -212,7 +228,7 @@ const footerContactLabel = (href: string, fallback: string) => {
   
   @media (min-width: 768px) {
     .footer-grid {
-      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
     }
   }
   

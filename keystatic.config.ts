@@ -1338,10 +1338,9 @@ export default config({
           label: "Última actualización",
           defaultValue: { kind: "today" },
         }),
-        content: fields.document({
-          label: "Contenido",
-          formatting: true,
-          links: true,
+        content: fields.text({
+          label: "Contenido (HTML)",
+          multiline: true,
         }),
       },
     }),

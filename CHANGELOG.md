@@ -8,6 +8,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **CookieConsent.svelte**: nueva isla Svelte con banner de cookies RGPD/LSSI, botones "Aceptar todas" / "Solo necesarias", consentimiento almacenado en cookie `cookieconsent` (1 año).
+- **Footer.astro**: nueva columna "Legal" con enlaces a aviso legal, política de privacidad y política de cookies.
+- **Layout.astro**: integrado `<CookieConsent client:load />` para carga del banner en todas las páginas.
+- **keystatic.ts**: nuevas funciones `resolveTextContent` y `readLegalContentYaml` como fallback de lectura directa del YAML cuando el reader de Keystatic no devuelve string.
+- **legal/[slug].astro**: mapeo `pageTitles` para títulos con guiones (aviso-legal → Aviso Legal, etc.) y defensa de tipo para `contentHtml`.
 - **docs/keystatic-coverage-audit.md**: matriz de cobertura editorial Keystatic para páginas públicas, header/footer, legales y exclusiones visuales/técnicas.
 - **keystatic.config.ts / singletons YAML**: nuevos campos editoriales para labels, alt text y aria labels visibles en workshop y landing "Pienso, luego medito" sin alterar estructura visual.
 - **design-system.astro**: nueva página pública de documentación visual del design system con tokens de color, tipografía, espaciado, componentes, layouts, assets y principios de movimiento.
@@ -24,6 +29,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **keystatic.config.ts**: nuevos campos `closingQuote`, `closingQuoteAuthor`, `testimonialsTitle`, `testimonialsEyebrow` en workshop.
 
 ### Changed
+- **Páginas legales (3)**: contenido ampliado a versiones finales profesionales — aviso-legal (9 secciones con disclaimer profesional), política-de-privacidad (15 secciones con tabla de encargados, derechos detallados, menores, secreto profesional), política-de-cookies (9 secciones con tabla de cookies, instrucciones por navegador, base legal LSSI/RGPD).
+- **keystatic.config.ts**: campo `content` de páginas legales migrado de `fields.document()` a `fields.text({ multiline: true })` para almacenar HTML plano como string fiable.
 - **about.astro / workshop-empresas.astro / landing/pienso-luego-medito.astro / Footer.astro**: conectados labels, alt text y microcopy visibles a Keystatic manteniendo fallbacks iguales al render actual.
 - **index.astro / about.astro**: limitada altura de imágenes de tipografía a 38px en `.section-label-img` y `.hero-label-img`.
 - **index.astro**: centrado horizontalmente el label "Ciencia y Espíritu" en la sección de mindfulness.
