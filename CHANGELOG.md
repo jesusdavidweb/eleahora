@@ -29,6 +29,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **keystatic.config.ts**: nuevos campos `closingQuote`, `closingQuoteAuthor`, `testimonialsTitle`, `testimonialsEyebrow` en workshop.
 
 ### Changed
+- **URL de agendamiento**: migrado enlace de `cal.com/eleahora/*` a `scheduler.zoom.us/maria-eleonora-051exv/sesi-n-eleahora` en `site-config.yaml`, `sesiones.astro`, `pienso-luego-medito.astro` y `llms.txt`.
 - **Páginas legales (3)**: contenido ampliado a versiones finales profesionales — aviso-legal (9 secciones con disclaimer profesional), política-de-privacidad (15 secciones con tabla de encargados, derechos detallados, menores, secreto profesional), política-de-cookies (9 secciones con tabla de cookies, instrucciones por navegador, base legal LSSI/RGPD).
 - **keystatic.config.ts**: campo `content` de páginas legales migrado de `fields.document()` a `fields.text({ multiline: true })` para almacenar HTML plano como string fiable.
 - **about.astro / workshop-empresas.astro / landing/pienso-luego-medito.astro / Footer.astro**: conectados labels, alt text y microcopy visibles a Keystatic manteniendo fallbacks iguales al render actual.

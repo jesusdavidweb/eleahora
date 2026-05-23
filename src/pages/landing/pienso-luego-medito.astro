@@ -7,7 +7,7 @@ const page = await getPiensoLuegoMeditoLanding();
 const site = await getSiteConfig();
 
 const paragraphs = (value: string) => value.split('\n\n').filter(Boolean);
-const bookingUrl = site?.calLink ?? 'https://cal.eu/eleahora/sesiones';
+const bookingUrl = site?.calLink ?? 'https://scheduler.zoom.us/maria-eleonora-051exv/sesi-n-eleahora';
 const emailAddress = (page as any)?.emailAddress ?? 'info@eleahora.com';
 const phoneNumber = (page as any)?.phoneNumber ?? '+34 605 37 37 82';
 const whatsappUrl = `https://wa.me/${(site?.phoneWhatsapp ?? phoneNumber).replace(/\D/g, '')}`;
