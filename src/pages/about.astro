@@ -8,7 +8,6 @@ const about = await getAboutPage();
 // Fallbacks
 const heroLabel = about?.heroLabel ?? "Sobre Mí";
 const heroTitle = about?.heroTitle ?? "Soy quien soy y eso es suficiente.";
-const heroSubtitle = about?.heroSubtitle ?? "";
 const profileImage = about?.profileImage ?? "/images/about-eleahora-001.webp";
 const profileImageDesktop = (about as any)?.profileImageDesktop ?? "/images/about-desktop-2.webp";
 const profileImageAlt = (about as any)?.profileImageAlt ?? "Fondo de la sección Sobre Mí de Eleahora — presencia y conexión interior";
@@ -16,13 +15,13 @@ const profileImageAlt = (about as any)?.profileImageAlt ?? "Fondo de la sección
 const recorridoTitle = (about as any)?.recorridoTitle ?? "Tengo un sueño: llevar la meditación a personas que aún no saben que la necesitan.";
 const recorridoImage = (about as any)?.recorridoImage ?? "/images/about-mi-recorrido-01.webp";
 const recorridoImageAlt = (about as any)?.recorridoImageAlt ?? "Maria Eleonora Corallo, terapeuta transpersonal y fundadora de Eleahora";
-const bioIntro = about?.bioIntro ?? "Nací en Venezuela, en una familia italiana, y desde muy joven mi vida ha estado marcada por el movimiento: distintos países, idiomas y culturas. Durante años seguí un camino más estructurado: estudié idiomas y comercio internacional en París y trabajé en entornos corporativos.";
+const bioIntro = about?.bioIntro ?? "Nací en Venezuela, en una familia italiana, y desde muy joven mi vida ha estado marcada por el movimiento: distintos países, idiomas y culturas.";
 const bioBodyHtml = about?.bioBodyHtml ?? null;
 
 const eleahoraTitle = (about as any)?.eleahoraTitle ?? "Un espacio de espiritualidad aterrizada para vivir con más presencia.";
 const eleahoraImage = (about as any)?.eleahoraImage ?? "/images/about-eleahora-002.webp";
 const eleahoraImageAlt = (about as any)?.eleahoraImageAlt ?? "Proceso de presencia y espiritualidad aterrizada — así nace Eleahora";
-const manifestoText = (about as any)?.manifestoText ?? "Hoy acompaño a personas que sienten que algo dentro de ellas quiere moverse, ordenarse o simplemente respirar un poco más profundo. Trabajo a través de:";
+const manifestoText = (about as any)?.manifestoText ?? "Hoy acompaño a personas que sienten que algo dentro de ellas quiere moverse, ordenarse o simplemente respirar un poco más profundo.";
 const serviceList = (about as any)?.serviceList?.length ? (about as any).serviceList : [
   "Sesiones individuales de terapia.",
   "Experiencias de meditación y espacios conscientes.",
@@ -31,7 +30,6 @@ const serviceList = (about as any)?.serviceList?.length ? (about as any).service
 const eleahoraClosingText = (about as any)?.eleahoraClosingText ?? "Porque creo profundamente que estamos viviendo un momento de cambio colectivo donde la consciencia, la presencia y la conexión interior ya no son un lujo, sino una necesidad.";
 
 const ctaTitle = about?.ctaTitle ?? "Te acompaño a volver a conectar con el presente. Bienvenidos";
-const ctaBody = about?.ctaBody ?? "";
 const ctaButtonText = about?.ctaButtonText ?? "Estoy aquí para ti";
 const ctaButtonLink = (about as any)?.ctaButtonLink ?? "/sesiones";
 ---
@@ -56,14 +54,13 @@ const ctaButtonLink = (about as any)?.ctaButtonLink ?? "/sesiones";
       <div class="max-w-screen page-hero-content">
         <span class="text-accent page-kicker">{heroLabel}</span>
         <h1 id="about-title">{heroTitle}</h1>
-        {heroSubtitle && <p class="page-hero-subtitle">{heroSubtitle}</p>}
       </div>
     </section>
 
     <section class="about-story section-soft" aria-labelledby="historia-title">
       <div class="max-w-screen story-grid">
         <article>
-          <img src="/images/textos/Mi-recorrido.png" alt="Mi recorrido" class="section-label-img" />
+          <p class="section-label">Mi recorrido</p>
           <h2 id="historia-title" class="section-title">
             {recorridoTitle}
           </h2>
@@ -120,7 +117,7 @@ const ctaButtonLink = (about as any)?.ctaButtonLink ?? "/sesiones";
           />
         </aside>
         <article>
-          <img src="/images/textos/Así-nació-eleahora.png" alt="Así nació Eleahora" class="section-label-img" />
+          <p class="section-label">Así nació Eleahora</p>
           <h2 id="camino-title" class="section-title">
             {eleahoraTitle}
           </h2>
@@ -131,6 +128,9 @@ const ctaButtonLink = (about as any)?.ctaButtonLink ?? "/sesiones";
           />
           <div class="section-body">
             <p>{manifestoText}</p>
+            <p>
+              Trabajo a través de:
+            </p>
           </div>
           <ul class="service-list" aria-label="Formatos de acompañamiento">
             {serviceList.map((service: string) => <li>{service}</li>)}
@@ -146,7 +146,6 @@ const ctaButtonLink = (about as any)?.ctaButtonLink ?? "/sesiones";
     <section class="about-cta section-soft" aria-labelledby="cta-title">
       <div class="max-w-screen cta-wrap">
         <h2 id="cta-title">{ctaTitle}</h2>
-        {ctaBody && <p>{ctaBody}</p>}
         <a
           href={ctaButtonLink}
           class="footer-meditation-cta"
@@ -219,15 +218,6 @@ const ctaButtonLink = (about as any)?.ctaButtonLink ?? "/sesiones";
     max-width: 18ch;
   }
 
-  .page-hero-subtitle {
-    max-width: 34ch;
-    margin-top: 1rem;
-    color: var(--color-background);
-    font-size: clamp(1rem, 2vw, 1.2rem);
-    line-height: 1.6;
-    opacity: 0.88;
-  }
-
   .section-soft {
     background: linear-gradient(
       to bottom,
@@ -258,13 +248,10 @@ const ctaButtonLink = (about as any)?.ctaButtonLink ?? "/sesiones";
     grid-template-columns: minmax(220px, 0.6fr) minmax(0, 1.1fr);
   }
 
-  .section-label-img {
-    display: block;
-    max-width: 100%;
-    max-height: 38px;
+  .text-image {
+    max-height: 48px;
     width: auto;
-    height: auto;
-    margin-bottom: 0.8rem;
+    display: block;
   }
 
   .section-label {

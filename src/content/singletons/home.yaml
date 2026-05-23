@@ -6,7 +6,7 @@ seoDescription: >-
 ogTitle: 'Eleahora — Terapia Transpersonal y Meditación'
 ogImage: '/images/OG-images-eleahora-02.png'
 heroTitle: 'Bienvenido'
-heroSubtitle: "Soy la voz que te recuerda que estás aquí.\nEn el presente. Meditación y Terapia Transpersonal.\nMindfulness. Espiritualidad aterrizada."
+heroSubtitle: "Soy la voz que te recuerda que estás aquí.\nEn el presente.\nMeditación y Terapia Transpersonal.\nMindfulness. Espiritualidad aterrizada."
 heroCtaText: 'Estoy aquí para ti'
 heroCtaLink: '/sesiones'
 heroImage: '/images/home-hero-eleahora-01-tiny.webp'
@@ -58,19 +58,20 @@ serviceCards:
 mindfulnessLabel: 'Ciencia & Espíritu'
 mindfulnessTitle: 'Mindfulness como camino.'
 mindfulnessLead: >-
-  La meditación es una herramienta de neuroregulación. El mindfulness es una
-  práctica que entrena la mente para volver al momento presente.
+  La meditación no es escapar. Es llegar. Llegar a ti, a tu respiración, a tu
+  cuerpo, a este momento exacto. Mindfulness es la práctica de estar presente.
 mindfulnessBody: >-
-  A través de la respiración, la atención plena y la consciencia corporal, el
-  sistema nervioso aprende a salir del estado de alerta constante y a encontrar
-  un nuevo equilibrio entre el hacer y el ser.
-mindfulnessBenefitsTitle: 'Beneficios de practicar mindfulness regularmente:'
+  A través de la respiración consciente, la atención plena y la regulación del
+  sistema nervioso, el Mindfulness nos permite responder en lugar de reaccionar.
+  Es una herramienta científica y espiritual para vivir con más claridad, calma
+  y compasión.
+mindfulnessBenefitsTitle: 'Beneficios del Mindfulness'
 mindfulnessBenefits:
-  - 'Reducir el estrés y la ansiedad.'
-  - 'Mejorar la claridad mental y la concentración.'
-  - 'Regular emociones intensas.'
-  - 'Dormir mejor.'
-  - 'Aumentar la creatividad y la toma de decisiones.'
+  - 'Reduce el estrés y la ansiedad de forma medible'
+  - 'Aumenta la claridad mental y la concentración'
+  - 'Mejora la regulación emocional'
+  - 'Favorece un sueño profundo y reparador'
+  - 'Despierta la creatividad y la intuición'
 mindfulnessConclusion: >-
   En un mundo que nos empuja constantemente hacia el ruido y la velocidad, la
   meditación se convierte en una forma de volver a uno mismo.

@@ -52,7 +52,7 @@ const calLink = site?.calLink ?? "https://cal.eu/eleahora/sesiones";
                 {pill && <span class="service-pill">{pill}</span>}
               </div>
               <h2>{s.entry.title}</h2>
-              {descriptionText && <div class="service-desc"><p>{descriptionText}</p></div>}
+              {descriptionText && <div class="service-desc">{(descriptionText as string).split('\n\n').map(p => <p>{p.trim()}</p>)}</div>}
               <ul>
                 {details.map((d: string) => <li set:html={d} />)}
               </ul>

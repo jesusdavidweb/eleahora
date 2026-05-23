@@ -13,7 +13,7 @@ export default config({
     },
     navigation: {
       "Configuración": ["siteConfig", "globalContent"],
-      "Páginas": ["homePage", "aboutPage", "sessionesPage", "workshopPage", "contactoPage"],
+      "Páginas": ["homePage", "aboutPage", "sessionesPage", "workshopPage", "piensoLuegoMeditoLanding", "contactoPage"],
       "Contenido": ["sesiones", "testimonios", "legalPages"],
     },
   },
@@ -862,6 +862,117 @@ export default config({
           label: "CTA — Texto WhatsApp",
           defaultValue: "WhatsApp",
         }),
+      },
+    }),
+
+    // ──────────────────────────────────────────────
+    // Landing — Pienso, luego medito
+    // ──────────────────────────────────────────────
+    piensoLuegoMeditoLanding: singleton({
+      label: "Landing Pienso, luego medito",
+      path: "src/content/singletons/pienso-luego-medito-landing",
+      schema: {
+        seoTitle: fields.text({
+          label: "SEO — Título",
+          defaultValue: "Workshop Pienso, luego medito | Mindfulness y Bienestar para Empresas | Eleahora",
+        }),
+        seoDescription: fields.text({
+          label: "SEO — Descripción",
+          multiline: true,
+          defaultValue: "Una experiencia de team building para transformar el estrés en presencia. Neuroregulación, gestión de cortisol y cohesión de equipo con Eleahora.",
+        }),
+        ogTitle: fields.text({
+          label: "SEO — Título Open Graph",
+          defaultValue: "Workshop Pienso, luego medito | Eleahora",
+        }),
+        ogImage: fields.image({
+          label: "SEO — Imagen Open Graph",
+          directory: "public/images",
+          publicPath: "/images/",
+        }),
+        heroEyebrow: fields.text({ label: "Hero — Etiqueta", defaultValue: "Experiencia para empresas" }),
+        heroTitle: fields.text({ label: "Hero — Título", defaultValue: "WORKSHOP Pienso, luego medito." }),
+        heroSubtitle: fields.text({
+          label: "Hero — Subtítulo",
+          multiline: true,
+          defaultValue: "Una experiencia de team building para transformar el estrés en presencia.",
+        }),
+        heroWebsite: fields.text({ label: "Hero — Web", defaultValue: "www.eleahora.com" }),
+        heroRole: fields.text({
+          label: "Hero — Rol",
+          defaultValue: "Experta en meditación y Terapeuta transpersonal",
+        }),
+        heroImage: fields.image({ label: "Hero — Imagen principal", directory: "public/images", publicPath: "/images/" }),
+        heroImage2: fields.image({ label: "Hero — Imagen secundaria", directory: "public/images", publicPath: "/images/" }),
+        heroImage3: fields.image({ label: "Hero — Imagen terciaria", directory: "public/images", publicPath: "/images/" }),
+        ctaButtonText: fields.text({
+          label: "CTA — Texto del botón",
+          defaultValue: "Agendar llamada de descubrimiento",
+        }),
+        profileEyebrow: fields.text({ label: "Perfil — Etiqueta", defaultValue: "Portada y Perfil" }),
+        profileName: fields.text({ label: "Perfil — Nombre", defaultValue: "Maria Eleonora Corallo" }),
+        profileBio: fields.text({ label: "Perfil — Biografía", multiline: true }),
+        slogan: fields.text({
+          label: "Slogan",
+          defaultValue: "SOY LA VOZ QUE TE RECUERDA QUE ESTÁS AQUÍ.",
+        }),
+        storyEyebrow: fields.text({ label: "Historia — Etiqueta", defaultValue: "Descripción del Workshop" }),
+        storyTitle: fields.text({ label: "Historia — Título", defaultValue: "¿Cómo inició el viaje?" }),
+        storyBody: fields.text({ label: "Historia — Texto", multiline: true }),
+        facts: fields.array(
+          fields.object({
+            label: fields.text({ label: "Etiqueta" }),
+            value: fields.text({ label: "Valor" }),
+            detail: fields.text({ label: "Detalle" }),
+          }),
+          {
+            label: "Experiencia — Datos",
+            itemLabel: (props) => props.fields.label.value || "Dato",
+          }
+        ),
+        stepsTitle: fields.text({ label: "Pasos — Título", defaultValue: "Los 6 Pasos" }),
+        steps: fields.array(
+          fields.object({
+            title: fields.text({ label: "Título" }),
+            description: fields.text({ label: "Descripción", multiline: true }),
+          }),
+          {
+            label: "Los 6 pasos",
+            itemLabel: (props) => props.fields.title.value || "Paso",
+          }
+        ),
+        priceNote: fields.text({ label: "Precio — Nota", defaultValue: "*Valor a consultar*" }),
+        testimonialsEyebrow: fields.text({
+          label: "Testimonios — Etiqueta",
+          defaultValue: "Testimonios: Quienes han vivido la experiencia",
+        }),
+        testimonials: fields.array(
+          fields.object({
+            name: fields.text({ label: "Nombre" }),
+            role: fields.text({ label: "Cargo / Empresa" }),
+            quote: fields.text({ label: "Testimonio", multiline: true }),
+          }),
+          {
+            label: "Testimonios",
+            itemLabel: (props) => props.fields.name.value || "Testimonio",
+          }
+        ),
+        benefitsEyebrow: fields.text({ label: "Beneficios — Etiqueta", defaultValue: "Beneficios: El Aterrizaje" }),
+        benefitsTitle: fields.text({ label: "Beneficios — Título", defaultValue: "¿Qué te llevas como empresa?" }),
+        benefits: fields.array(fields.text({ label: "Beneficio" }), {
+          label: "Beneficios",
+          itemLabel: (props) => props.value || "Beneficio",
+        }),
+        closingQuote: fields.text({ label: "Cita de cierre", multiline: true }),
+        closingQuoteAuthor: fields.text({ label: "Autor de la cita", defaultValue: "Meggan Watterson" }),
+        finalThanks: fields.text({ label: "Cierre — Gracias", defaultValue: "GRACIAS!" }),
+        finalTitle: fields.text({ label: "Cierre — Título", defaultValue: "Estoy aquí para ti." }),
+        finalText: fields.text({
+          label: "Cierre — Texto",
+          defaultValue: "Hablemos para llevar esta experiencia a tu organización.",
+        }),
+        emailAddress: fields.text({ label: "Contacto — Email", defaultValue: "info@eleahora.com" }),
+        phoneNumber: fields.text({ label: "Contacto — Teléfono", defaultValue: "+34 605 37 37 82" }),
       },
     }),
 

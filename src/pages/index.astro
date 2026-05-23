@@ -10,7 +10,7 @@ const siteConfig = await getSiteConfig();
 const testimonios = await getAllTestimonios(true);
 
 // Fallbacks: si Keystatic no tiene datos, usar los textos actuales
-const heroSubtitle = home?.heroSubtitle ?? "Soy la voz que te recuerda que estás aquí.\nEn el presente. Meditación y Terapia Transpersonal. Mindfulness. Espiritualidad aterrizada.";
+const heroSubtitle = home?.heroSubtitle ?? "Soy la voz que te recuerda que estás aquí.\nEn el presente.\nMeditación y Terapia Transpersonal.\nMindfulness. Espiritualidad aterrizada.";
 const heroCtaText = home?.heroCtaText ?? "Estoy aquí para ti";
 const heroCtaLink = (home as any)?.heroCtaLink ?? "/sesiones";
 const heroImage = home?.heroImage ?? "/images/home-hero-eleahora-01-tiny.webp";
@@ -23,16 +23,15 @@ const manifestoImage = home?.manifestoImage ?? "/images/home-manifiesto-eleahora
 const serviciosTitle = (home as any)?.serviciosTitle ?? "Estoy aquí para ti";
 
 const mindfulnessTitle = home?.mindfulnessTitle ?? "Mindfulness como camino.";
-const mindfulnessLead = home?.mindfulnessLead ?? "La meditación es una herramienta de neuroregulación.";
-const mindfulnessBody = home?.mindfulnessBody ?? "El mindfulness es una práctica que entrena la mente para volver al momento presente. A través de la respiración, la atención plena y la consciencia corporal, el sistema nervioso aprende a salir del estado de alerta constante y a regresar a un estado de regulación y equilibrio.";
-const mindfulnessBody2 = home?.mindfulnessBody2 ?? "Hoy sabemos que la meditación no solo transforma nuestra experiencia interna: también produce cambios medibles en el cerebro y en el sistema nervioso.";
-const mindfulnessBenefitsTitle = home?.mindfulnessBenefitsTitle ?? "Practicar mindfulness de forma regular puede ayudarte a:";
+const mindfulnessLead = home?.mindfulnessLead ?? "La meditación no es escapar. Es llegar. Llegar a ti, a tu respiración, a tu cuerpo, a este momento exacto. Mindfulness es la práctica de estar presente.";
+const mindfulnessBody = home?.mindfulnessBody ?? "A través de la respiración consciente, la atención plena y la regulación del sistema nervioso, el Mindfulness nos permite responder en lugar de reaccionar. Es una herramienta científica y espiritual para vivir con más claridad, calma y compasión.";
+const mindfulnessBenefitsTitle = home?.mindfulnessBenefitsTitle ?? "Beneficios del Mindfulness";
 const mindfulnessBenefits = home?.mindfulnessBenefits?.length ? home.mindfulnessBenefits : [
-  "reducir el estrés y la ansiedad",
-  "mejorar la claridad mental y la concentración",
-  "regular emociones intensas",
-  "dormir mejor",
-  "aumentar la creatividad y la toma de decisiones",
+  "Reduce el estrés y la ansiedad de forma medible",
+  "Aumenta la claridad mental y la concentración",
+  "Mejora la regulación emocional",
+  "Favorece un sueño profundo y reparador",
+  "Despierta la creatividad y la intuición",
 ];
 const mindfulnessConclusion = home?.mindfulnessConclusion ?? "En un mundo que nos empuja constantemente hacia el ruido y la velocidad, la meditación se convierte en una forma de volver a uno mismo.";
 const mindfulnessImage = home?.mindfulnessImage ?? "/images/sesion_maria_corallo_neima_pidal_161-tiny.webp";
@@ -71,7 +70,7 @@ const resolveHomeLink = (href: string) => href === 'insightTimer' ? insightTimer
   title={(home as any)?.seoTitle ?? siteConfig?.siteTitle ?? "Eleahora | Terapia Transpersonal y Meditación en Madrid"}
   description={(home as any)?.seoDescription ?? siteConfig?.siteDescription ?? "Eleahora: Terapia Transpersonal, Meditación y Mindfulness con Maria Eleonora Corallo. Sesiones individuales, Terapia Angelical, PNL y workshop para empresas. Presencial en Madrid y online."}
   ogTitle={(home as any)?.ogTitle ?? "Eleahora — Terapia Transpersonal y Meditación"}
-  ogImage={(home as any)?.ogImage ?? siteConfig?.ogImage ?? "/images/OG-images-eleahora-02.png"}
+  ogImage={(home as any)?.ogImage ?? (siteConfig as any)?.ogImage ?? "/images/OG-images-eleahora-02.png"}
 >
   <ScrollAnimations client:idle />
 
@@ -86,15 +85,15 @@ const resolveHomeLink = (href: string) => href === 'insightTimer' ? insightTimer
 
     <div class="max-w-screen hero-content">
       <div class="hero-text-container">
-        <img src="/images/textos/Bienvenido.png" alt="Bienvenido" class="gsap-reveal hero-label-img" />
+        <h2 class="gsap-reveal text-accent hero-accent">
+          <img src="/images/textos/Bienvenido.png" alt="Bienvenido" class="text-image" />
+        </h2>
         <h1 class="gsap-hero-reveal hero-title">
           {heroSubtitle.split('\n')[0]}
         </h1>
 
         <div class="gsap-hero-reveal hero-text-wrapper">
-          <p class="hero-subtitle">
-            {heroSubtitle.split('\n').slice(1).join('\n')}
-          </p>
+          <p class="hero-subtitle" set:html={heroSubtitle.split('\n').slice(1).join('<br />')}></p>
           <div class="hero-actions">
             <a href={heroCtaLink} class="btn-primary">{heroCtaText}</a>
           </div>
@@ -108,7 +107,9 @@ const resolveHomeLink = (href: string) => href === 'insightTimer' ? insightTimer
   <section id="manifiesto" class="manifiesto-section">
     <div class="max-w-screen manifiesto-grid">
       <div class="manifiesto-text">
-        <img src="/images/textos/Manifiesto.png" alt="Manifiesto" class="gsap-reveal section-label-img" />
+        <span class="gsap-reveal text-accent section-label">
+          <img src="/images/textos/Manifiesto.png" alt="Manifiesto" class="text-image" />
+        </span>
         <h2 class="gsap-reveal section-title">{manifestoTitle}</h2>
         <div class="gsap-reveal section-body">
           {manifestoBodyHtml ? (
@@ -178,7 +179,9 @@ const resolveHomeLink = (href: string) => href === 'insightTimer' ? insightTimer
   <section id="mindfulness" class="mindfulness-section">
     <div class="max-w-screen">
       <div class="mindfulness-header">
-        <img src="/images/textos/Ciencia-y-espiritu.png" alt="Ciencia y Espíritu" class="gsap-reveal section-label-img" />
+        <span class="gsap-reveal text-accent section-label"
+          ><img src="/images/textos/Ciencia-y-espiritu.png" alt="Ciencia y Espíritu" class="text-image" /></span
+        >
         <h2 class="gsap-reveal section-title">{mindfulnessTitle}</h2>
       </div>
 
@@ -195,14 +198,9 @@ const resolveHomeLink = (href: string) => href === 'insightTimer' ? insightTimer
 
         <div class="mindfulness-text">
           <div class="gsap-reveal section-body">
-            <p class="mindfulness-lead">
-              {mindfulnessLead}
-            </p>
+            <p class="mindfulness-lead" set:html={mindfulnessLead.replace('meditación', '<strong>meditación</strong>').replace('Mindfulness', '<strong>Mindfulness</strong>')}></p>
             <p class="mindfulness-desc">
               {mindfulnessBody}
-            </p>
-            <p class="mindfulness-desc">
-              {mindfulnessBody2}
             </p>
 
             <div class="mindfulness-benefits-card">
@@ -233,13 +231,30 @@ const resolveHomeLink = (href: string) => href === 'insightTimer' ? insightTimer
       </div>
 
       <div class="testimonials-grid">
-        {testimoniosData && (
+        {testimoniosData ? (
           testimoniosData.map((t) => (
             <article class={`testimonial-card testimonial-${(t.entry as any)?.accentColor || 'sage'} gsap-reveal`}>
               <p class="testimonial-text">{t.entry.quote}</p>
               <p class="testimonial-author">— {t.entry.name}</p>
             </article>
           ))
+        ) : (
+          <>
+            <article class="testimonial-card testimonial-sage gsap-reveal">
+              <p class="testimonial-text">Maria ha sido un pilar fundamental en mi crecimiento personal este último año. En nuestras sesiones, he encontrado una escucha activa y consejos que me han ayudado a identificar los pasos necesarios para superar los desafíos que enfrentaba. Nunca había practicado la meditación antes de conocerla, y gracias a nuestras sesiones, he hallado una paz y serenidad profundas, así como la fuerza necesaria para seguir adelante. Lo que hace a Maria excepcional es la combinación de su voz, su profunda sabiduría científica y espiritual, y una sensibilidad humana extraordinaria.</p>
+              <p class="testimonial-author">— Flora Bautian.</p>
+            </article>
+
+            <article class="testimonial-card testimonial-red gsap-reveal">
+              <p class="testimonial-text">En este mundo que habitamos está muy de moda la desconexión: digital, de las ciudades… y nos olvidamos de lo más importante: la conexión con nosotros mismos. Y eso es lo que haces con Maria. Una de las personas más especiales que conozco. Y como tal te recibe y te hace sentir. Un ratito con Maria es "el spa para el alma" que todos necesitamos. Tengas un objetivo que quieras trabajar o simplemente un ratito para ti, Maria es, sin duda, "la persona".</p>
+              <p class="testimonial-author">— Marta Leciñena</p>
+            </article>
+
+            <article class="testimonial-card testimonial-purple gsap-reveal">
+              <p class="testimonial-text">Mi experiencia con Maria Eleonora ha sido un viaje profundamente transformador en mi camino espiritual. Llegué buscando sostén en un momento de despertar interior, y encontré un espacio seguro, amoroso y lleno de luz donde pude abrirme, explorar y recordar partes de mí que estaban esperando ser escuchadas. Las meditaciones guiadas son un capítulo aparte: sublimes, profundas y llenas de una ternura que sostiene. Maria Eleonora tiene la capacidad de llevarnos a lo más profundo de nuestro ser, invitándonos a explorar lo sagrado desde la calma, la presencia y una guía que se siente verdaderamente luminosa.</p>
+              <p class="testimonial-author">— Andrea Trocel</p>
+            </article>
+          </>
         )}
       </div>
     </div>
@@ -344,7 +359,7 @@ const resolveHomeLink = (href: string) => href === 'insightTimer' ? insightTimer
     max-width: 500px;
     margin-bottom: 0;
     font-weight: 500;
-    color: var(--color-background); /* Texto claro para fondo oscuro */
+    color: var(--color-background);
   }
 
   /* Hero-specific button styles for dark hero background */
@@ -359,25 +374,7 @@ const resolveHomeLink = (href: string) => href === 'insightTimer' ? insightTimer
     color: var(--color-primary-dark);
   }
 
-  .hero-label-img {
-    display: block;
-    max-width: min(100%, 400px);
-    max-height: 38px;
-    width: auto;
-    height: auto;
-    margin-bottom: 0.5rem;
-  }
-
   /* General typography layout */
-  .section-label-img {
-    display: block;
-    max-width: 100%;
-    max-height: 38px;
-    width: auto;
-    height: auto;
-    margin-bottom: 1rem;
-  }
-
   .section-label {
     font-size: 2.5rem;
     display: block;
@@ -549,16 +546,16 @@ const resolveHomeLink = (href: string) => href === 'insightTimer' ? insightTimer
     margin: 0 auto 4rem;
   }
 
-  .mindfulness-header .section-label-img {
-    margin-inline: auto;
-  }
-
   .mindfulness-header .section-label {
     margin-bottom: 0.5rem;
   }
 
   .mindfulness-header .section-title {
     margin-bottom: 0;
+  }
+
+  .mindfulness-header .text-image {
+    margin-inline: auto;
   }
 
   .mindfulness-grid {
@@ -609,6 +606,10 @@ const resolveHomeLink = (href: string) => href === 'insightTimer' ? insightTimer
     line-height: 1.6 !important;
     margin-bottom: 1.5rem;
     color: var(--color-primary-dark);
+  }
+
+  :global(.mindfulness-lead strong) {
+    font-weight: 800;
   }
 
   .mindfulness-desc {
@@ -701,7 +702,6 @@ const resolveHomeLink = (href: string) => href === 'insightTimer' ? insightTimer
     line-height: 1.6;
     margin-bottom: 1rem;
     opacity: 0.95;
-    white-space: pre-line;
   }
 
   .testimonial-author {
@@ -733,6 +733,12 @@ const resolveHomeLink = (href: string) => href === 'insightTimer' ? insightTimer
     .testimonial-purple .testimonial-author {
       color: #6d4492;
     }
+  .text-image {
+    max-height: 48px;
+    width: auto;
+    display: block;
+  }
+
   .mindfulness-footer {
     max-width: 900px;
     margin: 5rem auto 0;

@@ -1,12 +1,12 @@
-seoTitle: "Workshop 'Pienso, luego medito' | Mindfulness para Empresas | Eleahora"
+seoTitle: 'Workshop para Empresas — Pienso, luego medito | Eleahora'
 seoDescription: >-
-  Workshop de mindfulness y meditación para empresas y equipos. Programa
-  'Pienso, luego medito' de Eleahora: reduce el estrés, mejora el foco y
-  fortalece la cohesión del equipo.
-ogTitle: 'Workshop para Empresas — Eleahora'
-ogImage: '/images/OG-images-eleahora-01.jpg'
-heroLabel: 'Experiencia para empresas'
-heroTitle: 'Pienso, luego medito.'
+  Workshop experiencial de mindfulness y meditación para equipos. 'Pienso,
+  luego medito' de Eleahora: 3h presenciales en tu empresa, herramientas de
+  regulación del estrés y mejora del bienestar colectivo.
+ogTitle: 'Workshop para Empresas — Pienso, luego medito | Eleahora'
+ogImage: 'https://eleahora.com/images/home-eleahora-002.webp'
+heroLabel: 'Experiencia para Empresas'
+heroTitle: 'Pienso, luego medito'
 heroSubtitle: 'Transformando el estrés en presencia.'
 heroImage: '/images/Workshop Pienso Luego Medito-15-tiny.webp'
 heroImage2: '/images/Workshop Pienso Luego Medito-92-tiny.webp'
@@ -22,78 +22,106 @@ facts:
   - label: 'Modalidad'
     value: 'Presencial'
     detail: 'en tu empresa'
-guideEyebrow: 'Sobre la guía'
+guideEyebrow: 'Sobre la Guía'
 guideName: 'Maria Eleonora Corallo'
 guideBio: >-
   Terapeuta transpersonal, guía de meditación y fundadora de Eleahora. Combina
-  su carrera de idiomas, PNL transpersonal, mindfulness y conexión energética
-  para llevar herramientas prácticas de neuroregulación al entorno corporativo.
-guideSlogan: 'Soy la voz que te recuerda que estás aquí.'
-workshopEyebrow: 'El workshop'
-workshopTitle: 'Pienso, luego medito.'
+  su carrera de idiomas (La Sorbonne) y su formación en PNL transpersonal,
+  Mindfulness y conexión energética para llevar herramientas prácticas de
+  neuroregulación al entorno corporativo.
+guideSlogan: |-
+  Soy La Voz
+  QUE TE RECUERDA
+  QUE ESTÁS AQUÍ.
+workshopEyebrow: 'El Workshop'
+workshopTitle: '"Pienso, luego medito" combina ciencia, introspección y técnicas prácticas para reconectar con nuestra esencia, regular nuestras emociones y vivir con mayor presencia.'
 workshopDescription: >-
-  Una experiencia de mindfulness y meditación diseñada para equipos y
-  organizaciones que quieren reducir el estrés y potenciar el rendimiento.
+  "Pienso, luego medito" combina ciencia, introspección y técnicas prácticas
+  para reconectar con nuestra esencia, regular nuestras emociones y vivir con
+  mayor presencia. El workshop guía a los asistentes a través de dinámicas
+  envolventes que integran los cinco sentidos y los elementos de la naturaleza
+  para cultivar la atención plena. Además, aborda cómo nivelar el cortisol y
+  la dopamina, dos hormonas clave en la productividad y el bienestar,
+  ofreciendo herramientas como ejercicios de respiración, meditación y
+  prácticas creativas. Con un enfoque en la regulación del sistema nervioso,
+  este espacio fomenta claridad mental, mejor toma de decisiones y una
+  conexión más profunda entre los individuos y sus equipos. Ideal para
+  empresas que buscan empoderar a sus colaboradores con recursos para
+  enfrentar los desafíos modernos, este workshop es más que una pausa: Es una
+  invitación para transformar la manera en que vivimos y trabajamos, con una
+  práctica tan esencial como la de volver al presente.
 experienceEyebrow: '¿Qué incluye la experiencia?'
 experienceTitle: 'Un recorrido práctico, consciente y aplicable.'
 experienceItems:
-  - title: "Bienvenida y aterrizaje consciente"
-    description: >-
-      Apertura del espacio, intención compartida y práctica breve para llegar al aquí y ahora como equipo.
-  - title: "¿Cómo estar más presentes?"
-    description: >-
-      Prácticas conscientes que integran los sentidos y los elementos.
-  - title: "Meditación como método de neuroregulación"
-    description: >-
-      Sistema nervioso, dopamina y cortisol.
-  - title: "Meditación en todas sus formas"
-    description: >-
-      Con el cuerpo, la mente y el alma.
-  - title: "Niño Interior"
-    description: >-
-      Dinámicas lúdicas que despiertan la creatividad y la alegría.
-  - title: "¿Y ahora qué?"
-    description: >-
-      Acciones concretas para aplicar en el día a día.
-
+  - title: 'Bienvenida y aterrizaje consciente'
+    description: 'Apertura del espacio, intención compartida y práctica breve para llegar al aquí y ahora como equipo.'
+  - title: '¿Cómo estar más presentes?'
+    description: 'Prácticas conscientes que integran los sentidos y los elementos.'
+  - title: 'Meditación como método de neuroregulación'
+    description: 'Sistema nervioso, dopamina y cortisol.'
+  - title: 'Meditación en todas sus formas'
+    description: 'Con el cuerpo, la mente y el alma.'
+  - title: 'Niño Interior'
+    description: 'Dinámicas lúdicas que despiertan la creatividad y la alegría.'
+  - title: '¿Y ahora qué?'
+    description: 'Acciones concretas para aplicar en el día a día.'
 benefitsEyebrow: '¿Qué te llevas como empresa?'
-benefitsTitle: "Lo que cambia después de la experiencia."
+benefitsTitle: 'Lo que te llevas como empresa'
 benefits:
-  - title: 'Regulación del sistema nervioso'
-    description: 'Herramientas prácticas para gestionar el estrés en el entorno laboral.'
-  - title: 'Mejora del foco y la concentración'
-    description: 'Técnicas de atención plena aplicadas al rendimiento profesional.'
-  - title: 'Cohesión de equipo'
-    description: 'Una experiencia compartida que fortalece los vínculos y la comunicación.'
-  - title: 'Reducción del absentismo'
-    description: >-
-      El bienestar emocional es una inversión que impacta directamente en la
-      productividad y la retención del talento.
+  - title: 'Regulación del estrés'
+    description: 'Herramientas prácticas para regular altos niveles de estrés.'
+  - title: 'Sinergia y empatía'
+    description: 'Mejor sinergia grupal, empatía y conexión.'
+  - title: 'Claridad en decisiones'
+    description: 'Mayor claridad en la toma de decisiones.'
+  - title: 'Cultivar la mente'
+    description: 'Información valiosa para cultivar la mente y potenciar el rendimiento.'
 formatsEyebrow: 'Formatos'
 formatsTitle: 'Formatos disponibles'
 formats:
-  - name: 'Sesión única'
-    duration: '90 min'
-    description: 'Introducción al mindfulness con práctica guiada. Ideal para eventos o team days.'
-  - name: 'Taller de medio día'
-    duration: '3-4 horas'
-    description: 'Teoría + práctica + meditaciones guiadas. Incluye material de apoyo.'
-  - name: 'Programa mensual'
-    duration: '4 sesiones'
-    description: 'Un mes de acompañamiento con sesiones semanales para consolidar el hábito.'
+  - name: 'Team building'
+    duration: '3 horas / sesión intensiva'
+    description: >-
+      Formato experiencial para equipos de hasta 12 personas. Ideal para team
+      building y días de empresa.
+  - name: 'Workshop corporativo'
+    duration: 'Medio día / 4 horas'
+    description: >-
+      Formato extendido con más profundidad en las prácticas y dinámicas
+      grupales.
+  - name: 'Programa de bienestar'
+    duration: 'Mensual / 4 sesiones'
+    description: >-
+      Programa continuo para empresas que quieren integrar el mindfulness en su
+      cultura organizacional.
 testimonialsTitle: 'Lo que ocurre cuando la pausa también es parte del proceso.'
-testimonials: []
+testimonials:
+  - name: 'María Aristeguieta'
+    role: 'Talent Processes Senior Specialist at Avature, Spain'
+    quote: >-
+      El profesionalismo y la calma de María marcan una verdadera diferencia.
+      Practicar meditación después de su taller me ha ayudado muchísimo a ser
+      más productiva y a ordenar mis prioridades con mayor claridad. También
+      noto una mejor gestión del estrés en momentos de presión.
+  - name: 'Vanessa Fernández'
+    role: 'Senior Product Manager at Giftify, Belgium'
+    quote: >-
+      ¡Ojalá todos pudieran asistir a este workshop! Fue increíblemente valioso
+      experimentar el mindfulness y llevarnos herramientas concretas para
+      aplicar en el trabajo. Salimos con más presencia, mejor escucha y una
+      energía de equipo mucho más conectada. ¡Tu workshop es oro puro!
+  - name: 'Stella Camacho'
+    role: 'Founder & Chief Creative Officer at Amorchi House'
+    quote: >-
+      Gracias, Maria, por enseñarme que la pausa también es parte del proceso.
+      Tu workshop me recordó que regularnos no es frenar, sino crear espacio
+      para decidir mejor y colaborar con más empatía. Es una experiencia que
+      realmente transforma la forma de vivir el día a día laboral.
 closingQuote: >-
   El verdadero reto de la condición humana no es estar presente, sino darnos
   cuenta de que no estamos presentes.
 closingQuoteAuthor: 'Meggan Watterson'
 ctaEyebrow: 'Siguiente paso'
 ctaTitle: '¿Quieres llevar esta experiencia a tu organización?'
-ctaBody: >-
-  Cuéntame el tamaño de tu equipo y qué necesitáis, y diseñamos juntos la
-  experiencia perfecta.
 ctaButtonText: 'Agendar llamada de descubrimiento'
-ctaButtonLink: '/contacto'
-ctaEmailLabel: 'Escríbeme un correo'
-ctaEmailAddress: 'info@eleahora.com'
-whatsappCtaText: 'WhatsApp'
+ctaButtonLink: 'https://wa.me/34605373782'

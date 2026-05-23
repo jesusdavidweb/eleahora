@@ -166,6 +166,16 @@ export async function getWorkshopPage() {
   }
 }
 
+export async function getPiensoLuegoMeditoLanding() {
+  try {
+    const r = await getReader();
+    if (!r) return null;
+    return await r.singletons.piensoLuegoMeditoLanding.read();
+  } catch {
+    return null;
+  }
+}
+
 export async function getContactoPage() {
   try {
     const r = await getReader();

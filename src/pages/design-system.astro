@@ -1,0 +1,1340 @@
+---
+import Layout from '../layouts/Layout.astro';
+import DesignSystemExperience from '../components/svelte/DesignSystemExperience.svelte';
+
+const colors = [
+  { name: 'Background', token: '--color-background', value: '#fdfbec', role: 'Base cálida para páginas, secciones suaves y contraste editorial.' },
+  { name: 'Primary Dark', token: '--color-primary-dark', value: '#3b2639', role: 'Texto principal, fondos profundos y estructura visual.' },
+  { name: 'Accent Red', token: '--color-accent-red', value: '#8c0703', role: 'Acción, fuerza, intención y énfasis de marca.' },
+  { name: 'Accent Purple', token: '--color-accent-purple', value: '#6d4492', role: 'Espiritualidad, transmutación y foco secundario.' },
+  { name: 'Earth', token: '--color-earth', value: '#bb896b', role: 'Calidez, detalles orgánicos y contraste en fondos oscuros.' },
+  { name: 'Sage', token: '--color-sage', value: '#566443', role: 'Equilibrio, bienestar, regulación y acentos serenos.' },
+];
+
+const typeSamples = [
+  { name: 'Pacaembu Light', token: '--font-primary / 300', family: "var(--font-primary)", weight: '300', text: 'Estructura con aire y presencia.' },
+  { name: 'Pacaembu Regular', token: '--font-primary / 400', family: "var(--font-primary)", weight: '400', text: 'Soy estructura y soy caos.' },
+  { name: 'Pacaembu Bold', token: '--font-primary / 700', family: "var(--font-primary)", weight: '700', text: 'Deja que el amor te regule.' },
+  { name: 'Sloop', token: '--font-accent', family: "var(--font-accent)", weight: '400', text: 'Eleahora' },
+  { name: 'Inter Tight', token: '--font-base / 100-900', family: "var(--font-base)", weight: '300', text: 'Texto base legible para contenido, formularios y navegación.' },
+];
+
+const spacingTokens = [
+  { name: 'XS', value: '0.5rem', use: 'Detalles, gaps pequeños, estados compactos.' },
+  { name: 'S', value: '1rem', use: 'Botones, inputs y ritmos internos.' },
+  { name: 'M', value: '1.5rem', use: 'Separación de grupos y navegación.' },
+  { name: 'L', value: '2rem', use: 'Cards, paneles y bloques de formulario.' },
+  { name: 'XL', value: '4rem', use: 'Secciones internas y grids editoriales.' },
+  { name: 'XXL', value: '6rem - 8rem', use: 'Respiración vertical de páginas.' },
+];
+
+const assets = [
+  { name: 'Logo principal', src: '/images/logo-1.png', tone: 'light' },
+  { name: 'Logo negro', src: '/images/logo-black.png', tone: 'light' },
+  { name: 'Logo blanco', src: '/images/logo-white.png', tone: 'dark' },
+  { name: 'Logo dorado', src: '/images/logo-gold.png', tone: 'dark' },
+  { name: 'Favicon', src: '/images/favicon.png', tone: 'light' },
+];
+
+const imageAssets = [
+  { name: 'Hero inicio', src: '/images/home-hero-eleahora-01-tiny.webp', alt: 'Hero principal de Eleahora con retrato de Maria Eleonora Corallo' },
+  { name: 'Manifiesto', src: '/images/home-manifiesto-eleahora-01-tiny.webp', alt: 'Imagen del manifiesto Eleahora' },
+  { name: 'Mindfulness', src: '/images/sesion_maria_corallo_neima_pidal_161-tiny.webp', alt: 'Sesión de mindfulness y meditación Eleahora' },
+  { name: 'Sobre mi', src: '/images/about-eleahora-001.webp', alt: 'Retrato de Maria Eleonora Corallo para Sobre Mi' },
+  { name: 'Workshop', src: '/images/Workshop Pienso Luego Medito-15-tiny.webp', alt: 'Workshop Pienso luego medito de Eleahora' },
+  { name: 'Open Graph', src: '/images/OG-images-eleahora-02.png', alt: 'Imagen Open Graph de Eleahora' },
+];
+
+const labelAssets = [
+  { name: 'Bienvenido', src: '/images/textos/Bienvenido.png' },
+  { name: 'Manifiesto', src: '/images/textos/Manifiesto.png' },
+  { name: 'Ciencia y espiritu', src: '/images/textos/Ciencia-y-espiritu.png' },
+  { name: 'Mi recorrido', src: '/images/textos/Mi-recorrido.png' },
+  { name: 'Asi nacio Eleahora', src: '/images/textos/Así-nació-eleahora.png' },
+  { name: 'Siguiente paso', src: '/images/textos/Siguiente-paso.png' },
+];
+
+const navSections = [
+  { id: 'fundamentos', label: 'Fundamentos' },
+  { id: 'color', label: 'Color' },
+  { id: 'tipografia', label: 'Tipografia' },
+  { id: 'componentes', label: 'Componentes' },
+  { id: 'layouts', label: 'Layouts' },
+  { id: 'assets', label: 'Assets' },
+  { id: 'movimiento', label: 'Movimiento' },
+];
+---
+
+<Layout
+  title="Design System | Eleahora"
+  description="Documentacion visual publica del sistema de diseno Eleahora: tokens, componentes, layouts, assets de marca y movimiento."
+  ogTitle="Design System Eleahora"
+  ogImage="/images/OG-images-eleahora-02.png"
+  canonicalUrl="/design-system"
+>
+  <DesignSystemExperience client:load />
+
+  <main class="design-system-page">
+    <section class="ds-hero" aria-labelledby="design-system-title">
+      <div class="ds-hero-bg" aria-hidden="true">
+        <img class="ds-hero-image ds-parallax" src="/images/about-desktop-2.webp" alt="" fetchpriority="high" decoding="async" />
+      </div>
+      <div class="ds-hero-overlay"></div>
+      <div class="max-w-screen ds-hero-grid">
+        <div class="ds-hero-copy">
+          <img src="/images/logo-white.png" alt="Eleahora" class="ds-hero-logo" />
+          <p class="ds-eyebrow ds-hero-item">Design system publico</p>
+          <h1 id="design-system-title" class="ds-hero-item">
+            Soy estructura y soy caos.
+          </h1>
+          <p class="ds-hero-lead ds-hero-item">
+            Una guia viva para entender como Eleahora combina presencia, metodologia, espiritualidad aterrizada y una experiencia digital calida.
+          </p>
+          <div class="ds-hero-actions ds-hero-item">
+            <a href="#color" class="btn-primary ds-magnetic">Explorar tokens</a>
+            <a href="#componentes" class="btn-outline ds-magnetic">Ver componentes</a>
+          </div>
+        </div>
+        <aside class="ds-token-preview ds-hero-item" aria-label="Vista previa interactiva de tokens">
+          <span>Token spotlight</span>
+          <strong data-token-preview-label>Primary Dark</strong>
+          <em data-token-preview-value>#3b2639</em>
+          <p>Interactua con colores y tipografias para ver como respira el sistema.</p>
+        </aside>
+      </div>
+    </section>
+
+    <nav class="ds-section-nav" aria-label="Secciones del design system">
+      <div class="max-w-screen ds-section-nav-inner">
+        {navSections.map((section) => (
+          <a href={`#${section.id}`} class={section.id === 'fundamentos' ? 'is-active' : undefined}>{section.label}</a>
+        ))}
+      </div>
+    </nav>
+
+    <section id="fundamentos" class="ds-section ds-watch-section" aria-labelledby="fundamentos-title">
+      <div class="max-w-screen ds-section-grid">
+        <header class="ds-section-header ds-reveal">
+          <p class="ds-eyebrow">Fundamentos</p>
+          <h2 id="fundamentos-title">La marca se mueve entre estructura y sensibilidad.</h2>
+          <p>
+            El sistema actual vive en variables CSS globales, fuentes locales, componentes Astro para estructura y Svelte con GSAP para momentos interactivos imprescindibles.
+          </p>
+        </header>
+        <div class="ds-principles ds-reveal">
+          <article>
+            <span>01</span>
+            <h3>Espiritualidad aterrizada</h3>
+            <p>La estetica puede ser mistica, pero siempre debe ayudar a comprender y actuar.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Calidez con rigor</h3>
+            <p>Color organico, jerarquia clara y textos con suficiente aire para generar confianza.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Movimiento con sentido</h3>
+            <p>GSAP se reserva para revelar, guiar y dar presencia; no para ocultar contenido.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="color" class="ds-section ds-watch-section ds-section-tinted" aria-labelledby="color-title">
+      <div class="max-w-screen">
+        <header class="ds-section-header ds-reveal">
+          <p class="ds-eyebrow">Tokens visuales</p>
+          <h2 id="color-title">Color</h2>
+          <p>La paleta principal esta definida en `:root` y se rehidrata desde la configuracion global cuando existe contenido CMS.</p>
+        </header>
+        <div class="ds-color-grid">
+          {colors.map((color) => (
+            <button
+              class="ds-color-card ds-magnetic ds-reveal"
+              type="button"
+              data-token-name={color.name}
+              data-token-value={color.value}
+              style={`--swatch:${color.value}`}
+            >
+              <span class="ds-swatch"></span>
+              <strong>{color.name}</strong>
+              <code>{color.token}</code>
+              <em>{color.value}</em>
+              <p>{color.role}</p>
+            </button>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="tipografia" class="ds-section ds-watch-section" aria-labelledby="tipografia-title">
+      <div class="max-w-screen ds-type-layout">
+        <header class="ds-section-header ds-reveal">
+          <p class="ds-eyebrow">Tokens visuales</p>
+          <h2 id="tipografia-title">Tipografia</h2>
+          <p>Pacaembu da estructura, Sloop aporta gesto humano e Inter Tight sostiene lectura y UI.</p>
+        </header>
+        <div class="ds-type-stack">
+          {typeSamples.map((sample) => (
+            <button
+              type="button"
+              class="ds-type-sample ds-reveal"
+              data-token-name={sample.name}
+              data-token-value={sample.token}
+              data-token-family={sample.family}
+              style={`font-family:${sample.family};font-weight:${sample.weight}`}
+            >
+              <span>{sample.name}</span>
+              <strong>{sample.text}</strong>
+              <code>{sample.token}</code>
+            </button>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-section ds-watch-section ds-section-deep" aria-labelledby="tokens-title">
+      <div class="max-w-screen ds-token-detail-grid">
+        <header class="ds-section-header ds-reveal">
+          <p class="ds-eyebrow">Escala y superficie</p>
+          <h2 id="tokens-title">Espaciado, bordes y sombras</h2>
+          <p>El proyecto usa una escala pragmatica basada en `rem`, radios suaves para cards y pildoras completas para acciones.</p>
+        </header>
+        <div class="ds-spacing-grid">
+          {spacingTokens.map((space) => (
+            <article class="ds-spacing-card ds-reveal">
+              <span style={`--space-width:${space.value}`}></span>
+              <strong>{space.name}</strong>
+              <code>{space.value}</code>
+              <p>{space.use}</p>
+            </article>
+          ))}
+        </div>
+        <div class="ds-surface-row ds-reveal">
+          <div class="ds-surface-card">12px<br /><span>Cards editoriales</span></div>
+          <div class="ds-surface-card ds-surface-card-soft">16-22px<br /><span>Paneles e inputs</span></div>
+          <div class="ds-surface-card ds-surface-card-pill">999px<br /><span>Botones y chips</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="componentes" class="ds-section ds-watch-section" aria-labelledby="componentes-title">
+      <div class="max-w-screen">
+        <header class="ds-section-header ds-reveal">
+          <p class="ds-eyebrow">Componentes UI</p>
+          <h2 id="componentes-title">Estados y variantes reutilizables</h2>
+          <p>El sistema actual se compone de clases globales, componentes Astro estructurales y patrones locales repetidos.</p>
+        </header>
+
+        <div class="ds-component-block ds-reveal">
+          <div class="ds-component-title">
+            <span>Buttons</span>
+            <code>.btn-primary / .btn-outline / .footer-meditation-cta</code>
+          </div>
+          <div class="ds-button-row">
+            <a href="#componentes" class="btn-primary ds-magnetic">Primary</a>
+            <a href="#componentes" class="btn-outline ds-magnetic">Outline</a>
+            <button class="footer-meditation-cta ds-magnetic" type="button">Meditacion gratuita</button>
+            <button class="btn-primary ds-state-disabled" type="button" disabled>Disabled</button>
+          </div>
+        </div>
+
+        <div class="ds-component-grid">
+          <article class="ds-service-demo ds-magnetic ds-reveal">
+            <div>
+              <span class="ds-demo-label">Service card</span>
+              <h3>Sesiones Eleahora</h3>
+              <p>Acompanamiento terapeutico con meditacion, PNL y espiritualidad aterrizada.</p>
+            </div>
+            <span class="ds-demo-arrow" aria-hidden="true">→</span>
+          </article>
+
+          <article class="ds-testimonial-demo ds-reveal">
+            <span class="ds-demo-label">Testimonial card</span>
+            <p>"Practicar la pausa tambien es parte del proceso."</p>
+            <strong>— Eleahora</strong>
+          </article>
+
+          <article class="ds-chip-demo ds-reveal">
+            <span class="ds-demo-label">Pills y meta chips</span>
+            <div>
+              <span>Formato</span>
+              <span>Presencial</span>
+              <span>3 horas</span>
+              <span>Error</span>
+            </div>
+          </article>
+        </div>
+
+        <div class="ds-component-block ds-reveal">
+          <div class="ds-component-title">
+            <span>Forms</span>
+            <code>input / select / textarea / checkbox</code>
+          </div>
+          <form class="ds-form-demo" aria-label="Muestra visual de formulario del design system">
+            <label>
+              Nombre
+              <input type="text" value="Maria Eleonora" readonly />
+            </label>
+            <label>
+              Servicio
+              <select aria-label="Servicio de muestra">
+                <option>Clase de Meditacion</option>
+              </select>
+            </label>
+            <label class="ds-field-error">
+              Estado error
+              <input type="email" value="correo@" readonly aria-invalid="true" />
+              <small>Revisa el formato del email.</small>
+            </label>
+            <label>
+              Mensaje
+              <textarea rows="4" readonly>Estoy lista para volver al presente.</textarea>
+            </label>
+            <label class="ds-check-demo">
+              <input type="checkbox" checked readonly />
+              <span>Acepto que Eleahora me contacte.</span>
+            </label>
+            <button class="btn-primary" type="button">Enviar mensaje</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section id="layouts" class="ds-section ds-watch-section ds-section-tinted" aria-labelledby="layouts-title">
+      <div class="max-w-screen">
+        <header class="ds-section-header ds-reveal">
+          <p class="ds-eyebrow">Patrones y layouts</p>
+          <h2 id="layouts-title">Composicion editorial y funcional</h2>
+          <p>Los layouts combinan heroes fotograficos, grids de contenido, paneles sticky y CTAs con alto contraste.</p>
+        </header>
+
+        <div class="ds-layout-gallery">
+          <article class="ds-layout-card ds-reveal">
+            <img class="ds-parallax" src="/images/home-hero-eleahora-01-tiny.webp" alt="Hero fotografico de Eleahora" loading="lazy" decoding="async" />
+            <div>
+              <span>Hero fotografico</span>
+              <h3>Imagen real + overlay + CTA</h3>
+            </div>
+          </article>
+          <article class="ds-layout-card ds-reveal">
+            <div class="ds-mini-grid">
+              <span></span><span></span><span></span><span></span>
+            </div>
+            <div>
+              <span>Grid de cards</span>
+              <h3>Servicios, beneficios y testimonios</h3>
+            </div>
+          </article>
+          <article class="ds-layout-card ds-reveal">
+            <div class="ds-sticky-demo">
+              <aside>Proceso</aside>
+              <section>Formulario</section>
+            </div>
+            <div>
+              <span>Panel + accion</span>
+              <h3>Explicar mientras se convierte</h3>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="assets" class="ds-section ds-watch-section" aria-labelledby="assets-title">
+      <div class="max-w-screen">
+        <header class="ds-section-header ds-reveal">
+          <p class="ds-eyebrow">Iconografia y assets</p>
+          <h2 id="assets-title">Logos, imagenes y gestos visuales</h2>
+          <p>No hay libreria de iconos externa: el sistema usa logos, flechas, favicon, hamburger y rotulos graficos propios.</p>
+        </header>
+
+        <div class="ds-logo-grid">
+          {assets.map((asset) => (
+            <article class={`ds-logo-card ds-logo-card-${asset.tone} ds-reveal`}>
+              <img src={asset.src} alt={asset.name} loading="lazy" decoding="async" />
+              <span>{asset.name}</span>
+            </article>
+          ))}
+          <article class="ds-logo-card ds-reveal">
+            <span class="ds-hamburger-icon" aria-hidden="true"></span>
+            <span>Hamburger</span>
+          </article>
+          <article class="ds-logo-card ds-reveal">
+            <strong class="ds-arrow-icons" aria-hidden="true">→ ↗</strong>
+            <span>Flechas CTA</span>
+          </article>
+        </div>
+
+        <div class="ds-image-grid">
+          {imageAssets.map((image) => (
+            <figure class="ds-asset-card ds-reveal">
+              <img src={image.src} alt={image.alt} loading="lazy" decoding="async" />
+              <figcaption>{image.name}</figcaption>
+            </figure>
+          ))}
+        </div>
+
+        <div class="ds-label-grid ds-reveal">
+          {labelAssets.map((label) => (
+            <figure>
+              <img src={label.src} alt={label.name} loading="lazy" decoding="async" />
+              <figcaption>{label.name}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="movimiento" class="ds-section ds-watch-section ds-section-deep" aria-labelledby="movimiento-title">
+      <div class="max-w-screen ds-motion-grid">
+        <header class="ds-section-header ds-reveal">
+          <p class="ds-eyebrow">Movimiento</p>
+          <h2 id="movimiento-title">GSAP como guia de presencia</h2>
+          <p>Las animaciones documentadas siguen la regla del proyecto: transforms y opacidad, ScrollTrigger con limpieza y respeto por `prefers-reduced-motion`.</p>
+        </header>
+        <div class="ds-motion-stage ds-reveal" aria-label="Muestra visual de principios de movimiento">
+          <span class="ds-orbit ds-orbit-a"></span>
+          <span class="ds-orbit ds-orbit-b"></span>
+          <span class="ds-orbit ds-orbit-c"></span>
+          <img src="/images/favicon.png" alt="Simbolo Eleahora" />
+        </div>
+        <div class="ds-motion-notes ds-reveal">
+          <article>
+            <strong>Reveal</strong>
+            <p>Entrada desde abajo para titulos, cards y bloques de contenido.</p>
+          </article>
+          <article>
+            <strong>Parallax</strong>
+            <p>Movimiento sutil en imagenes para aportar profundidad.</p>
+          </article>
+          <article>
+            <strong>Magnetic CTA</strong>
+            <p>Microinteraccion en botones y cards sin desplazar layout.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .design-system-page {
+    background: var(--color-background);
+    color: var(--color-primary-dark);
+    overflow: hidden;
+  }
+
+  .ds-hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 8rem 0 5rem;
+    isolation: isolate;
+    overflow: hidden;
+  }
+
+  .ds-hero-bg,
+  .ds-hero-bg img,
+  .ds-hero-overlay {
+    position: absolute;
+    inset: 0;
+  }
+
+  .ds-hero-bg img {
+    width: 100%;
+    height: 112%;
+    object-fit: cover;
+    object-position: center 64%;
+  }
+
+  .ds-hero-overlay {
+    z-index: 1;
+    background:
+      linear-gradient(90deg, rgba(26, 14, 26, 0.86), rgba(59, 38, 57, 0.62) 42%, rgba(59, 38, 57, 0.22)),
+      linear-gradient(0deg, rgba(59, 38, 57, 0.72), transparent 46%);
+  }
+
+  .ds-hero-grid {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 380px);
+    gap: clamp(2rem, 5vw, 5rem);
+    align-items: end;
+  }
+
+  .ds-hero-logo {
+    width: min(240px, 60vw);
+    margin-bottom: 2rem;
+  }
+
+  .ds-eyebrow {
+    margin: 0 0 1rem;
+    color: var(--color-accent-red);
+    font-family: var(--font-primary);
+    font-size: clamp(1.35rem, 3vw, 2.25rem);
+    line-height: 1;
+    text-transform: lowercase;
+    opacity: 1;
+  }
+
+  .ds-hero .ds-eyebrow {
+    color: var(--color-earth);
+  }
+
+  .ds-eyebrow::first-letter {
+    font-family: var(--font-accent);
+    font-size: 1.5em;
+    text-transform: uppercase;
+  }
+
+  .ds-hero h1 {
+    max-width: 10ch;
+    margin: 0 0 1.5rem;
+    color: var(--color-background);
+    font-size: clamp(3rem, 8vw, 7.2rem);
+    font-weight: 500;
+    letter-spacing: 0;
+  }
+
+  .ds-hero-lead {
+    max-width: 48ch;
+    color: rgba(253, 251, 236, 0.88);
+    font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+  }
+
+  .ds-hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .ds-hero .btn-primary {
+    border-color: var(--color-background);
+    background: var(--color-background);
+    color: var(--color-primary-dark);
+  }
+
+  .ds-hero .btn-outline {
+    border-color: rgba(253, 251, 236, 0.5);
+    color: var(--color-background);
+  }
+
+  .ds-token-preview {
+    --spotlight-color: var(--color-primary-dark);
+    display: grid;
+    gap: 0.6rem;
+    min-height: 320px;
+    align-content: end;
+    padding: 2rem;
+    border: 1px solid rgba(253, 251, 236, 0.28);
+    border-radius: 24px;
+    background:
+      radial-gradient(circle at 75% 20%, var(--spotlight-color), transparent 38%),
+      rgba(253, 251, 236, 0.1);
+    color: var(--color-background);
+    backdrop-filter: blur(18px);
+    box-shadow: 0 26px 80px rgba(0, 0, 0, 0.28);
+    transition: background 0.35s ease, font-family 0.35s ease;
+  }
+
+  .ds-token-preview span,
+  .ds-token-preview em {
+    font-family: var(--font-base);
+    font-style: normal;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.75;
+  }
+
+  .ds-token-preview strong {
+    font-family: inherit;
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1;
+  }
+
+  .ds-token-preview p {
+    margin: 0;
+    color: rgba(253, 251, 236, 0.8);
+    font-size: 1rem;
+  }
+
+  .ds-section-nav {
+    position: sticky;
+    top: 72px;
+    z-index: 30;
+    border-block: 1px solid rgba(59, 38, 57, 0.1);
+    background: rgba(253, 251, 236, 0.86);
+    backdrop-filter: blur(18px);
+  }
+
+  .ds-section-nav-inner {
+    display: flex;
+    gap: 0.6rem;
+    overflow-x: auto;
+    padding-block: 0.75rem;
+  }
+
+  .ds-section-nav a {
+    flex: 0 0 auto;
+    padding: 0.55rem 0.9rem;
+    border-radius: 999px;
+    color: rgba(59, 38, 57, 0.72);
+    font-family: var(--font-base);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .ds-section-nav a.is-active,
+  .ds-section-nav a:hover {
+    background: var(--color-primary-dark);
+    color: var(--color-background);
+  }
+
+  .ds-section {
+    scroll-margin-top: 150px;
+    padding: clamp(5rem, 10vw, 8rem) 0;
+  }
+
+  .ds-section-tinted {
+    background:
+      radial-gradient(circle at 8% 10%, rgba(187, 137, 107, 0.16), transparent 30%),
+      linear-gradient(180deg, rgba(109, 68, 146, 0.08), rgba(253, 251, 236, 0.8));
+  }
+
+  .ds-section-deep {
+    background: var(--color-primary-dark);
+    color: var(--color-background);
+  }
+
+  .ds-section-deep p,
+  .ds-section-deep code {
+    color: rgba(253, 251, 236, 0.76);
+  }
+
+  .ds-section-grid,
+  .ds-type-layout,
+  .ds-token-detail-grid,
+  .ds-motion-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.7fr) minmax(0, 1fr);
+    gap: clamp(2rem, 5vw, 5rem);
+    align-items: start;
+  }
+
+  .ds-section-header {
+    max-width: 720px;
+  }
+
+  .ds-section-header h2 {
+    margin: 0 0 1rem;
+    font-size: clamp(2.2rem, 5vw, 4.6rem);
+  }
+
+  .ds-section-header p:not(.ds-eyebrow) {
+    margin: 0;
+    font-size: clamp(1rem, 1.4vw, 1.2rem);
+    line-height: 1.75;
+  }
+
+  .ds-principles,
+  .ds-spacing-grid,
+  .ds-component-grid,
+  .ds-layout-gallery,
+  .ds-logo-grid,
+  .ds-image-grid,
+  .ds-motion-notes {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .ds-principles {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .ds-principles article,
+  .ds-spacing-card,
+  .ds-component-block,
+  .ds-service-demo,
+  .ds-testimonial-demo,
+  .ds-chip-demo,
+  .ds-layout-card,
+  .ds-motion-notes article {
+    border: 1px solid rgba(59, 38, 57, 0.09);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.55);
+    box-shadow: 0 18px 44px rgba(59, 38, 57, 0.06);
+  }
+
+  .ds-principles article {
+    padding: 1.5rem;
+  }
+
+  .ds-principles span,
+  .ds-demo-label,
+  .ds-layout-card span,
+  .ds-logo-card span,
+  .ds-asset-card figcaption,
+  .ds-label-grid figcaption {
+    color: var(--color-accent-red);
+    font-family: var(--font-base);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .ds-principles h3,
+  .ds-service-demo h3,
+  .ds-layout-card h3 {
+    margin: 0.75rem 0;
+    font-size: 1.45rem;
+  }
+
+  .ds-principles p,
+  .ds-service-demo p,
+  .ds-testimonial-demo p,
+  .ds-spacing-card p,
+  .ds-motion-notes p {
+    margin: 0;
+    font-size: 1rem;
+  }
+
+  .ds-color-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 2.5rem;
+  }
+
+  .ds-color-card {
+    appearance: none;
+    cursor: pointer;
+    display: grid;
+    gap: 0.7rem;
+    min-height: 330px;
+    padding: 1rem;
+    border: 1px solid rgba(59, 38, 57, 0.1);
+    border-radius: 18px;
+    background: #fff;
+    color: var(--color-primary-dark);
+    text-align: left;
+    transition: var(--transition-smooth);
+  }
+
+  .ds-color-card:hover,
+  .ds-color-card:focus-visible {
+    outline: none;
+    transform: translateY(-4px);
+    box-shadow: 0 24px 64px rgba(59, 38, 57, 0.12);
+  }
+
+  .ds-swatch {
+    min-height: 150px;
+    border-radius: 12px;
+    background: var(--swatch);
+    box-shadow: inset 0 0 0 1px rgba(59, 38, 57, 0.12);
+  }
+
+  .ds-color-card strong,
+  .ds-color-card em,
+  .ds-color-card code,
+  .ds-type-sample span,
+  .ds-type-sample code,
+  .ds-spacing-card code,
+  .ds-component-title code {
+    font-family: var(--font-base);
+    font-style: normal;
+  }
+
+  .ds-color-card strong {
+    font-size: 1.1rem;
+  }
+
+  .ds-color-card code,
+  .ds-color-card em,
+  .ds-type-sample code,
+  .ds-spacing-card code,
+  .ds-component-title code {
+    color: rgba(59, 38, 57, 0.62);
+    font-size: 0.85rem;
+  }
+
+  .ds-color-card p {
+    margin: 0;
+    font-size: 0.98rem;
+  }
+
+  .ds-type-stack {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .ds-type-sample {
+    appearance: none;
+    cursor: pointer;
+    display: grid;
+    gap: 0.7rem;
+    width: 100%;
+    padding: 1.4rem;
+    border: 1px solid rgba(59, 38, 57, 0.1);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.62);
+    color: var(--color-primary-dark);
+    text-align: left;
+    transition: var(--transition-smooth);
+  }
+
+  .ds-type-sample:hover,
+  .ds-type-sample:focus-visible {
+    outline: none;
+    border-color: rgba(140, 7, 3, 0.28);
+    background: #fff;
+    transform: translateX(8px);
+  }
+
+  .ds-type-sample span {
+    color: var(--color-accent-red);
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .ds-type-sample strong {
+    font-size: clamp(1.6rem, 4vw, 3rem);
+    line-height: 1.06;
+  }
+
+  .ds-spacing-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .ds-spacing-card {
+    padding: 1.2rem;
+    background: rgba(253, 251, 236, 0.08);
+    border-color: rgba(253, 251, 236, 0.14);
+  }
+
+  .ds-spacing-card > span {
+    display: block;
+    width: min(var(--space-width), 100%);
+    height: 0.6rem;
+    margin-bottom: 1rem;
+    border-radius: 999px;
+    background: var(--color-earth);
+  }
+
+  .ds-surface-row {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .ds-surface-card {
+    min-height: 170px;
+    display: grid;
+    place-items: center;
+    padding: 1.5rem;
+    border: 1px solid rgba(253, 251, 236, 0.16);
+    border-radius: 12px;
+    background: rgba(253, 251, 236, 0.07);
+    color: var(--color-background);
+    font-family: var(--font-primary);
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .ds-surface-card span {
+    display: block;
+    margin-top: 0.25rem;
+    font-family: var(--font-base);
+    font-size: 0.9rem;
+    opacity: 0.7;
+  }
+
+  .ds-surface-card-soft {
+    border-radius: 22px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.22);
+  }
+
+  .ds-surface-card-pill {
+    border-radius: 999px;
+  }
+
+  .ds-component-block {
+    padding: clamp(1.2rem, 3vw, 2rem);
+    margin-top: 1.2rem;
+  }
+
+  .ds-component-title {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .ds-component-title span {
+    font-family: var(--font-primary);
+    font-size: 1.6rem;
+  }
+
+  .ds-button-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .ds-state-disabled {
+    cursor: not-allowed;
+    opacity: 0.42;
+  }
+
+  .ds-component-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-top: 1rem;
+  }
+
+  .ds-service-demo,
+  .ds-testimonial-demo,
+  .ds-chip-demo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 270px;
+    padding: 1.5rem;
+  }
+
+  .ds-service-demo {
+    background: var(--color-primary-dark);
+    color: var(--color-background);
+  }
+
+  .ds-service-demo p {
+    color: rgba(253, 251, 236, 0.72);
+  }
+
+  .ds-demo-arrow {
+    align-self: flex-end;
+    color: var(--color-earth);
+    font-size: 2.2rem;
+  }
+
+  .ds-testimonial-demo {
+    border-left: 3px solid var(--color-sage);
+    background: rgba(86, 100, 67, 0.05);
+  }
+
+  .ds-testimonial-demo strong {
+    color: var(--color-sage);
+  }
+
+  .ds-chip-demo div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+  }
+
+  .ds-chip-demo div span {
+    display: inline-flex;
+    padding: 0.45rem 0.75rem;
+    border: 1px solid rgba(86, 100, 67, 0.18);
+    border-radius: 999px;
+    background: rgba(86, 100, 67, 0.05);
+    color: rgba(86, 100, 67, 0.92);
+    font-size: 0.86rem;
+  }
+
+  .ds-chip-demo div span:last-child {
+    border-color: rgba(140, 7, 3, 0.24);
+    background: rgba(140, 7, 3, 0.06);
+    color: var(--color-accent-red);
+  }
+
+  .ds-form-demo {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .ds-form-demo label {
+    display: grid;
+    gap: 0.55rem;
+    font-family: var(--font-primary);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .ds-form-demo input,
+  .ds-form-demo select,
+  .ds-form-demo textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid rgba(59, 38, 57, 0.15);
+    border-radius: 16px;
+    background: #fafaf8;
+    color: var(--color-primary-dark);
+    font-family: var(--font-base);
+    font-size: 1rem;
+    text-transform: none;
+    transition: var(--transition-smooth);
+  }
+
+  .ds-form-demo textarea,
+  .ds-check-demo,
+  .ds-form-demo .btn-primary {
+    grid-column: 1 / -1;
+  }
+
+  .ds-form-demo input:focus,
+  .ds-form-demo select:focus,
+  .ds-form-demo textarea:focus {
+    outline: none;
+    border-color: var(--color-accent-purple);
+    background: #fff;
+    box-shadow: 0 0 0 4px rgba(109, 68, 146, 0.1);
+  }
+
+  .ds-field-error input {
+    border-color: var(--color-accent-red);
+    background: rgba(140, 7, 3, 0.04);
+  }
+
+  .ds-field-error small {
+    color: var(--color-accent-red);
+    font-family: var(--font-base);
+    font-size: 0.82rem;
+    text-transform: none;
+  }
+
+  .ds-check-demo {
+    display: flex !important;
+    grid-template-columns: auto 1fr;
+    align-items: start;
+    gap: 0.8rem !important;
+    font-family: var(--font-base) !important;
+    letter-spacing: 0 !important;
+    text-transform: none !important;
+  }
+
+  .ds-check-demo input {
+    width: 1.1rem;
+    margin-top: 0.25rem;
+  }
+
+  .ds-layout-gallery {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .ds-layout-card {
+    overflow: hidden;
+  }
+
+  .ds-layout-card > img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+  }
+
+  .ds-layout-card > div:last-child {
+    padding: 1.3rem;
+  }
+
+  .ds-mini-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+    min-height: 260px;
+    padding: 1rem;
+    background: var(--color-primary-dark);
+  }
+
+  .ds-mini-grid span {
+    border-radius: 12px;
+    background: rgba(253, 251, 236, 0.12);
+  }
+
+  .ds-sticky-demo {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 1rem;
+    min-height: 260px;
+    padding: 1rem;
+  }
+
+  .ds-sticky-demo aside,
+  .ds-sticky-demo section {
+    display: grid;
+    place-items: center;
+    border-radius: 14px;
+    font-family: var(--font-primary);
+  }
+
+  .ds-sticky-demo aside {
+    background: rgba(187, 137, 107, 0.22);
+  }
+
+  .ds-sticky-demo section {
+    background: #fff;
+  }
+
+  .ds-logo-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin-bottom: 1.5rem;
+  }
+
+  .ds-logo-card {
+    display: grid;
+    min-height: 150px;
+    place-items: center;
+    gap: 1rem;
+    padding: 1.2rem;
+    border: 1px solid rgba(59, 38, 57, 0.1);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.6);
+  }
+
+  .ds-logo-card-dark {
+    background: var(--color-primary-dark);
+  }
+
+  .ds-logo-card img {
+    max-width: 160px;
+    max-height: 58px;
+    object-fit: contain;
+  }
+
+  .ds-hamburger-icon {
+    position: relative;
+    width: 42px;
+    height: 2px;
+    background: var(--color-primary-dark);
+  }
+
+  .ds-hamburger-icon::before,
+  .ds-hamburger-icon::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 42px;
+    height: 2px;
+    background: var(--color-primary-dark);
+  }
+
+  .ds-hamburger-icon::before {
+    top: -10px;
+  }
+
+  .ds-hamburger-icon::after {
+    top: 10px;
+  }
+
+  .ds-arrow-icons {
+    color: var(--color-earth);
+    font-family: var(--font-primary);
+    font-size: 3rem;
+  }
+
+  .ds-image-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .ds-asset-card {
+    overflow: hidden;
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 18px 44px rgba(59, 38, 57, 0.08);
+  }
+
+  .ds-asset-card img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+
+  .ds-asset-card figcaption {
+    padding: 1rem;
+  }
+
+  .ds-label-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .ds-label-grid figure {
+    display: grid;
+    gap: 1rem;
+    place-items: center;
+    min-height: 170px;
+    padding: 1.2rem;
+    border: 1px solid rgba(59, 38, 57, 0.08);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.55);
+  }
+
+  .ds-label-grid img {
+    max-height: 76px;
+    object-fit: contain;
+  }
+
+  .ds-motion-stage {
+    position: relative;
+    display: grid;
+    min-height: 420px;
+    place-items: center;
+    overflow: hidden;
+    border: 1px solid rgba(253, 251, 236, 0.16);
+    border-radius: 24px;
+    background:
+      radial-gradient(circle at center, rgba(187, 137, 107, 0.16), transparent 28%),
+      rgba(253, 251, 236, 0.06);
+  }
+
+  .ds-motion-stage img {
+    width: 72px;
+    filter: drop-shadow(0 16px 30px rgba(0, 0, 0, 0.22));
+  }
+
+  .ds-orbit {
+    position: absolute;
+    border: 1px solid rgba(253, 251, 236, 0.18);
+    border-radius: 999px;
+    animation: ds-orbit 18s linear infinite;
+  }
+
+  .ds-orbit-a {
+    width: 74%;
+    aspect-ratio: 1;
+  }
+
+  .ds-orbit-b {
+    width: 48%;
+    aspect-ratio: 1;
+    animation-duration: 13s;
+    animation-direction: reverse;
+    border-color: rgba(187, 137, 107, 0.34);
+  }
+
+  .ds-orbit-c {
+    width: 24%;
+    aspect-ratio: 1;
+    animation-duration: 9s;
+    border-color: rgba(109, 68, 146, 0.44);
+  }
+
+  @keyframes ds-orbit {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .ds-motion-notes {
+    grid-column: 1 / -1;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .ds-motion-notes article {
+    padding: 1.3rem;
+    background: rgba(253, 251, 236, 0.08);
+    border-color: rgba(253, 251, 236, 0.14);
+  }
+
+  .ds-motion-notes strong {
+    color: var(--color-earth);
+    font-family: var(--font-primary);
+    font-size: 1.35rem;
+  }
+
+  @media (max-width: 1080px) {
+    .ds-hero-grid,
+    .ds-section-grid,
+    .ds-type-layout,
+    .ds-token-detail-grid,
+    .ds-motion-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .ds-principles,
+    .ds-color-grid,
+    .ds-component-grid,
+    .ds-layout-gallery,
+    .ds-logo-grid,
+    .ds-image-grid,
+    .ds-label-grid,
+    .ds-motion-notes {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 720px) {
+    .ds-hero {
+      min-height: 92vh;
+      padding-top: 7rem;
+    }
+
+    .ds-hero-grid,
+    .ds-section-grid,
+    .ds-type-layout,
+    .ds-token-detail-grid,
+    .ds-motion-grid {
+      gap: 2rem;
+    }
+
+    .ds-hero-actions .btn-primary,
+    .ds-hero-actions .btn-outline,
+    .ds-button-row .btn-primary,
+    .ds-button-row .btn-outline,
+    .ds-button-row .footer-meditation-cta {
+      width: 100%;
+    }
+
+    .ds-section-nav {
+      top: 64px;
+    }
+
+    .ds-principles,
+    .ds-color-grid,
+    .ds-spacing-grid,
+    .ds-surface-row,
+    .ds-component-grid,
+    .ds-form-demo,
+    .ds-layout-gallery,
+    .ds-logo-grid,
+    .ds-image-grid,
+    .ds-label-grid,
+    .ds-motion-notes {
+      grid-template-columns: 1fr;
+    }
+
+    .ds-component-title {
+      display: grid;
+    }
+
+    .ds-token-preview {
+      min-height: 240px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ds-orbit {
+      animation: none;
+    }
+
+    .ds-parallax,
+    .ds-magnetic,
+    .ds-reveal,
+    .ds-hero-item,
+    .ds-hero-image {
+      transform: none !important;
+    }
+  }
+</style>

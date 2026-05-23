@@ -8,6 +8,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **design-system.astro**: nueva página pública de documentación visual del design system con tokens de color, tipografía, espaciado, componentes, layouts, assets y principios de movimiento.
+- **DesignSystemExperience.svelte**: isla Svelte con animaciones GSAP (reveal, parallax, magnetic hover, token spotlight interactivo) para la página de design system.
+- **PiensoLuegoMeditoLandingExperience.svelte**: isla Svelte con animaciones GSAP para la landing page del workshop.
+- **src/pages/landing/**: nueva estructura de landing page para "Pienso, luego medito".
+- **src/content/singletons/pienso-luego-medito-landing.yaml**: contenido Keystatic para la landing page del workshop.
+- **keystatic.config.ts / src/lib/keystatic.ts**: nuevos campos y configuraciones para soportar design system, landing page y contenido ampliado de workshop.
 - **public/images/textos/**: nuevos assets de tipografía de marca para labels visuales (Bienvenido, Manifiesto, Ciencia y Espíritu, Mi recorrido, Así nació Eleahora, Siguiente paso, Soy la voz que te recuerda que estás aquí).
 - **workshop-empresas.astro**: nueva sección de testimonios rediseñada con grid asimétrico, comillas decorativas en Sloop, colores por persona (vinotinto/verde/morado) y hover con elevación.
 - **keystatic.config.ts**: nuevo campo `role` en colección testimonios, nuevo campo `testimonialsEyebrow` en workshopPage.
@@ -35,6 +41,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **sesiones-page.yaml**: actualizado `heroTitle` a "¿con cuál te gustaría empezar?" y limpiado `ctaBody`.
 - **sesiones.astro**: CTA final migrado de `<p>` a `<h2>` y eliminada referencia a `ctaBody`.
 - **about.md**: reordenado contenido del manifiesto y simplificado closing.
+- **Footer.astro**: simplificado — eliminadas dependencias de `getSiteConfig()` y `resolveHref()`; navegación y enlaces gestionados directamente desde `globalContent`.
+- **workshop-empresas.astro**: rediseño completo de hero, guía, descripción, beneficios y experiencia items con datos ampliados del CMS.
+- **src/content/singletons/**: actualizados YAML de home, about, contacto, sesiones-page y workshop con nuevos campos y contenido editorial.
 
 ### Removed
 - **workshop-empresas.astro**: eliminada sección completa de "Formatos" (HTML, CSS, datos y campos de Keystatic).

@@ -1,0 +1,1014 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PiensoLuegoMeditoLandingExperience from '../../components/svelte/PiensoLuegoMeditoLandingExperience.svelte';
+import { getPiensoLuegoMeditoLanding, getSiteConfig } from '../../lib/keystatic';
+
+const page = await getPiensoLuegoMeditoLanding();
+const site = await getSiteConfig();
+
+const paragraphs = (value: string) => value.split('\n\n').filter(Boolean);
+const bookingUrl = site?.calLink ?? 'https://cal.eu/eleahora/sesiones';
+const emailAddress = (page as any)?.emailAddress ?? 'info@eleahora.com';
+const phoneNumber = (page as any)?.phoneNumber ?? '+34 605 37 37 82';
+const whatsappUrl = `https://wa.me/${(site?.phoneWhatsapp ?? phoneNumber).replace(/\D/g, '')}`;
+const ctaText = (page as any)?.ctaButtonText ?? 'Agendar llamada de descubrimiento';
+const heroTitle = (page as any)?.heroTitle ?? 'WORKSHOP Pienso, luego medito.';
+const [heroTitleLead, ...heroTitleRestParts] = heroTitle.split(' ');
+const heroTitleRest = heroTitleRestParts.join(' ');
+
+const profileBio = (page as any)?.profileBio ?? `Terapeuta transpersonal, guía de meditación y fundadora de su marca Eleahora en la que combina su carrera de idiomas en La Sorbonne, París, y su pasión por el desarrollo personal para llevar la meditación al mundo empresarial en diferentes países e idiomas (español, inglés, francés e italiano).
+
+Su workshop "Pienso, luego medito", nacido en Madrid, invita a conectar con la presencia plena y descubrir herramientas prácticas para el bienestar emocional y profesional.
+
+Con años de formación en PNL transpersonal, Mindfulness y conexión energética, Eleahora ha transformado su experiencia en un proyecto que guía a personas y equipos hacia la calma, la creatividad y el equilibrio.
+
+Su misión es clara: hacer posible la meditación incluso para quienes aún no saben que la necesitan, ayudando a empresas a afrontar los retos modernos con conciencia y propósito.
+
+A través de workshops en diferentes formatos, conferencias y eventos conscientes, Maria fomenta un cambio profundo que impulsa tanto el rendimiento laboral como el bienestar colectivo, contribuyendo a una transformación necesaria para el futuro.`;
+
+const storyBody = (page as any)?.storyBody ?? `Creado por Eleahora, terapeuta transpersonal y guía de meditación, este workshop está diseñado para transformar cómo los equipos perciben y manejan el estrés, la desconexión y los retos del día a día.
+
+Inspirado en la premisa de que meditar es una forma de existir, "Pienso, luego medito" combina ciencia, introspección y técnicas prácticas para ayudar a los participantes a reconectar con su esencia, regular sus emociones y vivir con mayor presencia.
+
+El workshop guía a los asistentes a través de dinámicas envolventes que integran los cinco sentidos y los elementos de la naturaleza para cultivar la atención plena. Además, aborda cómo nivelar el cortisol y la dopamina, dos hormonas clave en la productividad y el bienestar, ofreciendo herramientas como ejercicios de respiración, meditación y prácticas creativas.
+
+Con un enfoque en la regulación del sistema nervioso, este espacio fomenta claridad mental, mejor toma de decisiones y una conexión más profunda entre los individuos y sus equipos.
+
+Ideal para empresas que buscan empoderar a sus colaboradores con recursos para enfrentar los desafíos modernos, este workshop es más que una pausa: Es una invitación para transformar la manera en que vivimos y trabajamos, con una práctica tan esencial como la de volver al presente.`;
+
+const facts = (page as any)?.facts?.length ? (page as any).facts : [
+  { label: 'Formato', value: 'Team building', detail: 'grupos de 12 personas aprox.' },
+  { label: 'Duración', value: '3 horas', detail: 'experiencia inmersiva' },
+  { label: 'Modalidad', value: 'Presencial', detail: 'en tu organización' },
+];
+
+const steps = (page as any)?.steps?.length ? (page as any).steps : [
+  { title: 'Recuerda que estás aquí', description: 'Una invitación a detenernos, observar y sentir el momento presente. En un mundo acelerado, Eleahora guía a los participantes a reconectar con su cuerpo, mente y entorno para redescubrir el poder del "ahora".' },
+  { title: '¿Cómo podemos estar más presentes?', description: 'A través de prácticas conscientes que integran los sentidos y los elementos, este espacio explora herramientas simples pero transformadoras para cultivar atención plena y vivir con mayor conexión.' },
+  { title: 'Meditar como método de neuroregulación', description: 'La meditación es una poderosa herramienta que nos ayuda a regular nuestro sistema nervioso. Aprenderemos más sobre el sistema nervioso, la dopamina y el cortisol y sobre cómo producir estas hormonas en exceso se ha convertido en uno de los retos de la sociedad actual.' },
+  { title: 'La meditación en todas sus formas', description: 'Eleahora enseña técnicas accesibles y efectivas que se adaptan a diferentes necesidades y estilos de vida, meditando con el cuerpo, la mente y el alma.' },
+  { title: 'Niño Interior', description: '"He llegado por fin a lo que quería ser de mayor: un niño." - Joseph Heller. Con esta reflexión, Eleahora recuerda la importancia de volver a la esencia de la alegría, la creatividad y el asombro que habita en cada uno de nosotros. El workshop incluye dinámicas lúdicas que despiertan a nuestro niño interior.' },
+  { title: '¿Y ahora qué?', description: 'Un cierre intencional que motiva a los participantes a llevar lo aprendido más allá del workshop, incorporando pequeñas acciones conscientes en su día a día para vivir con mayor presencia.' },
+];
+
+const testimonials = (page as any)?.testimonials?.length ? (page as any).testimonials : [
+  { name: 'María Aristeguieta', role: 'Talent Processes Senior Specialist at Avature, Spain', quote: 'El profesionalismo y la calma de María marcan una verdadera diferencia. Practicar meditación después de su taller me ha ayudado muchísimo a ser más productiva y a no dejar que el estrés controle todo lo que hago. Recomiendo totalmente a cualquiera que trabaje en un entorno acelerado que conozca a Maria, ¡es realmente increíble!' },
+  { name: 'Vanessa Fernández', role: 'Senior Product Manager at Giftify, Belgium', quote: '¡Ojalá todos pudieran asistir a este workshop! Fue increíblemente valioso experimentar el mindfulness, especialmente con todo el estrés diario que enfrentamos. Me hace reflexionar: ¿cuán transformadora podría ser una empresa si todo el equipo adoptara estas prácticas de mindfulness? ¡Gracias, María! ¡Tu workshop es oro puro!' },
+  { name: 'Stella Camacho', role: 'Founder & Chief Creative Officer at Amorchi House', quote: 'Los creativos vivimos en mil dimensiones a la vez: el brief, la idea, la ejecución, el deadline, el café que dejamos enfriar. Pero este workshop me recordó que la mejor creatividad nace cuando estamos presentes. Gracias, Maria, por enseñarme que la pausa también es parte del proceso. Tu workshop es un regalo para el mundo.' },
+];
+
+const benefits = (page as any)?.benefits?.length ? (page as any).benefits : [
+  'La meditación como una herramienta práctica y poderosa',
+  'Regulación de niveles de estrés',
+  'Sinergia grupal',
+  'Empatía y conexión',
+  'Información valiosa para cultivar la mente y potenciar el rendimiento',
+  'Más claridad en la toma de decisiones',
+  'Prácticas sencillas para fomentar la presencia en todos los ámbitos de la vida',
+];
+
+const heroImage = (page as any)?.heroImage ?? '/images/Workshop Pienso Luego Medito-15-tiny.webp';
+const heroImage2 = (page as any)?.heroImage2 ?? '/images/Workshop Pienso Luego Medito-92-tiny.webp';
+const heroImage3 = (page as any)?.heroImage3 ?? '/images/home-mindfulness-01-tiny.webp';
+---
+
+<Layout
+  title={(page as any)?.seoTitle ?? 'Workshop Pienso, luego medito | Mindfulness y Bienestar para Empresas | Eleahora'}
+  description={(page as any)?.seoDescription ?? 'Una experiencia de team building para transformar el estrés en presencia. Neuroregulación, gestión de cortisol y cohesión de equipo con Eleahora.'}
+  ogTitle={(page as any)?.ogTitle ?? 'Workshop Pienso, luego medito | Eleahora'}
+  ogImage={(page as any)?.ogImage ?? '/images/OG-images-eleahora-01.jpg'}
+  canonicalUrl="/landing/pienso-luego-medito"
+>
+  <PiensoLuegoMeditoLandingExperience client:load />
+
+  <main class="plm-page">
+    <section class="plm-hero" aria-labelledby="plm-title">
+      <div class="plm-hero-bg" aria-hidden="true"></div>
+      <div class="max-w-screen plm-hero-grid">
+        <div class="plm-hero-content">
+          <p class="plm-kicker plm-hero-kicker">{(page as any)?.heroEyebrow ?? 'Experiencia para empresas'}</p>
+          <h1 id="plm-title" class="plm-hero-title">
+            <span>{heroTitleLead}</span>
+            <span>{heroTitleRest}</span>
+          </h1>
+          <p class="plm-hero-copy">{(page as any)?.heroSubtitle ?? 'Una experiencia de team building para transformar el estrés en presencia.'}</p>
+          <dl class="plm-hero-meta plm-hero-copy">
+            <div>
+              <dt>Web</dt>
+              <dd>{(page as any)?.heroWebsite ?? 'www.eleahora.com'}</dd>
+            </div>
+            <div>
+              <dt>Rol</dt>
+              <dd>{(page as any)?.heroRole ?? 'Experta en meditación y Terapeuta transpersonal'}</dd>
+            </div>
+          </dl>
+          <div class="plm-actions plm-hero-action">
+            <a class="btn-primary plm-magnetic" href={bookingUrl} target="_blank" rel="noopener noreferrer">{ctaText}</a>
+            <a class="btn-outline" href="#experiencia">Ver experiencia</a>
+          </div>
+          <p class="plm-hero-note">Mindfulness para empresas · Team building consciente · Gestión del estrés laboral</p>
+        </div>
+
+        <figure class="plm-hero-collage" aria-label="Workshop Pienso, luego medito">
+          <img class="plm-hero-card plm-hero-card--primary" src={heroImage} alt="Maria guiando el workshop Pienso, luego medito" width="760" height="950" fetchpriority="high" decoding="async" />
+          <img class="plm-hero-card plm-hero-card--secondary" src={heroImage2} alt="Participantes en una experiencia de meditación para empresas" width="760" height="950" loading="eager" decoding="async" />
+          <img class="plm-hero-card plm-hero-card--tertiary" src={heroImage3} alt="Práctica de mindfulness y presencia" width="760" height="950" loading="lazy" decoding="async" />
+        </figure>
+      </div>
+    </section>
+
+    <section class="plm-profile" aria-labelledby="plm-profile-title">
+      <div class="max-w-screen plm-profile-grid">
+        <div class="plm-reveal">
+          <p class="plm-kicker">{(page as any)?.profileEyebrow ?? 'Portada y Perfil'}</p>
+          <h2 id="plm-profile-title">{(page as any)?.profileName ?? 'Maria Eleonora Corallo'}</h2>
+        </div>
+        <div class="plm-profile-copy plm-reveal">
+          {paragraphs(profileBio).map((paragraph) => <p>{paragraph}</p>)}
+        </div>
+      </div>
+    </section>
+
+    <section class="plm-slogan" aria-label="Slogan Eleahora">
+      <div class="plm-floating-word" aria-hidden="true">aquí</div>
+      <div class="max-w-screen plm-slogan-inner">
+        <img src="/images/textos/Soy-voz-la-que-te-recuerda-que-estás-aquí.png" alt="" loading="lazy" decoding="async" />
+        <blockquote class="plm-reveal">{(page as any)?.slogan ?? 'SOY LA VOZ QUE TE RECUERDA QUE ESTÁS AQUÍ.'}</blockquote>
+      </div>
+    </section>
+
+    <section class="plm-story" aria-labelledby="plm-story-title">
+      <div class="max-w-screen plm-story-grid">
+        <div class="plm-story-copy">
+          <p class="plm-kicker plm-reveal">{(page as any)?.storyEyebrow ?? 'Descripción del Workshop'}</p>
+          <h2 id="plm-story-title" class="plm-reveal">{(page as any)?.storyTitle ?? '¿Cómo inició el viaje?'}</h2>
+          {paragraphs(storyBody).map((paragraph) => <p class="plm-reveal">{paragraph}</p>)}
+        </div>
+        <aside class="plm-story-media" aria-label="Imágenes de Eleahora">
+          <div><img class="plm-story-image" src="/images/about-eleahora-001.webp" alt="Maria Eleonora Corallo, fundadora de Eleahora" loading="lazy" decoding="async" /></div>
+          <div><img class="plm-story-image" src="/images/about-eleahora-002.webp" alt="Detalle visual de la experiencia Eleahora" loading="lazy" decoding="async" /></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="plm-experience" id="experiencia" aria-labelledby="plm-experience-title">
+      <div class="max-w-screen">
+        <header class="plm-section-header plm-reveal">
+          <p class="plm-kicker">La Experiencia</p>
+          <h2 id="plm-experience-title">Estructura para equipos que necesitan volver al presente.</h2>
+        </header>
+        <div class="plm-facts" aria-label="Datos del workshop">
+          {facts.map((fact: { label: string; value: string; detail: string }) => (
+            <article class="plm-fact plm-reveal">
+              <span>{fact.label}</span>
+              <strong>{fact.value}</strong>
+              <p>{fact.detail}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="plm-journey" aria-labelledby="plm-steps-title">
+      <div class="max-w-screen plm-journey-pin">
+        <aside class="plm-journey-aside">
+          <p class="plm-kicker">Neuroregulación · presencia · equipo</p>
+          <h2 id="plm-steps-title">{(page as any)?.stepsTitle ?? 'Los 6 Pasos'}</h2>
+          <div class="plm-step-dots" aria-hidden="true">
+            {steps.map((_: unknown, index: number) => <span class={`plm-step-dot ${index === 0 ? 'is-active' : ''}`}></span>)}
+          </div>
+          <p class="plm-price-note">{(page as any)?.priceNote ?? '*Valor a consultar*'}</p>
+        </aside>
+        <ol class="plm-steps">
+          {steps.map((step: { title: string; description: string }, index: number) => (
+            <li class="plm-step">
+              <span>{String(index + 1).padStart(2, '0')}</span>
+              <div>
+                <h3>{step.title}</h3>
+                <p>{step.description}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <section class="plm-benefits" aria-labelledby="plm-benefits-title">
+      <div class="max-w-screen">
+        <header class="plm-section-header plm-reveal">
+          <p class="plm-kicker">{(page as any)?.benefitsEyebrow ?? 'Beneficios: El Aterrizaje'}</p>
+          <h2 id="plm-benefits-title">{(page as any)?.benefitsTitle ?? '¿Qué te llevas como empresa?'}</h2>
+        </header>
+        <ul class="plm-benefit-grid">
+          {benefits.map((benefit: string) => (
+            <li class="plm-benefit">
+              <span aria-hidden="true"></span>
+              <p>{benefit}</p>
+            </li>
+          ))}
+        </ul>
+        <div class="plm-mid-cta plm-reveal">
+          <p>Una pausa que se convierte en herramienta de rendimiento, claridad y cohesión.</p>
+          <a class="btn-primary plm-magnetic" href={bookingUrl} target="_blank" rel="noopener noreferrer">{ctaText}</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="plm-testimonials-section" aria-labelledby="plm-testimonials-title">
+      <div class="max-w-screen">
+        <header class="plm-section-header plm-reveal">
+          <p class="plm-kicker">{(page as any)?.testimonialsEyebrow ?? 'Testimonios: Quienes han vivido la experiencia'}</p>
+          <h2 id="plm-testimonials-title">Lo que pasa cuando el equipo entiende la pausa.</h2>
+        </header>
+        <div class="plm-testimonials">
+          {testimonials.map((testimonial: { name: string; role: string; quote: string }, index: number) => (
+            <blockquote class={`plm-testimonial plm-testimonial--${index + 1}`}>
+              <p>{testimonial.quote}</p>
+              <footer>
+                <strong>{testimonial.name}</strong>
+                <span>{testimonial.role}</span>
+              </footer>
+            </blockquote>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="plm-closing-quote" aria-label="Cita de cierre">
+      <div class="max-w-screen">
+        <blockquote class="plm-reveal">
+          <p>"{(page as any)?.closingQuote ?? 'El verdadero reto de la condición humana no es estar presente, sino darnos cuenta de que no estamos presentes.'}"</p>
+          <cite>- {(page as any)?.closingQuoteAuthor ?? 'Meggan Watterson'}</cite>
+        </blockquote>
+      </div>
+    </section>
+
+    <section class="plm-final" aria-labelledby="plm-final-title">
+      <div class="max-w-screen plm-final-grid">
+        <div class="plm-reveal">
+          <p class="plm-final-thanks">{(page as any)?.finalThanks ?? 'GRACIAS!'}</p>
+          <h2 id="plm-final-title">{(page as any)?.finalTitle ?? 'Estoy aquí para ti.'}</h2>
+          <p>{(page as any)?.finalText ?? 'Hablemos para llevar esta experiencia a tu organización.'}</p>
+        </div>
+        <div class="plm-final-card plm-reveal">
+          <a class="btn-primary plm-magnetic" href={bookingUrl} target="_blank" rel="noopener noreferrer">{ctaText}</a>
+          <a href={`mailto:${emailAddress}`}>{emailAddress}</a>
+          <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">{phoneNumber}</a>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .plm-page {
+    --plm-card-radius: 8px;
+    background: var(--color-background);
+    color: var(--color-primary-dark);
+    overflow: hidden;
+    padding-top: 6rem;
+  }
+
+  .plm-page :global(.btn-primary),
+  .plm-page :global(.btn-outline) {
+    min-height: 3.1rem;
+    padding: 0.82rem 1.6rem;
+    letter-spacing: 0.12em;
+    text-align: center;
+  }
+
+  .plm-kicker {
+    margin: 0 0 1rem;
+    color: var(--color-accent-red);
+    font-size: 0.76rem;
+    font-weight: 650;
+    letter-spacing: 0.18em;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+
+  .plm-hero {
+    position: relative;
+    min-height: auto;
+    padding: clamp(3rem, 5vw, 5.5rem) 0 clamp(2.8rem, 4vw, 4.5rem);
+    isolation: isolate;
+  }
+
+  .plm-hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+      linear-gradient(115deg, rgba(253, 251, 236, 0.97), rgba(253, 251, 236, 0.78) 48%, rgba(59, 38, 57, 0.12)),
+      radial-gradient(ellipse 42% 34% at 82% 14%, rgba(140, 7, 3, 0.2), transparent 65%),
+      radial-gradient(ellipse 45% 34% at 16% 86%, rgba(86, 100, 67, 0.18), transparent 62%);
+  }
+
+  .plm-hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.82fr) minmax(340px, 0.78fr);
+    gap: clamp(2rem, 4vw, 4.8rem);
+    align-items: center;
+  }
+
+  .plm-hero-title {
+    max-width: 11.5ch;
+    margin: 0 0 1rem;
+    color: var(--color-primary-dark);
+    font-size: clamp(3.2rem, 6.6vw, 6.6rem);
+    line-height: 0.9;
+    letter-spacing: 0;
+    perspective: 900px;
+  }
+
+  .plm-hero-title span {
+    display: block;
+    will-change: transform, opacity;
+  }
+
+  .plm-hero-title span:first-child {
+    color: var(--color-accent-red);
+    font-size: 0.38em;
+    letter-spacing: 0.08em;
+  }
+
+  .plm-hero-copy {
+    max-width: 36rem;
+    margin: 0 0 1.25rem;
+    font-size: clamp(1rem, 1.35vw, 1.2rem);
+    line-height: 1.45;
+  }
+
+  .plm-hero-meta {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+    max-width: 39rem;
+    margin: 0 0 1.45rem;
+  }
+
+  .plm-hero-meta div {
+    min-height: 6.2rem;
+    padding: 0.95rem;
+    border: 1px solid rgba(59, 38, 57, 0.12);
+    border-radius: var(--plm-card-radius);
+    background: rgba(255, 255, 255, 0.56);
+  }
+
+  .plm-hero-meta dt {
+    margin-bottom: 0.45rem;
+    color: rgba(59, 38, 57, 0.58);
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .plm-hero-meta dd {
+    margin: 0;
+    color: var(--color-primary-dark);
+    font-family: var(--font-primary);
+    font-size: clamp(1rem, 1.4vw, 1.24rem);
+    line-height: 1.08;
+  }
+
+  .plm-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.3rem;
+  }
+
+  .plm-hero-note {
+    max-width: 36rem;
+    margin: 0;
+    color: rgba(59, 38, 57, 0.6);
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .plm-hero-collage {
+    position: relative;
+    min-height: clamp(420px, 44vw, 590px);
+    margin: 0;
+  }
+
+  .plm-hero-card {
+    position: absolute;
+    width: min(70%, 360px);
+    border: 1px solid rgba(59, 38, 57, 0.12);
+    border-radius: var(--plm-card-radius);
+    box-shadow: 0 22px 54px rgba(59, 38, 57, 0.16);
+    object-fit: cover;
+    will-change: transform, opacity;
+  }
+
+  .plm-hero-card--primary {
+    top: 0;
+    right: 8%;
+    z-index: 3;
+    aspect-ratio: 4 / 5;
+  }
+
+  .plm-hero-card--secondary {
+    bottom: 8%;
+    left: 0;
+    z-index: 2;
+    aspect-ratio: 5 / 4;
+  }
+
+  .plm-hero-card--tertiary {
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    width: min(46%, 250px);
+    aspect-ratio: 1;
+    filter: saturate(0.92);
+  }
+
+  .plm-profile,
+  .plm-story,
+  .plm-experience,
+  .plm-journey,
+  .plm-benefits,
+  .plm-testimonials-section,
+  .plm-closing-quote,
+  .plm-final {
+    padding: clamp(3.2rem, 5vw, 5.2rem) 0;
+  }
+
+  .plm-profile {
+    background: var(--color-primary-dark);
+  }
+
+  .plm-profile-grid,
+  .plm-story-grid,
+  .plm-final-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.82fr) minmax(0, 1fr);
+    gap: clamp(1.8rem, 4.5vw, 4.5rem);
+    align-items: start;
+  }
+
+  .plm-profile h2,
+  .plm-section-header h2,
+  .plm-story h2,
+  .plm-journey h2,
+  .plm-final h2 {
+    margin: 0;
+    color: var(--color-primary-dark);
+    font-size: clamp(2.15rem, 4.2vw, 4.2rem);
+    line-height: 0.98;
+    letter-spacing: 0;
+  }
+
+  .plm-profile h2,
+  .plm-profile p {
+    color: var(--color-background);
+  }
+
+  .plm-journey h2,
+  .plm-journey h3 {
+    color: var(--color-background);
+  }
+
+  .plm-profile .plm-kicker {
+    color: var(--color-earth);
+  }
+
+  .plm-profile-copy p,
+  .plm-story-copy p {
+    margin: 0 0 1.25rem;
+    font-size: clamp(0.98rem, 1.1vw, 1.08rem);
+    line-height: 1.72;
+  }
+
+  .plm-slogan {
+    position: relative;
+    min-height: min(70vh, 700px);
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    background: var(--color-accent-red);
+  }
+
+  .plm-floating-word {
+    position: absolute;
+    left: 4vw;
+    top: 4vh;
+    color: rgba(253, 251, 236, 0.08);
+    font-family: var(--font-accent);
+    font-size: clamp(9rem, 24vw, 24rem);
+    line-height: 1;
+    pointer-events: none;
+    white-space: nowrap;
+  }
+
+  .plm-slogan-inner {
+    display: grid;
+    grid-template-columns: minmax(260px, 0.8fr) minmax(0, 1fr);
+    gap: clamp(2rem, 5vw, 5rem);
+    align-items: center;
+  }
+
+  .plm-slogan img {
+    width: min(100%, 330px);
+    border-radius: var(--plm-card-radius);
+    opacity: 0.88;
+  }
+
+  .plm-slogan blockquote {
+    margin: 0;
+    color: var(--color-background);
+    font-family: var(--font-primary);
+    font-size: clamp(2.6rem, 5.7vw, 5.8rem);
+    line-height: 0.96;
+  }
+
+  .plm-story {
+    background:
+      radial-gradient(ellipse 42% 30% at 92% 18%, rgba(109, 68, 146, 0.1), transparent 64%),
+      var(--color-background);
+  }
+
+  .plm-story-media {
+    position: sticky;
+    top: 7rem;
+    display: grid;
+    gap: 1rem;
+  }
+
+  .plm-story-media div {
+    max-height: 300px;
+    overflow: hidden;
+    border-radius: var(--plm-card-radius);
+  }
+
+  .plm-story-media div:nth-child(2) {
+    width: 72%;
+    margin-left: auto;
+  }
+
+  .plm-story-image {
+    width: 100%;
+    height: 100%;
+    min-height: 260px;
+    object-fit: cover;
+    will-change: transform;
+  }
+
+  .plm-section-header {
+    max-width: 680px;
+    margin-bottom: clamp(1.6rem, 3vw, 3rem);
+  }
+
+  .plm-facts {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .plm-fact {
+    min-height: 165px;
+    padding: clamp(1.15rem, 1.8vw, 1.7rem);
+    border: 1px solid rgba(59, 38, 57, 0.12);
+    border-radius: var(--plm-card-radius);
+    background: rgba(255, 255, 255, 0.68);
+    box-shadow: 0 20px 45px rgba(59, 38, 57, 0.08);
+  }
+
+  .plm-fact span {
+    display: block;
+    margin-bottom: 1rem;
+    color: var(--color-accent-red);
+    font-size: 0.78rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .plm-fact strong {
+    display: block;
+    margin-bottom: 0.6rem;
+    font-family: var(--font-primary);
+    font-size: clamp(1.7rem, 3vw, 2.9rem);
+    line-height: 0.95;
+  }
+
+  .plm-fact p {
+    margin: 0;
+  }
+
+  .plm-journey {
+    background: var(--color-sage);
+  }
+
+  .plm-journey-pin {
+    display: grid;
+    grid-template-columns: minmax(260px, 0.38fr) minmax(0, 1fr);
+    gap: clamp(1.6rem, 3.8vw, 3.8rem);
+    align-items: start;
+  }
+
+  .plm-journey p,
+  .plm-journey h3 {
+    color: var(--color-background);
+  }
+
+  .plm-journey .plm-kicker {
+    color: var(--color-earth);
+  }
+
+  .plm-step-dots {
+    display: flex;
+    gap: 0.55rem;
+    margin: 1.35rem 0;
+  }
+
+  .plm-step-dot {
+    width: 0.72rem;
+    height: 0.72rem;
+    border: 1px solid rgba(253, 251, 236, 0.7);
+    border-radius: 50%;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+
+  .plm-step-dot.is-active {
+    background: var(--color-background);
+    transform: scale(1.35);
+  }
+
+  .plm-price-note {
+    margin: 0;
+    color: rgba(253, 251, 236, 0.75);
+    font-size: 1rem;
+  }
+
+  .plm-steps {
+    display: grid;
+    gap: 1.2rem;
+    list-style: none;
+  }
+
+  .plm-step {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 1rem;
+    min-height: 170px;
+    padding: clamp(1.15rem, 1.8vw, 1.75rem);
+    border: 1px solid rgba(253, 251, 236, 0.18);
+    border-radius: var(--plm-card-radius);
+    background: rgba(59, 38, 57, 0.22);
+    will-change: transform, opacity;
+  }
+
+  .plm-step > span {
+    color: var(--color-earth);
+    font-family: var(--font-primary);
+    font-size: clamp(2rem, 3.8vw, 3.8rem);
+    line-height: 0.9;
+  }
+
+  .plm-step h3 {
+    margin: 0 0 0.55rem;
+    font-size: clamp(1.3rem, 2vw, 1.95rem);
+  }
+
+  .plm-step p {
+    margin: 0;
+    color: rgba(253, 251, 236, 0.82);
+    font-size: 1rem;
+    line-height: 1.62;
+  }
+
+  .plm-benefit-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+    list-style: none;
+  }
+
+  .plm-benefit {
+    min-height: 140px;
+    padding: 1rem;
+    border: 1px solid rgba(59, 38, 57, 0.12);
+    border-radius: var(--plm-card-radius);
+    background: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 20px 48px rgba(59, 38, 57, 0.07);
+  }
+
+  .plm-benefit span {
+    display: block;
+    width: 1.2rem;
+    height: 1.2rem;
+    margin-bottom: 1.2rem;
+    background: var(--color-accent-red);
+  }
+
+  .plm-benefit:nth-child(2n) span {
+    background: var(--color-sage);
+  }
+
+  .plm-benefit:nth-child(3n) span {
+    background: var(--color-accent-purple);
+  }
+
+  .plm-benefit p {
+    margin: 0;
+    font-family: var(--font-primary);
+    font-size: clamp(1.04rem, 1.45vw, 1.38rem);
+    line-height: 1.12;
+  }
+
+  .plm-mid-cta {
+    display: flex;
+    justify-content: space-between;
+    gap: 1.5rem;
+    align-items: center;
+    margin-top: 2rem;
+    padding: clamp(1.2rem, 2vw, 1.8rem);
+    border-radius: var(--plm-card-radius);
+    background: var(--color-primary-dark);
+  }
+
+  .plm-mid-cta p {
+    max-width: 44rem;
+    margin: 0;
+    color: var(--color-background);
+    font-family: var(--font-primary);
+    font-size: clamp(1.35rem, 2.3vw, 2.25rem);
+    line-height: 1.05;
+  }
+
+  .plm-mid-cta :global(.btn-primary) {
+    flex: 0 0 auto;
+    border-color: var(--color-background);
+    background: var(--color-background);
+    color: var(--color-primary-dark);
+  }
+
+  .plm-testimonials-section {
+    background:
+      linear-gradient(180deg, rgba(59, 38, 57, 0.03), rgba(140, 7, 3, 0.07)),
+      var(--color-background);
+  }
+
+  .plm-testimonials {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 1rem;
+  }
+
+  .plm-testimonial {
+    min-height: 280px;
+    margin: 0;
+    padding: clamp(1.25rem, 2.2vw, 2rem);
+    border-radius: var(--plm-card-radius);
+    background: var(--color-primary-dark);
+  }
+
+  .plm-testimonial--1 {
+    grid-row: span 2;
+    background: var(--color-accent-red);
+  }
+
+  .plm-testimonial--2 {
+    background: var(--color-sage);
+  }
+
+  .plm-testimonial--3 {
+    background: var(--color-accent-purple);
+  }
+
+  .plm-testimonial p {
+    color: var(--color-background);
+    font-size: clamp(0.98rem, 1.12vw, 1.08rem);
+    line-height: 1.62;
+  }
+
+  .plm-testimonial footer {
+    display: grid;
+    gap: 0.25rem;
+    margin-top: 1.35rem;
+    color: var(--color-background);
+  }
+
+  .plm-testimonial strong {
+    font-family: var(--font-primary);
+    font-size: 1.35rem;
+  }
+
+  .plm-testimonial span {
+    color: rgba(253, 251, 236, 0.72);
+    font-size: 0.9rem;
+  }
+
+  .plm-closing-quote {
+    background: var(--color-primary-dark);
+  }
+
+  .plm-closing-quote blockquote {
+    max-width: 880px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .plm-closing-quote p {
+    margin: 0 0 1rem;
+    color: var(--color-background);
+    font-family: var(--font-primary);
+    font-size: clamp(2rem, 4.1vw, 4.2rem);
+    line-height: 1.02;
+  }
+
+  .plm-closing-quote cite {
+    color: var(--color-earth);
+    font-style: normal;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .plm-final {
+    background:
+      radial-gradient(ellipse 44% 34% at 82% 18%, rgba(140, 7, 3, 0.16), transparent 62%),
+      var(--color-background);
+  }
+
+  .plm-final-thanks {
+    margin: 0 0 0.9rem;
+    color: var(--color-accent-red);
+    font-family: var(--font-primary);
+    font-size: clamp(2.7rem, 5.2vw, 5.2rem);
+    line-height: 0.95;
+  }
+
+  .plm-final-grid {
+    align-items: center;
+  }
+
+  .plm-final-grid p:not(.plm-final-thanks) {
+    max-width: 42rem;
+    margin: 1.2rem 0 0;
+    font-size: clamp(1.08rem, 1.45vw, 1.35rem);
+  }
+
+  .plm-final-card {
+    display: grid;
+    gap: 1rem;
+    padding: clamp(1.4rem, 2.5vw, 2.5rem);
+    border: 1px solid rgba(59, 38, 57, 0.12);
+    border-radius: var(--plm-card-radius);
+    background: rgba(255, 255, 255, 0.78);
+    box-shadow: 0 24px 58px rgba(59, 38, 57, 0.1);
+  }
+
+  .plm-final-card a:not(.btn-primary) {
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(59, 38, 57, 0.14);
+    color: var(--color-primary-dark);
+    font-family: var(--font-primary);
+    font-size: clamp(1.12rem, 1.75vw, 1.6rem);
+    line-height: 1.05;
+  }
+
+  @media (max-width: 1100px) {
+    .plm-hero-grid,
+    .plm-profile-grid,
+    .plm-story-grid,
+    .plm-slogan-inner,
+    .plm-journey-pin,
+    .plm-final-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .plm-story-media {
+      position: relative;
+      top: auto;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .plm-story-media div:nth-child(2) {
+      width: 100%;
+    }
+
+    .plm-benefit-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .plm-hero-grid {
+      gap: 2.6rem;
+    }
+
+    .plm-hero-title {
+      max-width: 14ch;
+      font-size: clamp(3rem, 9vw, 5.1rem);
+    }
+
+    .plm-hero-collage {
+      min-height: 440px;
+      max-width: 620px;
+      width: 100%;
+      margin: 0 auto;
+    }
+  }
+
+  @media (max-width: 760px) {
+    .plm-page {
+      padding-top: 5rem;
+    }
+
+    .plm-hero {
+      min-height: auto;
+      padding-top: 2.6rem;
+    }
+
+    .plm-hero-title {
+      font-size: clamp(2.75rem, 13.6vw, 4.05rem);
+      line-height: 0.92;
+    }
+
+    .plm-hero-meta,
+    .plm-facts,
+    .plm-testimonials,
+    .plm-story-media,
+    .plm-benefit-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .plm-hero-collage {
+      min-height: 340px;
+    }
+
+    .plm-hero-card {
+      width: 70%;
+    }
+
+    .plm-slogan {
+      min-height: 62vh;
+    }
+
+    .plm-slogan blockquote {
+      font-size: clamp(2.25rem, 11vw, 3.3rem);
+    }
+
+    .plm-profile,
+    .plm-story,
+    .plm-experience,
+    .plm-journey,
+    .plm-benefits,
+    .plm-testimonials-section,
+    .plm-closing-quote,
+    .plm-final {
+      padding: 3.3rem 0;
+    }
+
+    .plm-profile h2,
+    .plm-section-header h2,
+    .plm-story h2,
+    .plm-journey h2,
+    .plm-final h2 {
+      font-size: clamp(2rem, 10vw, 3rem);
+    }
+
+    .plm-hero-meta div {
+      min-height: 5.5rem;
+    }
+
+    .plm-benefit {
+      min-height: auto;
+    }
+
+    .plm-testimonial {
+      min-height: auto;
+    }
+
+    .plm-step {
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+
+    .plm-mid-cta {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    .plm-actions :global(.btn-primary),
+    .plm-actions :global(.btn-outline),
+    .plm-mid-cta :global(.btn-primary),
+    .plm-final-card :global(.btn-primary) {
+      width: 100%;
+      padding-inline: 1rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .plm-hero-title span,
+    .plm-hero-card,
+    .plm-reveal,
+    .plm-step,
+    .plm-benefit,
+    .plm-testimonial {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+</style>
