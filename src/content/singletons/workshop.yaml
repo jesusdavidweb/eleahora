@@ -10,6 +10,8 @@ heroTitle: 'Pienso, luego medito'
 heroSubtitle: 'Transformando el estrés en presencia.'
 heroImage: '/images/Workshop Pienso Luego Medito-15-tiny.webp'
 heroImage2: '/images/Workshop Pienso Luego Medito-92-tiny.webp'
+heroImageAlt: 'Participantes en dinámica de mindfulness corporativo'
+heroImage2Alt: 'Sesión de meditación guiada para equipos'
 heroSecondaryCtaText: 'Ver experiencia'
 heroSecondaryCtaLink: '#experiencia'
 facts:
@@ -22,6 +24,7 @@ facts:
   - label: 'Modalidad'
     value: 'Presencial'
     detail: 'en tu empresa'
+factsAriaLabel: 'Datos del workshop'
 guideEyebrow: 'Sobre la Guía'
 guideName: 'Maria Eleonora Corallo'
 guideBio: >-
@@ -33,8 +36,9 @@ guideSlogan: |-
   Soy La Voz
   QUE TE RECUERDA
   QUE ESTÁS AQUÍ.
+guideSloganAriaLabel: 'Slogan'
 workshopEyebrow: 'El Workshop'
-workshopTitle: '"Pienso, luego medito" combina ciencia, introspección y técnicas prácticas para reconectar con nuestra esencia, regular nuestras emociones y vivir con mayor presencia.'
+workshopTitle: 'Creado para transformar cómo los equipos perciben y manejan el estrés.'
 workshopDescription: >-
   "Pienso, luego medito" combina ciencia, introspección y técnicas prácticas
   para reconectar con nuestra esencia, regular nuestras emociones y vivir con
@@ -50,6 +54,7 @@ workshopDescription: >-
   enfrentar los desafíos modernos, este workshop es más que una pausa: Es una
   invitación para transformar la manera en que vivimos y trabajamos, con una
   práctica tan esencial como la de volver al presente.
+aboutFactsAriaLabel: 'Detalles del workshop'
 experienceEyebrow: '¿Qué incluye la experiencia?'
 experienceTitle: 'Un recorrido práctico, consciente y aplicable.'
 experienceItems:
@@ -66,7 +71,7 @@ experienceItems:
   - title: '¿Y ahora qué?'
     description: 'Acciones concretas para aplicar en el día a día.'
 benefitsEyebrow: '¿Qué te llevas como empresa?'
-benefitsTitle: 'Lo que te llevas como empresa'
+benefitsTitle: 'Lo que cambia después de la experiencia.'
 benefits:
   - title: 'Regulación del estrés'
     description: 'Herramientas prácticas para regular altos niveles de estrés.'
@@ -76,24 +81,7 @@ benefits:
     description: 'Mayor claridad en la toma de decisiones.'
   - title: 'Cultivar la mente'
     description: 'Información valiosa para cultivar la mente y potenciar el rendimiento.'
-formatsEyebrow: 'Formatos'
-formatsTitle: 'Formatos disponibles'
-formats:
-  - name: 'Team building'
-    duration: '3 horas / sesión intensiva'
-    description: >-
-      Formato experiencial para equipos de hasta 12 personas. Ideal para team
-      building y días de empresa.
-  - name: 'Workshop corporativo'
-    duration: 'Medio día / 4 horas'
-    description: >-
-      Formato extendido con más profundidad en las prácticas y dinámicas
-      grupales.
-  - name: 'Programa de bienestar'
-    duration: 'Mensual / 4 sesiones'
-    description: >-
-      Programa continuo para empresas que quieren integrar el mindfulness en su
-      cultura organizacional.
+benefitsAriaLabel: 'Beneficios para la empresa'
 testimonialsTitle: 'Lo que ocurre cuando la pausa también es parte del proceso.'
 testimonials:
   - name: 'María Aristeguieta'
@@ -117,11 +105,13 @@ testimonials:
       Tu workshop me recordó que regularnos no es frenar, sino crear espacio
       para decidir mejor y colaborar con más empatía. Es una experiencia que
       realmente transforma la forma de vivir el día a día laboral.
+testimonialsEyebrow: 'Quienes han vivido la experiencia'
 closingQuote: >-
   El verdadero reto de la condición humana no es estar presente, sino darnos
   cuenta de que no estamos presentes.
 closingQuoteAuthor: 'Meggan Watterson'
+quoteAriaLabel: 'Cita de cierre'
 ctaEyebrow: 'Siguiente paso'
 ctaTitle: '¿Quieres llevar esta experiencia a tu organización?'
-ctaButtonText: 'Agendar llamada de descubrimiento'
+ctaButtonText: 'Solicitar propuesta'
 ctaButtonLink: 'https://wa.me/34605373782'

@@ -39,7 +39,7 @@ footerExploreLinks:
     href: '/contacto'
 footerContactTitle: 'Conecta'
 footerContactLinks:
-  - label: 'Agenda una Sesión'
+  - label: 'Agenda una Sesion'
     href: 'booking'
     external: true
   - label: 'Instagram'

@@ -11,6 +11,8 @@ const heroTitle = workshop?.heroTitle ?? "Pienso, luego medito";
 const heroSubtitle = workshop?.heroSubtitle ?? "Transformando el estrés en presencia.";
 const heroImage = workshop?.heroImage ?? "/images/Workshop Pienso Luego Medito-15-tiny.webp";
 const heroImage2 = (workshop as any)?.heroImage2 ?? "/images/Workshop Pienso Luego Medito-92-tiny.webp";
+const heroImageAlt = (workshop as any)?.heroImageAlt ?? "Participantes en dinámica de mindfulness corporativo";
+const heroImage2Alt = (workshop as any)?.heroImage2Alt ?? "Sesión de meditación guiada para equipos";
 const heroTitleParts = heroTitle.replace(/\.$/, "").split(",");
 const heroTitleFirst = `"${heroTitleParts[0]}${heroTitleParts.length > 1 ? "," : '"'}`;
 const heroTitleRest = heroTitleParts.length > 1 ? `${heroTitleParts.slice(1).join(",").trim()}"` : "";
@@ -44,6 +46,7 @@ const companyBenefits = workshop?.benefits?.length ? workshop.benefits : [
 ];
 
 const testimonialsTitle = (workshop as any)?.testimonialsTitle ?? "Lo que ocurre cuando la pausa también es parte del proceso.";
+const testimonialsEyebrow = (workshop as any)?.testimonialsEyebrow ?? "Quienes han vivido la experiencia";
 const testimonials = (workshop as any)?.testimonials?.length ? (workshop as any).testimonials : [
   {
     quote: "El profesionalismo y la calma de María marcan una verdadera diferencia. Practicar meditación después de su taller me ha ayudado muchísimo a ser más productiva y a ordenar mis prioridades con mayor claridad. También noto una mejor gestión del estrés en momentos de presión.",
@@ -77,6 +80,11 @@ const workshopFacts = (workshop as any)?.facts?.length ? (workshop as any).facts
   { label: "Duración", value: "3 horas", detail: "sesión intensiva" },
   { label: "Modalidad", value: "Presencial", detail: "en tu empresa" }
 ];
+const factsAriaLabel = (workshop as any)?.factsAriaLabel ?? "Datos del workshop";
+const guideSloganAriaLabel = (workshop as any)?.guideSloganAriaLabel ?? "Slogan";
+const aboutFactsAriaLabel = (workshop as any)?.aboutFactsAriaLabel ?? "Detalles del workshop";
+const benefitsAriaLabel = (workshop as any)?.benefitsAriaLabel ?? "Beneficios para la empresa";
+const quoteAriaLabel = (workshop as any)?.quoteAriaLabel ?? "Cita de cierre";
 ---
 
 <Layout
@@ -102,7 +110,7 @@ const workshopFacts = (workshop as any)?.facts?.length ? (workshop as any).facts
             <div class="hero-image-card hero-image-card-primary">
               <img
                 src={heroImage}
-                alt="Participantes en dinámica de mindfulness corporativo"
+                alt={heroImageAlt}
                 width="720"
                 height="960"
                 decoding="async"
@@ -112,7 +120,7 @@ const workshopFacts = (workshop as any)?.facts?.length ? (workshop as any).facts
             <div class="hero-image-card hero-image-card-secondary">
               <img
                 src={heroImage2}
-                alt="Sesión de meditación guiada para equipos"
+                alt={heroImage2Alt}
                 width="720"
                 height="960"
                 loading="eager"
@@ -139,7 +147,7 @@ const workshopFacts = (workshop as any)?.facts?.length ? (workshop as any).facts
             <a href={heroSecondaryCtaLink} class="btn-outline">{heroSecondaryCtaText}</a>
           </div>
 
-          <ul class="hero-facts" aria-label="Datos del workshop">
+          <ul class="hero-facts" aria-label={factsAriaLabel}>
             {workshopFacts.map((fact: { label: string; value: string; detail: string }) => (
               <li class="fact-chip">
                 <span class="fact-label">{fact.label}</span>
@@ -160,7 +168,7 @@ const workshopFacts = (workshop as any)?.facts?.length ? (workshop as any).facts
           <h2 id="guide-title">{guideName}</h2>
           <p>{guideBio}</p>
         </div>
-        <figure class="guide-quote-block" aria-label="Slogan">
+        <figure class="guide-quote-block" aria-label={guideSloganAriaLabel}>
           <blockquote class="guide-slogan">
             <span class="slogan-accent">{guideSloganAccent}</span>
             <span class="slogan-main">{guideSloganMain}</span>
@@ -178,7 +186,7 @@ const workshopFacts = (workshop as any)?.facts?.length ? (workshop as any).facts
         </header>
         <div class="about-body">
           {workshopDescription.split('\n\n').filter(Boolean).map((p: string) => <p class="about-intro">{p}</p>)}
-          <div class="about-facts-row" aria-label="Detalles del workshop">
+          <div class="about-facts-row" aria-label={aboutFactsAriaLabel}>
             {workshopFacts.map((fact: { label: string; value: string; detail: string }) => (
               <div class="about-fact">
                 <span>{fact.label}</span>
@@ -222,7 +230,7 @@ const workshopFacts = (workshop as any)?.facts?.length ? (workshop as any).facts
           <h2 id="benefits-title">{benefitsTitle}</h2>
         </header>
 
-        <ul class="benefits-cards" aria-label="Beneficios para la empresa">
+        <ul class="benefits-cards" aria-label={benefitsAriaLabel}>
           {companyBenefits.map((benefit: any, i: number) => (
             <li class={`benefit-card benefit-card--${benefit.color || ['earth', 'sage', 'purple', 'red'][i % 4]}`}>
               <span class="benefit-dot" aria-hidden="true"></span>
@@ -237,7 +245,7 @@ const workshopFacts = (workshop as any)?.facts?.length ? (workshop as any).facts
     <section class="section-testimonials" aria-labelledby="test-title">
       <div class="max-w-screen">
         <header class="section-header">
-          <span class="eyebrow">Quienes han vivido la experiencia</span>
+          <span class="eyebrow">{testimonialsEyebrow}</span>
           <h2 id="test-title">{testimonialsTitle}</h2>
         </header>
 
@@ -259,7 +267,7 @@ const workshopFacts = (workshop as any)?.facts?.length ? (workshop as any).facts
     </section>
 
     <!-- ─── CITA DE CIERRE ───────────────────────────────────── -->
-    <section class="section-quote" aria-labelledby="quote-title">
+    <section class="section-quote" aria-label={quoteAriaLabel}>
       <div class="max-w-screen quote-inner">
         <blockquote class="closing-quote">
           "{closingQuote}"

@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **docs/keystatic-coverage-audit.md**: matriz de cobertura editorial Keystatic para páginas públicas, header/footer, legales y exclusiones visuales/técnicas.
+- **keystatic.config.ts / singletons YAML**: nuevos campos editoriales para labels, alt text y aria labels visibles en workshop y landing "Pienso, luego medito" sin alterar estructura visual.
 - **design-system.astro**: nueva página pública de documentación visual del design system con tokens de color, tipografía, espaciado, componentes, layouts, assets y principios de movimiento.
 - **DesignSystemExperience.svelte**: isla Svelte con animaciones GSAP (reveal, parallax, magnetic hover, token spotlight interactivo) para la página de design system.
 - **PiensoLuegoMeditoLandingExperience.svelte**: isla Svelte con animaciones GSAP para la landing page del workshop.
@@ -22,6 +24,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **keystatic.config.ts**: nuevos campos `closingQuote`, `closingQuoteAuthor`, `testimonialsTitle`, `testimonialsEyebrow` en workshop.
 
 ### Changed
+- **about.astro / workshop-empresas.astro / landing/pienso-luego-medito.astro / Footer.astro**: conectados labels, alt text y microcopy visibles a Keystatic manteniendo fallbacks iguales al render actual.
 - **index.astro / about.astro**: limitada altura de imágenes de tipografía a 38px en `.section-label-img` y `.hero-label-img`.
 - **index.astro**: centrado horizontalmente el label "Ciencia y Espíritu" en la sección de mindfulness.
 - **index.astro / about.astro / workshop-empresas.astro**: labels de texto reemplazados por imágenes de tipografía de marca en hero, manifiesto, mindfulness y secciones de about.

@@ -702,6 +702,14 @@ export default config({
           directory: "public/images",
           publicPath: "/images/",
         }),
+        heroImageAlt: fields.text({
+          label: "Hero — Texto alternativo imagen 1",
+          defaultValue: "Participantes en dinámica de mindfulness corporativo",
+        }),
+        heroImage2Alt: fields.text({
+          label: "Hero — Texto alternativo imagen 2",
+          defaultValue: "Sesión de meditación guiada para equipos",
+        }),
         heroSecondaryCtaText: fields.text({
           label: "Hero — CTA secundario texto",
           defaultValue: "Ver formatos",
@@ -721,6 +729,10 @@ export default config({
             itemLabel: (props) => props.fields.label.value || "Dato",
           }
         ),
+        factsAriaLabel: fields.text({
+          label: "Datos destacados — Etiqueta accesible",
+          defaultValue: "Datos del workshop",
+        }),
 
         // Sobre la guía
         guideEyebrow: fields.text({
@@ -740,6 +752,10 @@ export default config({
           label: "Guía — Slogan",
           defaultValue: "Soy La Voz QUE TE RECUERDA QUE ESTÁS AQUÍ.",
         }),
+        guideSloganAriaLabel: fields.text({
+          label: "Guía — Etiqueta accesible slogan",
+          defaultValue: "Slogan",
+        }),
 
         // Workshop
         workshopEyebrow: fields.text({
@@ -754,6 +770,10 @@ export default config({
           label: "Workshop — Descripción",
           multiline: true,
           defaultValue: "Una experiencia inmersiva de 3 horas diseñada para equipos que quieren herramientas reales de gestión emocional, neuroregulación y presencia. A través de la meditación, la respiración y dinámicas vivenciales, los participantes descubren cómo volver al presente — en el trabajo y en la vida.",
+        }),
+        aboutFactsAriaLabel: fields.text({
+          label: "Workshop — Etiqueta accesible detalles",
+          defaultValue: "Detalles del workshop",
         }),
 
         // Experiencia
@@ -795,6 +815,10 @@ export default config({
             itemLabel: (props) => props.fields.title.value || "Beneficio",
           }
         ),
+        benefitsAriaLabel: fields.text({
+          label: "Beneficios — Etiqueta accesible lista",
+          defaultValue: "Beneficios para la empresa",
+        }),
 
         // Testimonios de empresa
         testimonialsEyebrow: fields.text({
@@ -826,6 +850,10 @@ export default config({
         closingQuoteAuthor: fields.text({
           label: "Autor de la cita",
           defaultValue: "Meggan Watterson",
+        }),
+        quoteAriaLabel: fields.text({
+          label: "Cita de cierre — Etiqueta accesible",
+          defaultValue: "Cita de cierre",
         }),
 
         // CTA
@@ -905,6 +933,30 @@ export default config({
         heroImage: fields.image({ label: "Hero — Imagen principal", directory: "public/images", publicPath: "/images/" }),
         heroImage2: fields.image({ label: "Hero — Imagen secundaria", directory: "public/images", publicPath: "/images/" }),
         heroImage3: fields.image({ label: "Hero — Imagen terciaria", directory: "public/images", publicPath: "/images/" }),
+        heroSecondaryCtaText: fields.text({ label: "Hero — CTA secundario texto", defaultValue: "Ver experiencia" }),
+        heroSecondaryCtaLink: fields.text({ label: "Hero — CTA secundario enlace", defaultValue: "#experiencia" }),
+        heroNote: fields.text({
+          label: "Hero — Nota",
+          defaultValue: "Mindfulness para empresas · Team building consciente · Gestión del estrés laboral",
+        }),
+        heroWebsiteLabel: fields.text({ label: "Hero — Label web", defaultValue: "Web" }),
+        heroRoleLabel: fields.text({ label: "Hero — Label rol", defaultValue: "Rol" }),
+        heroFigureAriaLabel: fields.text({
+          label: "Hero — Etiqueta accesible collage",
+          defaultValue: "Workshop Pienso, luego medito",
+        }),
+        heroImageAlt: fields.text({
+          label: "Hero — Texto alternativo imagen principal",
+          defaultValue: "Maria guiando el workshop Pienso, luego medito",
+        }),
+        heroImage2Alt: fields.text({
+          label: "Hero — Texto alternativo imagen secundaria",
+          defaultValue: "Participantes en una experiencia de meditación para empresas",
+        }),
+        heroImage3Alt: fields.text({
+          label: "Hero — Texto alternativo imagen terciaria",
+          defaultValue: "Práctica de mindfulness y presencia",
+        }),
         ctaButtonText: fields.text({
           label: "CTA — Texto del botón",
           defaultValue: "Agendar llamada de descubrimiento",
@@ -916,9 +968,24 @@ export default config({
           label: "Slogan",
           defaultValue: "SOY LA VOZ QUE TE RECUERDA QUE ESTÁS AQUÍ.",
         }),
+        sloganAriaLabel: fields.text({ label: "Slogan — Etiqueta accesible", defaultValue: "Slogan Eleahora" }),
         storyEyebrow: fields.text({ label: "Historia — Etiqueta", defaultValue: "Descripción del Workshop" }),
         storyTitle: fields.text({ label: "Historia — Título", defaultValue: "¿Cómo inició el viaje?" }),
         storyBody: fields.text({ label: "Historia — Texto", multiline: true }),
+        storyMediaAriaLabel: fields.text({
+          label: "Historia — Etiqueta accesible imágenes",
+          defaultValue: "Imágenes de Eleahora",
+        }),
+        storyImage1: fields.image({ label: "Historia — Imagen 1", directory: "public/images", publicPath: "/images/" }),
+        storyImage1Alt: fields.text({
+          label: "Historia — Texto alternativo imagen 1",
+          defaultValue: "Maria Eleonora Corallo, fundadora de Eleahora",
+        }),
+        storyImage2: fields.image({ label: "Historia — Imagen 2", directory: "public/images", publicPath: "/images/" }),
+        storyImage2Alt: fields.text({
+          label: "Historia — Texto alternativo imagen 2",
+          defaultValue: "Detalle visual de la experiencia Eleahora",
+        }),
         facts: fields.array(
           fields.object({
             label: fields.text({ label: "Etiqueta" }),
@@ -930,6 +997,19 @@ export default config({
             itemLabel: (props) => props.fields.label.value || "Dato",
           }
         ),
+        experienceEyebrow: fields.text({ label: "Experiencia — Etiqueta", defaultValue: "La Experiencia" }),
+        experienceTitle: fields.text({
+          label: "Experiencia — Título",
+          defaultValue: "Estructura para equipos que necesitan volver al presente.",
+        }),
+        factsAriaLabel: fields.text({
+          label: "Experiencia — Etiqueta accesible datos",
+          defaultValue: "Datos del workshop",
+        }),
+        journeyEyebrow: fields.text({
+          label: "Pasos — Etiqueta",
+          defaultValue: "Neuroregulación · presencia · equipo",
+        }),
         stepsTitle: fields.text({ label: "Pasos — Título", defaultValue: "Los 6 Pasos" }),
         steps: fields.array(
           fields.object({
@@ -962,6 +1042,18 @@ export default config({
         benefits: fields.array(fields.text({ label: "Beneficio" }), {
           label: "Beneficios",
           itemLabel: (props) => props.value || "Beneficio",
+        }),
+        benefitsMidCtaText: fields.text({
+          label: "Beneficios — Texto CTA intermedia",
+          defaultValue: "Una pausa que se convierte en herramienta de rendimiento, claridad y cohesión.",
+        }),
+        testimonialsTitle: fields.text({
+          label: "Testimonios — Título",
+          defaultValue: "Lo que pasa cuando el equipo entiende la pausa.",
+        }),
+        closingQuoteAriaLabel: fields.text({
+          label: "Cita de cierre — Etiqueta accesible",
+          defaultValue: "Cita de cierre",
         }),
         closingQuote: fields.text({ label: "Cita de cierre", multiline: true }),
         closingQuoteAuthor: fields.text({ label: "Autor de la cita", defaultValue: "Meggan Watterson" }),

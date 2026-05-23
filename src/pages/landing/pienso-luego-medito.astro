@@ -12,6 +12,9 @@ const emailAddress = (page as any)?.emailAddress ?? 'info@eleahora.com';
 const phoneNumber = (page as any)?.phoneNumber ?? '+34 605 37 37 82';
 const whatsappUrl = `https://wa.me/${(site?.phoneWhatsapp ?? phoneNumber).replace(/\D/g, '')}`;
 const ctaText = (page as any)?.ctaButtonText ?? 'Agendar llamada de descubrimiento';
+const heroSecondaryCtaText = (page as any)?.heroSecondaryCtaText ?? 'Ver experiencia';
+const heroSecondaryCtaLink = (page as any)?.heroSecondaryCtaLink ?? '#experiencia';
+const heroNote = (page as any)?.heroNote ?? 'Mindfulness para empresas · Team building consciente · Gestión del estrés laboral';
 const heroTitle = (page as any)?.heroTitle ?? 'WORKSHOP Pienso, luego medito.';
 const [heroTitleLead, ...heroTitleRestParts] = heroTitle.split(' ');
 const heroTitleRest = heroTitleRestParts.join(' ');
@@ -70,6 +73,8 @@ const benefits = (page as any)?.benefits?.length ? (page as any).benefits : [
 const heroImage = (page as any)?.heroImage ?? '/images/Workshop Pienso Luego Medito-15-tiny.webp';
 const heroImage2 = (page as any)?.heroImage2 ?? '/images/Workshop Pienso Luego Medito-92-tiny.webp';
 const heroImage3 = (page as any)?.heroImage3 ?? '/images/home-mindfulness-01-tiny.webp';
+const storyImage1 = (page as any)?.storyImage1 ?? '/images/about-eleahora-001.webp';
+const storyImage2 = (page as any)?.storyImage2 ?? '/images/about-eleahora-002.webp';
 ---
 
 <Layout
@@ -94,25 +99,25 @@ const heroImage3 = (page as any)?.heroImage3 ?? '/images/home-mindfulness-01-tin
           <p class="plm-hero-copy">{(page as any)?.heroSubtitle ?? 'Una experiencia de team building para transformar el estrés en presencia.'}</p>
           <dl class="plm-hero-meta plm-hero-copy">
             <div>
-              <dt>Web</dt>
+              <dt>{(page as any)?.heroWebsiteLabel ?? 'Web'}</dt>
               <dd>{(page as any)?.heroWebsite ?? 'www.eleahora.com'}</dd>
             </div>
             <div>
-              <dt>Rol</dt>
+              <dt>{(page as any)?.heroRoleLabel ?? 'Rol'}</dt>
               <dd>{(page as any)?.heroRole ?? 'Experta en meditación y Terapeuta transpersonal'}</dd>
             </div>
           </dl>
           <div class="plm-actions plm-hero-action">
             <a class="btn-primary plm-magnetic" href={bookingUrl} target="_blank" rel="noopener noreferrer">{ctaText}</a>
-            <a class="btn-outline" href="#experiencia">Ver experiencia</a>
+            <a class="btn-outline" href={heroSecondaryCtaLink}>{heroSecondaryCtaText}</a>
           </div>
-          <p class="plm-hero-note">Mindfulness para empresas · Team building consciente · Gestión del estrés laboral</p>
+          <p class="plm-hero-note">{heroNote}</p>
         </div>
 
-        <figure class="plm-hero-collage" aria-label="Workshop Pienso, luego medito">
-          <img class="plm-hero-card plm-hero-card--primary" src={heroImage} alt="Maria guiando el workshop Pienso, luego medito" width="760" height="950" fetchpriority="high" decoding="async" />
-          <img class="plm-hero-card plm-hero-card--secondary" src={heroImage2} alt="Participantes en una experiencia de meditación para empresas" width="760" height="950" loading="eager" decoding="async" />
-          <img class="plm-hero-card plm-hero-card--tertiary" src={heroImage3} alt="Práctica de mindfulness y presencia" width="760" height="950" loading="lazy" decoding="async" />
+        <figure class="plm-hero-collage" aria-label={(page as any)?.heroFigureAriaLabel ?? 'Workshop Pienso, luego medito'}>
+          <img class="plm-hero-card plm-hero-card--primary" src={heroImage} alt={(page as any)?.heroImageAlt ?? 'Maria guiando el workshop Pienso, luego medito'} width="760" height="950" fetchpriority="high" decoding="async" />
+          <img class="plm-hero-card plm-hero-card--secondary" src={heroImage2} alt={(page as any)?.heroImage2Alt ?? 'Participantes en una experiencia de meditación para empresas'} width="760" height="950" loading="eager" decoding="async" />
+          <img class="plm-hero-card plm-hero-card--tertiary" src={heroImage3} alt={(page as any)?.heroImage3Alt ?? 'Práctica de mindfulness y presencia'} width="760" height="950" loading="lazy" decoding="async" />
         </figure>
       </div>
     </section>
@@ -129,7 +134,7 @@ const heroImage3 = (page as any)?.heroImage3 ?? '/images/home-mindfulness-01-tin
       </div>
     </section>
 
-    <section class="plm-slogan" aria-label="Slogan Eleahora">
+    <section class="plm-slogan" aria-label={(page as any)?.sloganAriaLabel ?? 'Slogan Eleahora'}>
       <div class="plm-floating-word" aria-hidden="true">aquí</div>
       <div class="max-w-screen plm-slogan-inner">
         <img src="/images/textos/Soy-voz-la-que-te-recuerda-que-estás-aquí.png" alt="" loading="lazy" decoding="async" />
@@ -144,9 +149,9 @@ const heroImage3 = (page as any)?.heroImage3 ?? '/images/home-mindfulness-01-tin
           <h2 id="plm-story-title" class="plm-reveal">{(page as any)?.storyTitle ?? '¿Cómo inició el viaje?'}</h2>
           {paragraphs(storyBody).map((paragraph) => <p class="plm-reveal">{paragraph}</p>)}
         </div>
-        <aside class="plm-story-media" aria-label="Imágenes de Eleahora">
-          <div><img class="plm-story-image" src="/images/about-eleahora-001.webp" alt="Maria Eleonora Corallo, fundadora de Eleahora" loading="lazy" decoding="async" /></div>
-          <div><img class="plm-story-image" src="/images/about-eleahora-002.webp" alt="Detalle visual de la experiencia Eleahora" loading="lazy" decoding="async" /></div>
+        <aside class="plm-story-media" aria-label={(page as any)?.storyMediaAriaLabel ?? 'Imágenes de Eleahora'}>
+          <div><img class="plm-story-image" src={storyImage1} alt={(page as any)?.storyImage1Alt ?? 'Maria Eleonora Corallo, fundadora de Eleahora'} loading="lazy" decoding="async" /></div>
+          <div><img class="plm-story-image" src={storyImage2} alt={(page as any)?.storyImage2Alt ?? 'Detalle visual de la experiencia Eleahora'} loading="lazy" decoding="async" /></div>
         </aside>
       </div>
     </section>
@@ -154,10 +159,10 @@ const heroImage3 = (page as any)?.heroImage3 ?? '/images/home-mindfulness-01-tin
     <section class="plm-experience" id="experiencia" aria-labelledby="plm-experience-title">
       <div class="max-w-screen">
         <header class="plm-section-header plm-reveal">
-          <p class="plm-kicker">La Experiencia</p>
-          <h2 id="plm-experience-title">Estructura para equipos que necesitan volver al presente.</h2>
+          <p class="plm-kicker">{(page as any)?.experienceEyebrow ?? 'La Experiencia'}</p>
+          <h2 id="plm-experience-title">{(page as any)?.experienceTitle ?? 'Estructura para equipos que necesitan volver al presente.'}</h2>
         </header>
-        <div class="plm-facts" aria-label="Datos del workshop">
+        <div class="plm-facts" aria-label={(page as any)?.factsAriaLabel ?? 'Datos del workshop'}>
           {facts.map((fact: { label: string; value: string; detail: string }) => (
             <article class="plm-fact plm-reveal">
               <span>{fact.label}</span>
@@ -172,7 +177,7 @@ const heroImage3 = (page as any)?.heroImage3 ?? '/images/home-mindfulness-01-tin
     <section class="plm-journey" aria-labelledby="plm-steps-title">
       <div class="max-w-screen plm-journey-pin">
         <aside class="plm-journey-aside">
-          <p class="plm-kicker">Neuroregulación · presencia · equipo</p>
+          <p class="plm-kicker">{(page as any)?.journeyEyebrow ?? 'Neuroregulación · presencia · equipo'}</p>
           <h2 id="plm-steps-title">{(page as any)?.stepsTitle ?? 'Los 6 Pasos'}</h2>
           <div class="plm-step-dots" aria-hidden="true">
             {steps.map((_: unknown, index: number) => <span class={`plm-step-dot ${index === 0 ? 'is-active' : ''}`}></span>)}
@@ -208,7 +213,7 @@ const heroImage3 = (page as any)?.heroImage3 ?? '/images/home-mindfulness-01-tin
           ))}
         </ul>
         <div class="plm-mid-cta plm-reveal">
-          <p>Una pausa que se convierte en herramienta de rendimiento, claridad y cohesión.</p>
+          <p>{(page as any)?.benefitsMidCtaText ?? 'Una pausa que se convierte en herramienta de rendimiento, claridad y cohesión.'}</p>
           <a class="btn-primary plm-magnetic" href={bookingUrl} target="_blank" rel="noopener noreferrer">{ctaText}</a>
         </div>
       </div>
@@ -218,7 +223,7 @@ const heroImage3 = (page as any)?.heroImage3 ?? '/images/home-mindfulness-01-tin
       <div class="max-w-screen">
         <header class="plm-section-header plm-reveal">
           <p class="plm-kicker">{(page as any)?.testimonialsEyebrow ?? 'Testimonios: Quienes han vivido la experiencia'}</p>
-          <h2 id="plm-testimonials-title">Lo que pasa cuando el equipo entiende la pausa.</h2>
+          <h2 id="plm-testimonials-title">{(page as any)?.testimonialsTitle ?? 'Lo que pasa cuando el equipo entiende la pausa.'}</h2>
         </header>
         <div class="plm-testimonials">
           {testimonials.map((testimonial: { name: string; role: string; quote: string }, index: number) => (
@@ -234,7 +239,7 @@ const heroImage3 = (page as any)?.heroImage3 ?? '/images/home-mindfulness-01-tin
       </div>
     </section>
 
-    <section class="plm-closing-quote" aria-label="Cita de cierre">
+    <section class="plm-closing-quote" aria-label={(page as any)?.closingQuoteAriaLabel ?? 'Cita de cierre'}>
       <div class="max-w-screen">
         <blockquote class="plm-reveal">
           <p>"{(page as any)?.closingQuote ?? 'El verdadero reto de la condición humana no es estar presente, sino darnos cuenta de que no estamos presentes.'}"</p>

@@ -12,6 +12,15 @@ heroRole: 'Experta en meditación y Terapeuta transpersonal'
 heroImage: '/images/Workshop Pienso Luego Medito-15-tiny.webp'
 heroImage2: '/images/Workshop Pienso Luego Medito-92-tiny.webp'
 heroImage3: '/images/home-mindfulness-01-tiny.webp'
+heroSecondaryCtaText: 'Ver experiencia'
+heroSecondaryCtaLink: '#experiencia'
+heroNote: 'Mindfulness para empresas · Team building consciente · Gestión del estrés laboral'
+heroWebsiteLabel: 'Web'
+heroRoleLabel: 'Rol'
+heroFigureAriaLabel: 'Workshop Pienso, luego medito'
+heroImageAlt: 'Maria guiando el workshop Pienso, luego medito'
+heroImage2Alt: 'Participantes en una experiencia de meditación para empresas'
+heroImage3Alt: 'Práctica de mindfulness y presencia'
 ctaButtonText: 'Agendar llamada de descubrimiento'
 profileEyebrow: 'Portada y Perfil'
 profileName: 'Maria Eleonora Corallo'
@@ -38,6 +47,7 @@ profileBio: >-
   laboral como el bienestar colectivo, contribuyendo a una transformación
   necesaria para el futuro.
 slogan: 'SOY LA VOZ QUE TE RECUERDA QUE ESTÁS AQUÍ.'
+sloganAriaLabel: 'Slogan Eleahora'
 storyEyebrow: 'Descripción del Workshop'
 storyTitle: '¿Cómo inició el viaje?'
 storyBody: >-
@@ -64,6 +74,11 @@ storyBody: >-
   enfrentar los desafíos modernos, este workshop es más que una pausa: Es una
   invitación para transformar la manera en que vivimos y trabajamos, con una
   práctica tan esencial como la de volver al presente.
+storyMediaAriaLabel: 'Imágenes de Eleahora'
+storyImage1: '/images/about-eleahora-001.webp'
+storyImage1Alt: 'Maria Eleonora Corallo, fundadora de Eleahora'
+storyImage2: '/images/about-eleahora-002.webp'
+storyImage2Alt: 'Detalle visual de la experiencia Eleahora'
 facts:
   - label: 'Formato'
     value: 'Team building'
@@ -74,6 +89,10 @@ facts:
   - label: 'Modalidad'
     value: 'Presencial'
     detail: 'en tu organización'
+experienceEyebrow: 'La Experiencia'
+experienceTitle: 'Estructura para equipos que necesitan volver al presente.'
+factsAriaLabel: 'Datos del workshop'
+journeyEyebrow: 'Neuroregulación · presencia · equipo'
 stepsTitle: 'Los 6 Pasos'
 steps:
   - title: 'Recuerda que estás aquí'
@@ -146,10 +165,13 @@ benefits:
   - 'Información valiosa para cultivar la mente y potenciar el rendimiento'
   - 'Más claridad en la toma de decisiones'
   - 'Prácticas sencillas para fomentar la presencia en todos los ámbitos de la vida'
+benefitsMidCtaText: 'Una pausa que se convierte en herramienta de rendimiento, claridad y cohesión.'
+testimonialsTitle: 'Lo que pasa cuando el equipo entiende la pausa.'
 closingQuote: >-
   El verdadero reto de la condición humana no es estar presente, sino darnos
   cuenta de que no estamos presentes.
 closingQuoteAuthor: 'Meggan Watterson'
+closingQuoteAriaLabel: 'Cita de cierre'
 finalThanks: 'GRACIAS!'
 finalTitle: 'Estoy aquí para ti.'
 finalText: 'Hablemos para llevar esta experiencia a tu organización.'
