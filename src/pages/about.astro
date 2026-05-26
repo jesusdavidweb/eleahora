@@ -16,7 +16,7 @@ const recorridoTitle = (about as any)?.recorridoTitle ?? "Tengo un sueño: lleva
 const recorridoImage = (about as any)?.recorridoImage ?? "/images/about-mi-recorrido-01.webp";
 const recorridoImageAlt = (about as any)?.recorridoImageAlt ?? "Maria Eleonora Corallo, terapeuta transpersonal y fundadora de Eleahora";
 const recorridoLabel = (about as any)?.recorridoLabel ?? "Mi recorrido";
-const bioIntro = about?.bioIntro ?? "Nací en Venezuela, en una familia italiana, y desde muy joven mi vida ha estado marcada por el movimiento: distintos países, idiomas y culturas.";
+const bioIntro = about?.bioIntro ?? "Nací en Venezuela, en una familia italiana, y desde muy joven mi vida ha estado marcada por el movimiento: distintos países, idiomas y culturas. Durante años seguí un camino más estructurado: estudié idiomas y comercio internacional en París y trabajé en entornos corporativos.";
 const bioBodyHtml = about?.bioBodyHtml ?? null;
 
 const eleahoraLabel = (about as any)?.eleahoraLabel ?? "Así nació Eleahora";
@@ -62,7 +62,7 @@ const ctaButtonLink = (about as any)?.ctaButtonLink ?? "/sesiones";
     <section class="about-story section-soft" aria-labelledby="historia-title">
       <div class="max-w-screen story-grid">
         <article>
-          <p class="section-label">{recorridoLabel}</p>
+          <img src="/images/textos/Mi-recorrido.png" alt="Mi recorrido" class="text-image" />
           <h2 id="historia-title" class="section-title">
             {recorridoTitle}
           </h2>
@@ -119,7 +119,7 @@ const ctaButtonLink = (about as any)?.ctaButtonLink ?? "/sesiones";
           />
         </aside>
         <article>
-          <p class="section-label">{eleahoraLabel}</p>
+          <img src="/images/textos/Así-nació-eleahora.png" alt="Así nació Eleahora" class="text-image" />
           <h2 id="camino-title" class="section-title">
             {eleahoraTitle}
           </h2>

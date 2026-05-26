@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **API de contacto POST**: nuevo endpoint `src/pages/api/contacto.ts` para envío de emails mediante Resend con validación de campos y escape de HTML.
+- **Dependencia `resend`**: añadida para envío de emails desde el formulario de contacto.
+- **Documentación de `RESEND_API_KEY`** en `.env.example` para configuración del envío de emails.
 - **CookieConsent.svelte**: nueva isla Svelte con banner de cookies RGPD/LSSI, botones "Aceptar todas" / "Solo necesarias", consentimiento almacenado en cookie `cookieconsent` (1 año).
 - **Footer.astro**: nueva columna "Legal" con enlaces a aviso legal, política de privacidad y política de cookies.
 - **Layout.astro**: integrado `<CookieConsent client:load />` para carga del banner en todas las páginas.
@@ -55,11 +58,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Footer.astro**: simplificado — eliminadas dependencias de `getSiteConfig()` y `resolveHref()`; navegación y enlaces gestionados directamente desde `globalContent`.
 - **workshop-empresas.astro**: rediseño completo de hero, guía, descripción, beneficios y experiencia items con datos ampliados del CMS.
 - **src/content/singletons/**: actualizados YAML de home, about, contacto, sesiones-page y workshop con nuevos campos y contenido editorial.
+- **Formulario de contacto**: migrado de GET (`/gracias`) a POST (`/api/contacto`) con envío server-side mediante Resend y validación de formato de email.
+- **about.astro**: labels de sección reemplazados por imágenes tipográficas de marca (`Mi-recorrido.png`, `Así-nació-eleahora.png`).
+- **workshop-empresas.astro**: label `Siguiente paso` reemplazado por imagen tipográfica; CTA principal redirige a Zoom Scheduler (llamada de descubrimiento) y secundario a `/contacto`.
+- **workshop.yaml**: `ctaButtonLink` actualizado de WhatsApp a `/contacto`.
+- **Sesiones YAML (5)**: URLs de booking migradas de `cal.com/eleahora/*` a `scheduler.zoom.us/...`.
 
 ### Removed
 - **workshop-empresas.astro**: eliminada sección completa de "Formatos" (HTML, CSS, datos y campos de Keystatic).
 - **workshop-empresas.astro**: eliminado botón WhatsApp del CTA y variable `ctaBody` huérfana.
 - **keystatic.config.ts**: eliminados campos `formats*` (formatsEyebrow, formatsTitle, formats array).
+- **keystatic.config.ts / workshop.yaml**: eliminado campo `ctaEyebrow`.
 
 ### Fixed
 - **Testimonios**: añadido `white-space: pre-line` en `.testimonial-text` para soporte de testimonios multi-párrafo.

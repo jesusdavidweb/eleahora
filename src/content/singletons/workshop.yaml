@@ -111,7 +111,6 @@ closingQuote: >-
   cuenta de que no estamos presentes.
 closingQuoteAuthor: 'Meggan Watterson'
 quoteAriaLabel: 'Cita de cierre'
-ctaEyebrow: 'Siguiente paso'
 ctaTitle: '¿Quieres llevar esta experiencia a tu organización?'
 ctaButtonText: 'Solicitar propuesta'
-ctaButtonLink: 'https://wa.me/34605373782'
+ctaButtonLink: '/contacto'

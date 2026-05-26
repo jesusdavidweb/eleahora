@@ -70,8 +70,7 @@ const closingQuoteAuthor = (workshop as any)?.closingQuoteAuthor ?? "Meggan Watt
 
 const ctaTitle = workshop?.ctaTitle ?? "¿Quieres llevar esta experiencia a tu organización?";
 const ctaButtonText = workshop?.ctaButtonText ?? "Solicitar propuesta";
-const ctaButtonLink = (workshop as any)?.ctaButtonLink ?? "https://wa.me/34605373782";
-const ctaEyebrow = (workshop as any)?.ctaEyebrow ?? "Siguiente paso";
+const ctaButtonLink = (workshop as any)?.ctaButtonLink ?? "/contacto";
 const heroSecondaryCtaText = (workshop as any)?.heroSecondaryCtaText ?? "Ver experiencia";
 const heroSecondaryCtaLink = (workshop as any)?.heroSecondaryCtaLink ?? "#experiencia";
 
@@ -279,10 +278,11 @@ const quoteAriaLabel = (workshop as any)?.quoteAriaLabel ?? "Cita de cierre";
     <!-- ─── CTA ───────────────────────────────────────────── -->
     <section class="section-cta section-soft" aria-labelledby="cta-title">
       <div class="max-w-screen cta-inner">
-        <p class="text-accent cta-kicker">{ctaEyebrow}</p>
+        <img src="/images/textos/Siguiente-paso.png" alt="Siguiente paso" class="text-image" />
         <h2 id="cta-title">{ctaTitle}</h2>
         <div class="cta-actions">
-          <a href={ctaButtonLink} class="btn-primary">{ctaButtonText}</a>
+          <a href="https://scheduler.zoom.us/maria-eleonora-051exv/30-min-con-eleahora" class="btn-primary" target="_blank" rel="noopener noreferrer">Agendar llamada de descubrimiento</a>
+          <a href={ctaButtonLink} class="btn-outline">{ctaButtonText}</a>
         </div>
       </div>
     </section>
@@ -1198,9 +1198,11 @@ const quoteAriaLabel = (workshop as any)?.quoteAriaLabel ?? "Cita de cierre";
     backdrop-filter: blur(8px);
   }
 
-  .cta-kicker {
-    margin-bottom: 0.9rem;
-    font-size: clamp(1.6rem, 2.5vw, 2.1rem);
+  .text-image {
+    max-height: 48px;
+    width: auto;
+    display: block;
+    margin: 0 auto 0.9rem;
   }
 
   .cta-inner h2 {
@@ -1223,12 +1225,10 @@ const quoteAriaLabel = (workshop as any)?.quoteAriaLabel ?? "Cita de cierre";
   .cta-actions {
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
     margin-bottom: 2rem;
-  }
-
-  /* Añadido: margen superior para el botón principal de CTA */
-  .cta-actions .btn-primary {
-    margin-top: 5%;
   }
 
   .cta-contact {

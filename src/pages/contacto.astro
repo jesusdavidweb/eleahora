@@ -16,8 +16,8 @@ const heroImage = (contactoPage as any)?.heroImage ?? "/images/contacto-hero-ele
 const heroCtaText = (contactoPage as any)?.heroCtaText ?? "Escribir ahora";
 const heroCtaLink = (contactoPage as any)?.heroCtaLink ?? "#formulario-contacto";
 const contactChannelsAriaLabel = (contactoPage as any)?.contactChannelsAriaLabel ?? "Canales de contacto";
-const processPanelAriaLabel = (contactoPage as any)?.processPanelAriaLabel ?? "Qué pasa después";
-const processEyebrow = (contactoPage as any)?.processEyebrow || "Qué pasa después";
+const processPanelAriaLabel = (contactoPage as any)?.processPanelAriaLabel ?? "¿Qué pasa después?";
+const processEyebrow = (contactoPage as any)?.processEyebrow || "¿Qué pasa después?";
 const processTitle = contactoPage?.processTitle ?? "Un proceso claro, humano y sin prisa.";
 const processSteps = contactoPage?.processSteps?.length ? contactoPage.processSteps : [
   { step: "1", title: "Recibo tu mensaje", description: "Reviso tu intención y te respondo en máximo 24 horas laborables." },
@@ -121,7 +121,7 @@ const serviceOptions: ContactServiceOption[] = sesiones.length > 0
         <article id="formulario-contacto" class="contact-form-card contact-reveal">
           <h2>{formLabels.formTitle}</h2>
 
-          <form action="/gracias" method="GET" class="contact-form" aria-label={formLabels.formAriaLabel}>
+          <form action="/api/contacto" method="POST" class="contact-form" aria-label={formLabels.formAriaLabel}>
             <input type="hidden" name="origen" value="contacto-web" />
 
             <label for="nombre">{formLabels.nameLabel}</label>

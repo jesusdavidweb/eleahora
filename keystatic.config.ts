@@ -857,10 +857,6 @@ export default config({
         }),
 
         // CTA
-        ctaEyebrow: fields.text({
-          label: "CTA — Etiqueta",
-          defaultValue: "Siguiente paso",
-        }),
         ctaTitle: fields.text({
           label: "CTA — Título",
           defaultValue: "¿Quieres llevar esta experiencia a tu organización?",
