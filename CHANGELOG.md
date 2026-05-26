@@ -78,6 +78,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Testimonios**: corregidos nombres (slug → nombre propio) y eliminados puntos finales en citas.
 - **about.astro**: corregida ortografía ("tí" → "ti") y ajuste responsive de imagen hero.
 - **index.astro**: corregido enlace de Workshop a ruta `/workshop-empresas`.
+- **contacto.yaml**: corregida puntuación del texto del proceso ("Qué pasa después" → "¿Qué pasa después?").
+- **workshop-empresas.astro**: añadido margen inferior de 20px al título del CTA final.
 
 ### Added
 - Documentación de variable de entorno `GITHUB_PAT` en `.env.example` para uso de GitHub Reader.
