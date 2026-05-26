@@ -29,7 +29,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **keystatic.config.ts**: nuevo campo `role` en colección testimonios, nuevo campo `testimonialsEyebrow` en workshopPage.
 - **workshop-empresas.astro**: sección de testimonios migrada a campo `testimonials` propio del workshopPage en Keystatic (con `name`, `role`, `quote`), colores asignados secuencialmente, fallback con 3 testimonios específicos de empresa.
 - **workshop-empresas.astro**: sección de cita de cierre (`closingQuote`, `closingQuoteAuthor`) desde CMS.
-- **keystatic.config.ts**: nuevos campos `closingQuote`, `closingQuoteAuthor`, `testimonialsTitle`, `testimonialsEyebrow` en workshop.
+- **API de contacto**: nuevo handler GET con redirect a `/contacto` para evitar errores de ruta.
+- **API de contacto**: logging estructurado con prefijo `[contacto-api]` para depuración en producción.
 
 ### Changed
 - **URL de agendamiento**: migrado enlace de `cal.com/eleahora/*` a `scheduler.zoom.us/maria-eleonora-051exv/sesi-n-eleahora` en `site-config.yaml`, `sesiones.astro`, `pienso-luego-medito.astro` y `llms.txt`.
@@ -80,6 +81,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **index.astro**: corregido enlace de Workshop a ruta `/workshop-empresas`.
 - **contacto.yaml**: corregida puntuación del texto del proceso ("Qué pasa después" → "¿Qué pasa después?").
 - **workshop-empresas.astro**: añadido margen inferior de 20px al título del CTA final.
+- **API de contacto**: añadida validación en runtime de `RESEND_API_KEY`, extracción de constantes de email y manejo de errores de Resend.
+- **contacto.astro**: corregida URL del action del formulario con trailing slash (`/api/contacto/`).
 
 ### Added
 - Documentación de variable de entorno `GITHUB_PAT` en `.env.example` para uso de GitHub Reader.

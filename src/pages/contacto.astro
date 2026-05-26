@@ -121,7 +121,7 @@ const serviceOptions: ContactServiceOption[] = sesiones.length > 0
         <article id="formulario-contacto" class="contact-form-card contact-reveal">
           <h2>{formLabels.formTitle}</h2>
 
-          <form action="/api/contacto" method="POST" class="contact-form" aria-label={formLabels.formAriaLabel}>
+          <form action="/api/contacto/" method="POST" class="contact-form" aria-label={formLabels.formAriaLabel}>
             <input type="hidden" name="origen" value="contacto-web" />
 
             <label for="nombre">{formLabels.nameLabel}</label>
