@@ -1,7 +1,14 @@
-name: "Flora Bautian"
-quote: |-
-  María ha sido un pilar fundamental en mi crecimiento personal este último año. En nuestras sesiones, he encontrado una escucha activa y consejos que me han ayudado a identificar los pasos necesarios para superar los desafíos que enfrentaba. Nunca había practicado la meditación antes de conocerla, y gracias a nuestras sesiones, he hallado una paz y serenidad profundas, así como la fuerza necesaria para seguir adelante. Lo que hace a Maria excepcional es la combinación de su voz, su profunda sabiduría científica y espiritual, y una sensibilidad humana extraordinaria.
-service: "Acompañamiento Terapéutico"
-accentColor: "sage"
+name: Flora Bautian
+quote: >-
+  Maria ha sido un pilar fundamental en mi crecimiento personal este último año.
+  En nuestras sesiones, he encontrado una escucha activa y consejos que me han
+  ayudado a identificar los pasos necesarios para superar los desafíos que
+  enfrentaba. Nunca había practicado la meditación antes de conocerla, y gracias
+  a nuestras sesiones, he hallado una paz y serenidad profundas, así como la
+  fuerza necesaria para seguir adelante. Lo que hace a Maria excepcional es la
+  combinación de su voz, su profunda sabiduría científica y espiritual, y una
+  sensibilidad humana extraordinaria.
+service: Acompañamiento Terapéutico
+accentColor: sage
 featured: true
 order: 1
