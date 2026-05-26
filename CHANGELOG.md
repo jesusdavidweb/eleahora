@@ -83,6 +83,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **workshop-empresas.astro**: añadido margen inferior de 20px al título del CTA final.
 - **API de contacto**: añadida validación en runtime de `RESEND_API_KEY`, extracción de constantes de email y manejo de errores de Resend.
 - **contacto.astro**: corregida URL del action del formulario con trailing slash (`/api/contacto/`).
+- **contacto.astro**: añadido `data-astro-reload` al formulario para forzar recarga completa en POST y evitar interferencia de navegación cliente.
 
 ### Added
 - Documentación de variable de entorno `GITHUB_PAT` en `.env.example` para uso de GitHub Reader.
