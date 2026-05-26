@@ -8,6 +8,9 @@ import keystatic from '@keystatic/astro';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://eleahora.com',
+  security: {
+    checkOrigin: false,
+  },
   output: 'server',
   adapter: node({ mode: 'standalone' }),
   build: {
