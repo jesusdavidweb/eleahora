@@ -71,7 +71,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **keystatic.config.ts / workshop.yaml**: eliminado campo `ctaEyebrow`.
 
 ### Fixed
-- **Testimonios**: añadido `white-space: pre-line` en `.testimonial-text` para soporte de testimonios multi-párrafo.
+- **API de contacto**: corregida variable de entorno `RESEND_API_KEY` para resolución en runtime (`import.meta.env` → `process.env`), evitando que se compilara como `undefined` durante el build.
 - **about.astro**: corregida posición vertical de imagen de fondo en hero desktop (`object-position` ajustado a 70%).
 - **Lectura de contenido Keystatic en SSR**: Agregado `createGitHubReader` como reader primario (requiere `GITHUB_PAT`) con fallback a `createReader` local. Copiado `src/content/` al runtime del contenedor Docker para que el reader local encuentre los archivos YAML y el frontend refleje los cambios del CMS.
 - **Dockerfile**: Añadida copia del directorio `src/` al stage runtime para disponibilidad de contenido YAML.

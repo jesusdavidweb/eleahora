@@ -28,7 +28,7 @@ export const POST: APIRoute = async ({ request, redirect }) => {
   }
 
   try {
-    const resend = new Resend(import.meta.env.RESEND_API_KEY);
+    const resend = new Resend(process.env.RESEND_API_KEY!);
 
     await resend.emails.send({
       from: 'info@eleahora.com',
