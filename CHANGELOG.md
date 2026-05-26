@@ -85,6 +85,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **contacto.astro**: corregida URL del action del formulario con trailing slash (`/api/contacto/`).
 - **contacto.astro**: añadido `data-astro-reload` al formulario para forzar recarga completa en POST y evitar interferencia de navegación cliente.
 - **Astro CSRF**: deshabilitado `checkOrigin` en `astro.config.mjs` para permitir POST del formulario de contacto sin bloquearse por validación de origen.
+- **docker-compose.yml**: añadidas variables de entorno para Keystatic (KEYSTATIC_USER, KEYSTATIC_PASSWORD, KEYSTATIC_GITHUB_CLIENT_ID, KEYSTATIC_GITHUB_CLIENT_SECRET, GITHUB_TOKEN, KEYSTATIC_SECRET) y RESEND_API_KEY.
 
 ### Added
 - Documentación de variable de entorno `GITHUB_PAT` en `.env.example` para uso de GitHub Reader.

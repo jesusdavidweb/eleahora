@@ -3,6 +3,14 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    environment:
+      KEYSTATIC_USER: ${KEYSTATIC_USER:-}
+      KEYSTATIC_PASSWORD: ${KEYSTATIC_PASSWORD:-}
+      KEYSTATIC_GITHUB_CLIENT_ID: ${KEYSTATIC_GITHUB_CLIENT_ID:-}
+      KEYSTATIC_GITHUB_CLIENT_SECRET: ${KEYSTATIC_GITHUB_CLIENT_SECRET:-}
+      GITHUB_TOKEN: ${GITHUB_TOKEN:-}
+      KEYSTATIC_SECRET: ${KEYSTATIC_SECRET:-}
+      RESEND_API_KEY: ${RESEND_API_KEY:-}
     restart: always
     networks:
       - dokploy-network
