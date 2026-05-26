@@ -75,9 +75,9 @@ storyBody: >-
   invitación para transformar la manera en que vivimos y trabajamos, con una
   práctica tan esencial como la de volver al presente.
 storyMediaAriaLabel: 'Imágenes de Eleahora'
-storyImage1: '/images/about-eleahora-001.webp'
+storyImage1: '/images/profileImage.webp'
 storyImage1Alt: 'Maria Eleonora Corallo, fundadora de Eleahora'
-storyImage2: '/images/about-eleahora-002.webp'
+storyImage2: '/images/eleahoraImage.webp'
 storyImage2Alt: 'Detalle visual de la experiencia Eleahora'
 facts:
   - label: 'Formato'

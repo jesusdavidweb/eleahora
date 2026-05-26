@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- **Assets**: normalizadas rutas de imágenes eliminando caracteres especiales (tildes/acentos) en nombres de archivo para evitar errores de encoding en producción.
+- **about.astro / landing/pienso-luego-medito.astro**: actualizados fallbacks de imagen a paths normalizados (`profileImage.webp`, `eleahoraImage.webp`, `recorridoImage.webp`, `profileImageDesktop.webp`).
+- **about.yaml / pienso-luego-medito-landing.yaml**: rutas de imagen actualizadas a los nuevos assets normalizados.
+- **design-system.astro**: actualizada referencia a imagen `Sobre mi`.
+
 ### Added
 - **API de contacto POST**: nuevo endpoint `src/pages/api/contacto.ts` para envío de emails mediante Resend con validación de campos y escape de HTML.
 - **Dependencia `resend`**: añadida para envío de emails desde el formulario de contacto.
