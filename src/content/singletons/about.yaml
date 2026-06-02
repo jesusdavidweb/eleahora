@@ -4,7 +4,7 @@ seoDescription: >-
   corporativo en París al acompañamiento terapéutico con Meditación, PNL
   Transpersonal y conexión espiritual en Madrid.
 ogTitle: Sobre Mi — Maria Eleonora Corallo | Eleahora
-ogImage: /images/ogImage.webp
+ogImage: /images/ogImage.png
 heroLabel: Sobre mí
 heroTitle: Soy quien soy y eso es suficiente.
 profileImage: /images/profileImage.webp
@@ -21,51 +21,11 @@ bioIntro: >-
   estado marcada por el movimiento: distintos países, idiomas y culturas.
   Durante años seguí un camino más estructurado: estudié idiomas y comercio
   internacional en París y trabajé en entornos corporativos.
-bioBody:
-  - type: paragraph
-    children:
-      - text: >-
-          Nací en Venezuela, en una familia italiana, y desde muy joven mi vida
-          ha estado marcada por el movimiento: distintos países, idiomas y
-          culturas. Durante años seguí un camino más estructurado: estudié
-          idiomas y comercio internacional en París y trabajé en entornos
-          corporativos.
-  - type: paragraph
-    children:
-      - text: 'Pero algo dentro de mí siempre quería ir más allá.'
-  - type: paragraph
-    children:
-      - text: >-
-          Hace unos años tomé una decisión que cambió mi rumbo: mudarme a Madrid
-          y empezar un viaje mucho más profundo. Mientras estudiaba y me
-          formaba, también me estaba transformando.
-  - type: paragraph
-    children:
-      - text: >-
-          En ese camino encontré —o recordé— algo que siempre había estado en mí:
-          la capacidad de acompañar procesos internos, de escuchar con
-          profundidad y de abrir espacios de consciencia.
-  - type: paragraph
-    children:
-      - text: 'La meditación se convirtió en mi herramienta más práctica y poderosa.'
-  - type: paragraph
-    children:
-      - text: >-
-          Un lugar donde volver a mí misma, entender mi mente, regular mis
-          emociones y conectar con Dios.
-  - type: paragraph
-    children:
-      - text: >-
-          Con el tiempo, diferentes herramientas fueron sumándose a este camino:
-          la Programación Neurolingüística transpersonal, el trabajo energético
-          y la conexión espiritual. No como conceptos abstractos, sino como
-          herramientas muy prácticas para vivir con más presencia, claridad y
-          coherencia.
-eleahoraLabel: 'Así nació Eleahora'
-eleahoraTitle: 'Un espacio de espiritualidad aterrizada para vivir con más presencia.'
-eleahoraImage: '/images/eleahoraImage.webp'
-eleahoraImageAlt: 'Proceso de presencia y espiritualidad aterrizada — así nace Eleahora'
-manifestoTitle: 'Mi manifiesto'
+eleahoraLabel: Así nació Eleahora
+eleahoraTitle: Un espacio de espiritualidad aterrizada para vivir con más presencia.
+eleahoraImage: /images/eleahoraImage.webp
+eleahoraImageAlt: Proceso de presencia y espiritualidad aterrizada — así nace Eleahora
+manifestoTitle: Mi manifiesto
 manifestoText: >-
   Hoy acompaño a personas que sienten que algo dentro de ellas quiere moverse,
   ordenarse o simplemente respirar un poco más profundo.
