@@ -1,17 +1,18 @@
-siteTitle: 'Eleahora | Terapia Transpersonal y Meditación en Madrid'
+siteTitle: Eleahora | Terapia Transpersonal y Meditación en Madrid
 siteDescription: >-
   Eleahora: Terapia Transpersonal, Meditación y Mindfulness con Maria Eleonora
   Corallo. Sesiones individuales, Terapia Angelical, PNL y workshop para
   empresas. Presencial en Madrid y online.
 phoneWhatsapp: '+34605373782'
-calLink: 'https://scheduler.zoom.us/maria-eleonora-051exv/sesi-n-eleahora'
-instagramUrl: 'https://www.instagram.com/eleahora/'
-facebookUrl: 'https://www.facebook.com/profile.php?id=100063992806553'
-insightTimerUrl: 'https://insighttimer.com/eleahora'
-linkedinUrl: 'https://www.linkedin.com/in/maria-eleonora-corallo-16266165/'
+calLink: https://scheduler.zoom.us/maria-eleonora-051exv/sesi-n-eleahora
+instagramUrl: https://www.instagram.com/eleahora/
+facebookUrl: https://www.facebook.com/profile.php?id=100063992806553
+insightTimerUrl: https://insighttimer.com/eleahora
+linkedinUrl: https://www.linkedin.com/in/maria-eleonora-corallo-16266165/
 colorBackground: '#fdfbec'
 colorPrimaryDark: '#3b2639'
 colorAccentRed: '#8c0703'
 colorAccentPurple: '#6d4492'
 colorEarth: '#bb896b'
 colorSage: '#566443'
+ogImage: /images/ogImage.png
