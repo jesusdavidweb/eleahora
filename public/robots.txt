@@ -1,7 +1,2 @@
 User-agent: *
-Allow: /
-
-Disallow: /gracias
-Disallow: /gracias/
-
-Sitemap: https://eleahora.jesusdavid.net/sitemap-index.xml
+Disallow: /

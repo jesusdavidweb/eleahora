@@ -16,5 +16,5 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["src/**/*", "keystatic.config.ts"]
+  "include": ["src/**/*"]
 }
