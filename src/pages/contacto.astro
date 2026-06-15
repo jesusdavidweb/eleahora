@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import ContactExperience from '../components/svelte/ContactExperience.svelte';
 import type { ContactServiceOption } from '../types';
 import { getContactoPage, getSiteConfig, getAllSesiones } from '../lib/keystatic';
+import { withBase } from '../lib/url';
 
 // Keystatic: datos del CMS
 const contactoPage = await getContactoPage();
@@ -12,7 +13,7 @@ const sesiones = await getAllSesiones();
 // Fallbacks
 const heroKicker = (contactoPage as any)?.heroKicker ?? "Contacto Eleahora";
 const heroTitle = contactoPage?.heroTitle ?? "Este puede ser el primer paso para volver a ti.";
-const heroImage = (contactoPage as any)?.heroImage ?? "/images/contacto-hero-eleahora-02-edit-tiny.webp";
+const heroImage = withBase((contactoPage as any)?.heroImage ?? "/images/contacto-hero-eleahora-02-edit-tiny.webp");
 const heroCtaText = (contactoPage as any)?.heroCtaText ?? "Escribir ahora";
 const heroCtaLink = (contactoPage as any)?.heroCtaLink ?? "#formulario-contacto";
 const contactChannelsAriaLabel = (contactoPage as any)?.contactChannelsAriaLabel ?? "Canales de contacto";
@@ -68,7 +69,7 @@ const serviceOptions: ContactServiceOption[] = sesiones.length > 0
   title={(contactoPage as any)?.seoTitle ?? "Contacto | Inicia tu proceso con Eleahora"}
   description={(contactoPage as any)?.seoDescription ?? "Escribe a Eleahora para iniciar tu proceso de Terapia Transpersonal, Meditación o Mindfulness. Respuesta en 24h. También puedes agendar directamente o escribir por WhatsApp."}
   ogTitle={(contactoPage as any)?.ogTitle ?? "Contacto — Inicia tu proceso con Eleahora"}
-  ogImage={(contactoPage as any)?.ogImage ?? "/images/OG-images-eleahora-02.png"}
+  ogImage={withBase((contactoPage as any)?.ogImage ?? "/images/OG-images-eleahora-02.png")}
 >
   <ContactExperience client:load />
 

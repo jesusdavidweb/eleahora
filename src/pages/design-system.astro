@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import DesignSystemExperience from '../components/svelte/DesignSystemExperience.svelte';
+import { withBase } from '../lib/url';
 
 const colors = [
   { name: 'Background', token: '--color-background', value: '#fdfbec', role: 'Base cálida para páginas, secciones suaves y contraste editorial.' },
@@ -29,29 +30,29 @@ const spacingTokens = [
 ];
 
 const assets = [
-  { name: 'Logo principal', src: '/images/logo-1.png', tone: 'light' },
-  { name: 'Logo negro', src: '/images/logo-black.png', tone: 'light' },
-  { name: 'Logo blanco', src: '/images/logo-white.png', tone: 'dark' },
-  { name: 'Logo dorado', src: '/images/logo-gold.png', tone: 'dark' },
-  { name: 'Favicon', src: '/images/favicon.png', tone: 'light' },
+  { name: 'Logo principal', src: withBase('/images/logo-1.png'), tone: 'light' },
+  { name: 'Logo negro', src: withBase('/images/logo-black.png'), tone: 'light' },
+  { name: 'Logo blanco', src: withBase('/images/logo-white.png'), tone: 'dark' },
+  { name: 'Logo dorado', src: withBase('/images/logo-gold.png'), tone: 'dark' },
+  { name: 'Favicon', src: withBase('/images/favicon.png'), tone: 'light' },
 ];
 
 const imageAssets = [
-  { name: 'Hero inicio', src: '/images/home-hero-eleahora-01-tiny.webp', alt: 'Hero principal de Eleahora con retrato de Maria Eleonora Corallo' },
-  { name: 'Manifiesto', src: '/images/home-manifiesto-eleahora-01-tiny.webp', alt: 'Imagen del manifiesto Eleahora' },
-  { name: 'Mindfulness', src: '/images/sesion_maria_corallo_neima_pidal_161-tiny.webp', alt: 'Sesión de mindfulness y meditación Eleahora' },
-  { name: 'Sobre mi', src: '/images/profileImage.webp', alt: 'Retrato de Maria Eleonora Corallo para Sobre Mi' },
-  { name: 'Workshop', src: '/images/Workshop Pienso Luego Medito-15-tiny.webp', alt: 'Workshop Pienso luego medito de Eleahora' },
-  { name: 'Open Graph', src: '/images/OG-images-eleahora-02.png', alt: 'Imagen Open Graph de Eleahora' },
+  { name: 'Hero inicio', src: withBase('/images/home-hero-eleahora-01-tiny.webp'), alt: 'Hero principal de Eleahora con retrato de Maria Eleonora Corallo' },
+  { name: 'Manifiesto', src: withBase('/images/home-manifiesto-eleahora-01-tiny.webp'), alt: 'Imagen del manifiesto Eleahora' },
+  { name: 'Mindfulness', src: withBase('/images/sesion_maria_corallo_neima_pidal_161-tiny.webp'), alt: 'Sesión de mindfulness y meditación Eleahora' },
+  { name: 'Sobre mi', src: withBase('/images/profileImage.webp'), alt: 'Retrato de Maria Eleonora Corallo para Sobre Mi' },
+  { name: 'Workshop', src: withBase('/images/Workshop Pienso Luego Medito-15-tiny.webp'), alt: 'Workshop Pienso luego medito de Eleahora' },
+  { name: 'Open Graph', src: withBase('/images/OG-images-eleahora-02.png'), alt: 'Imagen Open Graph de Eleahora' },
 ];
 
 const labelAssets = [
-  { name: 'Bienvenido', src: '/images/textos/Bienvenido.png' },
-  { name: 'Manifiesto', src: '/images/textos/Manifiesto.png' },
-  { name: 'Ciencia y espiritu', src: '/images/textos/Ciencia-y-espiritu.png' },
-  { name: 'Mi recorrido', src: '/images/textos/Mi-recorrido.png' },
-  { name: 'Asi nacio Eleahora', src: '/images/textos/Así-nació-eleahora.png' },
-  { name: 'Siguiente paso', src: '/images/textos/Siguiente-paso.png' },
+  { name: 'Bienvenido', src: withBase('/images/textos/Bienvenido.png') },
+  { name: 'Manifiesto', src: withBase('/images/textos/Manifiesto.png') },
+  { name: 'Ciencia y espiritu', src: withBase('/images/textos/Ciencia-y-espiritu.png') },
+  { name: 'Mi recorrido', src: withBase('/images/textos/Mi-recorrido.png') },
+  { name: 'Asi nacio Eleahora', src: withBase('/images/textos/Asi-nacio-eleahora.png') },
+  { name: 'Siguiente paso', src: withBase('/images/textos/Siguiente-paso.png') },
 ];
 
 const navSections = [
@@ -69,7 +70,7 @@ const navSections = [
   title="Design System | Eleahora"
   description="Documentacion visual publica del sistema de diseno Eleahora: tokens, componentes, layouts, assets de marca y movimiento."
   ogTitle="Design System Eleahora"
-  ogImage="/images/OG-images-eleahora-02.png"
+  ogImage={withBase('/images/OG-images-eleahora-02.png')}
   canonicalUrl="/design-system"
 >
   <DesignSystemExperience client:load />
@@ -77,12 +78,12 @@ const navSections = [
   <main class="design-system-page">
     <section class="ds-hero" aria-labelledby="design-system-title">
       <div class="ds-hero-bg" aria-hidden="true">
-        <img class="ds-hero-image ds-parallax" src="/images/about-desktop-2.webp" alt="" fetchpriority="high" decoding="async" />
+        <img class="ds-hero-image ds-parallax" src={withBase('/images/about-desktop-2.webp')} alt="" fetchpriority="high" decoding="async" />
       </div>
       <div class="ds-hero-overlay"></div>
       <div class="max-w-screen ds-hero-grid">
         <div class="ds-hero-copy">
-          <img src="/images/logo-white.png" alt="Eleahora" class="ds-hero-logo" />
+          <img src={withBase('/images/logo-white.png')} alt="Eleahora" class="ds-hero-logo" />
           <p class="ds-eyebrow ds-hero-item">Design system publico</p>
           <h1 id="design-system-title" class="ds-hero-item">
             Soy estructura y soy caos.
@@ -312,7 +313,7 @@ const navSections = [
 
         <div class="ds-layout-gallery">
           <article class="ds-layout-card ds-reveal">
-            <img class="ds-parallax" src="/images/home-hero-eleahora-01-tiny.webp" alt="Hero fotografico de Eleahora" loading="lazy" decoding="async" />
+            <img class="ds-parallax" src={withBase('/images/home-hero-eleahora-01-tiny.webp')} alt="Hero fotografico de Eleahora" loading="lazy" decoding="async" />
             <div>
               <span>Hero fotografico</span>
               <h3>Imagen real + overlay + CTA</h3>
@@ -397,7 +398,7 @@ const navSections = [
           <span class="ds-orbit ds-orbit-a"></span>
           <span class="ds-orbit ds-orbit-b"></span>
           <span class="ds-orbit ds-orbit-c"></span>
-          <img src="/images/favicon.png" alt="Simbolo Eleahora" />
+          <img src={withBase('/images/favicon.png')} alt="Simbolo Eleahora" />
         </div>
         <div class="ds-motion-notes ds-reveal">
           <article>

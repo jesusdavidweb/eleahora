@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import PiensoLuegoMeditoLandingExperience from '../../components/svelte/PiensoLuegoMeditoLandingExperience.svelte';
 import { getPiensoLuegoMeditoLanding, getSiteConfig } from '../../lib/keystatic';
+import { withBase } from '../../lib/url';
 
 const page = await getPiensoLuegoMeditoLanding();
 const site = await getSiteConfig();
@@ -70,18 +71,19 @@ const benefits = (page as any)?.benefits?.length ? (page as any).benefits : [
   'Prácticas sencillas para fomentar la presencia en todos los ámbitos de la vida',
 ];
 
-const heroImage = (page as any)?.heroImage ?? '/images/Workshop Pienso Luego Medito-15-tiny.webp';
-const heroImage2 = (page as any)?.heroImage2 ?? '/images/Workshop Pienso Luego Medito-92-tiny.webp';
-const heroImage3 = (page as any)?.heroImage3 ?? '/images/home-mindfulness-01-tiny.webp';
-const storyImage1 = (page as any)?.storyImage1 ?? '/images/profileImage.webp';
-const storyImage2 = (page as any)?.storyImage2 ?? '/images/eleahoraImage.webp';
+const heroImage = withBase((page as any)?.heroImage ?? '/images/Workshop Pienso Luego Medito-15-tiny.webp');
+const heroImage2 = withBase((page as any)?.heroImage2 ?? '/images/Workshop Pienso Luego Medito-92-tiny.webp');
+const heroImage3 = withBase((page as any)?.heroImage3 ?? '/images/home-mindfulness-01-tiny.webp');
+const storyImage1 = withBase((page as any)?.storyImage1 ?? '/images/profileImage.webp');
+const storyImage2 = withBase((page as any)?.storyImage2 ?? '/images/eleahoraImage.webp');
+const sloganImage = withBase('/images/textos/Soy-voz-la-que-te-recuerda-que-estas-aqui.png');
 ---
 
 <Layout
   title={(page as any)?.seoTitle ?? 'Workshop Pienso, luego medito | Mindfulness y Bienestar para Empresas | Eleahora'}
   description={(page as any)?.seoDescription ?? 'Una experiencia de team building para transformar el estrés en presencia. Neuroregulación, gestión de cortisol y cohesión de equipo con Eleahora.'}
   ogTitle={(page as any)?.ogTitle ?? 'Workshop Pienso, luego medito | Eleahora'}
-  ogImage={(page as any)?.ogImage ?? '/images/OG-images-eleahora-01.jpg'}
+  ogImage={withBase((page as any)?.ogImage ?? '/images/OG-images-eleahora-01.jpg')}
   canonicalUrl="/landing/pienso-luego-medito"
 >
   <PiensoLuegoMeditoLandingExperience client:load />
@@ -137,7 +139,7 @@ const storyImage2 = (page as any)?.storyImage2 ?? '/images/eleahoraImage.webp';
     <section class="plm-slogan" aria-label={(page as any)?.sloganAriaLabel ?? 'Slogan Eleahora'}>
       <div class="plm-floating-word" aria-hidden="true">aquí</div>
       <div class="max-w-screen plm-slogan-inner">
-        <img src="/images/textos/Soy-voz-la-que-te-recuerda-que-estás-aquí.png" alt="" loading="lazy" decoding="async" />
+        <img src={sloganImage} alt="" loading="lazy" decoding="async" />
         <blockquote class="plm-reveal">{(page as any)?.slogan ?? 'SOY LA VOZ QUE TE RECUERDA QUE ESTÁS AQUÍ.'}</blockquote>
       </div>
     </section>

@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { getWorkshopPage } from "../lib/keystatic";
+import { withBase } from "../lib/url";
 
 // Keystatic: datos del CMS
 const workshop = await getWorkshopPage();
@@ -9,8 +10,8 @@ const workshop = await getWorkshopPage();
 const heroLabel = workshop?.heroLabel ?? "Experiencia para Empresas";
 const heroTitle = workshop?.heroTitle ?? "Pienso, luego medito";
 const heroSubtitle = workshop?.heroSubtitle ?? "Transformando el estrés en presencia.";
-const heroImage = workshop?.heroImage ?? "/images/Workshop Pienso Luego Medito-15-tiny.webp";
-const heroImage2 = (workshop as any)?.heroImage2 ?? "/images/Workshop Pienso Luego Medito-92-tiny.webp";
+const heroImage = withBase(workshop?.heroImage ?? "/images/Workshop Pienso Luego Medito-15-tiny.webp");
+const heroImage2 = withBase((workshop as any)?.heroImage2 ?? "/images/Workshop Pienso Luego Medito-92-tiny.webp");
 const heroImageAlt = (workshop as any)?.heroImageAlt ?? "Participantes en dinámica de mindfulness corporativo";
 const heroImage2Alt = (workshop as any)?.heroImage2Alt ?? "Sesión de meditación guiada para equipos";
 const heroTitleParts = heroTitle.replace(/\.$/, "").split(",");
@@ -90,7 +91,7 @@ const quoteAriaLabel = (workshop as any)?.quoteAriaLabel ?? "Cita de cierre";
   title={(workshop as any)?.seoTitle ?? "Workshop Mindfulness para Empresas | Pienso, luego medito | Eleahora"}
   description={(workshop as any)?.seoDescription ?? "Workshop experiencial de mindfulness y meditación para equipos. 'Pienso, luego medito' de Eleahora: 3h presenciales en tu empresa, herramientas de regulación del estrés y mejora del bienestar colectivo."}
   ogTitle={(workshop as any)?.ogTitle ?? "Workshop para Empresas — Pienso, luego medito | Eleahora"}
-  ogImage={(workshop as any)?.ogImage ?? "https://eleahora.com/images/home-eleahora-002.webp"}
+  ogImage={withBase((workshop as any)?.ogImage ?? "/images/home-eleahora-002.webp")}
 >
   <main class="workshop-page">
 
@@ -278,7 +279,7 @@ const quoteAriaLabel = (workshop as any)?.quoteAriaLabel ?? "Cita de cierre";
     <!-- ─── CTA ───────────────────────────────────────────── -->
     <section class="section-cta section-soft" aria-labelledby="cta-title">
       <div class="max-w-screen cta-inner">
-        <img src="/images/textos/Siguiente-paso.png" alt="Siguiente paso" class="text-image" />
+        <img src={withBase("/images/textos/Siguiente-paso.png")} alt="Siguiente paso" class="text-image" />
         <h2 id="cta-title">{ctaTitle}</h2>
         <div class="cta-actions">
           <a href="https://scheduler.zoom.us/maria-eleonora-051exv/30-min-con-eleahora" class="btn-primary" target="_blank" rel="noopener noreferrer">Agendar llamada de descubrimiento</a>
