@@ -1,12 +1,12 @@
 ---
 import { getGlobalContent, getSiteConfig } from '../../lib/keystatic';
+import { withBase } from '../../lib/url';
 
 interface Props {
   activeNav?: string;
 }
 
 const { activeNav } = Astro.props;
-const BASE = import.meta.env.BASE_URL;
 
 // Keystatic: configuración global
 const siteConfig = await getSiteConfig();
@@ -21,10 +21,10 @@ const navLinks = globalContent?.navLinks?.length ? globalContent.navLinks : [
 // Prefix internal nav links with BASE_URL
 const prefixedNavLinks = navLinks.map((link: { label: string; href: string; activeKey?: string }) => ({
   ...link,
-  href: link.href.startsWith('http') ? link.href : `${BASE}${link.href.replace(/^\//, '')}`,
+  href: link.href.startsWith('http') ? link.href : withBase(link.href),
 }));
 const rawHeaderLogo = globalContent?.headerLogo ?? '/images/logo-1.png';
-const headerLogo = rawHeaderLogo.startsWith('http') ? rawHeaderLogo : `${BASE}${rawHeaderLogo.replace(/^\//, '')}`;
+const headerLogo = rawHeaderLogo.startsWith('http') ? rawHeaderLogo : withBase(rawHeaderLogo);
 const headerLogoAlt = globalContent?.headerLogoAlt ?? 'Eleahora';
 const headerCtaText = globalContent?.headerCtaText ?? 'Agendar';
 const headerMobileCtaText = globalContent?.headerMobileCtaText ?? 'Agendar Sesión';
@@ -33,7 +33,7 @@ const mobileMenuAriaLabel = globalContent?.mobileMenuAriaLabel ?? 'Abrir menú';
 
 <header class="navbar-wrapper" transition:name="site-header" transition:animate="none">
   <div class="navbar-container max-w-screen">
-    <a href={BASE} class="logo" aria-label={headerLogoAlt}>
+    <a href={withBase('/')} class="logo" aria-label={headerLogoAlt}>
       <img src={headerLogo} alt={headerLogoAlt} class="nav-logo" />
     </a>
 

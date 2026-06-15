@@ -2,9 +2,9 @@
 // Footer.astro
 import MeditationModal from '../svelte/MeditationModal.svelte';
 import { getGlobalContent, getSiteConfig } from '../../lib/keystatic';
+import { withBase } from '../../lib/url';
 
 const currentYear = new Date().getFullYear();
-const BASE = import.meta.env.BASE_URL;
 
 // Keystatic: configuración global
 const siteConfig = await getSiteConfig();
@@ -15,7 +15,7 @@ const linkedinUrl = (siteConfig as any)?.linkedinUrl ?? 'https://www.linkedin.co
 const insightTimerUrl = siteConfig?.insightTimerUrl ?? 'https://insighttimer.com/eleahora';
 const whatsappUrl = `https://wa.me/${(siteConfig?.phoneWhatsapp ?? '+34605373782').replace('+', '')}`;
 const rawFooterLogo = globalContent?.footerLogo ?? '/images/logo-white.png';
-const footerLogo = rawFooterLogo.startsWith('http') ? rawFooterLogo : `${BASE}${rawFooterLogo.replace(/^\//, '')}`;
+const footerLogo = rawFooterLogo.startsWith('http') ? rawFooterLogo : withBase(rawFooterLogo);
 const footerLogoAlt = globalContent?.footerLogoAlt ?? 'Eleahora';
 const rawExploreLinks = globalContent?.footerExploreLinks?.length ? globalContent.footerExploreLinks : [
   { label: 'Inicio', href: '/' },
@@ -27,19 +27,17 @@ const rawExploreLinks = globalContent?.footerExploreLinks?.length ? globalConten
   { label: 'Contacto', href: '/contacto' },
 ];
 // Prefix internal links with BASE_URL, preserve anchors and external links
-const footerExploreLinks = rawExploreLinks.map((link: { label: string; href: string }) => {
-  if (link.href.startsWith('http')) return link;
-  const [path, hash] = link.href.split('#');
-  const prefixed = `${BASE}${path.replace(/^\//, '')}`;
-  return { ...link, href: hash ? `${prefixed}#${hash}` : prefixed };
-});
+const footerExploreLinks = rawExploreLinks.map((link: { label: string; href: string }) => ({
+  ...link,
+  href: link.href.startsWith('http') ? link.href : withBase(link.href),
+}));
 const rawLegalLinks = globalContent?.footerLegalLinks?.length ? globalContent.footerLegalLinks : [
   { label: 'Aviso Legal', href: '/legal/aviso-legal' },
   { label: 'Privacidad', href: '/legal/politica-de-privacidad' },
   { label: 'Cookies', href: '/legal/politica-de-cookies' },
 ];
 const footerLegalLinks = rawLegalLinks.map((link: { label: string; href: string }) =>
-  link.href.startsWith('http') ? link : { ...link, href: `${BASE}${link.href.replace(/^\//, '')}` }
+  link.href.startsWith('http') ? link : { ...link, href: withBase(link.href) }
 );
 const footerCreditsLinks = globalContent?.footerCreditsLinks?.length ? globalContent.footerCreditsLinks : [
   { label: 'Amorchi House', href: 'http://amorchihouse.com/' },
