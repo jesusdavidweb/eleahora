@@ -7,7 +7,8 @@ import keystatic from '@keystatic/astro';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://eleahora.com',
+  site: 'https://demo.jedav.link',
+  base: '/eleahora',
   security: {
     checkOrigin: false,
   },
