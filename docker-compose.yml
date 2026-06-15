@@ -19,6 +19,12 @@ services:
       interval: 30s
       timeout: 10s
       retries: 3
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.eleahora-demo.rule=Host(`demo.jedav.link`)"
+      - "traefik.http.routers.eleahora-demo.entrypoints=websecure"
+      - "traefik.http.routers.eleahora-demo.tls.certresolver=letsencrypt"
+      - "traefik.http.services.eleahora-demo.loadbalancer.server.port=80"
 
 networks:
   dokploy-network:
