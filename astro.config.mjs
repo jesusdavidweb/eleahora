@@ -2,7 +2,7 @@ import { defineConfig } from 'astro/config';
 import svelte from '@astrojs/svelte';
 import sitemap from '@astrojs/sitemap';
 import react from '@astrojs/react';
-import node from '@astrojs/node';
+import cloudflare from '@astrojs/cloudflare';
 import keystatic from '@keystatic/astro';
 
 // https://astro.build/config
@@ -12,7 +12,12 @@ export default defineConfig({
     checkOrigin: false,
   },
   output: 'server',
-  adapter: node({ mode: 'standalone' }),
+  adapter: cloudflare({
+    imageService: 'passthrough',
+    platformProxy: {
+      enabled: true,
+    },
+  }),
   build: {
     format: 'directory',
   },

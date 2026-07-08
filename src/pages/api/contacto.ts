@@ -4,6 +4,10 @@ import { Resend } from 'resend';
 const CONTACT_FROM_EMAIL = 'Eleahora <info@eleahora.com>';
 const CONTACT_TO_EMAIL = 'info@eleahora.com';
 
+function getResendApiKey(locals: App.Locals): string | undefined {
+  return locals.runtime.env.RESEND_API_KEY ?? process.env.RESEND_API_KEY;
+}
+
 function escapeHtml(str: string): string {
   return str
     .replace(/&/g, '&amp;')
@@ -17,7 +21,7 @@ export const GET: APIRoute = async ({ redirect }) => {
   return redirect('/contacto');
 };
 
-export const POST: APIRoute = async ({ request, redirect }) => {
+export const POST: APIRoute = async ({ request, redirect, locals }) => {
   const formData = await request.formData();
 
   const nombre = (formData.get('nombre')?.toString() ?? '').trim();
@@ -52,7 +56,7 @@ export const POST: APIRoute = async ({ request, redirect }) => {
   }
 
   try {
-    const resendApiKey = process.env.RESEND_API_KEY;
+    const resendApiKey = getResendApiKey(locals);
     if (!resendApiKey) {
       console.error('[contacto-api] Missing RESEND_API_KEY in runtime environment');
       return redirect(`/gracias?nombre=${nombreEncoded}`);
