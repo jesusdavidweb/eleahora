@@ -2,14 +2,24 @@
 import Layout from "../layouts/Layout.astro";
 import { getSessionesPage, getAllSesiones, getSiteConfig } from "../lib/keystatic";
 
+export const prerender = true;
+
 const page = await getSessionesPage();
 const sesiones = await getAllSesiones();
 const site = await getSiteConfig();
 
+if (!page) {
+  throw new Error("[sesiones] No se pudo leer el contenido de Keystatic durante el build.");
+}
+
+if (sesiones.length === 0) {
+  throw new Error("[sesiones] La coleccion de sesiones esta vacia durante el build.");
+}
+
 const heroLabel = page?.heroLabel ?? "Sesiones";
 const heroTitle = page?.heroTitle ?? "¿con cuál te gustaría empezar?";
 const heroSubtitle = page?.heroSubtitle ?? "Elige la que más resuene contigo. Permítete leer cada una con calma y déjate sentir.";
-const heroImage = page?.heroImage ?? "/images/home-hero-eleahora-01-tiny.webp";
+const heroImage = page?.heroImage ?? "/images/home-hero.webp";
 const heroImageAlt = (page as any)?.heroImageAlt ?? "Sesiones Eleahora";
 const ctaTitle = page?.ctaTitle ?? "Si aún no lo tienes claro, escríbeme aquí";
 const ctaLink = page?.ctaLink ?? "/contacto";

@@ -9,7 +9,7 @@ heroTitle: 'Bienvenido'
 heroSubtitle: "Soy la voz que te recuerda que estás aquí.\nEn el presente.\nMeditación y Terapia Transpersonal.\nMindfulness. Espiritualidad aterrizada."
 heroCtaText: 'Estoy aquí para ti'
 heroCtaLink: '/sesiones'
-heroImage: '/images/home-hero-eleahora-01-tiny.webp'
+heroImage: '/images/home-hero.webp'
 heroImageAlt: 'Maria Eleonora Corallo, terapeuta transpersonal y guía de meditación de Eleahora'
 manifestoLabel: 'Manifiesto'
 manifestoTitle: 'Deja que el amor te regule.'
@@ -31,7 +31,7 @@ manifestoBody:
 manifestoQuote: >-
   Soy estructura y soy caos. Soy servicio y soy soberanía. Deja que el amor te
   regule. Confía en el proceso.
-manifestoImage: '/images/home-manifiesto-eleahora-01-tiny.webp'
+manifestoImage: '/images/home-manifiesto.webp'
 manifestoImageAlt: 'Sesión de meditación y terapia transpersonal de Eleahora — Manifiesto'
 serviciosTitle: 'Estoy aquí para ti'
 serviceCards:
@@ -75,6 +75,6 @@ mindfulnessBenefits:
 mindfulnessConclusion: >-
   En un mundo que nos empuja constantemente hacia el ruido y la velocidad, la
   meditación se convierte en una forma de volver a uno mismo.
-mindfulnessImage: '/images/sesion_maria_corallo_neima_pidal_161-tiny.webp'
+mindfulnessImage: '/images/home-mindfulness.webp'
 mindfulnessImageAlt: 'Práctica de mindfulness y meditación consciente con Eleahora'
 testimonialsTitle: 'Testimonios'
