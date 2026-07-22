@@ -65,8 +65,6 @@ footerLegalLinks:
 footerCopyright: 'Eleahora. Todos los derechos reservados.'
 footerCreditsPrefix: 'Hecho con amor por'
 footerCreditsLinks:
-  - label: 'Amorchi House'
-    href: 'http://amorchihouse.com/'
   - label: '@jesusdavidweb'
     href: 'https://jesusdavid.net/'
 meditationModalTitle: 'Meditación gratuita'
