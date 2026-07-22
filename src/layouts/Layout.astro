@@ -17,7 +17,7 @@ interface Props {
   canonicalUrl?: string;
 }
 
-const SITE_URL = 'https://demo.jedav.link';
+const SITE_URL = import.meta.env.PUBLIC_SITE_URL?.replace(/\/+$/, '') || 'https://demo.jedav.link';
 
 // Keystatic: configuración global del sitio
 const siteConfig = await getSiteConfig();

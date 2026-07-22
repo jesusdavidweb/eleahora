@@ -72,12 +72,24 @@ Asegúrate de tener [Bun](https://bun.sh/) instalado.
 
 ---
 
-## 🐳 Despliegue y Dokploy
+## ☁️ Despliegue de la demo en Cloudflare Pages
 
-El proyecto está diseñado para ser desplegado instantáneamente en **Dokploy**:
-1. **Build Stage:** Usa `oven/bun` para procesar dependencias y generar el build SSR.
-2. **Runtime Stage:** Servidor `node:22-alpine` ejecutando Astro SSR directamente en el puerto 80.
-3. **Proxy Inverso:** Dokploy gestiona Traefik automáticamente como proxy inverso.
+La rama `demo` es una versión estática y pública para el portafolio. Se despliega en un proyecto de Cloudflare Pages independiente, dentro de la cuenta personal, sin secretos de producción ni acceso al CMS.
+
+1. En la cuenta personal de Cloudflare, crea un proyecto de **Pages** conectado a este mismo repositorio de GitHub.
+2. En **Settings → Builds & deployments → Branch control**, selecciona `demo` como **Production branch** y desactiva los despliegues de ramas de vista previa.
+3. Configura el comando de build como `bun install --frozen-lockfile && bun run build` y el directorio de salida como `dist`.
+4. En **Settings → Environment variables**, añade `PUBLIC_SITE_URL` con la URL pública definitiva, sin barra final (por ejemplo, `https://demo.jedav.link`).
+5. Tras el primer despliegue correcto, asocia el dominio desde **Custom domains** en Cloudflare. Cada push posterior a `demo` actualizará solo este proyecto de Pages.
+
+Antes de publicar, valida localmente con:
+
+```bash
+bun run check
+bun run build
+```
+
+La rama `main` y su proyecto de Cloudflare permanecen independientes de esta configuración.
 
 ---
 
