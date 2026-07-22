@@ -40,7 +40,6 @@ const footerLegalLinks = rawLegalLinks.map((link: { label: string; href: string 
   link.href.startsWith('http') ? link : { ...link, href: withBase(link.href) }
 );
 const footerCreditsLinks = globalContent?.footerCreditsLinks?.length ? globalContent.footerCreditsLinks : [
-  { label: 'Amorchi House', href: 'http://amorchihouse.com/' },
   { label: '@jesusdavidweb', href: 'https://jesusdavid.net/' },
 ];
 const footerContactLinks = globalContent?.footerContactLinks?.length ? globalContent.footerContactLinks : [
