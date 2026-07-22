@@ -78,9 +78,10 @@ La rama `demo` es una versión estática y pública para el portafolio. Se despl
 
 1. En la cuenta personal de Cloudflare, crea un proyecto de **Pages** conectado a este mismo repositorio de GitHub.
 2. En **Settings → Builds & deployments → Branch control**, selecciona `demo` como **Production branch** y desactiva los despliegues de ramas de vista previa.
-3. Configura el comando de build como `bun install --frozen-lockfile && bun run build` y el directorio de salida como `dist`.
-4. En **Settings → Environment variables**, añade `PUBLIC_SITE_URL` con la URL pública definitiva, sin barra final (por ejemplo, `https://demo.jedav.link`).
-5. Tras el primer despliegue correcto, asocia el dominio desde **Custom domains** en Cloudflare. Cada push posterior a `demo` actualizará solo este proyecto de Pages.
+3. Configura el comando de build como `bun run build` y el directorio de salida como `dist`. Pages instala las dependencias con el lockfile antes de ejecutar ese comando.
+4. Deja vacío el comando de despliegue: con la integración Git, Pages publica automáticamente `dist`. No uses `npx wrangler deploy`, que intenta desplegar un Worker y falla para esta demo estática.
+5. En **Settings → Environment variables**, añade `PUBLIC_SITE_URL` con la URL pública definitiva, sin barra final (por ejemplo, `https://demo.jedav.link`).
+6. Tras el primer despliegue correcto, asocia el dominio desde **Custom domains** en Cloudflare. Cada push posterior a `demo` actualizará solo este proyecto de Pages.
 
 Antes de publicar, valida localmente con:
 
