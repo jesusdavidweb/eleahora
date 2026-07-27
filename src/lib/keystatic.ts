@@ -43,6 +43,7 @@ async function getReader() {
 
 // ─────────────────────────────────────────────────────
 // Rich Text: ProseMirror nodes → HTML
+// (kept for legacy `fields.document()` usage, e.g. sesiones.description)
 // ─────────────────────────────────────────────────────
 
 type DocNode = {
@@ -93,6 +94,40 @@ async function resolveDocument(
 }
 
 // ─────────────────────────────────────────────────────
+// Plain text / HTML body → HTML
+// For singletons that migrated from `fields.document()` to
+// `fields.text({ multiline: true })`. Accepts:
+//   - Plain text with paragraphs separated by blank lines
+//     → wraps each block in <p>...</p>
+//   - Pre-formatted HTML (contains '<' as a tag opener)
+//     → returned untouched so editors keep full control
+// ─────────────────────────────────────────────────────
+
+async function resolveTextBody(value: unknown): Promise<string> {
+  if (value == null) return '';
+  let raw = '';
+  if (typeof value === 'string') {
+    raw = value;
+  } else if (typeof value === 'function') {
+    const result = await (value as () => Promise<unknown>)();
+    raw = typeof result === 'string' ? result : '';
+  } else {
+    return '';
+  }
+  const trimmed = raw.trim();
+  if (!trimmed) return '';
+  // Looks like HTML already → pass through.
+  if (/<[a-z][\s\S]*>/i.test(trimmed)) return trimmed;
+  // Plain text → split on blank lines into paragraphs.
+  return trimmed
+    .split(/\n\s*\n/)
+    .map((block) => block.trim())
+    .filter(Boolean)
+    .map((block) => `<p>${block.replace(/\n/g, '<br />')}</p>`)
+    .join('\n');
+}
+
+// ─────────────────────────────────────────────────────
 // Singletons
 // ─────────────────────────────────────────────────────
 
@@ -124,7 +159,7 @@ export async function getHomePage() {
     if (!data) return null;
     return {
       ...data,
-      manifestoBodyHtml: await resolveDocument(data.manifestoBody),
+      manifestoBodyHtml: await resolveTextBody(data.manifestoBody),
     };
   } catch {
     return null;
@@ -139,7 +174,7 @@ export async function getAboutPage() {
     if (!data) return null;
     return {
       ...data,
-      bioBodyHtml: await resolveDocument(data.bioBody),
+      bioBodyHtml: await resolveTextBody(data.bioBody),
     };
   } catch {
     return null;

@@ -335,10 +335,9 @@ export default config({
           label: "Manifiesto — Título",
           defaultValue: "Deja que el amor te regule.",
         }),
-        manifestoBody: fields.document({
+        manifestoBody: fields.text({
           label: "Manifiesto — Cuerpo",
-          formatting: true,
-          links: true,
+          multiline: true,
         }),
         manifestoQuote: fields.text({
           label: "Manifiesto — Cita destacada",
@@ -508,10 +507,9 @@ export default config({
           multiline: true,
           defaultValue: "Nací en Venezuela, en una familia de raíces italianas donde el amor, la expresión y la fuerza emocional eran el lenguaje cotidiano. Crecí entre culturas, entre mundos, aprendiendo desde pequeña que la identidad no es un lugar fijo — es un viaje.",
         }),
-        bioBody: fields.document({
-          label: "Bio — Cuerpo (rich text)",
-          formatting: true,
-          links: true,
+        bioBody: fields.text({
+          label: "Bio — Cuerpo",
+          multiline: true,
         }),
 
         // Así nació Eleahora
