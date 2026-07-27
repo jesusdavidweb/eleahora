@@ -1173,6 +1173,15 @@ export default config({
           defaultValue: "Acepto que Eleahora me contacte para responder esta solicitud.",
         }),
         submitButtonText: fields.text({ label: "Formulario — Botón enviar", defaultValue: "Enviar mensaje" }),
+        // Campo auxiliar añadido para forzar resync del schema en Keystatic Cloud
+        // (el backend cacheaba la estructura con los .mdoc eliminados por el fix
+        // de bioBody/manifestoBody y rechazaba los commits con "path requested for
+        // deletion which does not exist"). Es seguro dejarlo: aparece como opcional
+        // en el admin UI y no afecta el render mientras esté vacío.
+        formDisclaimer: fields.text({
+          label: "Formulario — Disclaimer (opcional, oculto si vacío)",
+          multiline: true,
+        }),
       },
     }),
   },
