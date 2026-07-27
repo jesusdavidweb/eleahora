@@ -8,8 +8,8 @@ ogImage: /images/ogImage.png
 heroLabel: Experiencia para Empresas
 heroTitle: Pienso, luego medito
 heroSubtitle: Transformando el estrés en presencia
-heroImage: /images/workshop-pienso-luego-medito-15-tiny.webp
-heroImage2: /images/workshop-pienso-luego-medito-92-tiny.webp
+heroImage: /images/heroImage.webp
+heroImage2: /images/heroImage2.webp
 heroImageAlt: Participantes en dinámica de mindfulness corporativo
 heroImage2Alt: Sesión de meditación guiada para equipos
 heroSecondaryCtaText: Ver experiencia
@@ -61,7 +61,7 @@ experienceItems:
   - title: Bienvenida y aterrizaje consciente
     description: >-
       Apertura del espacio, intención compartida y práctica breve para llegar al
-      aquí y ahora como equipo.
+      aquí y ahora como equipo
   - title: ¿Cómo estar más presentes?
     description: Prácticas conscientes que integran los sentidos y los elementos.
   - title: Meditación como método de neuroregulación
@@ -110,8 +110,8 @@ testimonials:
       Los creativos vivimos en mil dimensiones a la vez: el brief, la idea, la
       ejecución, el deadline, el café que dejamos enfriar. Pero este workshop me
       recordó que la mejor creatividad nace cuando estamos presentes. Gracias,
-      Maria, por enseñarme que la pausa también es parte del proceso. Tu
-      workshop es un regalo para el mundo.
+      Maria, por enseñarme que la pausa también es parte del proceso. ¡Tu
+      workshop es un regalo para el mundo!
 closingQuote: >-
   El verdadero reto de la condición humana no es estar presente, sino darnos
   cuenta de que no estamos presentes.
