@@ -1,8 +1,8 @@
 import type { APIRoute } from 'astro';
-import { Resend } from 'resend';
 
 const CONTACT_FROM_EMAIL = 'Eleahora <info@eleahora.com>';
 const CONTACT_TO_EMAIL = 'info@eleahora.com';
+const RESEND_API_URL = 'https://api.resend.com/emails';
 
 function getResendApiKey(locals: App.Locals): string | undefined {
   return locals.runtime.env.RESEND_API_KEY ?? process.env.RESEND_API_KEY;
@@ -62,36 +62,46 @@ export const POST: APIRoute = async ({ request, redirect, locals }) => {
       return redirect(`/gracias?nombre=${nombreEncoded}`);
     }
 
-    const resend = new Resend(resendApiKey);
-
-    const { data, error } = await resend.emails.send({
-      from: CONTACT_FROM_EMAIL,
-      to: [CONTACT_TO_EMAIL],
-      replyTo: email,
-      subject: `Nuevo contacto de ${nombre} — Eleahora`,
-      html: `
-        <h2>Nuevo contacto desde la web</h2>
-        <table>
-          <tr><td><strong>Nombre:</strong></td><td>${escapeHtml(nombre)}</td></tr>
-          <tr><td><strong>Email:</strong></td><td>${escapeHtml(email)}</td></tr>
-          <tr><td><strong>WhatsApp:</strong></td><td>${escapeHtml(telefono) || 'No proporcionado'}</td></tr>
-          <tr><td><strong>Servicio:</strong></td><td>${escapeHtml(servicio)}</td></tr>
-        </table>
-        <h3>Mensaje</h3>
-        <p>${escapeHtml(mensaje).replace(/\n/g, '<br>')}</p>
-        <hr>
-        <p style="color:#666;font-size:0.85em;">Este mensaje fue enviado desde el formulario de contacto de Eleahora.</p>
-      `
+    // Llamada directa a la API REST de Resend (sin SDK) para evitar la peer
+    // dep opcional @react-email/render que el SDK importa estáticamente y
+    // que el bundler de Cloudflare workerd no puede resolver al desplegar.
+    const response = await fetch(RESEND_API_URL, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${resendApiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        from: CONTACT_FROM_EMAIL,
+        to: [CONTACT_TO_EMAIL],
+        reply_to: email,
+        subject: `Nuevo contacto de ${nombre} — Eleahora`,
+        html: `
+          <h2>Nuevo contacto desde la web</h2>
+          <table>
+            <tr><td><strong>Nombre:</strong></td><td>${escapeHtml(nombre)}</td></tr>
+            <tr><td><strong>Email:</strong></td><td>${escapeHtml(email)}</td></tr>
+            <tr><td><strong>WhatsApp:</strong></td><td>${escapeHtml(telefono) || 'No proporcionado'}</td></tr>
+            <tr><td><strong>Servicio:</strong></td><td>${escapeHtml(servicio)}</td></tr>
+          </table>
+          <h3>Mensaje</h3>
+          <p>${escapeHtml(mensaje).replace(/\n/g, '<br>')}</p>
+          <hr>
+          <p style="color:#666;font-size:0.85em;">Este mensaje fue enviado desde el formulario de contacto de Eleahora.</p>
+        `,
+      }),
     });
 
-    if (error) {
+    if (!response.ok) {
+      const errorBody = (await response.json().catch(() => ({}))) as { message?: string; name?: string };
       console.error('[contacto-api] Resend rejected send request', {
-        message: error.message ?? 'Unknown Resend error',
-        name: error.name ?? 'UnknownError',
-        statusCode: (error as { statusCode?: number }).statusCode ?? null,
+        status: response.status,
+        message: errorBody?.message ?? `HTTP ${response.status}`,
+        name: errorBody?.name ?? 'UnknownError',
       });
       console.error('[contacto-api] Verify that CONTACT_FROM_EMAIL uses a verified domain in Resend.');
     } else {
+      const data = (await response.json().catch(() => ({}))) as { id?: string };
       console.info('[contacto-api] Resend accepted send request', {
         id: data?.id ?? null,
       });

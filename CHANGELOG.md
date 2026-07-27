@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- **`scripts/normalize-assets.mjs`**: script de normalización de assets que actúa como red de seguridad automática contra el bug del SSR worker. Escanea `public/` recursivamente, detecta archivos con caracteres problemáticos (espacios, tildes, paréntesis, símbolos, etc.), los renombra a kebab-case ASCII y reescribe todas las referencias en `src/` (`.astro`, `.ts`, `.yaml`, etc.) — incluyendo las variantes URL-encoded con `%20`. Dos modos: `safe` (default, preserva mayúsculas si el nombre es seguro, solo normaliza cuando hay caracteres problemáticos) y `strict` (kebab-case completo con lowercase). Conectado como prebuild hook: cualquier `bun run build` (Cloudflare Pages o local) lo ejecuta antes de `astro build`. Comandos disponibles:
+  - `bun run normalize` — normaliza y persiste cambios
+  - `bun run normalize:dry` — solo reporta, no toca nada
+  - `bun run normalize:strict` — kebab-case completo (lowercase obligatorio)
+
 ### Fixed
 - **Hero de `/workshop-empresas` no mostraba imágenes en Cloudflare Pages**: el SSR worker de Astro (`@astrojs/cloudflare` con `output: 'server'`) no podía servir assets estáticos con espacios en el nombre de archivo (`Workshop Pienso Luego Medito-15-tiny.webp` y `Workshop Pienso Luego Medito-92-tiny.webp`). Al solicitar `/images/Workshop%20Pienso%20Luego%20Medito-15-tiny.webp` el worker hacía fallback al HTML del index en lugar de la imagen. Renombrados los archivos a kebab-case y actualizadas las 5 referencias (`workshop-empresas.astro`, `landing/pienso-luego-medito.astro`, `design-system.astro`, `workshop.yaml`, `pienso-luego-medito-landing.yaml`).
 - **Build local roto por colisión `entities@4` vs `entities@6`**: `@react-email/render@2.0.10` (declarada pero nunca usada en el código, ya que `api/contacto.ts` envía HTML inline con `Resend`) arrastraba `html-to-text@9` → `dom-serializer` → `htmlparser2@8` que importa `entities/lib/decode` (API antigua de `entities@4`), mientras que `@astrojs/svelte/react` y Vite interno ya utilizan `parse5@7` que requiere `entities@6`. El conflicto provocaba `[commonjs--resolver] Missing "./lib/decode.js" specifier in "entities" package` durante el build SSR. Eliminada `@react-email/render` de `package.json` y regenerado `bun.lock` — el bundler ahora puede resolver la copia nested de `entities@4.5.0` para `htmlparser2` y la de `entities@6.0.1` para `parse5` sin colisión.
@@ -14,6 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 - **`@react-email/render@^2.0.10`**: dependencia huérfana en `package.json` que no se importaba en ningún archivo del proyecto y provocaba el conflicto de build descrito arriba. Si en el futuro se quiere usar plantillas React para los emails de contacto, se puede volver a añadir actualizando a una versión compatible con `entities@6` (o usando un override de `entities` en `package.json`).
+- **`resend@^6.12.4`**: el SDK de Resend importa estáticamente `@react-email/render` como peer dependency opcional (para renderizar plantillas React), lo que el bundler de Cloudflare workerd no puede resolver al desplegar la Function, aunque el proyecto nunca use esa función (siempre envía HTML inline). Reemplazado por una llamada `fetch` directa a la API REST de Resend (`https://api.resend.com/emails`) en `src/pages/api/contacto.ts` — el bundle se reduce y se elimina la dependencia de un peer opcional no usado.
 - **`public/fonts/Sloop-ScriptThree 2.ttf`**: archivo duplicado (mismo MD5 que `Sloop-ScriptThree.ttf`) sin ninguna referencia en el código. Trasladado a la papelera. No quedan archivos con espacios en `public/`.
 
 ### Changed
