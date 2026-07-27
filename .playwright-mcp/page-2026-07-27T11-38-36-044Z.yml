@@ -1,0 +1,249 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "Eleahora" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - img "Eleahora" [ref=e5]
+      - navigation "Main navigation" [ref=e6]:
+        - link "Sobre Mí" [ref=e7] [cursor=pointer]:
+          - /url: /about
+        - link "Sesiones" [ref=e8] [cursor=pointer]:
+          - /url: /sesiones
+        - link "Workshop" [ref=e9] [cursor=pointer]:
+          - /url: /workshop-empresas
+        - link "Contacto" [ref=e10] [cursor=pointer]:
+          - /url: /contacto
+      - link "Agendar" [ref=e12] [cursor=pointer]:
+        - /url: https://scheduler.zoom.us/maria-eleonora-051exv/sesi-n-eleahora
+  - main [ref=e13]:
+    - region [ref=e14]:
+      - generic [ref=e15]:
+        - figure [ref=e16]
+        - generic [ref=e22]:
+          - generic [ref=e23]: Experiencia para Empresas
+          - heading "\"Pienso, luego medito\"" [level=1] [ref=e25]:
+            - emphasis [ref=e26]: "\"Pienso,"
+            - generic [ref=e27]: luego medito"
+          - paragraph [ref=e28]: Transformando el estrés en presencia.
+          - generic [ref=e29]:
+            - link "Solicitar propuesta" [ref=e30] [cursor=pointer]:
+              - /url: /contacto
+            - link "Ver experiencia" [ref=e31] [cursor=pointer]:
+              - /url: "#experiencia"
+          - list "Datos del workshop" [ref=e32]:
+            - listitem [ref=e33]:
+              - generic [ref=e34]: Formato
+              - strong [ref=e35]: Team building
+              - generic [ref=e36]: aprox. 12 personas
+            - listitem [ref=e37]:
+              - generic [ref=e38]: Duración
+              - strong [ref=e39]: 3 horas
+              - generic [ref=e40]: sesión intensiva
+            - listitem [ref=e41]:
+              - generic [ref=e42]: Modalidad
+              - strong [ref=e43]: Presencial
+              - generic [ref=e44]: en tu empresa
+    - region [ref=e45]:
+      - generic [ref=e46]:
+        - generic [ref=e47]:
+          - generic [ref=e48]: Sobre la Guía
+          - heading "Maria Eleonora Corallo" [level=2] [ref=e49]
+          - paragraph [ref=e50]: Terapeuta transpersonal, guía de meditación y fundadora de Eleahora. Combina su carrera de idiomas (La Sorbonne) y su formación en PNL transpersonal, Mindfulness y conexión energética para llevar herramientas prácticas de neuroregulación al entorno corporativo.
+        - figure "Slogan" [ref=e51]:
+          - blockquote [ref=e52]:
+            - generic [ref=e53]: Soy La Voz
+            - generic [ref=e54]: QUE TE RECUERDA QUE ESTÁS AQUÍ.
+    - region [ref=e55]:
+      - generic [ref=e56]:
+        - generic [ref=e57]:
+          - generic [ref=e58]: El Workshop
+          - heading "Creado para transformar cómo los equipos perciben y manejan el estrés." [level=2] [ref=e59]
+        - generic [ref=e60]:
+          - paragraph [ref=e61]: "\"Pienso, luego medito\" combina ciencia, introspección y técnicas prácticas para reconectar con nuestra esencia, regular nuestras emociones y vivir con mayor presencia. El workshop guía a los asistentes a través de dinámicas envolventes que integran los cinco sentidos y los elementos de la naturaleza para cultivar la atención plena. Además, aborda cómo nivelar el cortisol y la dopamina, dos hormonas clave en la productividad y el bienestar, ofreciendo herramientas como ejercicios de respiración, meditación y prácticas creativas. Con un enfoque en la regulación del sistema nervioso, este espacio fomenta claridad mental, mejor toma de decisiones y una conexión más profunda entre los individuos y sus equipos. Ideal para empresas que buscan empoderar a sus colaboradores con recursos para enfrentar los desafíos modernos, este workshop es más que una pausa: Es una invitación para transformar la manera en que vivimos y trabajamos, con una práctica tan esencial como la de volver al presente."
+          - generic "Detalles del workshop" [ref=e62]:
+            - generic [ref=e63]:
+              - generic [ref=e64]: Formato
+              - strong [ref=e65]: Team building
+              - emphasis [ref=e66]: aprox. 12 personas
+            - generic [ref=e67]:
+              - generic [ref=e68]: Duración
+              - strong [ref=e69]: 3 horas
+              - emphasis [ref=e70]: sesión intensiva
+            - generic [ref=e71]:
+              - generic [ref=e72]: Modalidad
+              - strong [ref=e73]: Presencial
+              - emphasis [ref=e74]: en tu empresa
+    - region [ref=e75]:
+      - generic [ref=e76]:
+        - generic [ref=e77]:
+          - generic [ref=e78]: ¿Qué incluye la experiencia?
+          - heading "Un recorrido práctico, consciente y aplicable." [level=2] [ref=e79]
+        - list [ref=e80]:
+          - listitem [ref=e81]:
+            - generic [ref=e82]: "01"
+            - generic [ref=e83]:
+              - heading "Bienvenida y aterrizaje consciente" [level=3] [ref=e84]
+              - paragraph [ref=e85]: Apertura del espacio, intención compartida y práctica breve para llegar al aquí y ahora como equipo.
+          - listitem [ref=e86]:
+            - generic [ref=e87]: "02"
+            - generic [ref=e88]:
+              - heading "¿Cómo estar más presentes?" [level=3] [ref=e89]
+              - paragraph [ref=e90]: Prácticas conscientes que integran los sentidos y los elementos.
+          - listitem [ref=e91]:
+            - generic [ref=e92]: "03"
+            - generic [ref=e93]:
+              - heading "Meditación como método de neuroregulación" [level=3] [ref=e94]
+              - paragraph [ref=e95]: Sistema nervioso, dopamina y cortisol.
+          - listitem [ref=e96]:
+            - generic [ref=e97]: "04"
+            - generic [ref=e98]:
+              - heading "Meditación en todas sus formas" [level=3] [ref=e99]
+              - paragraph [ref=e100]: Con el cuerpo, la mente y el alma.
+          - listitem [ref=e101]:
+            - generic [ref=e102]: "05"
+            - generic [ref=e103]:
+              - heading "Niño Interior" [level=3] [ref=e104]
+              - paragraph [ref=e105]: Dinámicas lúdicas que despiertan la creatividad y la alegría.
+          - listitem [ref=e106]:
+            - generic [ref=e107]: "06"
+            - generic [ref=e108]:
+              - heading "¿Y ahora qué?" [level=3] [ref=e109]
+              - paragraph [ref=e110]: Acciones concretas para aplicar en el día a día.
+    - region [ref=e111]:
+      - generic [ref=e112]:
+        - generic [ref=e113]:
+          - generic [ref=e114]: ¿Qué te llevas como empresa?
+          - heading "Lo que cambia después de la experiencia." [level=2] [ref=e115]
+        - list "Beneficios para la empresa" [ref=e116]:
+          - listitem [ref=e117]:
+            - paragraph [ref=e119]: Herramientas prácticas para regular altos niveles de estrés.
+          - listitem [ref=e120]:
+            - paragraph [ref=e122]: Mejor sinergia grupal, empatía y conexión.
+          - listitem [ref=e123]:
+            - paragraph [ref=e125]: Mayor claridad en la toma de decisiones.
+          - listitem [ref=e126]:
+            - paragraph [ref=e128]: Información valiosa para cultivar la mente y potenciar el rendimiento.
+    - region [ref=e129]:
+      - generic [ref=e130]:
+        - generic [ref=e131]:
+          - generic [ref=e132]: Quienes han vivido la experiencia
+          - heading "Lo que ocurre cuando la pausa también es parte del proceso." [level=2] [ref=e133]
+        - generic [ref=e134]:
+          - blockquote [ref=e135]:
+            - generic [ref=e136]: "\""
+            - paragraph [ref=e137]: El profesionalismo y la calma de María marcan una verdadera diferencia. Practicar meditación después de su taller me ha ayudado muchísimo a ser más productiva y a ordenar mis prioridades con mayor claridad. También noto una mejor gestión del estrés en momentos de presión.
+            - generic [ref=e138]:
+              - strong [ref=e139]: María Aristeguieta
+              - generic [ref=e140]: Talent Processes Senior Specialist at Avature, Spain
+          - blockquote [ref=e141]:
+            - generic [ref=e142]: "\""
+            - paragraph [ref=e143]: ¡Ojalá todos pudieran asistir a este workshop! Fue increíblemente valioso experimentar el mindfulness y llevarnos herramientas concretas para aplicar en el trabajo. Salimos con más presencia, mejor escucha y una energía de equipo mucho más conectada. ¡Tu workshop es oro puro!
+            - generic [ref=e144]:
+              - strong [ref=e145]: Vanessa Fernández
+              - generic [ref=e146]: Senior Product Manager at Giftify, Belgium
+          - blockquote [ref=e147]:
+            - generic [ref=e148]: "\""
+            - paragraph [ref=e149]: Gracias, Maria, por enseñarme que la pausa también es parte del proceso. Tu workshop me recordó que regularnos no es frenar, sino crear espacio para decidir mejor y colaborar con más empatía. Es una experiencia que realmente transforma la forma de vivir el día a día laboral.
+            - generic [ref=e150]:
+              - strong [ref=e151]: Stella Camacho
+              - generic [ref=e152]: Founder & Chief Creative Officer at Amorchi House
+    - region "Cita de cierre" [ref=e153]:
+      - blockquote [ref=e155]:
+        - text: "\"El verdadero reto de la condición humana no es estar presente, sino darnos cuenta de que no estamos presentes.\""
+        - generic [ref=e156]: — Meggan Watterson
+    - region [ref=e157]:
+      - generic [ref=e158]:
+        - img "Siguiente paso" [ref=e159]
+        - heading "¿Quieres llevar esta experiencia a tu organización?" [level=2] [ref=e160]
+        - generic [ref=e161]:
+          - link "Agendar llamada de descubrimiento" [ref=e162] [cursor=pointer]:
+            - /url: https://scheduler.zoom.us/maria-eleonora-051exv/30-min-con-eleahora
+          - link "Solicitar propuesta" [ref=e163] [cursor=pointer]:
+            - /url: /contacto
+  - contentinfo [ref=e164]:
+    - generic [ref=e165]:
+      - generic [ref=e166]:
+        - generic [ref=e167]:
+          - img "Eleahora" [ref=e168]
+          - paragraph [ref=e169]: Soy la voz que te recuerda que estás aquí.
+          - button "Abrir meditación gratuita de Insight Timer en un pop-up" [ref=e170] [cursor=pointer]: Escuchar meditación gratuita
+        - generic [ref=e171]:
+          - heading "Explora" [level=3] [ref=e172]
+          - navigation "Footer Navigation" [ref=e173]:
+            - list [ref=e174]:
+              - listitem [ref=e175]:
+                - link "Inicio" [ref=e176] [cursor=pointer]:
+                  - /url: /
+              - listitem [ref=e177]:
+                - link "Sobre Mí" [ref=e178] [cursor=pointer]:
+                  - /url: /about
+              - listitem [ref=e179]:
+                - link "Manifiesto" [ref=e180] [cursor=pointer]:
+                  - /url: /#manifiesto
+              - listitem [ref=e181]:
+                - link "Sesiones y servicios" [ref=e182] [cursor=pointer]:
+                  - /url: /sesiones
+              - listitem [ref=e183]:
+                - link "Workshop Empresas" [ref=e184] [cursor=pointer]:
+                  - /url: /workshop-empresas
+              - listitem [ref=e185]:
+                - link "Mindfulness" [ref=e186] [cursor=pointer]:
+                  - /url: /#mindfulness
+              - listitem [ref=e187]:
+                - link "Contacto" [ref=e188] [cursor=pointer]:
+                  - /url: /contacto
+        - generic [ref=e189]:
+          - heading "Legal" [level=3] [ref=e190]
+          - navigation "Legal" [ref=e191]:
+            - list [ref=e192]:
+              - listitem [ref=e193]:
+                - link "Aviso Legal" [ref=e194] [cursor=pointer]:
+                  - /url: /legal/aviso-legal
+              - listitem [ref=e195]:
+                - link "Privacidad" [ref=e196] [cursor=pointer]:
+                  - /url: /legal/politica-de-privacidad
+              - listitem [ref=e197]:
+                - link "Cookies" [ref=e198] [cursor=pointer]:
+                  - /url: /legal/politica-de-cookies
+        - generic [ref=e199]:
+          - heading "Conecta" [level=3] [ref=e200]
+          - list [ref=e201]:
+            - listitem [ref=e202]:
+              - link "Agenda una sesion en Cal.com" [ref=e203] [cursor=pointer]:
+                - /url: https://scheduler.zoom.us/maria-eleonora-051exv/sesi-n-eleahora
+                - generic [ref=e206]: Agenda una Sesion
+            - listitem [ref=e207]:
+              - link "Instagram de Eleahora" [ref=e208] [cursor=pointer]:
+                - /url: https://www.instagram.com/eleahora/
+                - generic [ref=e214]: Instagram
+            - listitem [ref=e215]:
+              - link "LinkedIn de Eleahora" [ref=e216] [cursor=pointer]:
+                - /url: https://www.linkedin.com/in/maria-eleonora-corallo-16266165/
+                - generic [ref=e222]: LinkedIn
+            - listitem [ref=e223]:
+              - link "Insight Timer de Eleahora" [ref=e224] [cursor=pointer]:
+                - /url: https://insighttimer.com/eleahora
+                - generic [ref=e229]: Meditaciones Guiadas
+            - listitem [ref=e230]:
+              - link "WhatsApp de Eleahora" [ref=e231] [cursor=pointer]:
+                - /url: https://wa.me/34605373782
+                - generic [ref=e234]: WhatsApp
+      - generic [ref=e235]:
+        - paragraph [ref=e236]: © 2026 Eleahora. Todos los derechos reservados.
+        - paragraph [ref=e237]:
+          - text: Hecho con amor por
+          - link "Amorchi House" [ref=e238] [cursor=pointer]:
+            - /url: http://amorchihouse.com/
+          - text: "y"
+          - link "@jesusdavidweb" [ref=e239] [cursor=pointer]:
+            - /url: https://jesusdavid.net/
+  - dialog "Aviso de cookies" [ref=e241]:
+    - generic [ref=e242]:
+      - paragraph [ref=e243]:
+        - text: Esta web utiliza cookies propias y de terceros para mejorar tu experiencia y analizar el tráfico. Puedes aceptarlas todas o rechazarlas.
+        - link "Más información" [ref=e244] [cursor=pointer]:
+          - /url: /legal/politica-de-cookies
+        - text: .
+      - generic [ref=e245]:
+        - button "Aceptar todas" [ref=e246] [cursor=pointer]
+        - button "Solo necesarias" [ref=e247] [cursor=pointer]
